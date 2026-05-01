@@ -1,7 +1,7 @@
 const GITHUB_TOKEN_SESSION_KEY = "beautifulweb-github-token";
 const GITHUB_BRANCH_SESSION_KEY = "beautifulweb-github-branch";
-const REPO_OWNER = "soy-xplr";
-const REPO_NAME = "soy";
+const GITHUB_OWNER_SESSION_KEY = "beautifulweb-github-owner";
+const DEFAULT_REPO_NAME = "soy";
 
 export const getGithubToken = (): string | null =>
   sessionStorage.getItem(GITHUB_TOKEN_SESSION_KEY);
@@ -9,16 +9,23 @@ export const getGithubToken = (): string | null =>
 export const setGithubToken = (token: string) =>
   sessionStorage.setItem(GITHUB_TOKEN_SESSION_KEY, token);
 
-export const clearGithubToken = () => {
-  sessionStorage.removeItem(GITHUB_TOKEN_SESSION_KEY);
-  sessionStorage.removeItem(GITHUB_BRANCH_SESSION_KEY);
-};
+export const getGithubOwner = (): string =>
+  sessionStorage.getItem(GITHUB_OWNER_SESSION_KEY) ?? "";
+
+export const setGithubOwner = (owner: string) =>
+  sessionStorage.setItem(GITHUB_OWNER_SESSION_KEY, owner);
 
 export const getGithubBranch = (): string =>
   sessionStorage.getItem(GITHUB_BRANCH_SESSION_KEY) ?? "main";
 
 export const setGithubBranch = (branch: string) =>
   sessionStorage.setItem(GITHUB_BRANCH_SESSION_KEY, branch);
+
+export const clearGithubToken = () => {
+  sessionStorage.removeItem(GITHUB_TOKEN_SESSION_KEY);
+  sessionStorage.removeItem(GITHUB_BRANCH_SESSION_KEY);
+  sessionStorage.removeItem(GITHUB_OWNER_SESSION_KEY);
+};
 
 export type UploadResult =
   | { ok: true; url: string }
@@ -41,6 +48,40 @@ const sanitizeFilename = (name: string): string =>
     .replace(/[^a-zA-Z0-9가-힣._-]/g, "")
     .toLowerCase();
 
+/**
+ * 배포 완료될 때까지 URL에 HEAD 요청을 보내 폴링합니다.
+ * 최대 maxAttempts × intervalMs 동안 시도합니다.
+ */
+export const pollUntilDeployed = (
+  url: string,
+  onReady: () => void,
+  intervalMs = 5000,
+  maxAttempts = 24, // 최대 2분
+): (() => void) => {
+  let attempts = 0;
+  let stopped = false;
+
+  const check = async () => {
+    if (stopped) return;
+    try {
+      const res = await fetch(url, { method: "HEAD", cache: "no-store" });
+      if (res.ok) {
+        onReady();
+        return;
+      }
+    } catch {
+      // 네트워크 오류는 무시하고 재시도
+    }
+    attempts++;
+    if (attempts < maxAttempts && !stopped) {
+      setTimeout(() => void check(), intervalMs);
+    }
+  };
+
+  setTimeout(() => void check(), intervalMs);
+  return () => { stopped = true; };
+};
+
 export const uploadImageToGithub = async (
   slug: string,
   file: File,
@@ -48,6 +89,11 @@ export const uploadImageToGithub = async (
   const token = getGithubToken();
   if (!token) {
     return { ok: false, error: "GitHub 토큰이 없어요. 토큰을 먼저 입력해주세요." };
+  }
+
+  const owner = getGithubOwner();
+  if (!owner) {
+    return { ok: false, error: "GitHub 사용자명이 없어요. 다시 연결해주세요." };
   }
 
   const branch = getGithubBranch();
@@ -68,11 +114,11 @@ export const uploadImageToGithub = async (
 
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${repoPath}`,
+      `https://api.github.com/repos/${owner}/${DEFAULT_REPO_NAME}/contents/${repoPath}`,
       {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `token ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -93,12 +139,12 @@ export const uploadImageToGithub = async (
       return { ok: false, error: "토큰이 유효하지 않아요. 다시 확인해주세요." };
     }
     if (response.status === 403) {
-      return { ok: false, error: "이 저장소에 쓰기 권한이 없어요." };
+      return { ok: false, error: "저장소에 쓰기 권한이 없어요. 토큰 scope를 확인해주세요." };
     }
     if (response.status === 404) {
       return {
         ok: false,
-        error: `저장소 또는 브랜치를 찾을 수 없어요. 브랜치가 "${branch}"가 맞는지 확인해주세요.`,
+        error: `저장소(${owner}/${DEFAULT_REPO_NAME}) 또는 브랜치(${branch})를 찾을 수 없어요.`,
       };
     }
     if (response.status === 422) {

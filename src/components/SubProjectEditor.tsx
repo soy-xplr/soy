@@ -6,7 +6,7 @@ import type {
 } from "../data/bookmarkDetails";
 import { getEffectiveContentBlocks, type SaveResult } from "../utils/detailStorage";
 import { GitHubTokenInput } from "./GitHubTokenInput";
-import { getGithubToken, uploadImageToGithub } from "../utils/githubUpload";
+import { getGithubToken, pollUntilDeployed, uploadImageToGithub } from "../utils/githubUpload";
 
 type SubProjectEditorProps = {
   slug: string;
@@ -128,7 +128,12 @@ export function SubProjectEditor({
       const result = await uploadImageToGithub(slug, file);
       if (result.ok) {
         onSuccess(result.url);
-        setMessage(`업로드 완료 ✓ git push 후 이미지가 보여요. 경로: ${result.url}`);
+        setMessage("업로드 완료 ✓ Vercel 배포 중… 이미지가 준비되면 자동으로 표시됩니다.");
+        pollUntilDeployed(result.url, () => {
+          onSuccess(`${result.url}?t=${Date.now()}`);
+          setTimeout(() => onSuccess(result.url), 100);
+          setMessage("✓ 배포 완료! 이미지가 화면에 반영됐어요.");
+        });
       } else {
         setMessage(`업로드 실패: ${result.error}`);
       }
