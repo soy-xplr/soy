@@ -2,10 +2,8 @@ import { useState } from "react";
 import {
   clearGithubToken,
   getGithubBranch,
-  getGithubOwner,
   getGithubToken,
   setGithubBranch,
-  setGithubOwner,
   setGithubToken,
 } from "../utils/githubUpload";
 
@@ -15,14 +13,12 @@ type GitHubTokenInputProps = {
 
 export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
   const [token, setToken] = useState("");
-  const [owner, setOwner] = useState(getGithubOwner);
   const [branch, setBranch] = useState(getGithubBranch);
   const [isSet, setIsSet] = useState(() => !!getGithubToken());
 
   const handleSet = () => {
-    if (!token.trim() || !owner.trim()) return;
+    if (!token.trim()) return;
     setGithubToken(token.trim());
-    setGithubOwner(owner.trim());
     setGithubBranch(branch.trim() || "main");
     setIsSet(true);
     setToken("");
@@ -39,7 +35,7 @@ export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
     return (
       <div className="github-token-status">
         <span className="save-status save-status-saved">
-          GitHub 연결됨 ✓ ({getGithubOwner()}/soy · {getGithubBranch()})
+          GitHub 연결됨 ✓ (soy-xplr/soy · {getGithubBranch()})
         </span>
         <button type="button" onClick={handleClear} className="reset-button">
           재설정
@@ -62,20 +58,10 @@ export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
         </a>
       </div>
       <p className="github-token-desc">
-        파일 선택 시 GitHub 저장소에 바로 업로드돼요. repo scope 권한이 필요해요.
+        파일 선택 시 GitHub 저장소(soy-xplr/soy)에 바로 업로드돼요. repo scope 권한이 필요해요.
         이번 세션에만 유지됩니다.
       </p>
       <div className="github-token-fields">
-        <label className="github-token-label">
-          GitHub 사용자명
-          <input
-            type="text"
-            value={owner}
-            placeholder="예: soy-xplr"
-            className="github-input"
-            onChange={(e) => setOwner(e.target.value)}
-          />
-        </label>
         <label className="github-token-label">
           브랜치
           <input
@@ -99,7 +85,7 @@ export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
         <button
           type="button"
           onClick={handleSet}
-          disabled={!token.trim() || !owner.trim()}
+          disabled={!token.trim()}
         >
           연결
         </button>

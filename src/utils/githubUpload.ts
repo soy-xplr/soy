@@ -1,19 +1,13 @@
 const GITHUB_TOKEN_SESSION_KEY = "beautifulweb-github-token";
 const GITHUB_BRANCH_SESSION_KEY = "beautifulweb-github-branch";
-const GITHUB_OWNER_SESSION_KEY = "beautifulweb-github-owner";
-const DEFAULT_REPO_NAME = "soy";
+const REPO_OWNER = "soy-xplr";
+const REPO_NAME = "soy";
 
 export const getGithubToken = (): string | null =>
   sessionStorage.getItem(GITHUB_TOKEN_SESSION_KEY);
 
 export const setGithubToken = (token: string) =>
   sessionStorage.setItem(GITHUB_TOKEN_SESSION_KEY, token);
-
-export const getGithubOwner = (): string =>
-  sessionStorage.getItem(GITHUB_OWNER_SESSION_KEY) ?? "";
-
-export const setGithubOwner = (owner: string) =>
-  sessionStorage.setItem(GITHUB_OWNER_SESSION_KEY, owner);
 
 export const getGithubBranch = (): string =>
   sessionStorage.getItem(GITHUB_BRANCH_SESSION_KEY) ?? "main";
@@ -24,7 +18,6 @@ export const setGithubBranch = (branch: string) =>
 export const clearGithubToken = () => {
   sessionStorage.removeItem(GITHUB_TOKEN_SESSION_KEY);
   sessionStorage.removeItem(GITHUB_BRANCH_SESSION_KEY);
-  sessionStorage.removeItem(GITHUB_OWNER_SESSION_KEY);
 };
 
 export type UploadResult =
@@ -91,11 +84,6 @@ export const uploadImageToGithub = async (
     return { ok: false, error: "GitHub 토큰이 없어요. 토큰을 먼저 입력해주세요." };
   }
 
-  const owner = getGithubOwner();
-  if (!owner) {
-    return { ok: false, error: "GitHub 사용자명이 없어요. 다시 연결해주세요." };
-  }
-
   const branch = getGithubBranch();
 
   let base64: string;
@@ -114,7 +102,7 @@ export const uploadImageToGithub = async (
 
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${DEFAULT_REPO_NAME}/contents/${repoPath}`,
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${repoPath}`,
       {
         method: "PUT",
         headers: {
@@ -144,7 +132,7 @@ export const uploadImageToGithub = async (
     if (response.status === 404) {
       return {
         ok: false,
-        error: `저장소(${owner}/${DEFAULT_REPO_NAME}) 또는 브랜치(${branch})를 찾을 수 없어요.`,
+        error: `저장소(${REPO_OWNER}/${REPO_NAME}) 또는 브랜치(${branch})를 찾을 수 없어요.`,
       };
     }
     if (response.status === 422) {
