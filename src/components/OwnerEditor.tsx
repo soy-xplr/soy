@@ -6,7 +6,7 @@ import {
   type SaveResult,
 } from "../utils/detailStorage";
 import { GitHubTokenInput } from "./GitHubTokenInput";
-import { getGithubToken, pollUntilDeployed, uploadImageToGithub } from "../utils/githubUpload";
+import { getGithubToken, uploadImageToGithub } from "../utils/githubUpload";
 
 type OwnerEditorProps = {
   content: BookmarkDetailContent;
@@ -149,15 +149,8 @@ export function OwnerEditor({
       setMessage("GitHub에 업로드 중...");
       const result = await uploadImageToGithub(title, file);
       if (result.ok) {
-        // rawUrl(raw.githubusercontent.com)로 즉시 이미지 표시
-        onSuccess(result.rawUrl);
-        setMessage("업로드 완료 ✓ Vercel 배포 중… 잠시 후 정식 URL로 전환됩니다.");
-        pollUntilDeployed(result.url, () => {
-          // 배포 완료 — 정식 URL로 전환 (캐시 무효화 후 실제 URL)
-          onSuccess(`${result.url}?t=${Date.now()}`);
-          setTimeout(() => onSuccess(result.url), 100);
-          setMessage("✓ 배포 완료! 이미지가 정식 URL로 전환됐어요.");
-        });
+        onSuccess(result.url);
+        setMessage("업로드 완료 ✓ 이미지가 바로 표시됩니다.");
       } else {
         setMessage(`업로드 실패: ${result.error}`);
       }

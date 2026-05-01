@@ -119,7 +119,9 @@ export const uploadImageToGithub = async (
     );
 
     if (response.status === 201) {
-      return { ok: true, url: publicUrl, rawUrl };
+      // rawUrl은 배포 없이 즉시 접근 가능 (public 저장소 기준)
+      // publicUrl은 Vercel 배포 후에만 접근 가능하므로 rawUrl을 primary로 사용
+      return { ok: true, url: rawUrl, rawUrl };
     }
 
     const data = (await response.json()) as { message?: string };
