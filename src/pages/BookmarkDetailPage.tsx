@@ -15,6 +15,7 @@ import {
   saveDetailContent,
   type SaveResult,
 } from "../utils/detailStorage";
+import { loadBookmarkOverride } from "../utils/bookmarkStorage";
 
 const OWNER_PASSCODE = "beautifulweb";
 const OWNER_SESSION_KEY = "beautifulweb-owner-unlocked";
@@ -60,6 +61,19 @@ export function BookmarkDetailPage({
 
     setDetailContent(loadDetailContent(bookmark.slug));
   }, [bookmark]);
+
+  // 카드 편집 오버라이드를 상세 페이지에도 반영
+  const cardOverride = bookmark ? (loadBookmarkOverride(bookmark.slug) ?? {}) : {};
+  const effectiveBookmark = bookmark
+    ? {
+        ...bookmark,
+        title: cardOverride.title || bookmark.title,
+        description: cardOverride.description || bookmark.description,
+        tags: cardOverride.tags ?? bookmark.tags,
+        note: cardOverride.note || bookmark.note,
+        savedAt: cardOverride.savedAt || bookmark.savedAt,
+      }
+    : bookmark;
 
   if (!bookmark) {
     return (
@@ -137,7 +151,7 @@ export function BookmarkDetailPage({
         </button>
 
         <header className="detail-header">
-          <p className="eyebrow">{bookmark.title} / 담당 범위</p>
+          <p className="eyebrow">{effectiveBookmark!.title} / 담당 범위</p>
           <h1>{selectedSubProject.title}</h1>
           <p>{selectedSubProject.summary}</p>
           <div className="detail-meta">
@@ -215,12 +229,12 @@ export function BookmarkDetailPage({
       </button>
 
       <header className="detail-header">
-        <p className="eyebrow">{bookmark.category}</p>
-        <h1>{bookmark.title}</h1>
-        <p>{detailContent?.intro ?? bookmark.description}</p>
+        <p className="eyebrow">{effectiveBookmark!.category}</p>
+        <h1>{effectiveBookmark!.title}</h1>
+        <p>{detailContent?.intro ?? effectiveBookmark!.description}</p>
         <div className="detail-meta">
-          <span>{bookmark.savedAt}</span>
-          {bookmark.tags.map((tag) => (
+          <span>{effectiveBookmark!.savedAt}</span>
+          {effectiveBookmark!.tags.map((tag) => (
             <Tag key={tag} label={tag} />
           ))}
         </div>
@@ -230,16 +244,16 @@ export function BookmarkDetailPage({
         {detailContent.coverImageUrl ? (
           <img
             src={detailContent.coverImageUrl}
-            alt={detailContent.coverImageAlt || `${bookmark.title} 대표 이미지`}
+            alt={detailContent.coverImageAlt || `${effectiveBookmark!.title} 대표 이미지`}
           />
         ) : (
-          <span>{detailContent?.imageLabel ?? `${bookmark.title} 이미지 자리`}</span>
+          <span>{detailContent?.imageLabel ?? `${effectiveBookmark!.title} 이미지 자리`}</span>
         )}
       </div>
 
       <aside className="detail-note">
         <strong>내 역할</strong>
-        <p>{bookmark.note}</p>
+        <p>{effectiveBookmark!.note}</p>
       </aside>
 
       {isOwnerMode ? (
@@ -349,7 +363,7 @@ export function BookmarkDetailPage({
 
       <a
         className="external-link"
-        href={bookmark.url}
+        href={effectiveBookmark!.url}
         target="_blank"
         rel="noreferrer"
       >
