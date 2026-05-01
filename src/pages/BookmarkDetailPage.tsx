@@ -167,6 +167,7 @@ export function BookmarkDetailPage({
             {isOwnerUnlocked ? (
               <SubProjectEditor
                 key={`${bookmark.slug}-${subProjectSlug}-${resetCounter}`}
+                slug={bookmark.slug}
                 content={detailContent}
                 subProjectIndex={selectedSubProjectIndex}
                 onSave={saveOwnerContent}

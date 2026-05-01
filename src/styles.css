@@ -1116,6 +1116,69 @@ input:focus-visible {
   margin: 0;
 }
 
+/* GitHub 토큰 입력 */
+.github-token-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(50, 180, 100, 0.07);
+}
+
+.github-token-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px dashed var(--line);
+  background: rgba(207, 220, 248, 0.12);
+}
+
+.github-token-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.github-token-header .eyebrow {
+  margin: 0;
+}
+
+.github-token-link {
+  font-size: 0.78rem;
+  color: var(--accent, #4a7afa);
+  text-decoration: none;
+}
+
+.github-token-link:hover {
+  text-decoration: underline;
+}
+
+.github-token-desc {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.github-token-row {
+  display: flex;
+  gap: 8px;
+}
+
+.github-token-field {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--card);
+  color: var(--ink);
+}
+
 .owner-gate > p {
   margin: 8px 0 16px;
   color: var(--muted);

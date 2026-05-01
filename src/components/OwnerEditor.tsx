@@ -5,6 +5,8 @@ import {
   serializeDetailContent,
   type SaveResult,
 } from "../utils/detailStorage";
+import { GitHubTokenInput } from "./GitHubTokenInput";
+import { getGithubToken, uploadImageToGithub } from "../utils/githubUpload";
 
 type OwnerEditorProps = {
   content: BookmarkDetailContent;
@@ -37,6 +39,7 @@ export function OwnerEditor({
   const [importJson, setImportJson] = useState("");
   const [message, setMessage] = useState("");
   const [saveStatus, setSaveStatus] = useState<"idle" | "pending" | "saved" | "error">("idle");
+  const [githubTokenSet, setGithubTokenSet] = useState(() => !!getGithubToken());
   const exportJson = useMemo(() => serializeDetailContent(draft), [draft]);
 
   // 자동저장: draft가 바뀌면 1.5초 후 저장
@@ -138,111 +141,71 @@ export function OwnerEditor({
     }));
   };
 
-  const setCoverImageFromFile = (file?: File) => {
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result !== "string") {
-        return;
+  const handleFileUpload = async (
+    file: File,
+    onSuccess: (url: string) => void,
+  ) => {
+    if (githubTokenSet) {
+      setMessage("GitHub에 업로드 중...");
+      const result = await uploadImageToGithub(title, file);
+      if (result.ok) {
+        onSuccess(result.url);
+        setMessage(`업로드 완료 ✓ git push 후 이미지가 보여요. 경로: ${result.url}`);
+      } else {
+        setMessage(`업로드 실패: ${result.error}`);
       }
+    } else {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result !== "string") return;
+        onSuccess(reader.result);
+        setMessage("이미지를 넣었어요. (localStorage 임시 저장 — GitHub 토큰 연결을 권장해요)");
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-      setDraft((currentDraft) => ({
-        ...currentDraft,
-        coverImageUrl: reader.result as string,
-        coverImageAlt: currentDraft.coverImageAlt || file.name,
-      }));
-      setMessage("대표 이미지를 넣었어요. 저장하면 카드와 상세 상단에 함께 반영됩니다.");
-    };
-    reader.readAsDataURL(file);
+  const setCoverImageFromFile = (file?: File) => {
+    if (!file) return;
+    void handleFileUpload(file, (url) => {
+      setDraft((d) => ({ ...d, coverImageUrl: url, coverImageAlt: d.coverImageAlt || file.name }));
+    });
   };
 
   const setSectionImageFromFile = (index: number, file?: File) => {
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result !== "string") {
-        return;
-      }
-
-      setDraft((currentDraft) => ({
-        ...currentDraft,
-        sections: currentDraft.sections.map((section, sectionIndex) =>
-          sectionIndex === index
-            ? {
-                ...section,
-                imageUrl: reader.result as string,
-                imageAlt: section.imageAlt || file.name,
-              }
-            : section,
+    if (!file) return;
+    void handleFileUpload(file, (url) => {
+      setDraft((d) => ({
+        ...d,
+        sections: d.sections.map((s, i) =>
+          i === index ? { ...s, imageUrl: url, imageAlt: s.imageAlt || file.name } : s,
         ),
       }));
-      setMessage("이미지를 본문 섹션에 넣었어요. 잠시 후 자동 저장됩니다.");
-    };
-    reader.readAsDataURL(file);
+    });
   };
 
   const setSubProjectImageFromFile = (index: number, file?: File) => {
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result !== "string") {
-        return;
-      }
-
-      setDraft((currentDraft) => ({
-        ...currentDraft,
-        subProjects: (currentDraft.subProjects ?? []).map(
-          (subProject, subProjectIndex) =>
-            subProjectIndex === index
-              ? {
-                  ...subProject,
-                  imageUrl: reader.result as string,
-                  imageAlt: subProject.imageAlt || file.name,
-                }
-              : subProject,
+    if (!file) return;
+    void handleFileUpload(file, (url) => {
+      setDraft((d) => ({
+        ...d,
+        subProjects: (d.subProjects ?? []).map((sp, i) =>
+          i === index ? { ...sp, imageUrl: url, imageAlt: sp.imageAlt || file.name } : sp,
         ),
       }));
-      setMessage("하위 작업 카드에 이미지를 넣었어요. 잠시 후 자동 저장됩니다.");
-    };
-    reader.readAsDataURL(file);
+    });
   };
 
   const setSubProjectThumbnailFromFile = (index: number, file?: File) => {
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result !== "string") {
-        return;
-      }
-
-      setDraft((currentDraft) => ({
-        ...currentDraft,
-        subProjects: (currentDraft.subProjects ?? []).map(
-          (subProject, subProjectIndex) =>
-            subProjectIndex === index
-              ? {
-                  ...subProject,
-                  thumbnailUrl: reader.result as string,
-                  thumbnailAlt: subProject.thumbnailAlt || file.name,
-                }
-              : subProject,
+    if (!file) return;
+    void handleFileUpload(file, (url) => {
+      setDraft((d) => ({
+        ...d,
+        subProjects: (d.subProjects ?? []).map((sp, i) =>
+          i === index ? { ...sp, thumbnailUrl: url, thumbnailAlt: sp.thumbnailAlt || file.name } : sp,
         ),
       }));
-      setMessage("하위 작업 카드 썸네일을 넣었어요. 잠시 후 자동 저장됩니다.");
-    };
-    reader.readAsDataURL(file);
+    });
   };
 
   const removeSection = (index: number) => {
@@ -311,6 +274,8 @@ export function OwnerEditor({
           </button>
         </div>
       </div>
+
+      <GitHubTokenInput onTokenChange={() => setGithubTokenSet(!!getGithubToken())} />
 
       {message ? <p className="owner-message">{message}</p> : null}
 
