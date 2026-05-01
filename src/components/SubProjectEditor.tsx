@@ -1,15 +1,15 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   BookmarkDetailContent,
   SubProject,
   SubProjectContentBlock,
 } from "../data/bookmarkDetails";
-import { getEffectiveContentBlocks } from "../utils/detailStorage";
+import { getEffectiveContentBlocks, type SaveResult } from "../utils/detailStorage";
 
 type SubProjectEditorProps = {
   content: BookmarkDetailContent;
   subProjectIndex: number;
-  onSave: (content: BookmarkDetailContent) => void;
+  onSave: (content: BookmarkDetailContent) => SaveResult;
 };
 
 type DraftSubProject = SubProject & {
@@ -46,6 +46,40 @@ export function SubProjectEditor({
     currentSubProject ? toDraft(currentSubProject) : undefined,
   );
   const [message, setMessage] = useState("");
+  const [saveStatus, setSaveStatus] = useState<"idle" | "pending" | "saved" | "error">("idle");
+
+  // 자동저장: draft가 바뀌면 1.5초 후 저장
+  const onSaveRef = useRef(onSave);
+  useEffect(() => { onSaveRef.current = onSave; }, [onSave]);
+  const isMounted = useRef(false);
+  useEffect(() => {
+    if (!isMounted.current) { isMounted.current = true; return; }
+    if (!draft) { return; }
+    setSaveStatus("pending");
+    const updatedSubProjects = [...(content.subProjects ?? [])];
+    const firstText = draft.contentBlocks.find((block) => block.type === "text");
+    const firstImage = draft.contentBlocks.find((block) => block.type === "image");
+    const synced: SubProject = {
+      ...draft,
+      body: firstText && firstText.type === "text" ? firstText.text : "",
+      imageUrl: firstImage && firstImage.type === "image" ? firstImage.url : "",
+      imageAlt: firstImage && firstImage.type === "image" ? firstImage.alt ?? "" : "",
+      imageCaption: firstImage && firstImage.type === "image" ? firstImage.caption ?? "" : "",
+    };
+    updatedSubProjects[subProjectIndex] = synced;
+    const updatedContent = { ...content, subProjects: updatedSubProjects };
+    const timer = setTimeout(() => {
+      const result = onSaveRef.current(updatedContent);
+      if (result.ok) {
+        setSaveStatus("saved");
+      } else {
+        setSaveStatus("error");
+        setMessage(result.error);
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draft]);
 
 
   if (!draft) {
@@ -100,7 +134,7 @@ export function SubProjectEditor({
             }
           : currentDraft,
       );
-      setMessage("카드 썸네일을 넣었어요. 저장 버튼을 눌러주세요.");
+      setMessage("카드 썸네일을 넣었어요. 잠시 후 자동 저장됩니다.");
     };
     reader.readAsDataURL(file);
   };
@@ -180,29 +214,9 @@ export function SubProjectEditor({
             : block,
         ),
       );
-      setMessage("이미지를 본문 블록에 넣었어요. 저장 버튼을 눌러주세요.");
+      setMessage("이미지를 본문 블록에 넣었어요. 잠시 후 자동 저장됩니다.");
     };
     reader.readAsDataURL(file);
-  };
-
-  const saveDraft = () => {
-    const updatedSubProjects = [...(content.subProjects ?? [])];
-    // contentBlocks가 본문의 단일 진실 출처가 되도록 저장.
-    // legacy body/imageUrl도 첫 텍스트/이미지 블록에 동기화해서 호환성 유지.
-    const firstText = draft.contentBlocks.find((block) => block.type === "text");
-    const firstImage = draft.contentBlocks.find((block) => block.type === "image");
-    const synced: SubProject = {
-      ...draft,
-      body: firstText && firstText.type === "text" ? firstText.text : "",
-      imageUrl: firstImage && firstImage.type === "image" ? firstImage.url : "",
-      imageAlt:
-        firstImage && firstImage.type === "image" ? firstImage.alt ?? "" : "",
-      imageCaption:
-        firstImage && firstImage.type === "image" ? firstImage.caption ?? "" : "",
-    };
-    updatedSubProjects[subProjectIndex] = synced;
-    onSave({ ...content, subProjects: updatedSubProjects });
-    setMessage("하위 작업 페이지 내용을 저장했어요.");
   };
 
   return (
@@ -212,9 +226,17 @@ export function SubProjectEditor({
           <p className="eyebrow">Owner editor</p>
           <h2>하위 작업 페이지 편집</h2>
         </div>
-        <button type="button" onClick={saveDraft}>
-          저장
-        </button>
+        <div className="owner-editor-actions">
+          {saveStatus === "pending" && (
+            <span className="save-status save-status-pending">저장 중…</span>
+          )}
+          {saveStatus === "saved" && (
+            <span className="save-status save-status-saved">자동 저장됐어요 ✓</span>
+          )}
+          {saveStatus === "error" && (
+            <span className="save-status save-status-error">저장 실패</span>
+          )}
+        </div>
       </div>
 
       {message ? <p className="owner-message">{message}</p> : null}

@@ -115,11 +115,28 @@ export const loadStoredDetailContent = (
 export const loadDetailContent = (slug: string): BookmarkDetailContent =>
   loadStoredDetailContent(slug) ?? getDefaultDetailContent(slug);
 
+export type SaveResult = { ok: true } | { ok: false; error: string };
+
 export const saveDetailContent = (
   slug: string,
   content: BookmarkDetailContent,
-) => {
-  localStorage.setItem(getStorageKey(slug), JSON.stringify(content));
+): SaveResult => {
+  try {
+    localStorage.setItem(getStorageKey(slug), JSON.stringify(content));
+    return { ok: true };
+  } catch (e) {
+    const isQuota =
+      e instanceof DOMException &&
+      (e.name === "QuotaExceededError" || e.name === "NS_ERROR_DOM_QUOTA_REACHED");
+    if (isQuota) {
+      return {
+        ok: false,
+        error:
+          "저장 공간이 꽉 찼어요. 파일 업로드 대신 이미지 URL을 직접 입력해 주세요.",
+      };
+    }
+    return { ok: false, error: "저장에 실패했어요. 다시 시도해 주세요." };
+  }
 };
 
 export const resetDetailContent = (slug: string) => {

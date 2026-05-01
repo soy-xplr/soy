@@ -1,14 +1,15 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { BookmarkDetailContent, SubProject } from "../data/bookmarkDetails";
 import {
   parseDetailContentJson,
   serializeDetailContent,
+  type SaveResult,
 } from "../utils/detailStorage";
 
 type OwnerEditorProps = {
   content: BookmarkDetailContent;
   title: string;
-  onSave: (content: BookmarkDetailContent) => void;
+  onSave: (content: BookmarkDetailContent) => SaveResult;
   onReset: () => void;
 };
 
@@ -35,7 +36,27 @@ export function OwnerEditor({
   const [draft, setDraft] = useState(content);
   const [importJson, setImportJson] = useState("");
   const [message, setMessage] = useState("");
+  const [saveStatus, setSaveStatus] = useState<"idle" | "pending" | "saved" | "error">("idle");
   const exportJson = useMemo(() => serializeDetailContent(draft), [draft]);
+
+  // 자동저장: draft가 바뀌면 1.5초 후 저장
+  const onSaveRef = useRef(onSave);
+  useEffect(() => { onSaveRef.current = onSave; }, [onSave]);
+  const isMounted = useRef(false);
+  useEffect(() => {
+    if (!isMounted.current) { isMounted.current = true; return; }
+    setSaveStatus("pending");
+    const timer = setTimeout(() => {
+      const result = onSaveRef.current(draft);
+      if (result.ok) {
+        setSaveStatus("saved");
+      } else {
+        setSaveStatus("error");
+        setMessage(result.error);
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [draft]);
 
   const updateSection = (
     index: number,
@@ -161,7 +182,7 @@ export function OwnerEditor({
             : section,
         ),
       }));
-      setMessage("이미지를 본문 섹션에 넣었어요. 저장 버튼을 눌러주세요.");
+      setMessage("이미지를 본문 섹션에 넣었어요. 잠시 후 자동 저장됩니다.");
     };
     reader.readAsDataURL(file);
   };
@@ -190,7 +211,7 @@ export function OwnerEditor({
               : subProject,
         ),
       }));
-      setMessage("하위 작업 카드에 이미지를 넣었어요. 저장 버튼을 눌러주세요.");
+      setMessage("하위 작업 카드에 이미지를 넣었어요. 잠시 후 자동 저장됩니다.");
     };
     reader.readAsDataURL(file);
   };
@@ -219,7 +240,7 @@ export function OwnerEditor({
               : subProject,
         ),
       }));
-      setMessage("하위 작업 카드 썸네일을 넣었어요. 저장 버튼을 눌러주세요.");
+      setMessage("하위 작업 카드 썸네일을 넣었어요. 잠시 후 자동 저장됩니다.");
     };
     reader.readAsDataURL(file);
   };
@@ -240,18 +261,13 @@ export function OwnerEditor({
     }));
   };
 
-  const saveDraft = () => {
-    onSave(draft);
-    setMessage("저장했어요. 이 브라우저에서는 새로고침해도 유지됩니다.");
-  };
-
   const importDraft = () => {
     try {
       const parsedContent = parseDetailContentJson(importJson);
       setDraft(parsedContent);
-      onSave(parsedContent);
+      const result = onSave(parsedContent);
       setImportJson("");
-      setMessage("JSON을 가져와 저장했어요.");
+      setMessage(result.ok ? "JSON을 가져와 저장했어요." : result.error);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "JSON을 확인해주세요.");
     }
@@ -281,9 +297,15 @@ export function OwnerEditor({
           <h2>상세 페이지 편집</h2>
         </div>
         <div className="owner-editor-actions">
-          <button type="button" onClick={saveDraft}>
-            저장
-          </button>
+          {saveStatus === "pending" && (
+            <span className="save-status save-status-pending">저장 중…</span>
+          )}
+          {saveStatus === "saved" && (
+            <span className="save-status save-status-saved">자동 저장됐어요 ✓</span>
+          )}
+          {saveStatus === "error" && (
+            <span className="save-status save-status-error">저장 실패</span>
+          )}
           <button type="button" onClick={onReset}>
             기본값으로 되돌리기
           </button>

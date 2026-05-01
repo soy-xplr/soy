@@ -13,6 +13,7 @@ import {
   loadDetailContent,
   resetDetailContent,
   saveDetailContent,
+  type SaveResult,
 } from "../utils/detailStorage";
 
 const OWNER_PASSCODE = "beautifulweb";
@@ -84,9 +85,12 @@ export function BookmarkDetailPage({
     setPasscodeError("패스코드를 다시 확인해주세요.");
   };
 
-  const saveOwnerContent = (content: BookmarkDetailContent) => {
-    saveDetailContent(bookmark.slug, content);
-    setDetailContent(content);
+  const saveOwnerContent = (content: BookmarkDetailContent): SaveResult => {
+    const result = saveDetailContent(bookmark.slug, content);
+    if (result.ok) {
+      setDetailContent(content);
+    }
+    return result;
   };
 
   const resetOwnerContent = () => {
