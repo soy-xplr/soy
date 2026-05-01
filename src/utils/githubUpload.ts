@@ -21,7 +21,7 @@ export const clearGithubToken = () => {
 };
 
 export type UploadResult =
-  | { ok: true; url: string }
+  | { ok: true; url: string; rawUrl: string }
   | { ok: false; error: string };
 
 const readFileAsBase64 = (file: File): Promise<string> =>
@@ -99,6 +99,7 @@ export const uploadImageToGithub = async (
   const filename = `${timestamp}-${baseName}.${ext}`;
   const repoPath = `public/images/projects/${slug}/${filename}`;
   const publicUrl = `/images/projects/${slug}/${filename}`;
+  const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${branch}/${repoPath}`;
 
   try {
     const response = await fetch(
@@ -118,7 +119,7 @@ export const uploadImageToGithub = async (
     );
 
     if (response.status === 201) {
-      return { ok: true, url: publicUrl };
+      return { ok: true, url: publicUrl, rawUrl };
     }
 
     const data = (await response.json()) as { message?: string };

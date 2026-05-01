@@ -127,12 +127,14 @@ export function SubProjectEditor({
       setMessage("GitHub에 업로드 중...");
       const result = await uploadImageToGithub(slug, file);
       if (result.ok) {
-        onSuccess(result.url);
-        setMessage("업로드 완료 ✓ Vercel 배포 중… 이미지가 준비되면 자동으로 표시됩니다.");
+        // rawUrl(raw.githubusercontent.com)로 즉시 이미지 표시
+        onSuccess(result.rawUrl);
+        setMessage("업로드 완료 ✓ Vercel 배포 중… 잠시 후 정식 URL로 전환됩니다.");
         pollUntilDeployed(result.url, () => {
+          // 배포 완료 — 정식 URL로 전환
           onSuccess(`${result.url}?t=${Date.now()}`);
           setTimeout(() => onSuccess(result.url), 100);
-          setMessage("✓ 배포 완료! 이미지가 화면에 반영됐어요.");
+          setMessage("✓ 배포 완료! 이미지가 정식 URL로 전환됐어요.");
         });
       } else {
         setMessage(`업로드 실패: ${result.error}`);
