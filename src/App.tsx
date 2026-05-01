@@ -65,9 +65,9 @@ function App() {
   };
 
   const goHome = () => {
-    window.history.pushState(null, "", "/");
+    const search = isOwnerMode ? "?owner=1" : "";
+    window.history.pushState(null, "", `/${search}`);
     setCurrentRoute({ slug: null, subProjectSlug: null });
-    setIsOwnerMode(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -85,7 +85,7 @@ function App() {
             onOpenSubProject={openSubProject}
           />
         ) : (
-          <HomePage onOpenBookmark={openBookmark} />
+          <HomePage onOpenBookmark={openBookmark} isOwnerMode={isOwnerMode} />
         )}
       </main>
       <footer className="site-footer">created by Soy.</footer>

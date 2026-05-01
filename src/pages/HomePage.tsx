@@ -1,12 +1,21 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BookmarkCard } from "../components/BookmarkCard";
+import { BookmarkCardEditor } from "../components/BookmarkCardEditor";
 import { CategoryFilter } from "../components/CategoryFilter";
 import { SearchBox } from "../components/SearchBox";
 import { bookmarks, categories } from "../data/bookmarks";
 import { loadDetailContent } from "../utils/detailStorage";
+import {
+  loadBookmarkOverride,
+  type BookmarkOverride,
+} from "../utils/bookmarkStorage";
+
+const OWNER_PASSCODE = "beautifulweb";
+const OWNER_SESSION_KEY = "beautifulweb-owner-unlocked";
 
 type HomePageProps = {
   onOpenBookmark: (slug: string) => void;
+  isOwnerMode: boolean;
 };
 
 const searchFields = (bookmark: (typeof bookmarks)[number]) =>
@@ -20,21 +29,60 @@ const searchFields = (bookmark: (typeof bookmarks)[number]) =>
     .join(" ")
     .toLowerCase();
 
-export function HomePage({ onOpenBookmark }: HomePageProps) {
+export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [searchTerm, setSearchTerm] = useState("");
+  const [passcode, setPasscode] = useState("");
+  const [passcodeError, setPasscodeError] = useState("");
+  const [isOwnerUnlocked, setIsOwnerUnlocked] = useState(false);
+  const [openEditorSlug, setOpenEditorSlug] = useState<string | null>(null);
+
+  // slug → override 맵 (편집 후 카드 즉시 반영용)
+  const [overrides, setOverrides] = useState<Record<string, BookmarkOverride>>(() => {
+    const map: Record<string, BookmarkOverride> = {};
+    bookmarks.forEach((b) => {
+      const override = loadBookmarkOverride(b.slug);
+      if (override) map[b.slug] = override;
+    });
+    return map;
+  });
+
+  useEffect(() => {
+    setIsOwnerUnlocked(sessionStorage.getItem(OWNER_SESSION_KEY) === "true");
+  }, []);
+
+  const unlockOwnerMode = () => {
+    if (passcode === OWNER_PASSCODE) {
+      sessionStorage.setItem(OWNER_SESSION_KEY, "true");
+      setIsOwnerUnlocked(true);
+      setPasscode("");
+      setPasscodeError("");
+      return;
+    }
+    setPasscodeError("패스코드를 다시 확인해주세요.");
+  };
+
+  const handleOverrideSaved = (slug: string, override: BookmarkOverride) => {
+    setOverrides((prev) => ({ ...prev, [slug]: override }));
+  };
 
   const displayBookmarks = useMemo(
     () =>
       bookmarks.map((bookmark) => {
         const detailContent = loadDetailContent(bookmark.slug);
+        const override = overrides[bookmark.slug] ?? {};
         return {
           ...bookmark,
+          title: override.title || bookmark.title,
+          description: override.description || bookmark.description,
+          tags: override.tags ?? bookmark.tags,
+          note: override.note || bookmark.note,
+          savedAt: override.savedAt || bookmark.savedAt,
           coverImageUrl: detailContent.coverImageUrl,
           coverImageAlt: detailContent.coverImageAlt,
         };
       }),
-    [],
+    [overrides],
   );
 
   const filteredBookmarks = useMemo(() => {
@@ -118,6 +166,35 @@ export function HomePage({ onOpenBookmark }: HomePageProps) {
         </section>
       </header>
 
+      {/* 오너 모드: 패스코드 잠금 해제 */}
+      {isOwnerMode ? (
+        <aside className="owner-gate home-owner-gate" aria-label="카드 편집 모드">
+          {isOwnerUnlocked ? (
+            <p className="owner-gate-unlocked">
+              ✏️ 편집 모드 활성화 — 각 카드 아래 편집 버튼을 눌러 수정하세요.
+            </p>
+          ) : (
+            <>
+              <h2>카드 편집 모드</h2>
+              <p>카드 제목, 설명, 태그를 수정할 수 있습니다.</p>
+              <label>
+                패스코드
+                <input
+                  type="password"
+                  value={passcode}
+                  onChange={(e) => setPasscode(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") unlockOwnerMode(); }}
+                />
+              </label>
+              {passcodeError ? <p className="form-error">{passcodeError}</p> : null}
+              <button type="button" onClick={unlockOwnerMode}>
+                편집 열기
+              </button>
+            </>
+          )}
+        </aside>
+      ) : null}
+
       {/* ③ 프로젝트: 바로 연결 */}
       <section className="toolbar" aria-label="프로젝트 탐색">
         <div className="projects-heading">
@@ -155,11 +232,35 @@ export function HomePage({ onOpenBookmark }: HomePageProps) {
                   }
                 >
                   {section.bookmarks.map((bookmark) => (
-                    <BookmarkCard
-                      key={bookmark.id}
-                      bookmark={bookmark}
-                      onOpen={onOpenBookmark}
-                    />
+                    <div key={bookmark.id} className="bookmark-card-wrapper">
+                      <BookmarkCard
+                        bookmark={bookmark}
+                        onOpen={onOpenBookmark}
+                      />
+                      {isOwnerMode && isOwnerUnlocked ? (
+                        <div className="bookmark-card-edit-row">
+                          <button
+                            type="button"
+                            className="bookmark-card-edit-toggle"
+                            onClick={() =>
+                              setOpenEditorSlug(
+                                openEditorSlug === bookmark.slug ? null : bookmark.slug,
+                              )
+                            }
+                          >
+                            {openEditorSlug === bookmark.slug ? "편집 닫기" : "카드 편집"}
+                          </button>
+                        </div>
+                      ) : null}
+                      {isOwnerMode && isOwnerUnlocked && openEditorSlug === bookmark.slug ? (
+                        <BookmarkCardEditor
+                          key={bookmark.slug}
+                          slug={bookmark.slug}
+                          initial={overrides[bookmark.slug] ?? {}}
+                          onSaved={(override) => handleOverrideSaved(bookmark.slug, override)}
+                        />
+                      ) : null}
+                    </div>
                   ))}
                 </div>
               </section>

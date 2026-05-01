@@ -1054,6 +1054,63 @@ input:focus-visible {
   background: rgba(248, 207, 216, 0.26);
 }
 
+.home-owner-gate {
+  background: rgba(207, 220, 248, 0.26);
+}
+
+.owner-gate-unlocked {
+  margin: 0;
+  color: #2a7a50;
+  font-size: 0.9rem;
+}
+
+.bookmark-card-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookmark-card-edit-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 2px 0;
+}
+
+.bookmark-card-edit-toggle {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.bookmark-card-edit-toggle:hover {
+  background: var(--card);
+  color: var(--ink);
+}
+
+.bookmark-card-editor {
+  margin-top: 8px;
+  padding: 18px 20px;
+  border: 1px solid rgba(47, 47, 47, 0.1);
+  border-radius: 20px;
+  background: rgba(207, 220, 248, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reset-button {
+  font-size: 0.8rem !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  background: transparent !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--line) !important;
+}
+
+
 .owner-gate h2,
 .owner-editor h2 {
   margin: 0;
