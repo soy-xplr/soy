@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type {
   BookmarkDetailContent,
   SubProject,
@@ -47,9 +47,6 @@ export function SubProjectEditor({
   );
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    setDraft(currentSubProject ? toDraft(currentSubProject) : undefined);
-  }, [currentSubProject]);
 
   if (!draft) {
     return null;

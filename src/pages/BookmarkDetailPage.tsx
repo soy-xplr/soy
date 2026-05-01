@@ -43,6 +43,7 @@ export function BookmarkDetailPage({
   const [passcode, setPasscode] = useState("");
   const [passcodeError, setPasscodeError] = useState("");
   const [isOwnerUnlocked, setIsOwnerUnlocked] = useState(false);
+  const [resetCounter, setResetCounter] = useState(0);
   const [detailContent, setDetailContent] = useState<BookmarkDetailContent>(
     () => (bookmark ? loadDetailContent(bookmark.slug) : createBlankDetailContent()),
   );
@@ -91,6 +92,7 @@ export function BookmarkDetailPage({
   const resetOwnerContent = () => {
     resetDetailContent(bookmark.slug);
     setDetailContent(getDefaultDetailContent(bookmark.slug));
+    setResetCounter((c) => c + 1);
   };
 
   const selectedSubProjectIndex = subProjectSlug
@@ -146,6 +148,7 @@ export function BookmarkDetailPage({
           <aside className="owner-gate" aria-label="소유자 편집 모드">
             {isOwnerUnlocked ? (
               <SubProjectEditor
+                key={`${bookmark.slug}-${subProjectSlug}-${resetCounter}`}
                 content={detailContent}
                 subProjectIndex={selectedSubProjectIndex}
                 onSave={saveOwnerContent}
@@ -239,6 +242,7 @@ export function BookmarkDetailPage({
         <aside className="owner-gate" aria-label="소유자 편집 모드">
           {isOwnerUnlocked ? (
             <OwnerEditor
+              key={`${bookmark.slug}-${resetCounter}`}
               content={detailContent}
               title={bookmark.slug}
               onSave={saveOwnerContent}

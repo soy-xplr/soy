@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { BookmarkDetailContent, SubProject } from "../data/bookmarkDetails";
 import {
   parseDetailContentJson,
@@ -36,10 +36,6 @@ export function OwnerEditor({
   const [importJson, setImportJson] = useState("");
   const [message, setMessage] = useState("");
   const exportJson = useMemo(() => serializeDetailContent(draft), [draft]);
-
-  useEffect(() => {
-    setDraft(content);
-  }, [content]);
 
   const updateSection = (
     index: number,
