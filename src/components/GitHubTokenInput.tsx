@@ -2,8 +2,10 @@ import { useState } from "react";
 import {
   clearGithubToken,
   getGithubBranch,
+  getGithubOwner,
   getGithubToken,
   setGithubBranch,
+  setGithubOwner,
   setGithubToken,
 } from "../utils/githubUpload";
 
@@ -13,12 +15,14 @@ type GitHubTokenInputProps = {
 
 export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
   const [token, setToken] = useState("");
+  const [owner, setOwner] = useState(getGithubOwner);
   const [branch, setBranch] = useState(getGithubBranch);
   const [isSet, setIsSet] = useState(() => !!getGithubToken());
 
   const handleSet = () => {
-    if (!token.trim()) return;
+    if (!token.trim() || !owner.trim()) return;
     setGithubToken(token.trim());
+    setGithubOwner(owner.trim());
     setGithubBranch(branch.trim() || "main");
     setIsSet(true);
     setToken("");
@@ -28,7 +32,6 @@ export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
   const handleClear = () => {
     clearGithubToken();
     setIsSet(false);
-    setBranch("main");
     onTokenChange();
   };
 
@@ -36,10 +39,10 @@ export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
     return (
       <div className="github-token-status">
         <span className="save-status save-status-saved">
-          GitHub 업로드 연결됨 ✓ ({getGithubBranch()} 브랜치)
+          GitHub 연결됨 ✓ ({getGithubOwner()}/soy · {getGithubBranch()})
         </span>
         <button type="button" onClick={handleClear} className="reset-button">
-          토큰 해제
+          재설정
         </button>
       </div>
     );
@@ -60,27 +63,44 @@ export function GitHubTokenInput({ onTokenChange }: GitHubTokenInputProps) {
       </div>
       <p className="github-token-desc">
         파일 선택 시 GitHub 저장소에 바로 업로드돼요. repo scope 권한이 필요해요.
-        <br />
         이번 세션에만 유지됩니다.
       </p>
+      <div className="github-token-fields">
+        <label className="github-token-label">
+          GitHub 사용자명
+          <input
+            type="text"
+            value={owner}
+            placeholder="예: soy-xplr"
+            className="github-input"
+            onChange={(e) => setOwner(e.target.value)}
+          />
+        </label>
+        <label className="github-token-label">
+          브랜치
+          <input
+            type="text"
+            value={branch}
+            placeholder="main"
+            className="github-input github-input-sm"
+            onChange={(e) => setBranch(e.target.value)}
+          />
+        </label>
+      </div>
       <div className="github-token-row">
         <input
           type="password"
           value={token}
-          placeholder="ghp_..."
+          placeholder="ghp_... (Personal Access Token)"
           className="github-token-field"
           onChange={(e) => setToken(e.target.value)}
           onKeyDown={(e) => { if (e.key === "Enter") handleSet(); }}
         />
-        <input
-          type="text"
-          value={branch}
-          placeholder="브랜치 (main)"
-          className="github-branch-field"
-          onChange={(e) => setBranch(e.target.value)}
-          onKeyDown={(e) => { if (e.key === "Enter") handleSet(); }}
-        />
-        <button type="button" onClick={handleSet} disabled={!token.trim()}>
+        <button
+          type="button"
+          onClick={handleSet}
+          disabled={!token.trim() || !owner.trim()}
+        >
           연결
         </button>
       </div>

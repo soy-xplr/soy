@@ -1179,14 +1179,31 @@ input:focus-visible {
   color: var(--ink);
 }
 
-.github-branch-field {
-  width: 100px;
-  padding: 8px 12px;
+.github-token-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.github-token-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.github-input {
+  padding: 7px 11px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   background: var(--card);
   color: var(--ink);
+}
+
+.github-input-sm {
+  width: 90px;
 }
 
 .owner-gate > p {
