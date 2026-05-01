@@ -1,7 +1,7 @@
 const GITHUB_TOKEN_SESSION_KEY = "beautifulweb-github-token";
+const GITHUB_BRANCH_SESSION_KEY = "beautifulweb-github-branch";
 const REPO_OWNER = "soy-xplr";
 const REPO_NAME = "soy";
-const BRANCH = "main";
 
 export const getGithubToken = (): string | null =>
   sessionStorage.getItem(GITHUB_TOKEN_SESSION_KEY);
@@ -9,8 +9,16 @@ export const getGithubToken = (): string | null =>
 export const setGithubToken = (token: string) =>
   sessionStorage.setItem(GITHUB_TOKEN_SESSION_KEY, token);
 
-export const clearGithubToken = () =>
+export const clearGithubToken = () => {
   sessionStorage.removeItem(GITHUB_TOKEN_SESSION_KEY);
+  sessionStorage.removeItem(GITHUB_BRANCH_SESSION_KEY);
+};
+
+export const getGithubBranch = (): string =>
+  sessionStorage.getItem(GITHUB_BRANCH_SESSION_KEY) ?? "main";
+
+export const setGithubBranch = (branch: string) =>
+  sessionStorage.setItem(GITHUB_BRANCH_SESSION_KEY, branch);
 
 export type UploadResult =
   | { ok: true; url: string }
@@ -21,7 +29,7 @@ const readFileAsBase64 = (file: File): Promise<string> =>
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      resolve(result.split(",")[1]); // strip data:...;base64, prefix
+      resolve(result.split(",")[1]);
     };
     reader.onerror = reject;
     reader.readAsDataURL(file);
@@ -41,6 +49,8 @@ export const uploadImageToGithub = async (
   if (!token) {
     return { ok: false, error: "GitHub 토큰이 없어요. 토큰을 먼저 입력해주세요." };
   }
+
+  const branch = getGithubBranch();
 
   let base64: string;
   try {
@@ -68,7 +78,7 @@ export const uploadImageToGithub = async (
         body: JSON.stringify({
           message: `upload: add ${filename}`,
           content: base64,
-          branch: BRANCH,
+          branch,
         }),
       },
     );
@@ -78,11 +88,21 @@ export const uploadImageToGithub = async (
     }
 
     const data = (await response.json()) as { message?: string };
+
     if (response.status === 401) {
       return { ok: false, error: "토큰이 유효하지 않아요. 다시 확인해주세요." };
     }
     if (response.status === 403) {
       return { ok: false, error: "이 저장소에 쓰기 권한이 없어요." };
+    }
+    if (response.status === 404) {
+      return {
+        ok: false,
+        error: `저장소 또는 브랜치를 찾을 수 없어요. 브랜치가 "${branch}"가 맞는지 확인해주세요.`,
+      };
+    }
+    if (response.status === 422) {
+      return { ok: false, error: "같은 이름의 파일이 이미 있어요." };
     }
     return { ok: false, error: data.message ?? "업로드에 실패했어요." };
   } catch {

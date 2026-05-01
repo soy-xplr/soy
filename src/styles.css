@@ -1179,6 +1179,16 @@ input:focus-visible {
   color: var(--ink);
 }
 
+.github-branch-field {
+  width: 100px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--card);
+  color: var(--ink);
+}
+
 .owner-gate > p {
   margin: 8px 0 16px;
   color: var(--muted);
