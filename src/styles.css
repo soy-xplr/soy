@@ -354,20 +354,36 @@ input:focus-visible {
 
 .hero-copy {
   margin: 40px 0 0;
+  max-width: 760px;
   color: var(--ink);
   font-family: var(--display-font);
-  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  /* 모바일: 0.95rem ~ 데스크톱: 1.05rem 사이에서 부드럽게 변화 */
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.7;
+  /* 한글에서 단어 중간에 줄바꿈 방지 + 자연스러운 줄 균형 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 .hero-copy p {
   margin: 0;
-  white-space: nowrap;
 }
 
 .hero-copy p + p {
-  margin-top: 4px;
+  margin-top: 10px;
+}
+
+/* 좁은 화면에서는 단락 사이 간격을 살짝 좁혀 컴팩트하게 */
+@media (max-width: 480px) {
+  .hero-copy {
+    margin-top: 28px;
+    line-height: 1.6;
+  }
+  .hero-copy p + p {
+    margin-top: 8px;
+  }
 }
 
 .hero-tags {
