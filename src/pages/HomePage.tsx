@@ -11,9 +11,14 @@ import {
 } from "../utils/detailStorage";
 import {
   loadBookmarkOverride,
+  parseBookmarkOverride,
+  saveBookmarkOverride,
   type BookmarkOverride,
 } from "../utils/bookmarkStorage";
-import { fetchRemoteContent } from "../utils/githubSync";
+import {
+  fetchRemoteCardOverride,
+  fetchRemoteContent,
+} from "../utils/githubSync";
 
 const OWNER_PASSCODE = "beautifulweb";
 const OWNER_SESSION_KEY = "beautifulweb-owner-unlocked";
@@ -58,11 +63,12 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
     setIsOwnerUnlocked(sessionStorage.getItem(OWNER_SESSION_KEY) === "true");
   }, []);
 
-  // 모든 bookmark의 detail content를 GitHub에서 병렬로 fetch.
+  // 모든 bookmark의 detail content + 카드 override를 GitHub에서 병렬로 fetch.
   // 각 항목별로 성공하는 즉시 localStorage에 반영하고 re-render 트리거.
   useEffect(() => {
     let cancelled = false;
     bookmarks.forEach((b) => {
+      // 1. 상세 콘텐츠
       void fetchRemoteContent(b.slug).then((remote) => {
         if (cancelled || !remote) return;
         try {
@@ -70,8 +76,16 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
           saveDetailContent(b.slug, parsed);
           setSyncTick((t) => t + 1);
         } catch {
-          // 검증 실패 시 조용히 무시 (소스 defaults 또는 localStorage 캐시 사용)
+          // 검증 실패 시 조용히 무시
         }
+      });
+      // 2. 카드 override (메인 페이지 카드 편집 내용)
+      void fetchRemoteCardOverride(b.slug).then((remote) => {
+        if (cancelled || !remote) return;
+        const parsed = parseBookmarkOverride(remote);
+        if (!parsed) return;
+        saveBookmarkOverride(b.slug, parsed);
+        setOverrides((prev) => ({ ...prev, [b.slug]: parsed }));
       });
     });
     return () => {

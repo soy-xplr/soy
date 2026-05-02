@@ -28,6 +28,10 @@ const isBookmarkOverride = (value: unknown): value is BookmarkOverride => {
   );
 };
 
+/** 외부(GitHub remote)에서 받은 데이터를 안전하게 검증해 반환 */
+export const parseBookmarkOverride = (value: unknown): BookmarkOverride | null =>
+  isBookmarkOverride(value) ? value : null;
+
 export const loadBookmarkOverride = (slug: string): BookmarkOverride | null => {
   const rawValue = localStorage.getItem(getStorageKey(slug));
   if (!rawValue) {

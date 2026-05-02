@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { BookmarkOverride } from "../utils/bookmarkStorage";
 import { saveBookmarkOverride, resetBookmarkOverride } from "../utils/bookmarkStorage";
+import { scheduleCardOverridePush } from "../utils/githubSync";
+import { getGithubToken } from "../utils/githubUpload";
 
 type BookmarkCardEditorProps = {
   slug: string;
@@ -11,6 +13,7 @@ type BookmarkCardEditorProps = {
 export function BookmarkCardEditor({ slug, initial, onSaved }: BookmarkCardEditorProps) {
   const [draft, setDraft] = useState<BookmarkOverride>(initial);
   const [saveStatus, setSaveStatus] = useState<"idle" | "pending" | "saved" | "error">("idle");
+  const [syncStatus, setSyncStatus] = useState<"idle" | "pushing" | "synced" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const onSavedRef = useRef(onSaved);
@@ -25,6 +28,20 @@ export function BookmarkCardEditor({ slug, initial, onSaved }: BookmarkCardEdito
       if (result.ok) {
         setSaveStatus("saved");
         onSavedRef.current(draft);
+        // GitHub에도 push (debounced 5초)
+        if (getGithubToken()) {
+          scheduleCardOverridePush(slug, draft, {
+            onStart: () => setSyncStatus("pushing"),
+            onResult: (r) => {
+              if (r.ok) {
+                setSyncStatus("synced");
+              } else {
+                setSyncStatus("error");
+                setErrorMessage(r.error);
+              }
+            },
+          });
+        }
       } else {
         setSaveStatus("error");
         setErrorMessage(result.error);
@@ -60,6 +77,17 @@ export function BookmarkCardEditor({ slug, initial, onSaved }: BookmarkCardEdito
           )}
           {saveStatus === "error" && (
             <span className="save-status save-status-error">{errorMessage}</span>
+          )}
+          {syncStatus === "pushing" && (
+            <span className="sync-badge sync-badge-pending">GitHub 동기화 중…</span>
+          )}
+          {syncStatus === "synced" && (
+            <span className="sync-badge sync-badge-ok">동기화됨 ✓</span>
+          )}
+          {syncStatus === "error" && (
+            <span className="sync-badge sync-badge-err" title={errorMessage}>
+              동기화 실패
+            </span>
           )}
           <button type="button" onClick={handleReset} className="reset-button">
             원래대로
