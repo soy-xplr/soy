@@ -1,0 +1,20 @@
+{
+  "intro": "AI와 함께 기획부터 구현까지 빠르게 실험하며 만든 개인 포트폴리오 웹사이트입니다. ",
+  "imageLabel": "바이브코딩 포트폴리오 대표 이미지",
+  "sections": [
+    {
+      "title": "프로젝트 개요",
+      "body": "서비스 기획자 포트폴리오를 직접 웹사이트로 구현하며, 이력서보다 더 입체적으로 프로젝트 맥락을 보여주는 방식을 실험했습니다.\nVite, React, TypeScript 기반으로 카드형 프로젝트 목록과 편집 가능한 상세 페이지를 구성했습니다.",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/portfolio-vibe-coding/1777644704984--2026-04-30--1.28.19.png",
+      "imageAlt": "스크린샷 2026-04-30 오후 1.28.19.png"
+    },
+    {
+      "title": "실험한 것",
+      "body": "AI와 대화하며 PRD, 디자인 방향, 콘텐츠 구조, 편집 모드, 이미지 업로드 흐름을 빠르게 구체화했습니다.\n서비스 기획자가 직접 구현을 경험하면서 개발 범위와 사용자 경험 사이의 균형을 더 선명하게 이해하는 과정이었습니다.",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/portfolio-vibe-coding/1777644710704--2026-04-30--1.28.51.png",
+      "imageAlt": "스크린샷 2026-04-30 오후 1.28.51.png"
+    }
+  ],
+  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/portfolio-vibe-coding/1777644691470--2026-04-30--1.28.00.png",
+  "coverImageAlt": "스크린샷 2026-04-30 오후 1.28.00.png"
+}
