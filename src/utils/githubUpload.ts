@@ -98,7 +98,6 @@ export const uploadImageToGithub = async (
   const baseName = sanitizeFilename(file.name.replace(/\.[^.]+$/, ""));
   const filename = `${timestamp}-${baseName}.${ext}`;
   const repoPath = `public/images/projects/${slug}/${filename}`;
-  const publicUrl = `/images/projects/${slug}/${filename}`;
   const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${branch}/${repoPath}`;
 
   try {

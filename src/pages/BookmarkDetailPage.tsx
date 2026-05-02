@@ -11,11 +11,18 @@ import {
   getDefaultDetailContent,
   getEffectiveContentBlocks,
   loadDetailContent,
+  parseDetailContentJson,
   resetDetailContent,
   saveDetailContent,
   type SaveResult,
 } from "../utils/detailStorage";
 import { loadBookmarkOverride } from "../utils/bookmarkStorage";
+import {
+  fetchRemoteContent,
+  schedulePushToRemote,
+  type SyncResult,
+} from "../utils/githubSync";
+import { getGithubToken } from "../utils/githubUpload";
 
 const OWNER_PASSCODE = "beautifulweb";
 const OWNER_SESSION_KEY = "beautifulweb-owner-unlocked";
@@ -49,6 +56,10 @@ export function BookmarkDetailPage({
   const [detailContent, setDetailContent] = useState<BookmarkDetailContent>(
     () => (bookmark ? loadDetailContent(bookmark.slug) : createBlankDetailContent()),
   );
+  const [syncStatus, setSyncStatus] = useState<
+    "idle" | "fetching" | "pushing" | "synced" | "error"
+  >("idle");
+  const [syncError, setSyncError] = useState("");
 
   useEffect(() => {
     setIsOwnerUnlocked(sessionStorage.getItem(OWNER_SESSION_KEY) === "true");
@@ -60,6 +71,31 @@ export function BookmarkDetailPage({
     }
 
     setDetailContent(loadDetailContent(bookmark.slug));
+  }, [bookmark]);
+
+  // 다른 디바이스에서 편집한 내용을 원격에서 가져와 반영
+  useEffect(() => {
+    if (!bookmark) return;
+    let cancelled = false;
+    setSyncStatus("fetching");
+    fetchRemoteContent(bookmark.slug).then((remote) => {
+      if (cancelled) return;
+      if (!remote) {
+        setSyncStatus("idle");
+        return;
+      }
+      try {
+        const parsed = parseDetailContentJson(JSON.stringify(remote));
+        saveDetailContent(bookmark.slug, parsed);
+        setDetailContent(parsed);
+        setSyncStatus("synced");
+      } catch {
+        setSyncStatus("idle"); // 검증 실패 시 조용히 무시
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [bookmark]);
 
   // 카드 편집 오버라이드를 상세 페이지에도 반영
@@ -103,6 +139,21 @@ export function BookmarkDetailPage({
     const result = saveDetailContent(bookmark.slug, content);
     if (result.ok) {
       setDetailContent(content);
+      // GitHub에도 푸시 (debounced 5초). 토큰 없으면 조용히 스킵.
+      if (getGithubToken()) {
+        schedulePushToRemote(bookmark.slug, content, {
+          onStart: () => setSyncStatus("pushing"),
+          onResult: (r: SyncResult) => {
+            if (r.ok) {
+              setSyncStatus("synced");
+              setSyncError("");
+            } else {
+              setSyncStatus("error");
+              setSyncError(r.error);
+            }
+          },
+        });
+      }
     }
     return result;
   };
@@ -123,6 +174,22 @@ export function BookmarkDetailPage({
       ? detailContent.subProjects?.[selectedSubProjectIndex]
       : undefined;
 
+  const syncBadge = (() => {
+    if (syncStatus === "fetching")
+      return <span className="sync-badge sync-badge-pending">최신 내용 가져오는 중…</span>;
+    if (syncStatus === "pushing")
+      return <span className="sync-badge sync-badge-pending">GitHub 동기화 중…</span>;
+    if (syncStatus === "synced")
+      return <span className="sync-badge sync-badge-ok">동기화됨 ✓</span>;
+    if (syncStatus === "error")
+      return (
+        <span className="sync-badge sync-badge-err" title={syncError}>
+          동기화 실패
+        </span>
+      );
+    return null;
+  })();
+
   if (subProjectSlug) {
     if (!selectedSubProject) {
       return (
@@ -142,13 +209,16 @@ export function BookmarkDetailPage({
 
     return (
       <article className="page detail-page subproject-detail-page">
-        <button
-          className="back-link"
-          type="button"
-          onClick={() => onBackToProject(bookmark.slug)}
-        >
-          프로젝트 상세로 돌아가기
-        </button>
+        <div className="page-top-bar">
+          <button
+            className="back-link"
+            type="button"
+            onClick={() => onBackToProject(bookmark.slug)}
+          >
+            프로젝트 상세로 돌아가기
+          </button>
+          {syncBadge}
+        </div>
 
         <header className="detail-header">
           <p className="eyebrow">{effectiveBookmark!.title} / 담당 범위</p>
@@ -225,9 +295,12 @@ export function BookmarkDetailPage({
 
   return (
     <article className="page detail-page">
-      <button className="back-link" type="button" onClick={onBack}>
-        프로젝트 목록으로 돌아가기
-      </button>
+      <div className="page-top-bar">
+        <button className="back-link" type="button" onClick={onBack}>
+          프로젝트 목록으로 돌아가기
+        </button>
+        {syncBadge}
+      </div>
 
       <header className="detail-header">
         <p className="eyebrow">{effectiveBookmark!.category}</p>

@@ -4,11 +4,16 @@ import { BookmarkCardEditor } from "../components/BookmarkCardEditor";
 import { CategoryFilter } from "../components/CategoryFilter";
 import { SearchBox } from "../components/SearchBox";
 import { bookmarks, categories } from "../data/bookmarks";
-import { loadDetailContent } from "../utils/detailStorage";
+import {
+  loadDetailContent,
+  parseDetailContentJson,
+  saveDetailContent,
+} from "../utils/detailStorage";
 import {
   loadBookmarkOverride,
   type BookmarkOverride,
 } from "../utils/bookmarkStorage";
+import { fetchRemoteContent } from "../utils/githubSync";
 
 const OWNER_PASSCODE = "beautifulweb";
 const OWNER_SESSION_KEY = "beautifulweb-owner-unlocked";
@@ -46,9 +51,32 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
     });
     return map;
   });
+  // 원격 sync 완료 시마다 증가시켜 displayBookmarks 재계산 트리거
+  const [syncTick, setSyncTick] = useState(0);
 
   useEffect(() => {
     setIsOwnerUnlocked(sessionStorage.getItem(OWNER_SESSION_KEY) === "true");
+  }, []);
+
+  // 모든 bookmark의 detail content를 GitHub에서 병렬로 fetch.
+  // 각 항목별로 성공하는 즉시 localStorage에 반영하고 re-render 트리거.
+  useEffect(() => {
+    let cancelled = false;
+    bookmarks.forEach((b) => {
+      void fetchRemoteContent(b.slug).then((remote) => {
+        if (cancelled || !remote) return;
+        try {
+          const parsed = parseDetailContentJson(JSON.stringify(remote));
+          saveDetailContent(b.slug, parsed);
+          setSyncTick((t) => t + 1);
+        } catch {
+          // 검증 실패 시 조용히 무시 (소스 defaults 또는 localStorage 캐시 사용)
+        }
+      });
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const unlockOwnerMode = () => {
@@ -82,7 +110,7 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
           coverImageAlt: detailContent.coverImageAlt,
         };
       }),
-    [overrides],
+    [overrides, syncTick],
   );
 
   const filteredBookmarks = useMemo(() => {
@@ -124,8 +152,8 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
         </div>
         <div className="hero-role-row">
           <p className="hero-role">PMㆍ서비스기획자ㆍ바이브코더</p>
-          <span className="hero-experience" aria-label="경력 5년 4개월">
-            경력 5년 4개월
+          <span className="hero-experience" aria-label="경력 5년 2개월">
+            경력 5년 2개월
           </span>
         </div>
 

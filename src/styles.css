@@ -43,6 +43,70 @@
   background: var(--paper);
 }
 
+/* ----- 커스텀 커서 (애니메이션 GIF) ----- */
+/* CustomCursor 컴포넌트가 마우스를 따라가는 GIF 이미지를 그려요.
+   데스크톱에서는 시스템 커서를 숨기고, 터치 디바이스에선 그냥 시스템 커서 유지. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  body * {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: auto;
+  pointer-events: none;
+  z-index: 99999;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+  transition: opacity 0.15s ease;
+}
+
+/* ----- 동기화 상태 뱃지 ----- */
+.page-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+}
+
+.sync-badge-pending {
+  background: rgba(183, 214, 242, 0.45);
+  color: var(--ink);
+  border-color: rgba(47, 47, 47, 0.08);
+}
+
+.sync-badge-ok {
+  background: rgba(180, 230, 180, 0.45);
+  color: var(--ink);
+  border-color: rgba(47, 47, 47, 0.08);
+}
+
+.sync-badge-err {
+  background: rgba(244, 182, 194, 0.5);
+  color: var(--ink);
+  border-color: rgba(47, 47, 47, 0.1);
+  cursor: help;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -405,7 +469,7 @@ input:focus-visible {
   text-align: left;
   background: var(--card);
   box-shadow: var(--shadow);
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
   padding: 0;
   transition:
     transform 180ms ease,
@@ -662,7 +726,7 @@ input:focus-visible {
   border-radius: 999px;
   color: var(--ink);
   background: var(--card);
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
 }
 
 .featured-strip button {
@@ -837,7 +901,7 @@ input:focus-visible {
   text-align: left;
   background: var(--card);
   box-shadow: var(--shadow);
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
@@ -1082,7 +1146,7 @@ input:focus-visible {
   border-radius: 20px;
   background: transparent;
   color: var(--muted);
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
 }
 
 .bookmark-card-edit-toggle:hover {
@@ -1248,7 +1312,7 @@ input:focus-visible {
   border-radius: 999px;
   color: var(--ink);
   background: var(--card);
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
   font-weight: 800;
 }
 
@@ -1441,7 +1505,7 @@ input:focus-visible {
   color: var(--ink);
   text-align: left;
   background: transparent;
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
 }
 
 .subproject-card-button > :not(img) {
@@ -1709,7 +1773,7 @@ input:focus-visible {
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
-  cursor: pointer;
+  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
   line-height: 1;
 }
 
