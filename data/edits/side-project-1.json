@@ -1,0 +1,16 @@
+{
+  "intro": "제바알은 공공 관광데이터를 활용해, 사용자의 여행 고민을 실제 일정으로 바꿔주는 AI 제주 여행 플래너입니다.",
+  "imageLabel": "이미지 자리",
+  "coverImageUrl": "",
+  "coverImageAlt": "",
+  "sections": [
+    {
+      "title": "새 섹션",
+      "body": "여기에 내용을 적어주세요.",
+      "imageUrl": "",
+      "imageAlt": "",
+      "imageCaption": ""
+    }
+  ],
+  "subProjects": []
+}
