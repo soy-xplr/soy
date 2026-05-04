@@ -30,7 +30,7 @@
       "body": "공공 관광데이터를 기반으로 관광지 정보를 확보하고, 여기에\n\n지도 거리/이동시간\n운영시간\n날씨 정보\n지역 특성\n\n등을 결합하여 실제 활용 가능한 코스를 생성하도록 설계했습니다.",
       "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867573779--2026-05-04--1.03.25.png",
       "imageAlt": "",
-      "imageCaption": ""
+      "imageCaption": "주요기능 및 사용 공공 데이터 api"
     },
     {
       "title": "핵심 서비스 구조 - 3. 실행 가능한 지도 UX",
