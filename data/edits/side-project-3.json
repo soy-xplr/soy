@@ -24,6 +24,13 @@
       "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-3/1777868765063--2026-05-04--1.25.55.png",
       "imageAlt": "스크린샷 2026-05-04 오후 1.25.55.png",
       "imageCaption": "메인 키비주얼 이미지를 얻기 위한 대화"
+    },
+    {
+      "title": "새 섹션",
+      "body": "여기에 내용을 적어주세요.",
+      "imageUrl": "",
+      "imageAlt": "",
+      "imageCaption": ""
     }
   ],
   "subProjects": []
