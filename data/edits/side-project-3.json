@@ -35,8 +35,8 @@
     {
       "title": "RunwayML 영상 프롬프트 제작",
       "body": "영상 프롬프트 제작에서는 GPT에게\n단순 묘사가 아니라 연출 지시 형태로 작성하도록 반복 요청했습니다.\n\n핵심은 아래 4가지 요소를 반드시 포함시키는 것이었습니다.\n\n- 캐릭터 행동 (What)\n- 카메라 움직임 (How to show)\n- 오브젝트 변화 (What changes)\n- 분위기/조명 (Mood)\n.\n예를 들어 요청 방식은 이런 구조였습니다.\n\n“이 장면을 RunwayML용 영상 프롬프트로 써줘”\n“카메라 움직임을 꼭 포함해줘”\n“동작이 보이도록 디테일하게 써줘”\n“9:16 숏폼 영상이라는 것도 명시해줘”\n.\n이 과정을 통해 결과 프롬프트는\n단순 설명이 아니라 “AI가 그대로 실행할 수 있는 촬영 지시문” 형태로 정리되었습니다.",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-3/1777869162084--2026-05-04--1.32.34.png",
+      "imageAlt": "스크린샷 2026-05-04 오후 1.32.34.png",
       "imageCaption": ""
     }
   ],
