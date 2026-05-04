@@ -1,14 +1,14 @@
 {
   "intro": "제바알은 공공 관광데이터를 활용해, 사용자의 여행 고민을 실제 일정으로 바꿔주는 AI 제주 여행 플래너입니다.",
   "imageLabel": "이미지 자리",
-  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867431741--2026-05-04--12.57.57.png",
+  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867445842--2026-05-04--12.36.24.png",
   "coverImageAlt": "스크린샷 2026-05-04 오후 12.36.24.png",
   "sections": [
     {
       "title": "프로젝트 개요",
       "body": "제바알은 한국관광공사 관광데이터 활용 공모전에 출품하기 위해 기획·제작한 AI 기반 제주 여행 코스 추천 서비스입니다.\n제주 여행자가 원하는 분위기, 일정, 목적지를 자연어로 입력하면 AI가 관광지·맛집·카페·바다 명소를 조합해 최적의 동선을 추천하고, 지도 위에 경로까지 시각화해주는 서비스입니다.\n\n본 프로젝트는 실제 여행자의 정보 탐색 피로도를 줄이고, 공공 관광데이터를 보다 실질적인 사용자 경험으로 전환하는 데 초점을 맞췄으며, 공모전에서 장려상을 수상했습니다.",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867450100--2026-05-04--12.57.57.png",
+      "imageAlt": "스크린샷 2026-05-04 오후 12.57.57.png",
       "imageCaption": ""
     },
     {
