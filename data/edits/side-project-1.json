@@ -21,7 +21,7 @@
     {
       "title": "핵심 서비스 구조 - 1. 자연어 기반 AI 여행 코스 생성 요청",
       "body": "사용자는 검색어를 고민하지 않고 일상 언어로 요청할 수 있습니다.\n\n예시:\n\n“제주 서쪽 반나절 코스 추천해줘”\n“일몰 보면서 카페 가고 맛집도 들르고 싶어”\n“비 오는 날 실내 위주로 짜줘”\n\nAI는 이를 분석해 시간, 목적, 분위기, 지역 조건을 해석합니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777865588534--2026-05-03--12.23.34.png",
+      "imageUrl": "",
       "imageAlt": "스크린샷 2026-05-03 오후 12.23.34.png",
       "imageCaption": ""
     },
@@ -35,7 +35,7 @@
     {
       "title": "핵심 서비스 구조 - 3. 실행 가능한 지도 UX",
       "body": "추천 결과를 단순 리스트로 끝내지 않고, 지도 위에 경로를 연결해\n\n카페 → 해변 → 포토스팟 → 식당\n\n형태로 이동 순서와 동선을 한 번에 이해할 수 있도록 구성했습니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777778149801--2026-05-03--12.14.49.png",
+      "imageUrl": "",
       "imageAlt": "스크린샷 2026-05-03 오후 12.14.49.png",
       "imageCaption": ""
     },
