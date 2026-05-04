@@ -1,9 +1,9 @@
 {
-  "title": "AI 숏폼 영상 제작 프로젝트",
+  "title": "AI숏폼영상 제작 프로젝트",
   "tags": [
-    "AI숏폼",
-    "RunwayML"
+    "쇼츠",
+    "콘텐츠",
+    "AI영상"
   ],
-  "savedAt": "2025",
-  "note": "chatGPT와 RunwayML을 활용해 AI쇼츠 영상물을 제작했습니다."
+  "savedAt": "2025"
 }
