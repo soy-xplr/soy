@@ -1,18 +1,11 @@
 {
-  "intro": "",
+  "intro": "  ",
   "imageLabel": "이미지 자리",
   "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-3/1777867801936--2026-05-04--1.09.47.png",
   "coverImageAlt": "스크린샷 2026-05-02 오전 12.44.57.png",
   "sections": [
     {
-      "title": "AI 숏폼 영상 제작 프로젝트",
-      "body": "  AI를 단순한 보조 도구가 아니라, 기획부터 제작까지 전 과정에 활용할 수 있는 역량을 갖추고 싶었습니다.\n텍스트, 이미지, 영상 등 서로 다른 생성형 AI를 연결해 하나의 결과물을 만들어내는 경험을 해보고자, 숏폼 영상 제작 프로젝트를 직접 기획하게 되었습니다.\n\n‘솜뭉치 야식당’은 이러한 목적에서 출발한 AI 기반 콘텐츠 실험 프로젝트입니다. 이미지 생성, 스토리 구성, 영상 프롬프트 설계, 영상 생성까지 전 과정을 AI와 협업하며 진행했습니다.\n\n영상 제작 자체는 RunwayML을 활용했으며, 그 이전 단계인 콘셉트 기획, 캐릭터 설정, 장면 구성, 자막 톤, 영상 프롬프트 설계를 ChatGPT와 함께 반복적으로 다듬었습니다.",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
-    },
-    {
-      "title": "새 섹션",
+      "title": "AI 숏폼 영상 제작 프로젝트: 솜뭉치 야식당",
       "body": "여기에 내용을 적어주세요.",
       "imageUrl": "",
       "imageAlt": "",
