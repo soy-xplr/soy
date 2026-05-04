@@ -27,7 +27,7 @@
     },
     {
       "title": "핵심 서비스 구조 - 2. 관광데이터 + 외부 데이터 결합",
-      "body": "여기에 내용을 적어주세요.",
+      "body": "공공 관광데이터를 기반으로 관광지 정보를 확보하고, 여기에\n\n지도 거리/이동시간\n운영시간\n날씨 정보\n지역 특성\n\n등을 결합하여 실제 활용 가능한 코스를 생성하도록 설계했습니다.",
       "imageUrl": "",
       "imageAlt": "",
       "imageCaption": ""
@@ -35,7 +35,7 @@
     {
       "title": "핵심 서비스 구조 - 3. 실행 가능한 지도 UX",
       "body": "추천 결과를 단순 리스트로 끝내지 않고, 지도 위에 경로를 연결해\n\n카페 → 해변 → 포토스팟 → 식당\n\n형태로 이동 순서와 동선을 한 번에 이해할 수 있도록 구성했습니다.",
-      "imageUrl": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777866085229--2026-05-03--12.14.49.png",
       "imageAlt": "스크린샷 2026-05-03 오후 12.14.49.png",
       "imageCaption": ""
     },
