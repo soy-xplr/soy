@@ -41,24 +41,21 @@ const fetchJsonFromGithub = async (path: string): Promise<unknown | null> => {
 };
 
 /**
- * 공통: GitHub Contents API로 JSON PUT (있으면 update, 없으면 create).
+ * 단발 PUT 시도 (SHA 조회 → PUT). pushJsonToGithub에서 retry용으로 호출.
  */
-const pushJsonToGithub = async (
+const tryPushOnce = async (
   path: string,
-  content: unknown,
+  base64: string,
   commitMessage: string,
-): Promise<SyncResult> => {
-  const token = getGithubToken();
-  if (!token) {
-    return { ok: false, error: "GitHub 토큰이 없어요. 먼저 토큰을 연결해주세요." };
-  }
-  const branch = getGithubBranch();
-
-  // 기존 파일 SHA 조회
+  token: string,
+  branch: string,
+): Promise<{ ok: true } | { ok: false; status: number; error: string }> => {
+  // 매번 SHA 새로 조회 (eventual consistency 우회)
   let sha: string | undefined;
   try {
     const headRes = await fetch(`${apiContentsUrl(path)}?ref=${branch}`, {
       headers: { Authorization: `token ${token}` },
+      cache: "no-store",
     });
     if (headRes.ok) {
       const data = (await headRes.json()) as { sha?: string };
@@ -67,9 +64,6 @@ const pushJsonToGithub = async (
   } catch {
     // 다음 단계에서 catch
   }
-
-  const json = JSON.stringify(content, null, 2);
-  const base64 = utf8ToBase64(json);
 
   try {
     const putRes = await fetch(apiContentsUrl(path), {
@@ -89,15 +83,51 @@ const pushJsonToGithub = async (
     if (putRes.ok) return { ok: true };
 
     const data = (await putRes.json().catch(() => ({}))) as { message?: string };
-    if (putRes.status === 401) return { ok: false, error: "토큰이 유효하지 않아요." };
-    if (putRes.status === 403) return { ok: false, error: "쓰기 권한이 없어요." };
-    if (putRes.status === 409) {
-      return { ok: false, error: "동시 편집 충돌. 새로고침 후 다시 시도해주세요." };
-    }
-    return { ok: false, error: data.message ?? "동기화 실패" };
+    let error: string;
+    if (putRes.status === 401) error = "토큰이 유효하지 않아요.";
+    else if (putRes.status === 403) error = "쓰기 권한이 없거나 rate limit 초과.";
+    else if (putRes.status === 409) error = "SHA conflict (eventual consistency)";
+    else if (putRes.status === 422) error = "이미 있는 파일 (SHA 누락)";
+    else error = data.message ?? "동기화 실패";
+    return { ok: false, status: putRes.status, error };
   } catch {
-    return { ok: false, error: "네트워크 오류" };
+    return { ok: false, status: 0, error: "네트워크 오류" };
   }
+};
+
+/**
+ * 공통: GitHub Contents API로 JSON PUT (있으면 update, 없으면 create).
+ * 409 (SHA conflict) 발생 시 자동 재시도 — GitHub eventual consistency 대응.
+ */
+const pushJsonToGithub = async (
+  path: string,
+  content: unknown,
+  commitMessage: string,
+): Promise<SyncResult> => {
+  const token = getGithubToken();
+  if (!token) {
+    return { ok: false, error: "GitHub 토큰이 없어요. 먼저 토큰을 연결해주세요." };
+  }
+  const branch = getGithubBranch();
+
+  const json = JSON.stringify(content, null, 2);
+  const base64 = utf8ToBase64(json);
+
+  const maxAttempts = 4;
+  let lastError = "동기화 실패";
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const result = await tryPushOnce(path, base64, commitMessage, token, branch);
+    if (result.ok) return { ok: true };
+    lastError = result.error;
+    // 재시도 가능한 에러: 409 (SHA conflict), 422 (sha 누락)
+    const retryable = result.status === 409 || result.status === 422;
+    if (!retryable) return { ok: false, error: result.error };
+    if (attempt < maxAttempts) {
+      // 지수 백오프: 300ms → 700ms → 1500ms 대기 후 재시도
+      await new Promise((r) => setTimeout(r, 200 + 400 * attempt));
+    }
+  }
+  return { ok: false, error: `${lastError} (${maxAttempts}회 재시도 후 실패)` };
 };
 
 // ---------- Public API: 상세 페이지 콘텐츠 (detail) ----------
