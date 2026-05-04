@@ -1,41 +1,41 @@
 {
   "intro": "제바알은 공공 관광데이터를 활용해, 사용자의 여행 고민을 실제 일정으로 바꿔주는 AI 제주 여행 플래너입니다.",
   "imageLabel": "이미지 자리",
-  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867445842--2026-05-04--12.36.24.png",
+  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777866586242--2026-05-04--12.36.24.png",
   "coverImageAlt": "스크린샷 2026-05-04 오후 12.36.24.png",
   "sections": [
     {
       "title": "프로젝트 개요",
       "body": "제바알은 한국관광공사 관광데이터 활용 공모전에 출품하기 위해 기획·제작한 AI 기반 제주 여행 코스 추천 서비스입니다.\n제주 여행자가 원하는 분위기, 일정, 목적지를 자연어로 입력하면 AI가 관광지·맛집·카페·바다 명소를 조합해 최적의 동선을 추천하고, 지도 위에 경로까지 시각화해주는 서비스입니다.\n\n본 프로젝트는 실제 여행자의 정보 탐색 피로도를 줄이고, 공공 관광데이터를 보다 실질적인 사용자 경험으로 전환하는 데 초점을 맞췄으며, 공모전에서 장려상을 수상했습니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867450100--2026-05-04--12.57.57.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867529968--2026-05-04--12.57.57.png",
       "imageAlt": "스크린샷 2026-05-04 오후 12.57.57.png",
       "imageCaption": ""
     },
     {
       "title": "왜 이 서비스를 만들게 되었는가",
       "body": "제주도는 국내 대표 여행지이지만, 막상 여행을 준비하는 사용자 입장에서는 다음과 같은 불편이 반복되고 있었습니다.\n\n- 관광지는 많지만 어디를 가야 할지 결정하기 어렵다.\n- 블로그·SNS 정보는 많지만 광고성 콘텐츠가 많아 신뢰도가 낮다.\n- 지도 앱은 길찾기는 잘하지만 여행 코스를 제안해주지는 않는다.\n- 날씨, 이동 거리, 여행 시간까지 고려한 계획은 직접 계산해야 한다.\n\n즉, 정보 부족의 문제가 아니라 정보 과잉 속 의사결정 피로가 더 큰 문제라고 판단했습니다.\n\n\n특히 제주 여행은 차량 이동 중심의 지역 특성상,\n- 동선 효율성\n- 시간 제약\n- 날씨 변화\n- 여행 목적(힐링, 맛집, 사진, 가족여행 등)\n\n까지 함께 고려해야 했기 때문에 단순 장소 검색형 서비스만으로는 한계가 있다고 보았습니다.\n그래서 “사용자가 원하는 여행 스타일만 말하면, AI가 실제 가능한 일정으로 만들어주는 서비스”를 만들고자 했습니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867455552--2026-05-04--1.01.05.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777865770611--2026-05-04--12.36.00.png",
       "imageAlt": "스크린샷 2026-05-04 오후 12.36.00.png",
       "imageCaption": ""
     },
     {
       "title": "핵심 서비스 구조 - 1. 자연어 기반 AI 여행 코스 생성 요청",
       "body": "사용자는 검색어를 고민하지 않고 일상 언어로 요청할 수 있습니다.\n\n예시:\n\n“제주 서쪽 반나절 코스 추천해줘”\n“일몰 보면서 카페 가고 맛집도 들르고 싶어”\n“비 오는 날 실내 위주로 짜줘”\n\nAI는 이를 분석해 시간, 목적, 분위기, 지역 조건을 해석합니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867464474--2026-05-04--12.57.42.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777866454001--2026-05-04--12.47.22.png",
       "imageAlt": "스크린샷 2026-05-03 오후 12.23.34.png",
       "imageCaption": ""
     },
     {
       "title": "핵심 서비스 구조 - 2. 관광데이터 + 외부 데이터 결합",
       "body": "공공 관광데이터를 기반으로 관광지 정보를 확보하고, 여기에\n\n지도 거리/이동시간\n운영시간\n날씨 정보\n지역 특성\n\n등을 결합하여 실제 활용 가능한 코스를 생성하도록 설계했습니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867469417--2026-05-04--1.03.25.png",
-      "imageAlt": "스크린샷 2026-05-04 오후 1.03.25.png",
+      "imageUrl": "",
+      "imageAlt": "",
       "imageCaption": ""
     },
     {
       "title": "핵심 서비스 구조 - 3. 실행 가능한 지도 UX",
       "body": "추천 결과를 단순 리스트로 끝내지 않고, 지도 위에 경로를 연결해\n\n카페 → 해변 → 포토스팟 → 식당\n\n형태로 이동 순서와 동선을 한 번에 이해할 수 있도록 구성했습니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777867477482--2026-05-04--12.55.47.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/side-project-1/1777866085229--2026-05-03--12.14.49.png",
       "imageAlt": "스크린샷 2026-05-03 오후 12.14.49.png",
       "imageCaption": ""
     },
