@@ -285,7 +285,7 @@
       "thumbnailAlt": "",
       "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777990054959--2025-06-05--2.53.09.png",
       "imageAlt": "다국어 번역 프로세스 개요",
-      "imageCaption": "서비스 적용 전 고려해야 할 번역 범위, 품질, 방식",
+      "imageCaption": "기획 > 번역 > 개발으로 이어지는 번역 전반의 흐름",
       "contentBlocks": [
         {
           "type": "text",
@@ -295,7 +295,7 @@
           "type": "image",
           "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777990054959--2025-06-05--2.53.09.png",
           "alt": "다국어 번역 프로세스 개요",
-          "caption": "서비스 적용 전 고려해야 할 번역 범위, 품질, 방식"
+          "caption": "기획 > 번역 > 개발으로 이어지는 번역 전반의 흐름"
         },
         {
           "type": "text",
