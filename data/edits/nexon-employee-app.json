@@ -261,19 +261,6 @@
           "text": "향후에는 CCTV 기반 자동 측정 시스템과 연동하여 확장할 수 있도록 구조를 설계했습니다."
         }
       ]
-    },
-    {
-      "slug": "nx-vacation",
-      "title": "휴가정보",
-      "summary": "이 작업을 한 줄로 요약해주세요.",
-      "tags": [],
-      "period": "",
-      "body": "여기에 자유롭게 내용을 적어주세요.",
-      "thumbnailUrl": "",
-      "thumbnailAlt": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
     }
   ]
 }
