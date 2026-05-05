@@ -207,7 +207,7 @@
         },
         {
           "type": "image",
-          "url": "file_000000000d74720781aee11a61b9c93f",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987887669--2026-05-05--10.23.33.png",
           "alt": "점검 페이지",
           "caption": "서비스 점검 안내 페이지"
         },
@@ -217,7 +217,7 @@
         },
         {
           "type": "image",
-          "url": "file_00000000de6472079f1ba1a0eadc80ad",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987892848--2026-05-05--10.23.43.png",
           "alt": "회원가입 플로우",
           "caption": "회원가입 단계별 UI 및 이벤트 설계"
         },
