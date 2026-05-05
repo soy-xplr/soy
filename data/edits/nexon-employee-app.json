@@ -86,7 +86,7 @@
       "body": "단순 리스트 형태였던 알림함을 개선하여, 알림 확인부터 행동까지 이어지는 사용자 경험과 푸시 랜딩 구조를 통합한 프로젝트입니다.",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "nx_notification_asis.webp",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978291942--2026-05-05--7.50.14.png",
       "imageAlt": "기존 알림함",
       "imageCaption": "알림 내용을 충분히 확인하기 어려웠던 기존 구조",
       "contentBlocks": [
@@ -100,7 +100,7 @@
         },
         {
           "type": "image",
-          "url": "nx_notification_asis.webp",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978291942--2026-05-05--7.50.14.png",
           "alt": "기존 알림함",
           "caption": "알림 내용을 충분히 확인하기 어려웠던 기존 구조"
         },
