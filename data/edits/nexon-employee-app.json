@@ -118,7 +118,7 @@
         },
         {
           "type": "image",
-          "url": "nx_notification_tobe.webp",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978374606--2026-05-05--7.50.23.png",
           "alt": "개선된 알림함",
           "caption": "알림 내용을 리스트에서 바로 확인하고 상태를 구분할 수 있도록 개선"
         },
