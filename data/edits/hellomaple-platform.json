@@ -303,7 +303,7 @@
         },
         {
           "type": "image",
-          "url": "file_000000007b60720784edc18ae91d9755",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777990076070--2026-05-05--11.07.13.png",
           "alt": "번역 key 구조",
           "caption": "Text 컴포넌트 단위로 key를 발번하는 방식"
         },
