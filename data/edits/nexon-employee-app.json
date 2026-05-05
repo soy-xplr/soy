@@ -132,7 +132,7 @@
         },
         {
           "type": "image",
-          "url": "nx_notification_flow.webp",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978276621--2026-05-05--7.51.05.png",
           "alt": "알림 랜딩 구조",
           "caption": "푸시와 알림함 모두 동일한 흐름으로 진입하도록 구조 통합"
         },
