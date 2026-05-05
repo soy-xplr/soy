@@ -444,14 +444,25 @@ export function BookmarkDetailPage({
         </section>
       ) : null}
 
-      <a
-        className="external-link"
-        href={effectiveBookmark!.url}
-        target="_blank"
-        rel="noreferrer"
-      >
-        프로젝트 링크 보기
-      </a>
+      {/* URL이 있으면 외부 링크, 없으면 메인 페이지로 돌아가기 */}
+      {effectiveBookmark!.url ? (
+        <a
+          className="external-link"
+          href={effectiveBookmark!.url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          프로젝트 링크 보기
+        </a>
+      ) : (
+        <button
+          type="button"
+          className="external-link"
+          onClick={onBack}
+        >
+          목록으로
+        </button>
+      )}
     </article>
   );
 }

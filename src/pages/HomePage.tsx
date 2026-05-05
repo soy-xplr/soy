@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { BookmarkCard } from "../components/BookmarkCard";
 import { BookmarkCardEditor } from "../components/BookmarkCardEditor";
-import { CategoryFilter } from "../components/CategoryFilter";
-import { SearchBox } from "../components/SearchBox";
 import { SkillsSection } from "../components/SkillsSection";
 import { bookmarks, categories } from "../data/bookmarks";
 import {
@@ -29,20 +27,7 @@ type HomePageProps = {
   isOwnerMode: boolean;
 };
 
-const searchFields = (bookmark: (typeof bookmarks)[number]) =>
-  [
-    bookmark.title,
-    bookmark.description,
-    bookmark.note,
-    bookmark.category,
-    bookmark.tags.join(" "),
-  ]
-    .join(" ")
-    .toLowerCase();
-
 export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
-  const [selectedCategory, setSelectedCategory] = useState("전체");
-  const [searchTerm, setSearchTerm] = useState("");
   const [passcode, setPasscode] = useState("");
   const [passcodeError, setPasscodeError] = useState("");
   const [isOwnerUnlocked, setIsOwnerUnlocked] = useState(false);
@@ -128,30 +113,18 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
     [overrides, syncTick],
   );
 
-  const filteredBookmarks = useMemo(() => {
-    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
-    return displayBookmarks.filter((bookmark) => {
-      const matchesCategory =
-        selectedCategory === "전체" || bookmark.category === selectedCategory;
-      const matchesSearch =
-        normalizedSearchTerm.length === 0 ||
-        searchFields(bookmark).includes(normalizedSearchTerm);
-      return matchesCategory && matchesSearch;
-    });
-  }, [displayBookmarks, searchTerm, selectedCategory]);
-
   const categorySections = useMemo(
     () =>
       categories
         .filter((category) => category !== "전체")
         .map((category) => ({
           category,
-          bookmarks: filteredBookmarks.filter(
+          bookmarks: displayBookmarks.filter(
             (bookmark) => bookmark.category === category,
           ),
         }))
         .filter((section) => section.bookmarks.length > 0),
-    [filteredBookmarks],
+    [displayBookmarks],
   );
 
   return (
@@ -216,18 +189,9 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
         </aside>
       ) : null}
 
-      {/* ③ 프로젝트: 바로 연결 */}
-      <section className="toolbar" aria-label="프로젝트 탐색">
-        <div className="projects-heading">
-          <p className="eyebrow">Projects</p>
-          <h2>프로젝트</h2>
-        </div>
-        <SearchBox value={searchTerm} onChange={setSearchTerm} />
-        <CategoryFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onSelect={setSelectedCategory}
-        />
+      {/* ③ 프로젝트 섹션 — 작은 eyebrow로 anchor */}
+      <section className="projects-header" aria-label="프로젝트 섹션">
+        <p className="eyebrow">Projects</p>
       </section>
 
       <section className="bookmark-section" aria-live="polite">
@@ -287,21 +251,7 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
               </section>
             ))}
           </div>
-        ) : (
-          <div className="empty-state">
-            <h2>아직 맞는 프로젝트가 없어요.</h2>
-            <p>다른 단어를 적거나 전체 카테고리로 돌아가 볼까요?</p>
-            <button
-              type="button"
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedCategory("전체");
-              }}
-            >
-              전체 프로젝트 다시 보기
-            </button>
-          </div>
-        )}
+        ) : null}
       </section>
 
       <SkillsSection />

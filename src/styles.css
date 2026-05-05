@@ -43,30 +43,6 @@
   background: var(--paper);
 }
 
-/* ----- 커스텀 커서 (애니메이션 GIF) ----- */
-/* CustomCursor 컴포넌트가 마우스를 따라가는 GIF 이미지를 그려요.
-   데스크톱에서는 시스템 커서를 숨기고, 터치 디바이스에선 그냥 시스템 커서 유지. */
-@media (hover: hover) and (pointer: fine) {
-  html,
-  body,
-  body * {
-    cursor: none !important;
-  }
-}
-
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 64px;
-  height: auto;
-  pointer-events: none;
-  z-index: 99999;
-  user-select: none;
-  -webkit-user-select: none;
-  will-change: transform;
-  transition: opacity 0.15s ease;
-}
 
 /* ----- Skills 섹션 ----- */
 
@@ -657,7 +633,7 @@ input:focus-visible {
   text-align: left;
   background: var(--card);
   box-shadow: var(--shadow);
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
   padding: 0;
   transition:
     transform 180ms ease,
@@ -915,7 +891,7 @@ input:focus-visible {
   border-radius: 999px;
   color: var(--ink);
   background: var(--card);
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
 }
 
 .featured-strip button {
@@ -926,6 +902,21 @@ input:focus-visible {
 .toolbar {
   display: grid;
   gap: 18px;
+}
+
+.projects-header {
+  margin-top: 28px;
+}
+
+.projects-header .eyebrow {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+/* PROJECTS eyebrow와 첫 카테고리(웹/플랫폼) 사이 간격 줄이기 */
+.projects-header + .bookmark-section {
+  margin-top: 12px;
 }
 
 .projects-heading h2 {
@@ -1090,7 +1081,7 @@ input:focus-visible {
   text-align: left;
   background: var(--card);
   box-shadow: var(--shadow);
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
@@ -1345,7 +1336,7 @@ input:focus-visible {
   border-radius: 20px;
   background: transparent;
   color: var(--muted);
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
 }
 
 .bookmark-card-edit-toggle:hover {
@@ -1511,7 +1502,7 @@ input:focus-visible {
   border-radius: 999px;
   color: var(--ink);
   background: var(--card);
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
   font-weight: 800;
 }
 
@@ -1704,7 +1695,7 @@ input:focus-visible {
   color: var(--ink);
   text-align: left;
   background: transparent;
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
 }
 
 .subproject-card-button > :not(img) {
@@ -1972,7 +1963,7 @@ input:focus-visible {
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
-  cursor: url("/cursors/cursor-clickable.png") 18 18, pointer;
+  cursor: pointer;
   line-height: 1;
 }
 
