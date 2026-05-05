@@ -34,7 +34,9 @@
     },
     {
       "title": "성과",
-      "body": "AI 번역을 실서비스 운영 수준으로 확장할 수 있는 내부 생산성 도구를 직접 구축했습니다. 개발자는 Cursor 환경에서 자연어 요청만으로 다국어 파일을 생성·수정할 수 있었고, 번역 품질 검수와 히스토리 관리까지 자동화되어 다국어 대응 속도와 안정성을 동시에 확보했습니다."
+      "body": "AI 번역을 실서비스 운영 수준으로 확장할 수 있는 내부 생산성 도구를 직접 구축했습니다. 개발자는 Cursor 환경에서 자연어 요청만으로 다국어 파일을 생성·수정할 수 있었고, 번역 품질 검수와 히스토리 관리까지 자동화되어 다국어 대응 속도와 안정성을 동시에 확보했습니다.",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-3/1777980627233--2026-05-05--8.28.22.png",
+      "imageAlt": "스크린샷 2026-05-05 오후 8.28.22.png"
     }
   ],
   "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-3/1777980616845--2026-05-05--8.30.08.png",
