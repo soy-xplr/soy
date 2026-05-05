@@ -164,7 +164,7 @@
       "body": "넥슨 임직원 앱 메인 화면에 ‘신청한 휴가 정보’와 ‘휴가 신청하기’ 버튼을 추가해, 직원이 자신의 휴가 상태를 빠르게 확인하고 바로 신청까지 이어갈 수 있도록 개선한 프로젝트입니다.",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "nx-vacation-main-widget-01.webp",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978821323--2026-05-05--8.00.13.png",
       "imageAlt": "메인 페이지 휴가 정보 추가 기획 화면",
       "imageCaption": "메인 화면에서 신청한 휴가와 잔여 휴가 정보를 바로 확인할 수 있도록 개선했습니다.",
       "contentBlocks": [
@@ -182,7 +182,7 @@
         },
         {
           "type": "image",
-          "url": "nx-vacation-main-widget-01.webp",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978821323--2026-05-05--8.00.13.png",
           "alt": "메인 페이지 휴가 정보 추가 기획 화면",
           "caption": "메인 화면에서 신청한 휴가와 잔여 휴가 정보를 바로 확인할 수 있도록 개선했습니다."
         },
