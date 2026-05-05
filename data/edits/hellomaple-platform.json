@@ -270,9 +270,9 @@
       "imageCaption": ""
     },
     {
-      "slug": "localization-process",
-      "title": "헬로메이플 다국어 번역 프로세스 설계",
-      "summary": "기획·번역·개발이 연결된 다국어 운영 구조 설계",
+      "slug": "localization",
+      "title": "사이트 다국어화 (영문, 일문) ",
+      "summary": "월드 콘텐츠 중심으로 서비스 소개와 탐색 흐름을 재구성",
       "tags": [
         "다국어",
         "Localization",
