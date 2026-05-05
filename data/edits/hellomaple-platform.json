@@ -127,7 +127,7 @@
       "body": "헬로메이플은 메이플 IP 기반의 글로벌 코딩 교육 서비스입니다. 서비스 런칭을 앞두고, 사용자들이 서비스를 이해하고 바로 실행까지 이어질 수 있는 공식 홈페이지가 필요했습니다. 단순한 소개 페이지가 아니라, 브랜드를 전달하면서도 실제 플레이까지 이어지는 ‘진입 허브’ 역할을 하는 웹사이트를 목표로 기획을 시작했습니다.",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988294220--2026-05-05--10.38.05.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987769548--2026-05-02--12.23.29.png",
       "imageAlt": "사이트 전체 구조 설계",
       "imageCaption": "헬로메이플 웹사이트 전체 구조 및 메뉴 구성",
       "contentBlocks": [
@@ -137,7 +137,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988294220--2026-05-05--10.38.05.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987769548--2026-05-02--12.23.29.png",
           "alt": "사이트 전체 구조 설계",
           "caption": "헬로메이플 웹사이트 전체 구조 및 메뉴 구성"
         },
@@ -147,7 +147,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988232526--2026-05-05--10.21.32.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987782806--2026-05-05--10.21.32.png",
           "alt": "GNB 및 반응형 구조",
           "caption": "GNB, Footer, 반응형 기준을 포함한 레이아웃 설계"
         },
@@ -157,7 +157,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988217540--2026-05-05--10.23.33.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987823128--2026-05-05--10.21.10.png",
           "alt": "메인 페이지 구조",
           "caption": "메인 페이지 내 주요 콘텐츠 및 CTA 흐름"
         },
@@ -177,7 +177,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988212633--2026-05-05--10.22.41.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987854926--2026-05-05--10.22.41.png",
           "alt": "공지사항 UI",
           "caption": "공지사항 리스트 및 필터 구조"
         },
@@ -187,7 +187,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988201382--2026-05-05--10.22.50.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988114434--2026-05-05--10.22.50.png",
           "alt": "다운로드 페이지",
           "caption": "디바이스 대응을 고려한 다운로드 UI"
         },
@@ -197,7 +197,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988187536--2026-05-05--10.23.08.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987879879--2026-05-05--10.23.08.png",
           "alt": "FAQ UI",
           "caption": "카테고리 기반 FAQ 구조"
         },
@@ -211,13 +211,13 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988340016--2026-05-05--10.23.43.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777988400145--2026-05-05--10.23.43.png",
           "alt": "회원가입 플로우",
           "caption": "회원가입 단계별 UI 및 이벤트 설계"
         },
         {
           "type": "text",
-          "text": "이 프로젝트를 통해  서비스의 첫 진입 경험을 설계하는 과정을 기획하는 법을 배웠습니다. 사용자 입장에서 ‘이 서비스를 왜 써야 하는지 이해하고, 어떻게 시작하는지까지 이어지는 흐름’을 만드는 것이 중요했고, 이를 구조와 콘텐츠, UI를 통해 풀어내는 데 집중했습니다."
+          "text": "이 프로젝트를 통해 단순한 웹페이지 기획이 아니라, 서비스의 첫 진입 경험을 설계하는 과정이라는 것을 체감했습니다. 사용자 입장에서 ‘이 서비스를 왜 써야 하는지 이해하고, 어떻게 시작하는지까지 이어지는 흐름’을 만드는 것이 중요했고, 이를 구조와 콘텐츠, UI를 통해 풀어내는 데 집중했습니다."
         }
       ]
     },
