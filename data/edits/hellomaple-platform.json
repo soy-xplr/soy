@@ -127,7 +127,7 @@
       "body": "헬로메이플은 메이플 IP 기반의 글로벌 코딩 교육 서비스입니다. 서비스 런칭을 앞두고, 사용자들이 서비스를 이해하고 바로 실행까지 이어질 수 있는 공식 홈페이지가 필요했습니다. 단순한 소개 페이지가 아니라, 브랜드를 전달하면서도 실제 플레이까지 이어지는 ‘진입 허브’ 역할을 하는 웹사이트를 목표로 기획을 시작했습니다.",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "file_000000007b60720784edc18ae91d9755",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987769548--2026-05-02--12.23.29.png",
       "imageAlt": "사이트 전체 구조 설계",
       "imageCaption": "헬로메이플 웹사이트 전체 구조 및 메뉴 구성",
       "contentBlocks": [
@@ -137,7 +137,7 @@
         },
         {
           "type": "image",
-          "url": "file_000000007b60720784edc18ae91d9755",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777987769548--2026-05-02--12.23.29.png",
           "alt": "사이트 전체 구조 설계",
           "caption": "헬로메이플 웹사이트 전체 구조 및 메뉴 구성"
         },
