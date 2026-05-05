@@ -313,9 +313,9 @@
         },
         {
           "type": "image",
-          "url": "file_000000005aac72078f6932c80e746de9",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777990207782--2026-05-05--11.07.13.png",
           "alt": "TLM 번역 관리",
-          "caption": " key를 발번하는 방식"
+          "caption": " 모든 페이지의 key를 발번하는 방식"
         },
         {
           "type": "text",
