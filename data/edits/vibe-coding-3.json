@@ -14,7 +14,9 @@
     },
     {
       "title": "기획 포인트",
-      "body": "CLI 환경에서 개발자가 자연스럽게 사용할 수 있도록 setup, init, translate, versions, rollback 구조로 명령 체계를 설계했습니다. PRD를 읽어 서비스 톤앤매너를 추론하고, glossary·길이 정책·토큰 보호·locale 구조를 자동 설정하도록 구성했습니다. 또한 버튼, 라벨, 토스트 등 사용 맥락별 길이 규칙을 다르게 적용해 UI 안정성을 높였습니다."
+      "body": "CLI 환경에서 개발자가 자연스럽게 사용할 수 있도록 setup, init, translate, versions, rollback 구조로 명령 체계를 설계했습니다. PRD를 읽어 서비스 톤앤매너를 추론하고, glossary·길이 정책·토큰 보호·locale 구조를 자동 설정하도록 구성했습니다. 또한 버튼, 라벨, 토스트 등 사용 맥락별 길이 규칙을 다르게 적용해 UI 안정성을 높였습니다.",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-3/1777980375850--2026-05-05--8.23.29.png",
+      "imageAlt": "스크린샷 2026-05-05 오후 8.23.29.png"
     },
     {
       "title": "품질 검수 설계",
