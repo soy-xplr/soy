@@ -283,7 +283,7 @@
       "body": "헬로메이플은 글로벌 교육 서비스로 확장하기 위해 다국어 지원이 필수적인 상황이었습니다. 단순히 번역을 진행하는 것이 아니라, 어떤 범위까지 번역할지, 어느 수준의 품질로 제공할지, 그리고 어떤 방식으로 운영할지를 먼저 정의해야 했습니다. 특히 이벤트 공지나 패치노트처럼 반드시 전달되어야 하는 정보와, 선택적으로 번역해도 되는 영역을 구분하는 것이 중요했습니다. 또한 모든 영역을 동일한 수준으로 번역하기보다, 서비스 우선순위에 따라 번역 품질을 다르게 적용하는 전략을 선택했습니다. ",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "file_000000002b4c7207972456e34f82ee41",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777990054959--2025-06-05--2.53.09.png",
       "imageAlt": "다국어 번역 프로세스 개요",
       "imageCaption": "서비스 적용 전 고려해야 할 번역 범위, 품질, 방식",
       "contentBlocks": [
@@ -293,7 +293,7 @@
         },
         {
           "type": "image",
-          "url": "file_000000002b4c7207972456e34f82ee41",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777990054959--2025-06-05--2.53.09.png",
           "alt": "다국어 번역 프로세스 개요",
           "caption": "서비스 적용 전 고려해야 할 번역 범위, 품질, 방식"
         },
