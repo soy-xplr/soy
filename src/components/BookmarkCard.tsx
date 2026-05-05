@@ -11,8 +11,10 @@ type BookmarkCardProps = {
 };
 
 export function BookmarkCard({ bookmark, onOpen }: BookmarkCardProps) {
+  const isFeatured = !!bookmark.featured;
+
   return (
-    <article className="bookmark-card">
+    <article className={`bookmark-card${isFeatured ? " featured-card" : ""}`}>
       <button
         className="bookmark-card-link"
         type="button"
@@ -29,6 +31,12 @@ export function BookmarkCard({ bookmark, onOpen }: BookmarkCardProps) {
         </div>
         <div className="card-content">
           <h2>{bookmark.title}</h2>
+
+          {/* Featured 카드는 description 한 줄 추가 표시 */}
+          {isFeatured && bookmark.description ? (
+            <p className="description">{bookmark.description}</p>
+          ) : null}
+
           <p className="card-meta-line">
             <span>{bookmark.tags.map((tag) => `#${tag}`).join(" ")}</span>
             <span aria-hidden="true">|</span>

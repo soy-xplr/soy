@@ -13,7 +13,7 @@ export type Bookmark = {
 };
 
 export const bookmarks: Bookmark[] = [
-  // ── 대표 사례 (2개 고정) ───────────────────────────────────────
+  // ── 웹/플랫폼 (대표 사례 포함) ─────────────────────────────────
   {
     id: "hellomaple-platform",
     slug: "hellomaple-platform",
@@ -21,7 +21,7 @@ export const bookmarks: Bookmark[] = [
     url: "https://www.hellomaple.org",
     description: "누적 40만 회원 교육 플랫폼의 웹/플랫폼 영역을 단독 담당한 대표 프로젝트.",
     note: "PO/PM으로 전체 스펙 정의, 로드맵 수립, 공식홈·백오피스·회원정책·글로벌 대응을 리딩했습니다.",
-    category: "대표 사례",
+    category: "웹/플랫폼",
     tags: ["PO/PM", "서비스기획", "교육플랫폼"],
     thumbnail: "/images/bookmarks/hellomaple-platform.jpg",
     savedAt: "2023-2026",
@@ -34,7 +34,7 @@ export const bookmarks: Bookmark[] = [
     url: "https://maplestoryworlds.nexon.com",
     description: "UGC 플랫폼의 포털웹 기능, 탈퇴 정책, 글로벌 대응, 운영툴 기획에 참여.",
     note: "검색/리소스/프로필 기능부터 법무 협업이 필요한 탈퇴 정책과 백오피스까지 구조화했습니다.",
-    category: "대표 사례",
+    category: "웹/플랫폼",
     tags: ["플랫폼", "정책설계", "글로벌"],
     thumbnail: "/images/bookmarks/maplestory-worlds-platform.jpg",
     savedAt: "2022-2023",
@@ -82,7 +82,7 @@ export const bookmarks: Bookmark[] = [
     featured: false,
   },
 
-  // ── 바이브 코딩 (4개) ──────────────────────────────────────────
+  // ── 바이브 코딩 (3개) ──────────────────────────────────────────
   {
     id: "portfolio-vibe-coding",
     slug: "portfolio-vibe-coding",
@@ -112,19 +112,6 @@ export const bookmarks: Bookmark[] = [
   {
     id: "vibe-coding-3",
     slug: "vibe-coding-3",
-    title: "프로젝트 제목을 입력해주세요",
-    url: "",
-    description: "어떤 프로젝트인지 한 줄로 설명해주세요.",
-    note: "어떤 걸 만들었는지, 어떤 걸 실험했는지 짧게 적어주세요.",
-    category: "바이브 코딩",
-    tags: [],
-    thumbnail: "",
-    savedAt: "2026",
-    featured: false,
-  },
-  {
-    id: "vibe-coding-4",
-    slug: "vibe-coding-4",
     title: "프로젝트 제목을 입력해주세요",
     url: "",
     description: "어떤 프로젝트인지 한 줄로 설명해주세요.",

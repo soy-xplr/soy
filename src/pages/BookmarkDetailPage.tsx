@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { OwnerEditor } from "../components/OwnerEditor";
 import { SubProjectEditor } from "../components/SubProjectEditor";
 import type { Bookmark } from "../data/bookmarks";
@@ -60,6 +60,8 @@ export function BookmarkDetailPage({
     "idle" | "fetching" | "pushing" | "synced" | "error"
   >("idle");
   const [syncError, setSyncError] = useState("");
+  // 사용자가 마지막으로 로컬 저장한 시각 (race condition 방지)
+  const lastLocalSaveAt = useRef<number>(0);
 
   useEffect(() => {
     setIsOwnerUnlocked(sessionStorage.getItem(OWNER_SESSION_KEY) === "true");
@@ -76,12 +78,18 @@ export function BookmarkDetailPage({
   // 다른 디바이스에서 편집한 내용을 원격에서 가져와 반영
   useEffect(() => {
     if (!bookmark) return;
+    const fetchStartedAt = Date.now();
     let cancelled = false;
     setSyncStatus("fetching");
     fetchRemoteContent(bookmark.slug).then((remote) => {
       if (cancelled) return;
       if (!remote) {
         setSyncStatus("idle");
+        return;
+      }
+      // 사용자가 fetch 시작 후 로컬 저장한 적이 있으면, 로컬이 더 최신이라 원격 무시
+      if (lastLocalSaveAt.current > fetchStartedAt) {
+        setSyncStatus("synced");
         return;
       }
       try {
@@ -138,6 +146,7 @@ export function BookmarkDetailPage({
   const saveOwnerContent = (content: BookmarkDetailContent): SaveResult => {
     const result = saveDetailContent(bookmark.slug, content);
     if (result.ok) {
+      lastLocalSaveAt.current = Date.now();
       setDetailContent(content);
       // GitHub에도 푸시 (debounced 5초). 토큰 없으면 조용히 스킵.
       if (getGithubToken()) {

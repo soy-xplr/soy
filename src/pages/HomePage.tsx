@@ -247,7 +247,7 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
                 </div>
                 <div
                   className={
-                    section.category === "대표 사례"
+                    section.bookmarks.some((b) => b.featured)
                       ? "bookmark-grid hero-grid"
                       : "bookmark-grid"
                   }

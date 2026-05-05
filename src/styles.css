@@ -1168,6 +1168,16 @@ input:focus-visible {
   color: var(--muted);
 }
 
+/* ----- Featured 카드: description 추가 ----- */
+
+.featured-card .description {
+  margin: 4px 0 4px;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
 .note,
 .detail-note {
   border-radius: 18px;
