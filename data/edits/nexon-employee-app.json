@@ -26,7 +26,7 @@
       "body": "넥슨 임직원 앱의 기존 사원 검색 기능을 확장해, 부서명으로도 조직을 검색할 수 있도록 개선한 프로젝트입니다. 기존에는 사원 검색만 가능했기 때문에 조직 단위로 정보를 찾거나 부서 구성원을 확인하는 데 한계가 있었습니다.",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "nx-department-search-01.webp",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978122350--2026-05-05--7.48.15.png",
       "imageAlt": "부서 검색 기능 추가 기획 화면",
       "imageCaption": "기존 사원 검색에 부서 검색 결과를 함께 제공하도록 검색 범위를 확장했습니다.",
       "contentBlocks": [
@@ -44,7 +44,7 @@
         },
         {
           "type": "image",
-          "url": "nx-department-search-01.webp",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978122350--2026-05-05--7.48.15.png",
           "alt": "부서 검색 기능 추가 기획 화면",
           "caption": "기존 사원 검색에 부서 검색 결과를 함께 제공하도록 검색 범위를 확장했습니다."
         },
@@ -58,7 +58,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978115666--2026-05-05--7.48.15.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777978126496--2026-05-05--7.48.26.png",
           "alt": "부서 검색 상세 및 예외 처리 기획 화면",
           "caption": "부서 선택 시 상세 정보와 구성원 리스트를 확인할 수 있도록 탐색 흐름을 설계했습니다."
         },
