@@ -1,5 +1,5 @@
 {
-  "intro": "다국어 서비스를 운영하며 반복적으로 발생하던 번역 품질 저하, UI 깨짐, 변경 이력 관리 문제를 해결하기 위해 직접 기획·개발한 사내 CLI 패키지입니다. ",
+  "intro": "다국어 서비스를 운영하며 반복적으로 발생하던 번역 품질 저하, UI 깨짐, 변경 이력 관리 문제를 해결하기 위해 직접 기획·개발한 사내 CLI 패키지입니다. AI 번역의 생산성과 실무 운영의 안정성을 동시에 확보하는 것을 목표로, 번역 정책 수립부터 실행, LQA, 버전 관리까지 하나의 흐름으로 통합했습니다.",
   "imageLabel": "TTAK CLI 대표 이미지",
   "sections": [
     {
@@ -34,11 +34,9 @@
     },
     {
       "title": "성과",
-      "body": "AI 번역을 실서비스 운영 수준으로 확장할 수 있는 내부 생산성 도구를 직접 구축했습니다. 개발자는 Cursor 환경에서 자연어 요청만으로 다국어 파일을 생성·수정할 수 있었고, 번역 품질 검수와 히스토리 관리까지 자동화되어 다국어 대응 속도와 안정성을 동시에 확보했습니다.",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-3/1777980525743--2026-05-05--8.28.22.png",
-      "imageAlt": "스크린샷 2026-05-05 오후 8.28.22.png"
+      "body": "AI 번역을 실서비스 운영 수준으로 확장할 수 있는 내부 생산성 도구를 직접 구축했습니다. 개발자는 Cursor 환경에서 자연어 요청만으로 다국어 파일을 생성·수정할 수 있었고, 번역 품질 검수와 히스토리 관리까지 자동화되어 다국어 대응 속도와 안정성을 동시에 확보했습니다."
     }
   ],
-  "coverImageUrl": "TTAK_CLI_cover.webp",
+  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-3/1777980616845--2026-05-05--8.30.08.png",
   "coverImageAlt": "TTAK CLI 다국어 번역 관리 도구 대표 이미지"
 }
