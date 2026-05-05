@@ -42,9 +42,9 @@
     {
       "title": "테스트 및 검증",
       "body": "USER-SCENARIOS 문서를 기반으로 테스트 케이스 생성을 요청했습니다. Playwright를 활용해 화면 캡처 및 E2E 테스트를 진행했고, Vitest를 사용해 기본적인 테스트 환경도 함께 구성했습니다. AI를 활용해 테스트 케이스 생성까지 이어지는 흐름을 경험해본 것이 인상적이었습니다.",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-2/1777981683941--2026-03-17--5.27.43.png",
+      "imageAlt": "스크린샷 2026-03-17 오후 5.27.43.png",
+      "imageCaption": "QA 대시보드를 구현함"
     },
     {
       "title": "결과",
