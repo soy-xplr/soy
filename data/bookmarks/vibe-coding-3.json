@@ -6,5 +6,6 @@
     "버전관리",
     "Cursor"
   ],
-  "savedAt": "2026"
+  "savedAt": "2026",
+  "note": "Cursor로 개발 과정에서 번역 및 LQA가 가능한 CLI 패키지를 개발했습니다."
 }
