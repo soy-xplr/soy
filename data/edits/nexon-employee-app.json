@@ -31,7 +31,7 @@
   "subProjects": [
     {
       "slug": "new-work-stream",
-      "title": "새 하위 작업",
+      "title": "사내식당 혼잡도 표시 기능",
       "summary": "이 작업을 한 줄로 요약해주세요.",
       "tags": [],
       "period": "",
@@ -40,7 +40,13 @@
       "thumbnailAlt": "",
       "imageUrl": "",
       "imageAlt": "",
-      "imageCaption": ""
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "여기에 자유롭게 내용을 적어주세요."
+        }
+      ]
     },
     {
       "slug": "new-work-stream",
