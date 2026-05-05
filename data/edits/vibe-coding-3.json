@@ -37,6 +37,6 @@
       "body": "AI 번역을 실서비스 운영 수준으로 확장할 수 있는 내부 생산성 도구를 직접 구축했습니다. 개발자는 Cursor 환경에서 자연어 요청만으로 다국어 파일을 생성·수정할 수 있었고, 번역 품질 검수와 히스토리 관리까지 자동화되어 다국어 대응 속도와 안정성을 동시에 확보했습니다."
     }
   ],
-  "coverImageUrl": "",
+  "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/vibe-coding-3/1777980767445--2026-05-05--8.30.08.png",
   "coverImageAlt": "TTAK CLI 다국어 번역 관리 도구 대표 이미지"
 }
