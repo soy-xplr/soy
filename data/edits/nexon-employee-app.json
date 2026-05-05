@@ -11,69 +11,18 @@
       "body": "부서 검색, 알림, 생일 축하, 경조사 QR 링크, 식당 혼잡도, 휴가 정보 노출과 신청 기능을 기획했습니다.\nFirebase 기반 지표 관리와 CS 대응, 사내 테스트와 교육 푸시 발송도 수행했습니다."
     },
     {
-      "slug": "global-backoffice",
-      "title": "글로벌 운영 백오피스 구축",
-      "summary": "글로벌 운영 효율을 높이기 위한 백오피스 기능 정의와 구축",
+      "slug": "report",
+      "title": "유저 신고/제재 기능",
+      "summary": "월드 콘텐츠 중심으로 서비스 소개와 탐색 흐름을 재구성",
       "tags": [
-        "백오피스",
-        "글로벌운영",
-        "운영툴"
+        "공식홈",
+        "리뉴얼",
+        "PM"
       ],
-      "period": "2023~2024",
-      "body": "여기에 글로벌 운영 백오피스 구축의 배경, 기능 정의, 결과를 자유롭게 적어주세요.",
-      "thumbnailUrl": "",
-      "thumbnailAlt": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
-    },
-    {
-      "slug": "global-backoffice",
-      "title": "글로벌 운영 백오피스 구축",
-      "summary": "글로벌 운영 효율을 높이기 위한 백오피스 기능 정의와 구축",
-      "tags": [
-        "백오피스",
-        "글로벌운영",
-        "운영툴"
-      ],
-      "period": "2023~2024",
-      "body": "여기에 글로벌 운영 백오피스 구축의 배경, 기능 정의, 결과를 자유롭게 적어주세요.",
-      "thumbnailUrl": "",
-      "thumbnailAlt": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
-    },
-    {
-      "slug": "global-backoffice",
-      "title": "글로벌 운영 백오피스 구축",
-      "summary": "글로벌 운영 효율을 높이기 위한 백오피스 기능 정의와 구축",
-      "tags": [
-        "백오피스",
-        "글로벌운영",
-        "운영툴"
-      ],
-      "period": "2023~2024",
-      "body": "여기에 글로벌 운영 백오피스 구축의 배경, 기능 정의, 결과를 자유롭게 적어주세요.",
-      "thumbnailUrl": "",
-      "thumbnailAlt": "",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
-    },
-    {
-      "slug": "global-backoffice",
-      "title": "글로벌 운영 백오피스 구축",
-      "summary": "글로벌 운영 효율을 높이기 위한 백오피스 기능 정의와 구축",
-      "tags": [
-        "백오피스",
-        "글로벌운영",
-        "운영툴"
-      ],
-      "period": "2023~2024",
-      "body": "여기에 글로벌 운영 백오피스 구축의 배경, 기능 정의, 결과를 자유롭게 적어주세요.",
-      "thumbnailUrl": "",
-      "thumbnailAlt": "",
+      "period": "2026.02",
+      "body": "정식 서비스 이후 변화한 콘텐츠와 사용 맥락에 맞춰 공식 홈페이지 구조를 개편했습니다.\n월드 콘텐츠 중심의 정보 구조를 잡고, 일정 내 오픈을 목표로 디자인·개발·QA 흐름을 관리했습니다.",
+      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777649072424--2026-05-02--12.24.24.png",
+      "thumbnailAlt": "스크린샷 2026-03-29 오후 8.23.34.png",
       "imageUrl": "",
       "imageAlt": "",
       "imageCaption": ""
