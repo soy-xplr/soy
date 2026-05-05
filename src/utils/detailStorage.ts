@@ -174,6 +174,24 @@ export const getEffectiveContentBlocks = (
   return migrated;
 };
 
+/**
+ * 단일 SubProject(하위 작업)를 JSON 문자열로 직렬화.
+ */
+export const serializeSubProject = (subProject: SubProject): string =>
+  JSON.stringify(subProject, null, 2);
+
+/**
+ * JSON 문자열을 SubProject로 파싱 + 검증.
+ * 형식이 안 맞으면 Error throw.
+ */
+export const parseSubProjectJson = (json: string): SubProject => {
+  const parsed: unknown = JSON.parse(json);
+  if (!isSubProject(parsed as NonNullable<BookmarkDetailContent["subProjects"]>[number])) {
+    throw new Error("하위 작업 JSON 형식이 올바르지 않습니다.");
+  }
+  return parsed as SubProject;
+};
+
 export const parseDetailContentJson = (json: string): BookmarkDetailContent => {
   const parsedValue: unknown = JSON.parse(json);
 

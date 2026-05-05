@@ -3,6 +3,7 @@ import { BookmarkCard } from "../components/BookmarkCard";
 import { BookmarkCardEditor } from "../components/BookmarkCardEditor";
 import { CategoryFilter } from "../components/CategoryFilter";
 import { SearchBox } from "../components/SearchBox";
+import { SkillsSection } from "../components/SkillsSection";
 import { bookmarks, categories } from "../data/bookmarks";
 import {
   loadDetailContent,
@@ -172,40 +173,18 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
         </div>
 
         <div className="hero-copy">
-          <p>모바일 앱부터 웹/플랫폼까지, 신규 서비스 기획과 운영을 End-to-End로 주도해 온 서비스 기획자 겸 PM입니다.</p>
-          <p>게임, 교육, AI 등 다양한 도메인에서 A-Z로 서비스를 직접 설계하고 런칭한 경험을 보유하고 있습니다.</p>
-          <p>복잡한 이해관계를 구조화하여 실행 가능한 기획으로 만들고, 데이터를 기반으로 서비스를 지속적으로 개선합니다.</p>
+          {/* 각 문장이 자기 줄을 가지도록 sentence 단위로 span 분리.
+              span에 display:block을 줘서 줄바꿈이 항상 문장 끝에서만 일어남. */}
+          <p>
+            <span>
+              모바일 앱부터 웹/플랫폼까지, 신규 서비스 기획과 운영을 End-to-End로 주도해 온 서비스 기획자이자 PM입니다.
+            </span>
+            <span>
+              또한 Cursor, Claude 등 AI툴을 활용해 직접 개발도 하는 바이브 코더이기도 합니다.
+            </span>
+          </p>
         </div>
 
-        <section className="hero-skills" aria-label="핵심 역량">
-          <p className="eyebrow">핵심 역량</p>
-          <ul>
-            <li>
-              <strong>신규 서비스 기획 및 런칭</strong>
-              <span>0-1 기획, IA 설계, UX 설계, 정책 수립</span>
-            </li>
-            <li>
-              <strong>프로젝트 매니징</strong>
-              <span>로드맵 수립, 일정 관리, 스프린트 운영, 배포 팔로업</span>
-            </li>
-            <li>
-              <strong>모바일 앱 및 웹 서비스 구조 설계</strong>
-              <span>하이브리드 앱, 포털웹, 백오피스</span>
-            </li>
-            <li>
-              <strong>데이터 기반 서비스 개선</strong>
-              <span>GA, GTM, Power BI, Firebase, Snowflake</span>
-            </li>
-            <li>
-              <strong>다부서 이해관계자 조율</strong>
-              <span>법무, 정책, 사업, 운영, 개발, 디자인</span>
-            </li>
-            <li>
-              <strong>글로벌 서비스 운영</strong>
-              <span>다국어 지원, LQA 프로세스 설계, 해외 UX 최적화</span>
-            </li>
-          </ul>
-        </section>
       </header>
 
       {/* 오너 모드: 패스코드 잠금 해제 */}
@@ -324,6 +303,8 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
           </div>
         )}
       </section>
+
+      <SkillsSection />
 
       <section className="contact-card" aria-label="연락처와 외부 링크">
         <p className="eyebrow">Contact / Elsewhere</p>

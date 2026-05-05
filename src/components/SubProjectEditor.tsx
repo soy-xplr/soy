@@ -4,7 +4,12 @@ import type {
   SubProject,
   SubProjectContentBlock,
 } from "../data/bookmarkDetails";
-import { getEffectiveContentBlocks, type SaveResult } from "../utils/detailStorage";
+import {
+  getEffectiveContentBlocks,
+  parseSubProjectJson,
+  serializeSubProject,
+  type SaveResult,
+} from "../utils/detailStorage";
 import { GitHubTokenInput } from "./GitHubTokenInput";
 import { getGithubToken, uploadImageToGithub } from "../utils/githubUpload";
 
@@ -52,6 +57,12 @@ export function SubProjectEditor({
   const [message, setMessage] = useState("");
   const [saveStatus, setSaveStatus] = useState<"idle" | "pending" | "saved" | "error">("idle");
   const [githubTokenSet, setGithubTokenSet] = useState(() => !!getGithubToken());
+  const [importJson, setImportJson] = useState("");
+  // 현재 draft를 JSON 텍스트로 직렬화 (export용)
+  const exportJson = useMemo(
+    () => (draft ? serializeSubProject(draft) : ""),
+    [draft],
+  );
 
   // 자동저장: draft가 바뀌면 1.5초 후 저장
   const onSaveRef = useRef(onSave);
@@ -218,6 +229,47 @@ export function SubProjectEditor({
         ),
       );
     });
+  };
+
+  const copyExportJson = async () => {
+    try {
+      await navigator.clipboard.writeText(exportJson);
+      setMessage("JSON을 클립보드에 복사했어요.");
+    } catch {
+      setMessage("클립보드 복사에 실패했어요. 직접 선택해서 복사해주세요.");
+    }
+  };
+
+  const downloadExportJson = () => {
+    if (!draft) return;
+    const blob = new Blob([exportJson], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${draft.slug || "sub-project"}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    setMessage("JSON 파일을 다운로드했어요.");
+  };
+
+  const importDraft = () => {
+    try {
+      const parsed = parseSubProjectJson(importJson);
+      // contentBlocks를 보장 (legacy 마이그레이션)
+      const newDraft: DraftSubProject = {
+        ...parsed,
+        contentBlocks: getEffectiveContentBlocks(parsed),
+      };
+      setDraft(newDraft);
+      setImportJson("");
+      setMessage(
+        "JSON을 가져왔어요. 자동저장(1.5초)을 통해 반영됩니다.",
+      );
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "JSON을 확인해주세요.",
+      );
+    }
   };
 
   return (
@@ -430,6 +482,35 @@ export function SubProjectEditor({
           </button>
         </div>
       </fieldset>
+
+      <div className="json-tools">
+        <p className="eyebrow">JSON 편집</p>
+        <label className="editor-field">
+          JSON 내보내기
+          <textarea readOnly value={exportJson} rows={8} />
+        </label>
+        <div className="owner-editor-actions">
+          <button type="button" onClick={copyExportJson}>
+            JSON 복사
+          </button>
+          <button type="button" onClick={downloadExportJson}>
+            JSON 다운로드
+          </button>
+        </div>
+
+        <label className="editor-field">
+          JSON 가져오기
+          <textarea
+            value={importJson}
+            rows={6}
+            placeholder="이 하위 작업의 JSON 형식을 붙여넣으세요"
+            onChange={(event) => setImportJson(event.target.value)}
+          />
+        </label>
+        <button type="button" onClick={importDraft} disabled={!importJson.trim()}>
+          JSON 가져오기
+        </button>
+      </div>
     </section>
   );
 }

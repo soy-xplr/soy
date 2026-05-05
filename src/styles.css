@@ -68,6 +68,148 @@
   transition: opacity 0.15s ease;
 }
 
+/* ----- Skills 섹션 ----- */
+
+.skills-section {
+  padding: 32px 28px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 253, 248, 0.78);
+  box-shadow: 0 12px 32px rgba(68, 55, 38, 0.07);
+}
+
+.skills-heading h2 {
+  margin: 4px 0 8px;
+  font-family: var(--display-font);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.skills-intro {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.skills-group {
+  margin-top: 24px;
+}
+
+.skills-subheading {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.skill-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.skill-icon-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-family: var(--display-font);
+}
+
+.skill-item span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: -0.005em;
+}
+
+.languages-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.languages-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.lang-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 480px) {
+  .skills-section {
+    padding: 24px 18px;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  .skill-item {
+    padding: 14px 8px;
+  }
+}
+
 /* ----- 동기화 상태 뱃지 ----- */
 .page-top-bar {
   display: flex;
@@ -354,35 +496,65 @@ input:focus-visible {
 
 .hero-copy {
   margin: 40px 0 0;
-  max-width: 760px;
+  /* 데스크톱에선 풀 폭 활용해서 한 문장이 한 줄에 들어가도록 */
+  max-width: 100%;
   color: var(--ink);
   font-family: var(--display-font);
-  /* 모바일: 0.95rem ~ 데스크톱: 1.05rem 사이에서 부드럽게 변화 */
-  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  font-size: 0.98rem;
   font-weight: 400;
-  line-height: 1.7;
-  /* 한글에서 단어 중간에 줄바꿈 방지 + 자연스러운 줄 균형 */
+  line-height: 1.75;
   word-break: keep-all;
   overflow-wrap: break-word;
-  text-wrap: pretty;
+  hyphens: none;
 }
 
 .hero-copy p {
   margin: 0;
+  white-space: normal;
 }
 
-.hero-copy p + p {
-  margin-top: 10px;
+/* 각 문장(span)을 자기 줄에 두기 */
+.hero-copy p > span {
+  display: block;
 }
 
-/* 좁은 화면에서는 단락 사이 간격을 살짝 좁혀 컴팩트하게 */
+/* 문장 사이 살짝 호흡 */
+.hero-copy p > span + span {
+  margin-top: 6px;
+}
+
+/* 데스크톱(1024px+): 문장 절대 안 끊김. 한 줄에 강제로 들어감. */
+@media (min-width: 1024px) {
+  .hero-copy {
+    font-size: 0.95rem;
+  }
+  .hero-copy p > span {
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+}
+
+/* 큰 데스크톱(1280px+): 폰트 살짝 키워도 안 끊김 */
+@media (min-width: 1280px) {
+  .hero-copy {
+    font-size: 1rem;
+  }
+}
+
+/* 태블릿/노트북 (768~1023px): 자연스럽게 wrap. 단어 중간 안 끊김. */
+@media (max-width: 1023px) {
+  .hero-copy {
+    margin-top: 32px;
+    line-height: 1.7;
+  }
+}
+
+/* 모바일 (~480px): 컴팩트 */
 @media (max-width: 480px) {
   .hero-copy {
-    margin-top: 28px;
-    line-height: 1.6;
-  }
-  .hero-copy p + p {
-    margin-top: 8px;
+    margin-top: 24px;
+    font-size: 0.92rem;
+    line-height: 1.65;
   }
 }
 
@@ -563,7 +735,8 @@ input:focus-visible {
 .profile-card,
 .info-grid,
 .contact-card,
-.about-soy-card {
+.about-soy-card,
+.skills-section {
   margin-top: 32px;
 }
 
