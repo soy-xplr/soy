@@ -328,7 +328,19 @@
       "thumbnailAlt": "스크린샷 2026-03-29 오후 8.23.34.png",
       "imageUrl": "",
       "imageAlt": "",
-      "imageCaption": ""
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "정식 서비스 이후 변화한 콘텐츠와 사용 맥락에 맞춰 공식 홈페이지 구조를 개편했습니다.\n월드 콘텐츠 중심의 정보 구조를 잡고, 일정 내 오픈을 목표로 디자인·개발·QA 흐름을 관리했습니다."
+        },
+        {
+          "type": "image",
+          "url": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
     }
   ]
 }
