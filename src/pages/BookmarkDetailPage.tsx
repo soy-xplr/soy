@@ -282,9 +282,9 @@ export function BookmarkDetailPage({
             {getEffectiveContentBlocks(selectedSubProject).map((block, blockIndex) =>
               block.type === "text" ? (
                 <div key={blockIndex} className="subproject-text-block">
-                  {block.text.split("\n").map((paragraph, paragraphIndex) => (
-                    <p key={paragraphIndex}>{paragraph}</p>
-                  ))}
+                  {block.title ? <h2>{block.title}</h2> : null}
+                  {/* white-space: pre-wrap으로 줄바꿈/공백 그대로 보존 */}
+                  <p className="prose-text">{block.text}</p>
                 </div>
               ) : (
                 <figure key={blockIndex} className="detail-section-image">
@@ -379,9 +379,8 @@ export function BookmarkDetailPage({
         {detailContent.sections.map((section, sectionIndex) => (
           <section key={`${section.title}-${sectionIndex}`}>
             <h2>{section.title}</h2>
-            {section.body.split("\n").map((paragraph, paragraphIndex) => (
-              <p key={`${sectionIndex}-${paragraphIndex}`}>{paragraph}</p>
-            ))}
+            {/* white-space: pre-wrap으로 줄바꿈/공백 그대로 보존 */}
+            <p className="prose-text">{section.body}</p>
             {section.imageUrl ? (
               <figure className="detail-section-image">
                 <img

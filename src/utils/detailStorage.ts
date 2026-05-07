@@ -30,8 +30,11 @@ const isContentBlock = (block: unknown): block is SubProjectContentBlock => {
 
   const candidate = block as { type?: unknown };
   if (candidate.type === "text") {
-    const textBlock = block as { type: "text"; text?: unknown };
-    return typeof textBlock.text === "string";
+    const textBlock = block as { type: "text"; text?: unknown; title?: unknown };
+    return (
+      typeof textBlock.text === "string" &&
+      isStringOrUndefined(textBlock.title)
+    );
   }
   if (candidate.type === "image") {
     const imageBlock = block as {

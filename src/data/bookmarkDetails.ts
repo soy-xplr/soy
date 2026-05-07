@@ -8,6 +8,8 @@ export type DetailSection = {
 
 export type SubProjectTextBlock = {
   type: "text";
+  /** 선택적 섹션 제목. 있으면 본문 위에 h3로 렌더링됨. */
+  title?: string;
   text: string;
 };
 

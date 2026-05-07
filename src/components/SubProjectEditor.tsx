@@ -206,6 +206,14 @@ export function SubProjectEditor({
     );
   };
 
+  const updateTextBlockTitle = (index: number, title: string) => {
+    updateBlocks((blocks) =>
+      blocks.map((block, i) =>
+        i === index && block.type === "text" ? { ...block, title } : block,
+      ),
+    );
+  };
+
   const updateImageBlock = (
     index: number,
     field: "url" | "alt" | "caption",
@@ -405,15 +413,28 @@ export function SubProjectEditor({
               </div>
 
               {block.type === "text" ? (
-                <label className="editor-field">
-                  내용
-                  <textarea
-                    value={block.text}
-                    rows={6}
-                    placeholder="이 블록의 내용을 적어주세요. 줄바꿈은 그대로 보여집니다."
-                    onChange={(event) => updateTextBlock(index, event.target.value)}
-                  />
-                </label>
+                <>
+                  <label className="editor-field">
+                    섹션 제목 (선택)
+                    <input
+                      type="text"
+                      value={block.title ?? ""}
+                      placeholder="비워두면 제목 없이 본문만 표시"
+                      onChange={(event) =>
+                        updateTextBlockTitle(index, event.target.value)
+                      }
+                    />
+                  </label>
+                  <label className="editor-field">
+                    내용
+                    <textarea
+                      value={block.text}
+                      rows={6}
+                      placeholder="이 블록의 내용을 적어주세요. 줄바꿈과 공백 그대로 표시됩니다."
+                      onChange={(event) => updateTextBlock(index, event.target.value)}
+                    />
+                  </label>
+                </>
               ) : (
                 <div className="editor-image-tools">
                   <label className="editor-field">
