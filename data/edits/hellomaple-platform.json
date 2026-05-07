@@ -238,22 +238,6 @@
       "imageCaption": ""
     },
     {
-      "slug": "delete-account",
-      "title": "서비스 탈퇴 기능",
-      "summary": "월드 콘텐츠 중심으로 서비스 소개와 탐색 흐름을 재구성",
-      "tags": [
-        "회원탈퇴",
-        "백엔드기획"
-      ],
-      "period": "2026.02",
-      "body": "정식 서비스 이후 변화한 콘텐츠와 사용 맥락에 맞춰 공식 홈페이지 구조를 개편했습니다.\n월드 콘텐츠 중심의 정보 구조를 잡고, 일정 내 오픈을 목표로 디자인·개발·QA 흐름을 관리했습니다.",
-      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/hellomaple-platform/1777648761558--2026-05-02--12.18.54.png",
-      "thumbnailAlt": "스크린샷 2026-03-29 오후 8.23.34.png",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
-    },
-    {
       "slug": "localization",
       "title": "사이트 다국어화 (영문, 일문) ",
       "summary": "월드 콘텐츠 중심으로 서비스 소개와 탐색 흐름을 재구성",
