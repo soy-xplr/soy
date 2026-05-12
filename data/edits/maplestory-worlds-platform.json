@@ -223,8 +223,8 @@
       "body": "메이플스토리 월드는 유저가 직접 월드를 제작하고 플레이할 수 있는 UGC 플랫폼입니다.\n프로젝트 초기 단계부터 참여하며 웹/플랫폼 영역의 다양한 기능을 기획했고, 그중 프로필 페이지는 유저의 활동과 정체성을 표현하는 핵심 허브 역할을 담당하는 영역이었습니다.\n\n기존 프로필 페이지는 단순 계정 정보 중심 구조에 가까웠고,\nUGC 플랫폼에서 중요한 “내가 무엇을 만들었고, 어떤 활동을 하고 있는가” 를 충분히 보여주지 못하고 있었습니다.\n\n이에 따라 플레이·제작·소셜 활동을 하나의 흐름으로 연결하는 방향으로 프로필 구조를 전면 개편했습니다.",
       "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647581069--2026-05-01--8.09.43.png",
       "thumbnailAlt": "스크린샷 2026-05-01 오후 8.09.43.png",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778588600463-vmfhvlf1.png",
+      "imageAlt": "vmfhvlf1.png",
       "imageCaption": "",
       "contentBlocks": [
         {
@@ -266,6 +266,36 @@
           "type": "text",
           "title": "7. 결과 및 의미",
           "text": "이 프로젝트는 단순 UI 개편이 아니라,\n'UGC 플랫폼에서 유저의 활동과 정체성을 표현하는 구조를 설계한 작업'이었습니다.\n\n특히:\n- 제작 활동 노출 강화\n- 월드 제작 유도\n- 콘텐츠 탐색 흐름 개선\n- 플레이어/크리에이터 상태 분리\n- 소셜 활동 구조화\n\n를 통해 프로필 페이지가 단순 계정 화면이 아닌,\n**UGC 활동 허브로 기능하도록 개선**했습니다.\n\n또한 실제 운영 환경을 고려해:\n\n- 다양한 유저 상태\n- Empty State\n- 반응형 환경\n- 관계 관리 구조\n\n까지 함께 설계하며,\n서비스가 장기적으로 확장 가능한 방향을 고민한 경험이었습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778588600463-vmfhvlf1.png",
+          "alt": "vmfhvlf1.png",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "",
+          "alt": "",
+          "caption": ""
         },
         {
           "type": "image",
