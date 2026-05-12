@@ -119,7 +119,14 @@
       "thumbnailAlt": "",
       "imageUrl": "",
       "imageAlt": "",
-      "imageCaption": ""
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "여기에 자유롭게 내용을 적어주세요.",
+          "title": "배경"
+        }
+      ]
     }
   ]
 }
