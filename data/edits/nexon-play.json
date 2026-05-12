@@ -23,8 +23,8 @@
       "body": "넥슨플레이에서는 포인트 박스를 개봉할 때마다 오프닝 애니메이션이 재생되는 구조를 사용하고 있었습니다.\n기존에는 약 6~7초 길이의 MP4 영상이 재생된 뒤 당첨 결과를 확인하는 방식이었는데, 반복적으로 사용하는 기능이다 보니 빠르게 결과를 확인하려는 사용자가 많았고, 실제로 Skip 버튼을 눌러 넘기는 경우도 자주 발생하고 있었습니다.\n\n또한 영상 기반 구조는 앱 리소스 용량 측면에서도 부담이 있었고, 오래된 그래픽 스타일 역시 현재 서비스 분위기와는 다소 차이가 있는 상태였습니다.",
       "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778585804325--2026-05-12--8.36.35.png",
       "thumbnailAlt": "스크린샷 2026-05-12 오후 8.36.35.png",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778585814515--2026-05-12--8.36.08.png",
+      "imageAlt": "스크린샷 2026-05-12 오후 8.36.08.png",
       "imageCaption": "",
       "contentBlocks": [
         {
@@ -49,8 +49,8 @@
         },
         {
           "type": "image",
-          "url": "",
-          "alt": "",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778585814515--2026-05-12--8.36.08.png",
+          "alt": "스크린샷 2026-05-12 오후 8.36.08.png",
           "caption": ""
         }
       ]
