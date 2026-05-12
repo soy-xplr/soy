@@ -259,6 +259,19 @@
           "text": "데이터가 없거나 오류가 발생한 경우에는 아이콘을 노출하지 않도록 처리하여 잘못된 정보 전달을 방지했습니다. 예외 처리도 중요했습니다. Remote Config 값이 비어 있거나, 호출에 실패하거나, 정의되지 않은 값이 내려오는 경우에는 혼잡도 아이콘을 노출하지 않도록 했습니다. 잘못된 혼잡 정보가 표시되면 사용자의 의사결정에 오히려 방해가 될 수 있기 때문입니다."
         }
       ]
+    },
+    {
+      "slug": "new-work-stream",
+      "title": "새 하위 작업",
+      "summary": "이 작업을 한 줄로 요약해주세요.",
+      "tags": [],
+      "period": "",
+      "body": "여기에 자유롭게 내용을 적어주세요.",
+      "thumbnailUrl": "",
+      "thumbnailAlt": "",
+      "imageUrl": "",
+      "imageAlt": "",
+      "imageCaption": ""
     }
   ],
   "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777977657605--2026-05-05--7.40.48.png",
