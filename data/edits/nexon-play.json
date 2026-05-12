@@ -12,5 +12,20 @@
     }
   ],
   "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1777977196721-.png",
-  "coverImageAlt": "넥플.png"
+  "coverImageAlt": "넥플.png",
+  "subProjects": [
+    {
+      "slug": "new-work-stream",
+      "title": "새 하위 작업",
+      "summary": "이 작업을 한 줄로 요약해주세요.",
+      "tags": [],
+      "period": "",
+      "body": "여기에 자유롭게 내용을 적어주세요.",
+      "thumbnailUrl": "",
+      "thumbnailAlt": "",
+      "imageUrl": "",
+      "imageAlt": "",
+      "imageCaption": ""
+    }
+  ]
 }
