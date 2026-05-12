@@ -228,6 +228,12 @@
       "imageCaption": "",
       "contentBlocks": [
         {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778588600463-vmfhvlf1.png",
+          "alt": "vmfhvlf1.png",
+          "caption": ""
+        },
+        {
           "type": "text",
           "title": "프로젝트 개요",
           "text": "메이플스토리 월드는 유저가 직접 월드를 제작하고 플레이할 수 있는 UGC 플랫폼입니다.\n프로젝트 초기 단계부터 참여하며 웹/플랫폼 영역의 다양한 기능을 기획했고, 그중 프로필 페이지는 유저의 활동과 정체성을 표현하는 핵심 허브 역할을 담당하는 영역이었습니다.\n\n기존 프로필 페이지는 단순 계정 정보 중심 구조에 가까웠고,\nUGC 플랫폼에서 중요한 “내가 무엇을 만들었고, 어떤 활동을 하고 있는가” 를 충분히 보여주지 못하고 있었습니다.\n\n이에 따라 플레이·제작·소셜 활동을 하나의 흐름으로 연결하는 방향으로 프로필 구조를 전면 개편했습니다."
@@ -251,12 +257,6 @@
           "type": "text",
           "title": "4. 콘텐츠 탐색 흐름 개선",
           "text": "단순히 월드 리스트를 나열하는 것이 아니라,\n'유저 활동이 다른 콘텐츠 탐색으로 이어지는 구조'를 만드는 데 집중했습니다.\n\n이를 위해:\n- 최근 플레이\n- 즐겨찾기\n- 친구 활동\n- 제작 콘텐츠\n\n를 서로 연결된 흐름으로 배치했습니다.\n\n예를 들어:\n\n- 친구가 플레이한 월드를 발견하거나,\n- 최근 플레이한 콘텐츠를 다시 탐색하거나,\n- 특정 크리에이터의 제작물을 연속적으로 소비할 수 있도록 구성했습니다.\n\n이는 단순 프로필 화면이 아니라,\nUGC 플랫폼 내 콘텐츠 순환 구조를 강화하기 위한 목적도 있었습니다."
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778588600463-vmfhvlf1.png",
-          "alt": "vmfhvlf1.png",
-          "caption": ""
         },
         {
           "type": "text",
