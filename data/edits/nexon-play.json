@@ -30,7 +30,7 @@
     {
       "slug": "phone-athentication",
       "title": "알뜰폰 인증 차단 상태 추가",
-      "summary": "이 작업을 한 줄로 요약해주세요.",
+      "summary": "계정 보안 메뉴에 ‘알뜰폰 인증 차단’ 상태 UI를 추가했습니다.",
       "tags": [],
       "period": "",
       "body": "여기에 자유롭게 내용을 적어주세요.",
