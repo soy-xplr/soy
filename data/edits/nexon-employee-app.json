@@ -266,12 +266,24 @@
       "summary": "생일인 임직원이 앱에 접속했을 때 축하 메시지를 제공하고, 복지 페이지로 이동하도록 구성했습니다.",
       "tags": [],
       "period": "",
-      "body": "여기에 자유롭게 내용을 적어주세요.",
+      "body": "그룹사 임직원 대상 앱에서는 공지, 복지, 사내 기능 등 다양한 정보를 제공하고 있었습니다.\n그 과정에서 구성원 간의 소속감과 사내 분위기를 조금 더 자연스럽게 전달할 수 있는 요소에 대한 논의가 있었고, 생일 당일 축하 메시지를 노출하는 기능을 추가하게 되었습니다.\n\n생일인 임직원이 앱에 접속했을 때 축하 메시지와 간단한 인터랙션을 제공하고, 관련 복지 페이지로 이동할 수 있도록 구성했습니다.",
       "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1778587747620--2026-05-12--9.08.53.png",
       "thumbnailAlt": "스크린샷 2026-05-12 오후 9.08.53.png",
       "imageUrl": "",
       "imageAlt": "",
-      "imageCaption": ""
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "그룹사 임직원 대상 앱에서는 공지, 복지, 사내 기능 등 다양한 정보를 제공하고 있었습니다.\n그 과정에서 구성원 간의 소속감과 사내 분위기를 조금 더 자연스럽게 전달할 수 있는 요소에 대한 논의가 있었고, 생일 당일 축하 메시지를 노출하는 기능을 추가하게 되었습니다.\n\n생일인 임직원이 앱에 접속했을 때 축하 메시지와 간단한 인터랙션을 제공하고, 관련 복지 페이지로 이동할 수 있도록 구성했습니다.",
+          "title": "배경"
+        },
+        {
+          "type": "text",
+          "text": "",
+          "title": "문제 정의"
+        }
+      ]
     }
   ],
   "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-employee-app/1777977657605--2026-05-05--7.40.48.png",
