@@ -117,7 +117,7 @@
       "body": "넥슨플레이의 전체 게임 목록에서는 게임별 플랫폼 정보를 아이콘 형태로 제공하고 있었습니다.\n기존에는 PC, 모바일 OS 중심으로만 노출되고 있었는데, 넥슨 게임 라인업에 콘솔 플랫폼 지원 게임이 늘어나면서 콘솔 환경도 함께 표시할 필요가 생겼습니다.\n\n이에 따라 넥슨컴 모바일과 동일한 기준으로, 넥슨플레이 전체 게임 목록에도 콘솔 플랫폼 아이콘을 추가하는 작업을 진행했습니다.",
       "thumbnailUrl": "",
       "thumbnailAlt": "",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778586382113------.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778586394282--2026-05-12--8.44.41.png",
       "imageAlt": "넥슨플레이 알뜰폰 인증 차단 표기 추가.png",
       "imageCaption": "",
       "contentBlocks": [
@@ -138,7 +138,7 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778586382113------.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/nexon-play/1778586394282--2026-05-12--8.44.41.png",
           "alt": "넥슨플레이 알뜰폰 인증 차단 표기 추가.png",
           "caption": ""
         },
