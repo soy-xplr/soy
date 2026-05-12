@@ -34,6 +34,13 @@
       "imageUrl": "",
       "imageAlt": "",
       "imageCaption": ""
+    },
+    {
+      "title": "6. 결과",
+      "body": "여기에 내용을 적어주세요.",
+      "imageUrl": "",
+      "imageAlt": "",
+      "imageCaption": ""
     }
   ],
   "coverImageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/portfolio-vibe-coding/1777644691470--2026-04-30--1.28.00.png",
