@@ -242,7 +242,19 @@
       "thumbnailAlt": "스크린샷 2026-05-01 오후 8.11.00.png",
       "imageUrl": "",
       "imageAlt": "",
-      "imageCaption": ""
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "여기에 즐겨찾기 폴더의 배경, 기획 의도, 결과를 자유롭게 적어주세요."
+        },
+        {
+          "type": "image",
+          "url": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
     },
     {
       "slug": "friend-invite-event",
