@@ -350,15 +350,15 @@
           "text": "단순 북마크 기능이 아닌,\n“리소스 관리 도구”에 가까운 UX를 제공하는 방향으로 기능을 설계했습니다.\n\n핵심 방향은 다음과 같았습니다.\n- 폴더 기반 리소스 분류\n- 다중 선택 지원\n- Drag & Drop 이동\n- 빠른 즐겨찾기 등록/해제\n- 편집 모드 지원\n- 대량 관리 기능 제공\n\n특히 제작 과정에서는 여러 리소스를 동시에 관리하는 경우가 많았기 때문에,\n단일 선택 중심 구조보다 “대량 작업” 중심 UX를 중요하게 고려했습니다."
         },
         {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778590086129-203.png",
-          "alt": "203.png",
-          "caption": ""
-        },
-        {
           "type": "text",
           "title": "3. 폴더 기반 리소스 관리 구조 설계",
           "text": "유저가 프로젝트별로 리소스를 정리할 수 있도록\n폴더 기반 구조를 도입했습니다.\n\n특히:\n- 1depth / 2depth / 3depth\n- 폴더 생성\n- 이름 변경\n- 순서 변경\n- 삭제\n등 실제 파일 탐색기와 유사한 관리 경험을 제공하는 방향으로 설계했습니다.\n\n또한:\n- Root 폴더 제한\n- depth 제한\n- 동일 위치 이동 예외\n- 빈 폴더 처리\n등 운영 및 UX 측면에서 발생 가능한 예외 케이스도 함께 정의했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778590095836-208.png",
+          "alt": "204.png",
+          "caption": ""
         },
         {
           "type": "text",
@@ -367,8 +367,8 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778590095836-208.png",
-          "alt": "204.png",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778590086129-203.png",
+          "alt": "203.png",
           "caption": ""
         },
         {
