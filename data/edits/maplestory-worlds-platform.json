@@ -348,8 +348,8 @@
       "body": "메이플스토리 월드는 CBT 이후 정식 런칭을 준비하며 크리에이터 생태계 확장이 중요한 과제가 되고 있었습니다.\n특히 초기 플랫폼 단계에서는 단순 유저 유입보다, '실제로 월드를 제작하고 함께 플레이할 수 있는 유저 네트워크를 형성하는 것'이 중요했습니다.\n\n이에 따라 기존 유저가 신규 유저를 직접 초대하고,\n신규 유저가 자연스럽게 플랫폼에 진입할 수 있도록 친구 초대 이벤트를 기획했습니다.\n\n본 기획에서는 단순 이벤트 페이지 제작이 아니라:\n\n- 초대 코드 발급 구조\n- 신규 유저 유입 플로우\n- 회원가입 및 다운로드 연결\n- 보상 지급 조건\n- 반응형 이벤트 페이지\n- 운영 및 악용 방지 구조\n까지 함께 설계했습니다.",
       "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647606458--2026-05-01--8.12.11.png",
       "thumbnailAlt": "스크린샷 2026-05-01 오후 8.12.11.png",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589721158-101-2.png",
+      "imageAlt": "101 2.png",
       "imageCaption": "",
       "contentBlocks": [
         {
@@ -364,8 +364,8 @@
         },
         {
           "type": "image",
-          "url": "",
-          "alt": "",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589721158-101-2.png",
+          "alt": "101 2.png",
           "caption": ""
         },
         {
