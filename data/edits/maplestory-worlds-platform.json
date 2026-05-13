@@ -565,12 +565,6 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778678647548---add-api-.png",
-          "alt": "부분점검 백오피스 Add API 페이지.png",
-          "caption": "부분점검 Add API "
-        },
-        {
-          "type": "image",
           "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778678670298----.png",
           "alt": "스크린샷 2026-05-13 오후 9.45.01.png",
           "caption": "API Function Management"
@@ -590,6 +584,12 @@
           "type": "text",
           "title": "8. 점검 처리 케이스 정의",
           "text": "부분 점검은 상황별 처리 기준이 중요했기 때문에, 케이스를 나누어 정리했습니다.\n\n- Case 1. 전체 점검\n로그인, DB 연결 등 서비스 전반에 영향이 있는 경우 전체 점검 페이지를 노출합니다.\n\n- Case 2. 페이지 단위 점검\n특정 페이지의 핵심 기능을 사용할 수 없는 경우 페이지 전체를 점검 화면으로 처리합니다.\n\n- Case 3. 컴포넌트 단위 점검\n페이지 내 일부 기능만 영향을 받는 경우 해당 컴포넌트나 버튼 액션에 점검 안내를 노출합니다.\n\n- Case 4. 별도 처리 없음\n사용자 이용에 큰 영향을 주지 않는 일부 기능은 프론트에서 별도 점검 처리를 하지 않는 것으로 정리했습니다.\n\n이 기준을 통해 개발, 운영, QA가 동일한 기준으로 점검 범위를 이해하고 구현할 수 있도록 했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778678647548---add-api-.png",
+          "alt": "부분점검 백오피스 Add API 페이지.png",
+          "caption": "부분점검 Add API "
         },
         {
           "type": "text",
