@@ -526,6 +526,12 @@
           "text": "번역 대상 데이터는 Entry 단위로 구성했습니다.\n\n각 Entry는 key, source, note, 번역문으로 구성되며, key와 source, note는 Maker에서 생성된 원본 데이터로 취급했습니다.\n웹에서는 이 값을 수정하지 않고 읽기 전용으로 노출하며, 번역문만 입력하고 저장할 수 있도록 했습니다.\n\n이 구조는 원본 데이터와 번역 데이터를 분리하기 위한 목적이었습니다.\n원본 Entry의 의미와 식별값은 제작 환경에서 유지하고, 웹에서는 번역 작업에 필요한 정보만 제공해 번역 과정에서 원본 데이터가 임의로 변경되지 않도록 했습니다."
         },
         {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679991144---flow.png",
+          "alt": "월드번역 데이터 Flow.png",
+          "caption": ""
+        },
+        {
           "type": "text",
           "title": "3. 최초 진입 및 데이터 호출 상태 처리",
           "text": "번역 관리 페이지에 처음 진입했을 때, 월드 콘텐츠 Entry 데이터가 아직 웹에 동기화되지 않은 경우를 별도로 정의했습니다.\n\n이 경우에는 빈 화면으로 두지 않고, 등록된 월드 콘텐츠 데이터가 없다는 안내와 함께 Maker 또는 WebSyncCenter에서 Entry 데이터를 불러와야 한다는 안내를 노출하도록 했습니다.\n\n또한 데이터 호출 중, 데이터 호출 실패, 데이터 없음 상태를 각각 구분했습니다.\n데이터 호출 중에는 로딩 UI를 제공하고, 호출 실패 시에는 실패 메시지를 노출하도록 했습니다.\n단순한 빈 리스트와 오류 상황이 혼동되지 않도록 상태별 UI를 분리한 것이 핵심입니다."
@@ -577,12 +583,6 @@
           "type": "text",
           "title": "결과",
           "text": "월드 콘텐츠 번역 관리 기능을 통해 크리에이터가 만든 월드 텍스트를 웹에서 확인하고 번역할 수 있는 구조를 마련했습니다.\n\n이 기능은 단순한 번역 입력 화면이 아니라, Maker에서 생성된 Entry 데이터를 웹으로 가져오고, 번역 담당자가 웹에서 번역문을 입력한 뒤, 다시 월드 제작 환경에서 사용할 수 있도록 연결한 작업이었습니다.\n\n이를 통해 크리에이터와 번역 담당자가 역할을 나누어 월드 콘텐츠를 다국어로 준비할 수 있는 기반을 만들었고, 글로벌 서비스 운영에 필요한 월드 단위 로컬라이제이션 구조를 설계할 수 있었습니다."
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679991144---flow.png",
-          "alt": "월드번역 데이터 Flow.png",
-          "caption": ""
         },
         {
           "type": "image",
