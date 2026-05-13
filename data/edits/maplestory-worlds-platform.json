@@ -553,6 +553,12 @@
           "text": "월드 콘텐츠 번역 기능에서는 Maker와 Web 사이의 데이터 동기화 흐름이 중요했습니다.\n\n크리에이터가 Maker에서 Entry 데이터를 생성한 뒤 Sync up을 실행하면, 웹에서는 해당 Entry 데이터를 불러와 번역 관리 화면에 노출할 수 있도록 했습니다.\n이후 번역 담당자는 웹에서 번역문을 입력하고 저장합니다.\n\n이미 데이터를 한 번 불러온 이후에도 Entry 데이터가 변경될 수 있기 때문에, LNB 영역에 Sync up 버튼을 제공해 데이터를 다시 불러올 수 있도록 설계했습니다.\n재호출 중에는 로딩 상태를 노출하고, 실패 시에는 실패 메시지를 표시하도록 했습니다.\n\n다만 Sync up은 원본 Entry와 번역 데이터가 연결되는 중요한 동작이기 때문에, 모든 사용자에게 노출하기보다 관련 권한을 가진 사용자에게만 제공하는 방향으로 정리했습니다."
         },
         {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778680002032------flow--ui.png",
+          "alt": "월드번역 데이터 재호출 및 싱크업 flow 및 UI.png",
+          "caption": ""
+        },
+        {
           "type": "text",
           "title": "6. 검색 기능 설계",
           "text": "Entry 수가 많아질 경우 원하는 번역 항목을 찾기 어려울 수 있기 때문에 검색 기능을 함께 설계했습니다.\n\n검색은 key, source, note 기준으로 가능하도록 했고, 사용자가 검색 기준을 선택한 뒤 키워드를 입력해 Entry를 찾을 수 있도록 구성했습니다.\n검색 중에는 로딩 상태를 제공하고, 검색 결과가 없을 때는 별도 빈 상태 메시지를 노출하도록 했습니다.\n\n검색 결과가 1개만 존재하는 경우에도 동일한 Entry 상세 UI를 유지해, 사용자가 바로 번역문을 입력하고 저장할 수 있도록 했습니다."
@@ -576,12 +582,6 @@
           "type": "image",
           "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679991144---flow.png",
           "alt": "월드번역 데이터 Flow.png",
-          "caption": ""
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778680002032------flow--ui.png",
-          "alt": "월드번역 데이터 재호출 및 싱크업 flow 및 UI.png",
           "caption": ""
         },
         {
