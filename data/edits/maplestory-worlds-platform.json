@@ -556,12 +556,6 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679236184--2026-05-13--10.33.41.png",
-          "alt": "스크린샷 2026-05-13 오후 10.33.41.pngqnqn",
-          "caption": "부분 점검 케이스 프론트 화면 정리"
-        },
-        {
-          "type": "image",
           "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679132367--2026-05-13--10.32.01.png",
           "alt": "스크린샷 2026-05-13 오후 10.32.01.png",
           "caption": "페이지 점검"
@@ -570,6 +564,12 @@
           "type": "text",
           "title": "4. 컴포넌트 단위 점검 처리",
           "text": "부분 점검의 핵심은 전체 화면을 막지 않고, 영향을 받는 기능만 제한하는 것이었습니다.\n\n예를 들어 월드 상세 페이지 안에서도 정보, 댓글, 배지, 상점 등 여러 기능이 존재하기 때문에 특정 기능만 점검 중이라면 페이지 전체를 점검 처리할 필요는 없었습니다.\n이 경우 해당 탭이나 컴포넌트 영역에만 점검 안내를 노출하도록 했습니다.\n\n또한 구매, 등록, 결제처럼 사용자의 액션이 필요한 기능은 버튼 클릭 시점에 점검 안내 모달을 노출하도록 했습니다.\n사용자가 점검 중인 기능을 실행하려 할 때만 안내를 보여주어, 다른 기능 이용은 방해하지 않도록 했습니다.\n\n이처럼 페이지 내부에서도 기능 영향 범위를 나누어, 점검 상태를 보다 세밀하게 처리할 수 있도록 했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679236184--2026-05-13--10.33.41.png",
+          "alt": "스크린샷 2026-05-13 오후 10.33.41.pngqnqn",
+          "caption": "부분 점검 케이스 프론트 화면 정리"
         },
         {
           "type": "text",
