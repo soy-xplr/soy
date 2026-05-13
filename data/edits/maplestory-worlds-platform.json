@@ -287,23 +287,6 @@
       ]
     },
     {
-      "slug": "event-pages",
-      "title": "소개 페이지",
-      "summary": "정기·비정기 이벤트를 빠르게 띄울 수 있는 페이지 시스템",
-      "tags": [
-        "이벤트",
-        "운영효율",
-        "콘텐츠관리"
-      ],
-      "period": "2023",
-      "body": "여기에 이벤트 페이지 구축의 배경, 시스템 구조, 결과를 자유롭게 적어주세요.",
-      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647538711--2026-05-01--7.32.57.png",
-      "thumbnailAlt": "스크린샷 2026-05-01 오후 7.32.57.png",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": ""
-    },
-    {
       "slug": "home-profile-customization",
       "title": "홈/프로필 배경 꾸미기",
       "summary": "유저가 자기만의 홈과 프로필을 꾸밀 수 있도록 만든 개인화 기능",
