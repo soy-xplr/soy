@@ -490,8 +490,8 @@
       "body": "메이플스토리 월드는 크리에이터가 직접 월드를 제작하고, 다른 유저가 이를 플레이하는 UGC 플랫폼입니다.\n월드가 글로벌 서비스로 확장되면서, 크리에이터가 만든 월드 콘텐츠도 여러 언어로 제공할 수 있는 구조가 필요했습니다.\n\n기존에는 월드 내부 텍스트가 크리에이터가 제작한 원본 데이터에 묶여 있었기 때문에, 이를 웹에서 별도로 확인하고 번역하기 어려웠습니다.\n또한 번역 작업을 위해서는 크리에이터가 관리하는 Entry 데이터와 웹에서 편집 가능한 번역 데이터가 서로 연결되어야 했습니다.\n\n이에 따라 크리에이터가 월드 콘텐츠의 텍스트 데이터를 웹으로 불러오고, 번역 담당자가 웹에서 번역문을 입력한 뒤, 다시 월드 제작 환경에서 활용할 수 있도록 월드 콘텐츠 번역 관리 기능을 기획했습니다.",
       "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647742287--2026-05-02--12.01.50.png",
       "thumbnailAlt": "스크린샷 2026-05-01 오후 8.11.00.png",
-      "imageUrl": "",
-      "imageAlt": "",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679974089---ui.png",
+      "imageAlt": "월드번역 페이지 UI.png",
       "imageCaption": "",
       "contentBlocks": [
         {
@@ -556,8 +556,8 @@
         },
         {
           "type": "image",
-          "url": "",
-          "alt": "",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778679974089---ui.png",
+          "alt": "월드번역 페이지 UI.png",
           "caption": ""
         },
         {
