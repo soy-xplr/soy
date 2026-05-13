@@ -835,20 +835,20 @@
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778683013771--2026-05-06--3.03.02.png",
-          "alt": "스크린샷 2026-05-06 오후 3.03.02.png",
-          "caption": "키 발번 방식 정의"
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778683554692--2026-05-13--11.44.46.png",
+          "alt": "스크린샷 2026-05-06 오후 3.03.38.png",
+          "caption": ""
         },
         {
           "type": "text",
           "title": "3. 다국어 key 체계 정리",
-          "text": "다국어 적용 과정에서 가장 중요했던 부분 중 하나는\nkey 관리 체계를 정리하는 작업이었습니다.\n\n특히:\n- 공통 GNB\n- 월드 상세\n- 리소스 검색\n- 프로필\n- 알럿 메시지\n등 영역별로 key를 분리하고,\n페이지와 기능 단위 기준으로 naming rule을 정리했습니다.\n\n예를 들어:\n- GNB.xxx\n- WorldDetail.xxx\n- ResourceSearch.xxx\n\n형태로 기능별 구조를 통일해:\n\n- 개발 적용\n- 번역 관리\n- 유지보수\n\n가 용이하도록 구성했습니다."
+          "text": "다국어 적용 과정에서 가장 중요했던 부분 중 하나는\nkey 관리 체계를 정리하는 작업이었습니다.\n\n특히:\n- 공통 GNB\n- 월드 상세\n- 리소스 검색\n- 프로필\n- 알럿 메시지\n등 영역별로 key를 분리하고,\n페이지와 기능 단위 기준으로 naming rule을 정리했습니다.\n\n예를 들어:\n- GNB.xxx\n- WorldDetail.xxx\n- ResourceSearch.xxx\n형태로 기능별 구조를 통일해 개발 적용, 번역 관리, 유지보수가 용이하도록 구성했습니다."
         },
         {
           "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778683554692--2026-05-13--11.44.46.png",
-          "alt": "스크린샷 2026-05-06 오후 3.03.38.png",
-          "caption": ""
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778683013771--2026-05-06--3.03.02.png",
+          "alt": "스크린샷 2026-05-06 오후 3.03.02.png",
+          "caption": "키 발번 방식 정의"
         },
         {
           "type": "text",
