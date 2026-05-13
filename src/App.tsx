@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { bookmarks } from "./data/bookmarks";
 import { BookmarkDetailPage } from "./pages/BookmarkDetailPage";
 import { HomePage } from "./pages/HomePage";
@@ -89,6 +90,7 @@ function App() {
         )}
       </main>
       <footer className="site-footer">created by Soy.</footer>
+      <Analytics />
     </>
   );
 }
