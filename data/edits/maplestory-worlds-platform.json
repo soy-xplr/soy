@@ -247,15 +247,15 @@
           "caption": ""
         },
         {
-          "type": "text",
-          "title": "5. Category Management의 국가 그룹 단위 변경",
-          "text": "기존 Category Management에서는 콘텐츠 노출 영역이 국가 단위에 가깝게 관리되고 있었습니다.\n이를 국가 그룹 단위로 변경해, 운영자가 그룹별로 콘텐츠 카테고리를 설정할 수 있도록 개선했습니다.\n\nCountry Group Management에서 생성한 국가 그룹은 Category Management의 노출 영역 선택값으로 제공됩니다.\n운영자는 특정 국가 그룹을 선택한 뒤, 해당 그룹에 노출할 카테고리와 노출 순서를 설정할 수 있습니다.\n\n프론트에서는 사용자의 국가를 기준으로 해당 국가가 속한 그룹을 확인하고, 그 그룹에 설정된 콘텐츠 목록을 전달받아 노출하는 구조로 정리했습니다."
-        },
-        {
           "type": "image",
           "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778681757135---_-ui.png",
           "alt": "그룹에 국가 추가_제거 UI.png",
           "caption": ""
+        },
+        {
+          "type": "text",
+          "title": "5. Category Management의 국가 그룹 단위 변경",
+          "text": "기존 Category Management에서는 콘텐츠 노출 영역이 국가 단위에 가깝게 관리되고 있었습니다.\n이를 국가 그룹 단위로 변경해, 운영자가 그룹별로 콘텐츠 카테고리를 설정할 수 있도록 개선했습니다.\n\nCountry Group Management에서 생성한 국가 그룹은 Category Management의 노출 영역 선택값으로 제공됩니다.\n운영자는 특정 국가 그룹을 선택한 뒤, 해당 그룹에 노출할 카테고리와 노출 순서를 설정할 수 있습니다.\n\n프론트에서는 사용자의 국가를 기준으로 해당 국가가 속한 그룹을 확인하고, 그 그룹에 설정된 콘텐츠 목록을 전달받아 노출하는 구조로 정리했습니다."
         },
         {
           "type": "text",
