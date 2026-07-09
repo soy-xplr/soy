@@ -1616,7 +1616,7 @@ input:focus-visible {
 }
 
 .detail-body h2 {
-  margin: 0 0 14px;
+  margin: 0 0 20px;
   font-family: var(--display-font);
   font-size: 1.5rem;
   font-weight: 700;
@@ -1631,7 +1631,7 @@ input:focus-visible {
 }
 
 .detail-section-image {
-  margin: 24px 0 0;
+  margin: 32px 0 0;
 }
 
 /* 2depth(프로젝트 상세) 본문 섹션 이미지: 최상단 커버(.detail-cover)는 제외하고
@@ -1672,7 +1672,7 @@ input:focus-visible {
 
 .prose .prose-heading + .prose-text,
 .prose .prose-text + .prose-heading {
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .prose-h1 {
@@ -1730,7 +1730,7 @@ input:focus-visible {
 
 /* 3depth 텍스트 블록의 섹션 제목 */
 .subproject-text-block h2 {
-  margin: 0 0 12px;
+  margin: 0 0 18px;
   font-family: var(--display-font);
   font-size: clamp(1.25rem, 2.4vw, 1.55rem);
   font-weight: 700;
@@ -2136,11 +2136,15 @@ input:focus-visible {
 
 /* 본문 렌더링 시 텍스트 블록 단위 간격 */
 
-.subproject-prose .subproject-text-block + .subproject-text-block,
+.subproject-prose .subproject-text-block + .subproject-text-block {
+  margin-top: 28px;
+}
+
+/* 이미지가 얽힌 간격은 더 넓게 (이미지 ↔ 본문 여백 확대) */
 .subproject-prose .subproject-text-block + .detail-section-image,
 .subproject-prose .detail-section-image + .subproject-text-block,
 .subproject-prose .detail-section-image + .detail-section-image {
-  margin-top: 28px;
+  margin-top: 38px;
 }
 
 .subproject-prose .subproject-text-block p + p {
