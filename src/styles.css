@@ -2145,3 +2145,11 @@ input:focus-visible {
   margin-top: 12px;
 }
 
+/* 3depth(하위작업) 페이지의 모든 이미지를 780px로 줄여 중앙정렬
+   (콘텐츠 폭 900px보다 좁게). margin-top은 위 인접 규칙에서 관리하므로 건드리지 않음 */
+.subproject-prose .detail-section-image {
+  max-width: 780px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
