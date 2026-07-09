@@ -1801,7 +1801,6 @@ input:focus-visible {
 }
 
 .subproject-phase-heading p {
-  max-width: 640px;
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 0.95rem;
