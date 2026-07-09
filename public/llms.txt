@@ -1,0 +1,15 @@
+# Soy Portfolio
+
+> Soy의 작업과 프로젝트를 스크랩북처럼 모아둔 포트폴리오 사이트. PO/PM으로 참여한 웹/플랫폼, 모바일 앱, 사이드 프로젝트 사례를 소개합니다.
+
+## Sections
+
+- [Home](https://soy-xplr.vercel.app/) - 프로젝트 북마크 목록 (카테고리: 웹/플랫폼, 모바일 앱, 바이브 코딩, 사이드 프로젝트)
+- [헬로메이플 웹/플랫폼](https://soy-xplr.vercel.app/bookmarks/hellomaple-platform) - 누적 40만 회원 교육 플랫폼의 웹/플랫폼 영역 PO/PM 사례
+- [메이플스토리 월드 웹/플랫폼](https://soy-xplr.vercel.app/bookmarks/maplestory-worlds-platform) - UGC 플랫폼 포털웹, 정책, 글로벌 대응 기획 사례
+- [NDC 공식 앱](https://soy-xplr.vercel.app/bookmarks/ndc-app) - 넥슨 개발자 컨퍼런스 공식 앱 기획 및 런칭 사례
+
+## Notes
+
+- 각 프로젝트 상세 페이지는 /bookmarks/{slug} 경로에 있으며, 일부는 하위 프로젝트(/bookmarks/{slug}/{sub-slug})를 포함합니다.
+- 전체 URL 목록은 /sitemap.xml 을 참고하세요.
