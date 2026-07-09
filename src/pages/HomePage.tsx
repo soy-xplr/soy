@@ -140,8 +140,8 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
         </div>
         <div className="hero-role-row">
           <p className="hero-role">PMㆍ서비스기획자ㆍ바이브코더</p>
-          <span className="hero-experience" aria-label="경력 5년 2개월">
-            경력 5년 2개월
+          <span className="hero-experience" aria-label="경력 5년 4개월">
+            경력 5년 4개월
           </span>
         </div>
 
