@@ -68,9 +68,18 @@ const isSubProject = (
   isStringOrUndefined(subProject.imageUrl) &&
   isStringOrUndefined(subProject.imageAlt) &&
   isStringOrUndefined(subProject.imageCaption) &&
+  isStringOrUndefined(subProject.phaseId) &&
   (subProject.contentBlocks === undefined ||
     (Array.isArray(subProject.contentBlocks) &&
       subProject.contentBlocks.every(isContentBlock)));
+
+const isPhaseGroup = (
+  phase: NonNullable<BookmarkDetailContent["phases"]>[number],
+) =>
+  phase &&
+  typeof phase.id === "string" &&
+  typeof phase.title === "string" &&
+  isStringOrUndefined(phase.summary);
 
 const isDetailContent = (value: unknown): value is BookmarkDetailContent => {
   if (!value || typeof value !== "object") {
@@ -89,7 +98,10 @@ const isDetailContent = (value: unknown): value is BookmarkDetailContent => {
     candidate.sections.every(isDetailSection) &&
     (candidate.subProjects === undefined ||
       (Array.isArray(candidate.subProjects) &&
-        candidate.subProjects.every(isSubProject)))
+        candidate.subProjects.every(isSubProject))) &&
+    (candidate.phases === undefined ||
+      (Array.isArray(candidate.phases) &&
+        candidate.phases.every(isPhaseGroup)))
   );
 };
 
