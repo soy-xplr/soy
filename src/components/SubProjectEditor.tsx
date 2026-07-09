@@ -11,6 +11,7 @@ import {
   type SaveResult,
 } from "../utils/detailStorage";
 import { GitHubTokenInput } from "./GitHubTokenInput";
+import { RichTextField } from "./RichTextField";
 import { getGithubToken, uploadImageToGithub } from "../utils/githubUpload";
 
 type SubProjectEditorProps = {
@@ -427,11 +428,16 @@ export function SubProjectEditor({
                   </label>
                   <label className="editor-field">
                     내용
-                    <textarea
+                    <small className="rich-text-hint">
+                      B(굵게) · H1/H2/H3(제목 크기) 버튼을 쓰거나 직접
+                      <code>**굵게**</code>, <code># 제목</code> 처럼 적을 수 있어요.
+                      줄바꿈은 그대로 표시됩니다.
+                    </small>
+                    <RichTextField
                       value={block.text}
                       rows={6}
                       placeholder="이 블록의 내용을 적어주세요. 줄바꿈과 공백 그대로 표시됩니다."
-                      onChange={(event) => updateTextBlock(index, event.target.value)}
+                      onChange={(next) => updateTextBlock(index, next)}
                     />
                   </label>
                 </>

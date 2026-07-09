@@ -6,6 +6,7 @@ import {
   type SaveResult,
 } from "../utils/detailStorage";
 import { GitHubTokenInput } from "./GitHubTokenInput";
+import { RichTextField } from "./RichTextField";
 import { getGithubToken, uploadImageToGithub } from "../utils/githubUpload";
 
 type OwnerEditorProps = {
@@ -375,12 +376,14 @@ export function OwnerEditor({
             </label>
             <label className="editor-field">
               본문
-              <textarea
+              <small className="rich-text-hint">
+                B(굵게) · H1/H2/H3(제목 크기) 버튼으로 서식을 넣을 수 있어요.
+                줄바꿈은 그대로 표시됩니다.
+              </small>
+              <RichTextField
                 value={section.body}
                 rows={6}
-                onChange={(event) =>
-                  updateSection(index, "body", event.target.value)
-                }
+                onChange={(next) => updateSection(index, "body", next)}
               />
             </label>
             <div className="editor-image-tools">
@@ -521,13 +524,12 @@ export function OwnerEditor({
               <small style={{ color: "var(--muted)", fontWeight: 400 }}>
                 본문에 텍스트와 이미지를 여러 개 자유롭게 섞으려면 하위 작업 카드를 열고
                 "하위 작업 페이지 편집"에서 본문 블록을 추가해주세요.
+                B·H1/H2/H3 버튼으로 굵게·제목 크기를 넣을 수 있어요.
               </small>
-              <textarea
+              <RichTextField
                 value={subProject.body}
                 rows={6}
-                onChange={(event) =>
-                  updateSubProject(index, "body", event.target.value)
-                }
+                onChange={(next) => updateSubProject(index, "body", next)}
               />
             </label>
             <div className="editor-image-tools">

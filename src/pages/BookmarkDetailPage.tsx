@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { OwnerEditor } from "../components/OwnerEditor";
 import { SubProjectEditor } from "../components/SubProjectEditor";
+import { RichText } from "../components/RichText";
 import type { Bookmark } from "../data/bookmarks";
 import {
   createBlankDetailContent,
@@ -283,8 +284,8 @@ export function BookmarkDetailPage({
               block.type === "text" ? (
                 <div key={blockIndex} className="subproject-text-block">
                   {block.title ? <h2>{block.title}</h2> : null}
-                  {/* white-space: pre-wrap으로 줄바꿈/공백 그대로 보존 */}
-                  <p className="prose-text">{block.text}</p>
+                  {/* 마크다운-라이트(제목/굵게) + 줄바꿈 보존 렌더링 */}
+                  <RichText text={block.text} />
                 </div>
               ) : (
                 <figure key={blockIndex} className="detail-section-image">
@@ -379,8 +380,8 @@ export function BookmarkDetailPage({
         {detailContent.sections.map((section, sectionIndex) => (
           <section key={`${section.title}-${sectionIndex}`}>
             <h2>{section.title}</h2>
-            {/* white-space: pre-wrap으로 줄바꿈/공백 그대로 보존 */}
-            <p className="prose-text">{section.body}</p>
+            {/* 마크다운-라이트(제목/굵게) + 줄바꿈 보존 렌더링 */}
+            <RichText text={section.body} />
             {section.imageUrl ? (
               <figure className="detail-section-image">
                 <img
