@@ -39,6 +39,21 @@ export type SubProject = {
    * 비어있거나 없으면 기존 body + imageUrl 조합을 자동으로 마이그레이션해서 보여줍니다.
    */
   contentBlocks?: SubProjectContentBlock[];
+  /**
+   * 이 하위 작업이 속한 단계(Phase) 그룹 id. content.phases[].id 와 매칭됩니다.
+   * 없으면 그룹에 속하지 않은 것으로 보고 '기타' 묶음으로 표시됩니다.
+   */
+  phaseId?: string;
+};
+
+/**
+ * 하위 작업 카드를 단계별로 묶어 보여주기 위한 그룹 정의.
+ * phases가 비어있거나 없으면 기존처럼 카드가 하나의 그리드로 평면 표시됩니다.
+ */
+export type PhaseGroup = {
+  id: string;
+  title: string;
+  summary?: string;
 };
 
 export type BookmarkDetailContent = {
@@ -48,6 +63,7 @@ export type BookmarkDetailContent = {
   coverImageAlt?: string;
   sections: DetailSection[];
   subProjects?: SubProject[];
+  phases?: PhaseGroup[];
 };
 
 export const defaultBookmarkDetails: Record<string, BookmarkDetailContent> = {

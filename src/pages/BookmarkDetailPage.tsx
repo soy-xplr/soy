@@ -200,6 +200,42 @@ export function BookmarkDetailPage({
     return null;
   })();
 
+  const renderSubProjectCard = (
+    subProject: NonNullable<BookmarkDetailContent["subProjects"]>[number],
+    subProjectIndex: number,
+  ) => (
+    <article className="subproject-card" key={`${subProject.title}-${subProjectIndex}`}>
+      <button
+        type="button"
+        className="subproject-card-button"
+        onClick={() =>
+          onOpenSubProject(
+            bookmark.slug,
+            getSubProjectSlug(subProject, subProjectIndex),
+          )
+        }
+      >
+        <span className="subproject-thumbnail" aria-hidden="true">
+          {subProject.thumbnailUrl || subProject.imageUrl ? (
+            <img
+              src={subProject.thumbnailUrl || subProject.imageUrl}
+              alt={subProject.thumbnailAlt || `${subProject.title} 썸네일`}
+            />
+          ) : (
+            <i>썸네일 이미지 자리</i>
+          )}
+        </span>
+        <span>{subProject.period}</span>
+        <strong>{subProject.title}</strong>
+        <em>{subProject.summary}</em>
+        {subProject.tags.length ? (
+          <small>{subProject.tags.map((tag) => `#${tag}`).join(" ")}</small>
+        ) : null}
+        <b>자세히 보기</b>
+      </button>
+    </article>
+  );
+
   if (subProjectSlug) {
     if (!selectedSubProject) {
       return (
@@ -403,44 +439,67 @@ export function BookmarkDetailPage({
             <p className="eyebrow">Work streams</p>
             <h2>담당 범위</h2>
             <p>
-              큰 프로젝트 안에서 맡았던 하위 작업을 카드로 나누어 정리했습니다.
+              {detailContent.phases?.length
+                ? "프로젝트를 단계별로 나누어, 각 단계에서 맡은 작업을 정리했습니다."
+                : "큰 프로젝트 안에서 맡았던 하위 작업을 카드로 나누어 정리했습니다."}
             </p>
           </div>
 
-          <div className="subproject-grid">
-            {detailContent.subProjects.map((subProject, subProjectIndex) => (
-              <article className="subproject-card" key={`${subProject.title}-${subProjectIndex}`}>
-                <button
-                  type="button"
-                  className="subproject-card-button"
-                  onClick={() =>
-                    onOpenSubProject(
-                      bookmark.slug,
-                      getSubProjectSlug(subProject, subProjectIndex),
-                    )
-                  }
-                >
-                  <span className="subproject-thumbnail" aria-hidden="true">
-                    {subProject.thumbnailUrl || subProject.imageUrl ? (
-                    <img
-                      src={subProject.thumbnailUrl || subProject.imageUrl}
-                      alt={subProject.thumbnailAlt || `${subProject.title} 썸네일`}
-                    />
-                    ) : (
-                      <i>썸네일 이미지 자리</i>
-                    )}
-                  </span>
-                  <span>{subProject.period}</span>
-                  <strong>{subProject.title}</strong>
-                  <em>{subProject.summary}</em>
-                  {subProject.tags.length ? (
-                    <small>{subProject.tags.map((tag) => `#${tag}`).join(" ")}</small>
+          {detailContent.phases?.length ? (
+            (() => {
+              const indexed = detailContent.subProjects!.map((sp, index) => ({
+                sp,
+                index,
+              }));
+              const groups = detailContent.phases!.map((phase) => ({
+                phase,
+                items: indexed.filter(({ sp }) => sp.phaseId === phase.id),
+              }));
+              const groupedIndices = new Set(
+                groups.flatMap((group) => group.items.map(({ index }) => index)),
+              );
+              const leftover = indexed.filter(
+                ({ index }) => !groupedIndices.has(index),
+              );
+              return (
+                <div className="subproject-phases">
+                  {groups
+                    .filter((group) => group.items.length > 0)
+                    .map(({ phase, items }) => (
+                      <div className="subproject-phase-group" key={phase.id}>
+                        <div className="subproject-phase-heading">
+                          <h3>{phase.title}</h3>
+                          {phase.summary ? <p>{phase.summary}</p> : null}
+                        </div>
+                        <div className="subproject-grid">
+                          {items.map(({ sp, index }) =>
+                            renderSubProjectCard(sp, index),
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  {leftover.length > 0 ? (
+                    <div className="subproject-phase-group">
+                      <div className="subproject-phase-heading">
+                        <h3>기타</h3>
+                      </div>
+                      <div className="subproject-grid">
+                        {leftover.map(({ sp, index }) =>
+                          renderSubProjectCard(sp, index),
+                        )}
+                      </div>
+                    </div>
                   ) : null}
-                  <b>자세히 보기</b>
-                </button>
-              </article>
-            ))}
-          </div>
+                </div>
+              );
+            })()
+          ) : (
+            <div className="subproject-grid">
+              {detailContent.subProjects.map((subProject, subProjectIndex) =>
+                renderSubProjectCard(subProject, subProjectIndex),
+              )}
+            </div>
+          )}
         </section>
       ) : null}
 
