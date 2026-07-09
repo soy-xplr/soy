@@ -1633,6 +1633,14 @@ input:focus-visible {
   margin: 24px 0 0;
 }
 
+/* 2depth(프로젝트 상세) 본문 섹션 이미지: 최상단 커버(.detail-cover)는 제외하고
+   나머지 이미지는 780px로 줄여 중앙정렬 (콘텐츠 폭 900px보다 좁게) */
+.detail-body .detail-section-image {
+  max-width: 780px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /* 본문 텍스트: 사용자가 입력한 줄바꿈/공백 그대로 보존 */
 .prose-text {
   margin: 0;
