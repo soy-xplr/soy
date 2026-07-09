@@ -1230,7 +1230,7 @@ input:focus-visible {
 }
 
 .detail-page {
-  max-width: 780px;
+  max-width: 900px;
 }
 
 .back-link {
@@ -1243,8 +1243,12 @@ input:focus-visible {
 }
 
 .detail-header h1 {
+  max-width: none;
   font-size: clamp(2.4rem, 6vw, 4.5rem);
   font-weight: 700;
+  /* 한국어 제목이 글자 단위로 쪼개지지 않고 띄어쓰기 단위로만 줄바꿈되도록 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .detail-header p:not(.eyebrow) {
