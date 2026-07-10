@@ -1261,6 +1261,10 @@ input:focus-visible {
 .detail-cover {
   display: grid;
   overflow: hidden;
+  /* 인라인 축을 컨테이너 폭에 고정해, min-height가 aspect-ratio보다 클 때
+     비율이 '폭'을 역산해 뷰포트를 넘겨버리는 현상(모바일 가로 오버플로)을 방지 */
+  width: 100%;
+  max-width: 100%;
   /* 폭에 비해 납작해 보이지 않도록 2:1 비율로 높이 확보 (폭에 따라 자동 조정) */
   aspect-ratio: 2 / 1;
   min-height: 330px;
