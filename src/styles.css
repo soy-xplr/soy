@@ -1627,8 +1627,8 @@ input:focus-visible {
 .detail-body p {
   margin: 0;
   color: var(--ink);
-  /* 본문 문단 폰트를 정확히 1px 키움 */
-  font-size: calc(1.08rem + 1px);
+  /* 본문 문단 폰트를 base+3px로 키움 (가독성) */
+  font-size: calc(1.08rem + 3px);
   line-height: 1.9;
 }
 
@@ -1923,8 +1923,8 @@ input:focus-visible {
 .subproject-prose p {
   margin: 0;
   color: var(--ink);
-  /* 본문 문단 폰트를 정확히 1px 키움 */
-  font-size: calc(1.08rem + 1px);
+  /* 본문 문단 폰트를 base+3px로 키움 (가독성) */
+  font-size: calc(1.08rem + 3px);
   line-height: 1.95;
 }
 
