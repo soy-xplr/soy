@@ -23,93 +23,6 @@
   ],
   "subProjects": [
     {
-      "slug": "search-improvement",
-      "title": "검색 기능 개선",
-      "summary": "리소스·월드·유저를 더 빠르게 찾을 수 있도록 검색 경험을 다듬은 작업",
-      "tags": [
-        "검색UX",
-        "정보구조",
-        "사용성"
-      ],
-      "period": "2023",
-      "body": "CBT가 끝난 후 사용자 설문을 분석했을 때, 리소스 검색 기능이 불편하다는 응답이 눈에 띄게 많았습니다. 이미지, 텍스트, 사운드 등 다양한 리소스를 검색해서 게임을 제작하는 크리에이터들에게 검색은 필수 도구인데, 그 경험이 반복적인 불편함을 낳고 있었습니다. 단순한 데이터 오류가 아니라 구조적인 문제라는 판단에서 개선을 시작했습니다.",
-      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647492011-----.png",
-      "thumbnailAlt": "리소스 검색 개선 후 스크린샷.png",
-      "imageUrl": "",
-      "imageAlt": "MSW 리소스 검색 화면",
-      "imageCaption": "카테고리 필터와 썸네일 그리드로 구성된 MSW 리소스 검색 화면",
-      "contentBlocks": [
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777643163004-----.png",
-          "alt": "MSW 리소스 검색 화면",
-          "caption": "카테고리 필터와 썸네일 그리드로 구성된 MSW 리소스 검색 화면"
-        },
-        {
-          "type": "text",
-          "text": "CBT가 끝난 후 사용자 설문을 분석했을 때, **리소스 검색이 불편하다는 응답이 눈에 띄게 많았습니다**. 이미지·텍스트·사운드 등 다양한 리소스를 검색해 게임을 제작하는 크리에이터에게 검색은 필수 도구인데, 그 경험이 반복적인 불편을 낳고 있었습니다. 단순한 데이터 오류가 아니라 **구조적인 문제**라고 판단해 개선을 시작했습니다.",
-          "title": "문제 — 설문에서 드러난 검색 불편"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-01-background.png",
-          "alt": "배경 및 문제 — 검색 기능 불편 응답 다수",
-          "caption": "CBT 종료 후 사용자 설문에서 리소스 검색 불편이 반복적인 문제로 확인됐습니다"
-        },
-        {
-          "type": "text",
-          "text": "CBT 기간에 쌓인 검색 데이터를 직접 뽑아 분석했습니다. 상위 검색어로 재검색하면 같은 이미지가 여러 개 중복 노출되거나, ‘슬라임’을 검색했는데 ‘나무상자’가 뜨는 식의 **태그 오염**이 곳곳에 있었습니다. **기간 내 검색량이 28만 회**에 달할 만큼 수요는 충분했기에, **데이터 정제와 UX 개선** 두 방향으로 과제를 정의하고 상위에 개선 방향을 제안했습니다.",
-          "title": "검색 데이터 직접 분석 → 태그 오염 발견"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-02-problems.png",
-          "alt": "핵심 과제 정의 — 데이터 정제와 UX 개선",
-          "caption": "검색 데이터 정제 필요성과 탐색 경험 개선, 두 가지를 핵심 과제로 잡았습니다"
-        },
-        {
-          "type": "text",
-          "text": "검색 품질을 높이기 위해 세 가지를 정비했습니다. 먼저 **오탐을 유발하는 노이즈 태그를 식별해 일괄 삭제**했습니다(‘worldmap’, ‘object’ 같은 무의미한 범용 키워드가 결과를 오염시키고 있었습니다). 다음으로 **중복 썸네일을 이미지 해시 비교로 자동 필터링**해 대표 이미지 하나만 남겼습니다. 마지막으로 단순 텍스트 매칭이 아니라 검색 의도에 맞는 결과가 상단에 오도록 **정확도(Accuracy) 정렬 가중치를 최신순(Recency)보다 높게** 조정했습니다.",
-          "title": "노이즈 태그·중복 썸네일 정비 + 정확도 우선 정렬"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-03a-search-quality.png",
-          "alt": "해결방안A — 검색 품질 개선 세 가지",
-          "caption": "노이즈 태그 정비, 중복 썸네일 제거, 검색 의도 우선 노출 — 세 가지로 검색 데이터 품질을 높였습니다"
-        },
-        {
-          "type": "text",
-          "text": "데이터 개선과 함께 검색 화면도 다시 설계했습니다. 기존 리스트형은 썸네일이 작아 리소스를 한눈에 파악하기 어려웠는데, **썸네일을 키운 그리드 레이아웃**으로 바꾸고 **카테고리·필터를 사이드 패널로 분리**해 검색과 탐색을 동시에 할 수 있게 했습니다. **반응형 레이아웃**으로 화면 크기에 따라 그리드 열 수가 자연스럽게 바뀌도록 했습니다.",
-          "title": "썸네일 그리드 + 사이드 필터로 화면 재설계"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-03b-uxui.png",
-          "alt": "해결방안B — 검색 UI/UX 개선 전후 비교",
-          "caption": "리스트형에서 썸네일 강조 그리드로, 사이드 패널 추가로 탐색 효율을 끌어올렸습니다"
-        },
-        {
-          "type": "text",
-          "text": "개선 후 유저 피드백이 직접 들어왔습니다. **‘검색 업데이트 후 게임 제작 속도가 월등히 빨라졌다’, ‘검색이 편리해졌다’**는 반응이 확인됐습니다. 데이터를 직접 분석해 문제를 정의하고 개선한 결과, **검색 정확도 60%p 향상**과 함께 검색 품질·탐색 경험을 모두 실질적으로 끌어올린 작업이 되었습니다.",
-          "title": "성과 — 검색 정확도 향상과 빠른 제작"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-04-results.png",
-          "alt": "성과 및 유저 피드백",
-          "caption": "검색 품질 향상과 빠른 탐색 경험 — 실제 유저 피드백으로 효과를 확인했습니다"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-05-appendix.png",
-          "alt": "검색 개선 기획 산출물 — 기획서 와이어프레임",
-          "caption": "기획서와 와이어프레임으로 정리한 검색 개선 산출물"
-        }
-      ],
-      "phaseId": "mw1"
-    },
-    {
       "slug": "home-profile-customization",
       "title": "프로필 페이지 기획",
       "summary": "유저가 자기만의 홈과 프로필을 꾸밀 수 있도록 만든 개인화 기능",
@@ -227,6 +140,93 @@
       "phaseId": "mw1"
     },
     {
+      "slug": "search-improvement",
+      "title": "검색 기능 개선",
+      "summary": "리소스·월드·유저를 더 빠르게 찾을 수 있도록 검색 경험을 다듬은 작업",
+      "tags": [
+        "검색UX",
+        "정보구조",
+        "사용성"
+      ],
+      "period": "2023",
+      "body": "CBT가 끝난 후 사용자 설문을 분석했을 때, 리소스 검색 기능이 불편하다는 응답이 눈에 띄게 많았습니다. 이미지, 텍스트, 사운드 등 다양한 리소스를 검색해서 게임을 제작하는 크리에이터들에게 검색은 필수 도구인데, 그 경험이 반복적인 불편함을 낳고 있었습니다. 단순한 데이터 오류가 아니라 구조적인 문제라는 판단에서 개선을 시작했습니다.",
+      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647492011-----.png",
+      "thumbnailAlt": "리소스 검색 개선 후 스크린샷.png",
+      "imageUrl": "",
+      "imageAlt": "MSW 리소스 검색 화면",
+      "imageCaption": "카테고리 필터와 썸네일 그리드로 구성된 MSW 리소스 검색 화면",
+      "contentBlocks": [
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777643163004-----.png",
+          "alt": "MSW 리소스 검색 화면",
+          "caption": "카테고리 필터와 썸네일 그리드로 구성된 MSW 리소스 검색 화면"
+        },
+        {
+          "type": "text",
+          "text": "CBT가 끝난 후 사용자 설문을 분석했을 때, **리소스 검색이 불편하다는 응답이 눈에 띄게 많았습니다**. 이미지·텍스트·사운드 등 다양한 리소스를 검색해 게임을 제작하는 크리에이터에게 검색은 필수 도구인데, 그 경험이 반복적인 불편을 낳고 있었습니다. 단순한 데이터 오류가 아니라 **구조적인 문제**라고 판단해 개선을 시작했습니다.",
+          "title": "문제 — 설문에서 드러난 검색 불편"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-01-background.png",
+          "alt": "배경 및 문제 — 검색 기능 불편 응답 다수",
+          "caption": "CBT 종료 후 사용자 설문에서 리소스 검색 불편이 반복적인 문제로 확인됐습니다"
+        },
+        {
+          "type": "text",
+          "text": "CBT 기간에 쌓인 검색 데이터를 직접 뽑아 분석했습니다. 상위 검색어로 재검색하면 같은 이미지가 여러 개 중복 노출되거나, ‘슬라임’을 검색했는데 ‘나무상자’가 뜨는 식의 **태그 오염**이 곳곳에 있었습니다. **기간 내 검색량이 28만 회**에 달할 만큼 수요는 충분했기에, **데이터 정제와 UX 개선** 두 방향으로 과제를 정의하고 상위에 개선 방향을 제안했습니다.",
+          "title": "검색 데이터 직접 분석 → 태그 오염 발견"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-02-problems.png",
+          "alt": "핵심 과제 정의 — 데이터 정제와 UX 개선",
+          "caption": "검색 데이터 정제 필요성과 탐색 경험 개선, 두 가지를 핵심 과제로 잡았습니다"
+        },
+        {
+          "type": "text",
+          "text": "검색 품질을 높이기 위해 세 가지를 정비했습니다. 먼저 **오탐을 유발하는 노이즈 태그를 식별해 일괄 삭제**했습니다(‘worldmap’, ‘object’ 같은 무의미한 범용 키워드가 결과를 오염시키고 있었습니다). 다음으로 **중복 썸네일을 이미지 해시 비교로 자동 필터링**해 대표 이미지 하나만 남겼습니다. 마지막으로 단순 텍스트 매칭이 아니라 검색 의도에 맞는 결과가 상단에 오도록 **정확도(Accuracy) 정렬 가중치를 최신순(Recency)보다 높게** 조정했습니다.",
+          "title": "노이즈 태그·중복 썸네일 정비 + 정확도 우선 정렬"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-03a-search-quality.png",
+          "alt": "해결방안A — 검색 품질 개선 세 가지",
+          "caption": "노이즈 태그 정비, 중복 썸네일 제거, 검색 의도 우선 노출 — 세 가지로 검색 데이터 품질을 높였습니다"
+        },
+        {
+          "type": "text",
+          "text": "데이터 개선과 함께 검색 화면도 다시 설계했습니다. 기존 리스트형은 썸네일이 작아 리소스를 한눈에 파악하기 어려웠는데, **썸네일을 키운 그리드 레이아웃**으로 바꾸고 **카테고리·필터를 사이드 패널로 분리**해 검색과 탐색을 동시에 할 수 있게 했습니다. **반응형 레이아웃**으로 화면 크기에 따라 그리드 열 수가 자연스럽게 바뀌도록 했습니다.",
+          "title": "썸네일 그리드 + 사이드 필터로 화면 재설계"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-03b-uxui.png",
+          "alt": "해결방안B — 검색 UI/UX 개선 전후 비교",
+          "caption": "리스트형에서 썸네일 강조 그리드로, 사이드 패널 추가로 탐색 효율을 끌어올렸습니다"
+        },
+        {
+          "type": "text",
+          "text": "개선 후 유저 피드백이 직접 들어왔습니다. **‘검색 업데이트 후 게임 제작 속도가 월등히 빨라졌다’, ‘검색이 편리해졌다’**는 반응이 확인됐습니다. 데이터를 직접 분석해 문제를 정의하고 개선한 결과, **검색 정확도 60%p 향상**과 함께 검색 품질·탐색 경험을 모두 실질적으로 끌어올린 작업이 되었습니다.",
+          "title": "성과 — 검색 정확도 향상과 빠른 제작"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-04-results.png",
+          "alt": "성과 및 유저 피드백",
+          "caption": "검색 품질 향상과 빠른 탐색 경험 — 실제 유저 피드백으로 효과를 확인했습니다"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/search/slide-05-appendix.png",
+          "alt": "검색 개선 기획 산출물 — 기획서 와이어프레임",
+          "caption": "기획서와 와이어프레임으로 정리한 검색 개선 산출물"
+        }
+      ],
+      "phaseId": "mw1"
+    },
+    {
       "slug": "favorites-folder",
       "title": "리소스 즐겨찾기 기능 기획",
       "summary": "찾은 리소스를 저장할 수 있는 기능",
@@ -317,6 +317,85 @@
           "type": "text",
           "title": "7. 결과 및 의미",
           "text": "이 프로젝트는 단순 즐겨찾기 기능 추가가 아니라,\nUGC 제작 workflow 자체를 개선하기 위한 리소스 관리 경험 설계에 가까운 작업이었습니다.\n\n특히:\n- 폴더 기반 구조\n- 다중 선택\n- Drag & Drop\n- 편집 모드\n- 예외 케이스 처리\n- 제작 중심 UX\n까지 함께 고려하며,\n**크리에이터가 반복 작업을 더 효율적으로 수행할 수 있도록 구조를 개선**했습니다.\n\n또한 단순 웹 기능 수준이 아니라:\n- 제작 툴 UX\n- 대량 작업 흐름\n- 정보 구조 설계\n- 인터랙션 설계\n까지 폭넓게 고민하며,\nUGC 플랫폼에서 실제 창작 경험을 지원하는 방향의 기획을 수행한 경험이었습니다."
+        }
+      ],
+      "phaseId": "mw1"
+    },
+    {
+      "slug": "friend-invite-event",
+      "title": "친구 초대 이벤트",
+      "summary": "친구를 메이플스토리 월드로 초대하는 그로스 이벤트 기획",
+      "tags": [
+        "이벤트",
+        "그로스",
+        "바이럴"
+      ],
+      "period": "2023",
+      "body": "메이플스토리 월드는 CBT 이후 정식 런칭을 준비하며 크리에이터 생태계 확장이 중요한 과제가 되고 있었습니다.\n특히 초기 플랫폼 단계에서는 단순 유저 유입보다, '실제로 월드를 제작하고 함께 플레이할 수 있는 유저 네트워크를 형성하는 것'이 중요했습니다.\n\n이에 따라 기존 유저가 신규 유저를 직접 초대하고,\n신규 유저가 자연스럽게 플랫폼에 진입할 수 있도록 친구 초대 이벤트를 기획했습니다.\n\n본 기획에서는 단순 이벤트 페이지 제작이 아니라:\n\n- 초대 코드 발급 구조\n- 신규 유저 유입 플로우\n- 회원가입 및 다운로드 연결\n- 보상 지급 조건\n- 반응형 이벤트 페이지\n- 운영 및 악용 방지 구조\n까지 함께 설계했습니다.",
+      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647606458--2026-05-01--8.12.11.png",
+      "thumbnailAlt": "스크린샷 2026-05-01 오후 8.12.11.png",
+      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589721158-101-2.png",
+      "imageAlt": "101 2.png",
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "title": "프로젝트 개요",
+          "text": "메이플스토리 월드는 CBT 이후 정식 런칭을 준비하며 크리에이터 생태계 확장이 중요한 과제가 되고 있었습니다.\n특히 초기 플랫폼 단계에서는 단순 유저 유입보다, '실제로 월드를 제작하고 함께 플레이할 수 있는 유저 네트워크를 형성하는 것'이 중요했습니다.\n\n이에 따라 **기존 유저가 신규 유저를 직접 초대하고,\n신규 유저가 자연스럽게 플랫폼에 진입할 수 있도록 친구 초대 이벤트를 기획**했습니다.\n\n본 기획에서는 단순 이벤트 페이지 제작이 아니라:\n\n- 초대 코드 발급 구조\n- 신규 유저 유입 플로우\n- 회원가입 및 다운로드 연결\n- 보상 지급 조건\n- 반응형 이벤트 페이지\n- 운영 및 악용 방지 구조\n까지 함께 설계했습니다."
+        },
+        {
+          "type": "text",
+          "title": "1. 문제 정의",
+          "text": "초기 메이플스토리 월드는 아직 플랫폼 인지도가 높지 않았고,\n월드를 함께 제작하거나 플레이할 수 있는 유저 기반 확대가 중요한 시점이었습니다.\n\n특히 UGC 플랫폼 특성상:\n- 혼자 플레이하는 경험보다\n- 친구와 함께 플레이하거나 제작에 참여하는 경험이 중요했기 때문에\n\n단순 광고 중심 유입만으로는 플랫폼 확장에 한계가 있었습니다.\n\n또한 신규 유저 입장에서는:\n- 클라이언트 다운로드\n- 회원가입\n- 플랫폼 진입\n- 이벤트 참여\n과정이 분리되어 있어 진입 장벽이 존재했습니다.\n\n따라서:\n- 기존 유저 기반 네트워크를 활용하면서도\n- 신규 유저가 이탈하지 않고 자연스럽게 유입될 수 있는 구조\n가 필요했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589721158-101-2.png",
+          "alt": "101 2.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "title": "2. 해결 방향",
+          "text": "**기존 유저가 초대 코드를 발급하고,\n신규 유저가 해당 코드를 입력해 플랫폼에 가입하면 보상을 지급하는 구조를 설계**했습니다.\n\n핵심 목표는 단순 이벤트 참여가 아니라:\n- 신규 유저 유입\n- 다운로드 전환\n- 회원가입 전환\n- 플랫폼 재방문\n까지 하나의 흐름으로 연결하는 것이었습니다.\n\n이를 위해:\n- 초대번호 기반 구조\n- 다운로드 페이지 연계\n- 회원가입 이후 상태 처리\n- 보상 지급 조건 검증\n등을 함께 정의했습니다.\n\n또한 PC와 모바일 환경 모두 대응할 수 있도록\n반응형 이벤트 페이지 구조를 함께 설계했습니다."
+        },
+        {
+          "type": "text",
+          "title": "3. 신규 유저 진입 플로우 설계",
+          "text": "신규 유저가 이벤트 참여 과정에서 이탈하지 않도록,\n최대한 단순한 단계로 흐름을 구성했습니다.\n\n전체 플로우는:\n1. 친구에게 초대 링크 또는 코드 전달\n2. 이벤트 페이지 진입\n3. 클라이언트 다운로드\n4. 회원가입\n5. 초대번호 입력\n6. 보상 지급\n7. 월드 플레이 진입\n순으로 구성했습니다.\n\n특히 회원가입 이전/이후 상태를 고려해:\n- 로그인 여부\n- 기존 회원 여부\n- 이미 보상을 받은 계정 여부\n등 조건 분기를 세부적으로 설계했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589806729-102-2.png",
+          "alt": "102.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "title": "4. 초대 코드 및 보상 구조 설계",
+          "text": "이벤트에서는 유저별 초대 코드를 발급하는 구조를 사용했습니다.\n\n초대번호는:\n- 영문/숫자 조합의 고유값으로 생성하고,\n- 발급 수량 제한,\n- 중복 사용 여부,\n- 보상 지급 조건\n등을 함께 검증하도록 설계했습니다.\n\n특히 운영 단계에서 발생할 수 있는:\n- 다중 계정 악용\n- 중복 보상 수령\n- 비정상 반복 참여\n등을 고려해 보상 지급 조건과 상태값 처리 흐름을 정의했습니다.\n\n또한 이미 NSRRS 보상을 받은 계정인지 여부를 확인하는 검증 구조도 포함했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589789941-103.png",
+          "alt": "103.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "title": "5. 반응형 이벤트 페이지 설계",
+          "text": "이벤트 페이지는 PC와 모바일 환경 모두 지원할 수 있도록 반응형 기반으로 설계했습니다.\n\n특히 모바일 환경에서는:\n- 입력 영역 우선 배치\n- CTA 버튼 크기 확대\n- 정보 구조 단순화\n를 통해 빠르게 이벤트에 참여할 수 있도록 구성했습니다.\n\n또한:\n- 이벤트 안내\n- 다운로드 버튼\n- 초대번호 입력\n- 완료 상태\n등 핵심 행동 요소가 한 화면 안에서 자연스럽게 이어지도록 UI 흐름을 설계했습니다."
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778589845278--2026-05-12--9.43.56.png",
+          "alt": "103.png",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "title": "6. 결과 및 의미",
+          "text": "이 기획은 단순 프로모션 이벤트 제작이 아니라,\n'**기존 유저 네트워크를 활용해 신규 유저 유입과 플랫폼 진입 흐름을 설계한 작업**'이었습니다.\n\n특히:\n- 초대 기반 유입 구조\n- 다운로드/회원가입 연결\n- 보상 검증 로직\n- 반응형 이벤트 경험\n- 운영 리스크 대응\n까지 함께 고려하며,\n서비스 운영 관점에서 실제로 동작 가능한 이벤트 구조를 만드는 경험을 할 수 있었습니다.\n\n또한 UGC 플랫폼 특성상 중요한:\n- 친구 기반 확산\n- 그룹 플레이 경험\n- 크리에이터 네트워크 형성\n을 강화하는 방향으로 이벤트를 설계했다는 점에서 의미 있는 프로젝트였습니다."
         }
       ],
       "phaseId": "mw1"
@@ -535,92 +614,6 @@
       "phaseId": "mw2"
     },
     {
-      "slug": "account-withdrawal",
-      "title": "서비스 탈퇴 기능 기획",
-      "summary": "환불 권리와 데이터 보존 기준을 법무와 함께 설계한 탈퇴 시스템",
-      "tags": [
-        "탈퇴Flow",
-        "법무협업",
-        "정책설계"
-      ],
-      "period": "2023",
-      "body": "메이플스토리 월드는 크리에이터가 만든 콘텐츠를 다른 유저가 구매해서 즐기는 UGC 플랫폼입니다. 그래서 크리에이터의의 탈퇴가  플랫폼의 많은 영역에 영향을 미쳤습니다. 탈퇴 계정의 데이터를 어떻게 처리할지, 환불 이슈는 어떻게 풀지 같이 고려한 로직 설계가 필요했습니다.",
-      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647512352--2026-05-01--7.49.27.png",
-      "thumbnailAlt": "스크린샷 2026-05-01 오후 7.49.27.png",
-      "imageUrl": "",
-      "imageAlt": "",
-      "imageCaption": "",
-      "contentBlocks": [
-        {
-          "type": "text",
-          "text": "메이플스토리 월드는 크리에이터가 만든 콘텐츠를 다른 유저가 구매해 즐기는 UGC 플랫폼입니다. 그래서 한 사용자가 탈퇴하면 그 사람만의 문제로 끝나지 않고, 그가 만든 콘텐츠를 산 다른 유저에게도 영향이 갑니다. **탈퇴 계정의 데이터 처리와 구매자 환불을 함께 고려한 로직 설계**가 필요했습니다.",
-          "title": "문제 — 한 명의 탈퇴가 플랫폼 전체에 미치는 영향"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-01-background.png",
-          "alt": "UGC 플랫폼에서 탈퇴가 미치는 영향",
-          "caption": "크리에이터·구매자·콘텐츠가 연결된 구조라, 한 사용자의 탈퇴가 플랫폼 전반에 영향을 미쳤습니다"
-        },
-        {
-          "type": "text",
-          "text": "문제를 두 갈래로 나누어 정의했습니다. 첫째, **크리에이터 탈퇴 시 저작물과 미정산 수익을 어떻게 처리할지** 기준이 필요했습니다. 둘째, **크리에이터가 탈퇴해도 구매자가 환불받지 못하는 문제가 없도록** 환불 방안을 함께 마련해야 했습니다. 이 두 가지가 탈퇴 시 가장 큰 문제였기에 이를 해결하는 로직을 세웠습니다.",
-          "title": "과제 정의 — 저작물·수익 처리 + 구매자 환불"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-02-problems.png",
-          "alt": "핵심 과제 두 가지 정의",
-          "caption": "크리에이터의 저작물·수익 처리와 구매자 환불 방안, 두 가지를 핵심 과제로 잡았습니다"
-        },
-        {
-          "type": "text",
-          "text": "먼저 탈퇴 후 데이터 처리를 정리했습니다. 미정산 수익금이나 거래 데이터가 있으면 **회계 처리 기준에 맞춰 일정 기간 보관**했습니다. 탈퇴 크리에이터의 콘텐츠는 **비노출 처리**하고, 댓글·글은 작성자를 **‘Unknown’으로 익명화**했습니다. 또한 재가입하더라도 이전 계정의 구매·활동 데이터와 연결되지 않도록 **식별자를 분리**해 새 계정으로 다루게 했습니다.",
-          "title": "탈퇴 후 데이터 처리 기준 수립"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-03a-data-handling.png",
-          "alt": "탈퇴 후 데이터 처리 로직 설계",
-          "caption": "수익금 보관, 콘텐츠 비노출·익명화, 재가입 식별자 분리 — 세 가지 기준으로 데이터 처리 방향을 정했습니다"
-        },
-        {
-          "type": "text",
-          "text": "다음으로 판매자가 탈퇴해도 구매자가 환불받을 수 있는 로직을 만들었습니다. 판매자가 탈퇴를 신청하면 그 상품에 **‘환불요청’ 버튼이 자동 노출**되어, 구매자가 판매자를 거치지 않고 환불 가능 기간 내 직접 환불을 요청할 수 있게 했습니다. 또한 탈퇴 유예·수익금 정산 기간을 고려해 **30일 이내 탈퇴를 취소할 수 있는 안전장치**를 두었고, 서비스/계정/즉시 탈퇴 등 **케이스별로 의미와 처리 방식을 다르게 정의**해 운영 혼선을 없앴습니다.",
-          "title": "판매자 탈퇴에도 구매자 환불을 보장하는 로직"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-03b-refund-logic.png",
-          "alt": "판매자 탈퇴 시 구매자의 환불 로직 설계",
-          "caption": "구매상품에 환불요청 버튼 노출, 유예·정산 기간 반영, 케이스별 탈퇴 정의 — 세 단계로 환불 로직을 설계했습니다"
-        },
-        {
-          "type": "text",
-          "text": "기능 개발 전에 사업·법무·개인정보 정책 부서와 약관을 정비하고 컴플라이언스 검토를 진행했습니다. **탈퇴 신청 후 7일 이내 재로그인 시 탈퇴 취소** 유예를 두고, **개인정보는 탈퇴 확정 후 30일 이내 전부 삭제**되도록 설계했으며, 판매자가 탈퇴해도 **구매자는 구매 후 7일 이내 환불**받을 수 있도록 보장했습니다.",
-          "title": "법무·개인정보와 컴플라이언스 검토"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-04-legal-review.png",
-          "alt": "법무·정책 검토 결과",
-          "caption": "탈퇴 유예 7일, 개인정보 파기 30일, 환불 보장 7일 — 세 가지 기준으로 컴플라이언스를 정리했습니다"
-        },
-        {
-          "type": "text",
-          "text": "그 결과 **크리에이터가 탈퇴해도 구매자의 환불 권리가 보장**되고 탈퇴 후 데이터 처리 기준이 명확해졌습니다. 엣지 케이스를 미리 정의해 **CS 부담이 크게 줄었고, 탈퇴 관련 CS 문의가 발생하지 않았습니다**. 단순한 탈퇴 처리가 아니라 사용자·콘텐츠·데이터 관계까지 고려한 **플랫폼 정책으로 발전**시킬 수 있었습니다.",
-          "title": "성과"
-        },
-        {
-          "type": "image",
-          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-05-results.png",
-          "alt": "서비스 적용 결과 및 성과",
-          "caption": "구매자 권리 보호, 데이터 처리 기준 수립, 운영 리스크 축소 — 세 가지 성과로 이어졌습니다"
-        }
-      ],
-      "phaseId": "mw3"
-    },
-    {
       "slug": "global-backoffice",
       "title": "글로벌 운영 백오피스 구축",
       "summary": "글로벌 운영 효율을 높이기 위한 백오피스 기능 정의와 구축",
@@ -733,6 +726,92 @@
           "url": "",
           "alt": "",
           "caption": ""
+        }
+      ],
+      "phaseId": "mw2"
+    },
+    {
+      "slug": "account-withdrawal",
+      "title": "서비스 탈퇴 기능 기획",
+      "summary": "환불 권리와 데이터 보존 기준을 법무와 함께 설계한 탈퇴 시스템",
+      "tags": [
+        "탈퇴Flow",
+        "법무협업",
+        "정책설계"
+      ],
+      "period": "2023",
+      "body": "메이플스토리 월드는 크리에이터가 만든 콘텐츠를 다른 유저가 구매해서 즐기는 UGC 플랫폼입니다. 그래서 크리에이터의의 탈퇴가  플랫폼의 많은 영역에 영향을 미쳤습니다. 탈퇴 계정의 데이터를 어떻게 처리할지, 환불 이슈는 어떻게 풀지 같이 고려한 로직 설계가 필요했습니다.",
+      "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777647512352--2026-05-01--7.49.27.png",
+      "thumbnailAlt": "스크린샷 2026-05-01 오후 7.49.27.png",
+      "imageUrl": "",
+      "imageAlt": "",
+      "imageCaption": "",
+      "contentBlocks": [
+        {
+          "type": "text",
+          "text": "메이플스토리 월드는 크리에이터가 만든 콘텐츠를 다른 유저가 구매해 즐기는 UGC 플랫폼입니다. 그래서 한 사용자가 탈퇴하면 그 사람만의 문제로 끝나지 않고, 그가 만든 콘텐츠를 산 다른 유저에게도 영향이 갑니다. **탈퇴 계정의 데이터 처리와 구매자 환불을 함께 고려한 로직 설계**가 필요했습니다.",
+          "title": "문제 — 한 명의 탈퇴가 플랫폼 전체에 미치는 영향"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-01-background.png",
+          "alt": "UGC 플랫폼에서 탈퇴가 미치는 영향",
+          "caption": "크리에이터·구매자·콘텐츠가 연결된 구조라, 한 사용자의 탈퇴가 플랫폼 전반에 영향을 미쳤습니다"
+        },
+        {
+          "type": "text",
+          "text": "문제를 두 갈래로 나누어 정의했습니다. 첫째, **크리에이터 탈퇴 시 저작물과 미정산 수익을 어떻게 처리할지** 기준이 필요했습니다. 둘째, **크리에이터가 탈퇴해도 구매자가 환불받지 못하는 문제가 없도록** 환불 방안을 함께 마련해야 했습니다. 이 두 가지가 탈퇴 시 가장 큰 문제였기에 이를 해결하는 로직을 세웠습니다.",
+          "title": "과제 정의 — 저작물·수익 처리 + 구매자 환불"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-02-problems.png",
+          "alt": "핵심 과제 두 가지 정의",
+          "caption": "크리에이터의 저작물·수익 처리와 구매자 환불 방안, 두 가지를 핵심 과제로 잡았습니다"
+        },
+        {
+          "type": "text",
+          "text": "먼저 탈퇴 후 데이터 처리를 정리했습니다. 미정산 수익금이나 거래 데이터가 있으면 **회계 처리 기준에 맞춰 일정 기간 보관**했습니다. 탈퇴 크리에이터의 콘텐츠는 **비노출 처리**하고, 댓글·글은 작성자를 **‘Unknown’으로 익명화**했습니다. 또한 재가입하더라도 이전 계정의 구매·활동 데이터와 연결되지 않도록 **식별자를 분리**해 새 계정으로 다루게 했습니다.",
+          "title": "탈퇴 후 데이터 처리 기준 수립"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-03a-data-handling.png",
+          "alt": "탈퇴 후 데이터 처리 로직 설계",
+          "caption": "수익금 보관, 콘텐츠 비노출·익명화, 재가입 식별자 분리 — 세 가지 기준으로 데이터 처리 방향을 정했습니다"
+        },
+        {
+          "type": "text",
+          "text": "다음으로 판매자가 탈퇴해도 구매자가 환불받을 수 있는 로직을 만들었습니다. 판매자가 탈퇴를 신청하면 그 상품에 **‘환불요청’ 버튼이 자동 노출**되어, 구매자가 판매자를 거치지 않고 환불 가능 기간 내 직접 환불을 요청할 수 있게 했습니다. 또한 탈퇴 유예·수익금 정산 기간을 고려해 **30일 이내 탈퇴를 취소할 수 있는 안전장치**를 두었고, 서비스/계정/즉시 탈퇴 등 **케이스별로 의미와 처리 방식을 다르게 정의**해 운영 혼선을 없앴습니다.",
+          "title": "판매자 탈퇴에도 구매자 환불을 보장하는 로직"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-03b-refund-logic.png",
+          "alt": "판매자 탈퇴 시 구매자의 환불 로직 설계",
+          "caption": "구매상품에 환불요청 버튼 노출, 유예·정산 기간 반영, 케이스별 탈퇴 정의 — 세 단계로 환불 로직을 설계했습니다"
+        },
+        {
+          "type": "text",
+          "text": "기능 개발 전에 사업·법무·개인정보 정책 부서와 약관을 정비하고 컴플라이언스 검토를 진행했습니다. **탈퇴 신청 후 7일 이내 재로그인 시 탈퇴 취소** 유예를 두고, **개인정보는 탈퇴 확정 후 30일 이내 전부 삭제**되도록 설계했으며, 판매자가 탈퇴해도 **구매자는 구매 후 7일 이내 환불**받을 수 있도록 보장했습니다.",
+          "title": "법무·개인정보와 컴플라이언스 검토"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-04-legal-review.png",
+          "alt": "법무·정책 검토 결과",
+          "caption": "탈퇴 유예 7일, 개인정보 파기 30일, 환불 보장 7일 — 세 가지 기준으로 컴플라이언스를 정리했습니다"
+        },
+        {
+          "type": "text",
+          "text": "그 결과 **크리에이터가 탈퇴해도 구매자의 환불 권리가 보장**되고 탈퇴 후 데이터 처리 기준이 명확해졌습니다. 엣지 케이스를 미리 정의해 **CS 부담이 크게 줄었고, 탈퇴 관련 CS 문의가 발생하지 않았습니다**. 단순한 탈퇴 처리가 아니라 사용자·콘텐츠·데이터 관계까지 고려한 **플랫폼 정책으로 발전**시킬 수 있었습니다.",
+          "title": "성과"
+        },
+        {
+          "type": "image",
+          "url": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestoryworlds/delete_account/slide-05-results.png",
+          "alt": "서비스 적용 결과 및 성과",
+          "caption": "구매자 권리 보호, 데이터 처리 기준 수립, 운영 리스크 축소 — 세 가지 성과로 이어졌습니다"
         }
       ],
       "phaseId": "mw3"
@@ -876,7 +955,7 @@
   "phases": [
     {
       "id": "mw1",
-      "title": "Phase 1. 국내 소프트 런칭",
+      "title": "Phase 1. CBT 및 런칭",
       "summary": "2022 · 유입·인게이지먼트 검증과 서비스 지표 측정 기반 구축 (검색 정확도 60%p 향상)"
     },
     {
