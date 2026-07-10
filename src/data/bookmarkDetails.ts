@@ -1,5 +1,3 @@
-import hellomaplePlatformContent from "../../data/edits/hellomaple-platform.json";
-
 export type DetailSection = {
   title: string;
   body: string;
@@ -535,10 +533,6 @@ export const defaultBookmarkDetails: Record<string, BookmarkDetailContent> = {
     ],
   },
 };
-
-// GitHub 편집본을 빌드 시점의 fallback에도 반영해 첫 진입 시 콘텐츠가 바뀌어 보이지 않게 합니다.
-defaultBookmarkDetails["hellomaple-platform"] =
-  hellomaplePlatformContent as BookmarkDetailContent;
 
 export const createBlankDetailContent = (): BookmarkDetailContent => ({
   intro: "",
