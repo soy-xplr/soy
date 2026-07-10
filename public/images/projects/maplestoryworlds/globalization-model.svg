@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">메이플스토리 월드 글로벌 운영 모델</title>
+  <desc id="desc">공식 웹, 사용자 제작 월드, 국가 그룹 운영을 번역 키와 버전, 상태, 권한, 검수 기준으로 연결한 구조</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F8FF"/>
+      <stop offset="0.55" stop-color="#F8FBF8"/>
+      <stop offset="1" stop-color="#FFF8EF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#21334B" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 8 4 0 8Z" fill="#5A86C9"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 8 4 0 8Z" fill="#42A37B"/>
+    </marker>
+    <style>
+      text { font-family: Inter, Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+      .eyebrow { font-size: 17px; font-weight: 700; letter-spacing: 2.2px; fill: #60758C; }
+      .heading { font-size: 38px; font-weight: 770; letter-spacing: -1.2px; fill: #182B40; }
+      .card-title { font-size: 23px; font-weight: 750; fill: #20354B; }
+      .card-copy { font-size: 16px; font-weight: 520; fill: #617489; }
+      .step { font-size: 15px; font-weight: 680; fill: #294057; }
+      .pill { font-size: 15px; font-weight: 690; fill: #354A60; }
+      .footer-title { font-size: 17px; font-weight: 750; fill: #F8FBFF; }
+      .footer-copy { font-size: 15px; font-weight: 580; fill: #DDE8F3; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" rx="32" fill="url(#background)"/>
+  <circle cx="1120" cy="50" r="136" fill="#DCE9FF" opacity="0.55"/>
+  <circle cx="62" cy="614" r="130" fill="#E0F3E8" opacity="0.6"/>
+
+  <text x="74" y="74" class="eyebrow">GLOBAL OPERATING MODEL</text>
+  <text x="74" y="126" class="heading">언어와 국가가 늘어나도 반복 가능한 구조</text>
+
+  <g transform="translate(74 168)" filter="url(#shadow)">
+    <rect width="326" height="300" rx="24" fill="#FFFFFF" stroke="#DCE7F4"/>
+    <rect width="326" height="7" rx="3.5" fill="#4E83D2"/>
+    <circle cx="36" cy="48" r="17" fill="#E8F1FF"/>
+    <path d="M28 48h16M36 40v16" stroke="#4E83D2" stroke-width="2" stroke-linecap="round"/>
+    <text x="64" y="55" class="card-title">공식 웹</text>
+    <text x="28" y="90" class="card-copy">배포 일정에 맞춘 다국어 콘텐츠 운영</text>
+
+    <rect x="28" y="119" width="76" height="46" rx="12" fill="#EEF4FD"/>
+    <text x="66" y="148" text-anchor="middle" class="step">번역 키</text>
+    <path d="M111 142H132" stroke="#5A86C9" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <rect x="141" y="119" width="76" height="46" rx="12" fill="#EEF4FD"/>
+    <text x="179" y="148" text-anchor="middle" class="step">번역·검수</text>
+    <path d="M224 142H245" stroke="#5A86C9" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <rect x="254" y="119" width="44" height="46" rx="12" fill="#E5F0FF"/>
+    <text x="276" y="148" text-anchor="middle" class="step">배포</text>
+
+    <rect x="28" y="194" width="270" height="72" rx="16" fill="#F7F9FC" stroke="#E7EDF4"/>
+    <text x="46" y="223" class="step">운영 기준</text>
+    <text x="46" y="248" class="card-copy">변경 목록 · 담당자 · 마감 · 배포 상태</text>
+  </g>
+
+  <g transform="translate(437 168)" filter="url(#shadow)">
+    <rect width="326" height="300" rx="24" fill="#FFFFFF" stroke="#DCEAE3"/>
+    <rect width="326" height="7" rx="3.5" fill="#36A172"/>
+    <circle cx="36" cy="48" r="17" fill="#E7F6EE"/>
+    <path d="m28 50 6 6 11-15" fill="none" stroke="#36A172" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="64" y="55" class="card-title">UGC 월드</text>
+    <text x="28" y="90" class="card-copy">크리에이터와 번역가가 협업하는 제품</text>
+
+    <rect x="28" y="119" width="80" height="46" rx="12" fill="#EDF8F2"/>
+    <text x="68" y="148" text-anchor="middle" class="step">Maker</text>
+    <path d="M116 135H137" stroke="#42A37B" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <path d="M137 151H116" stroke="#42A37B" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <rect x="146" y="112" width="78" height="60" rx="12" fill="#E8F6EF"/>
+    <text x="185" y="137" text-anchor="middle" class="step">Web</text>
+    <text x="185" y="157" text-anchor="middle" class="step">Translation</text>
+    <path d="M232 135H253" stroke="#42A37B" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <path d="M253 151H232" stroke="#42A37B" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <rect x="252" y="119" width="46" height="46" rx="12" fill="#EDF8F2"/>
+    <text x="275" y="148" text-anchor="middle" class="step">번역가</text>
+
+    <rect x="28" y="194" width="270" height="72" rx="16" fill="#F7F9FC" stroke="#E7EDF4"/>
+    <text x="46" y="223" class="step">핵심 흐름</text>
+    <text x="46" y="248" class="card-copy">추출 · 번역 · 검수 · 원본 동기화</text>
+  </g>
+
+  <g transform="translate(800 168)" filter="url(#shadow)">
+    <rect width="326" height="300" rx="24" fill="#FFFFFF" stroke="#F0E2CF"/>
+    <rect width="326" height="7" rx="3.5" fill="#E89535"/>
+    <circle cx="36" cy="48" r="17" fill="#FFF2E1"/>
+    <circle cx="36" cy="48" r="9" fill="none" stroke="#E89535" stroke-width="2"/>
+    <path d="M27 48h18M36 39c4 5 4 13 0 18M36 39c-4 5-4 13 0 18" fill="none" stroke="#E89535" stroke-width="1.6"/>
+    <text x="64" y="55" class="card-title">글로벌 운영 정책</text>
+    <text x="28" y="90" class="card-copy">국가와 언어를 분리한 노출·권한 관리</text>
+
+    <rect x="28" y="119" width="123" height="74" rx="14" fill="#FFF7EC" stroke="#F3DFC1"/>
+    <text x="89.5" y="148" text-anchor="middle" class="step">국가 그룹</text>
+    <text x="89.5" y="173" text-anchor="middle" class="card-copy">콘텐츠 노출</text>
+    <rect x="175" y="119" width="123" height="74" rx="14" fill="#FFF7EC" stroke="#F3DFC1"/>
+    <text x="236.5" y="148" text-anchor="middle" class="step">언어</text>
+    <text x="236.5" y="173" text-anchor="middle" class="card-copy">화면 표시</text>
+
+    <rect x="28" y="213" width="270" height="53" rx="16" fill="#F7F9FC" stroke="#E7EDF4"/>
+    <text x="163" y="246" text-anchor="middle" class="step">백오피스에서 즉시 조정</text>
+  </g>
+
+  <path d="M237 484V506M600 484V506M963 484V506" stroke="#93A5B7" stroke-width="2" stroke-dasharray="4 5"/>
+
+  <g transform="translate(74 506)">
+    <rect width="1052" height="76" rx="22" fill="#263B52"/>
+    <text x="28" y="31" class="footer-title">공통 운영 표준</text>
+    <text x="28" y="55" class="footer-copy">도메인이 달라도 같은 기준으로 변경 이력과 품질을 추적</text>
+    <g transform="translate(421 17)">
+      <rect width="92" height="42" rx="21" fill="#FFFFFF" opacity="0.12"/>
+      <text x="46" y="27" text-anchor="middle" class="footer-title">번역 키</text>
+      <rect x="104" width="92" height="42" rx="21" fill="#FFFFFF" opacity="0.12"/>
+      <text x="150" y="27" text-anchor="middle" class="footer-title">버전</text>
+      <rect x="208" width="92" height="42" rx="21" fill="#FFFFFF" opacity="0.12"/>
+      <text x="254" y="27" text-anchor="middle" class="footer-title">상태</text>
+      <rect x="312" width="92" height="42" rx="21" fill="#FFFFFF" opacity="0.12"/>
+      <text x="358" y="27" text-anchor="middle" class="footer-title">권한</text>
+      <rect x="416" width="92" height="42" rx="21" fill="#FFFFFF" opacity="0.12"/>
+      <text x="462" y="27" text-anchor="middle" class="footer-title">LQA</text>
+    </g>
+  </g>
+</svg>

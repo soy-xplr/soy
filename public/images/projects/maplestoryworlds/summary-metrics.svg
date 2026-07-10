@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">메이플스토리 월드 핵심 성과</title>
+  <desc id="desc">누적 이용자 700만 명, 검색 정확도 60퍼센트포인트 향상, 월별 영문 동시 배포율 100퍼센트, 주요 마일스톤 5회 연속 온타임</desc>
+  <defs>
+    <linearGradient id="background" x1="70" y1="26" x2="1112" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6FAFF"/>
+      <stop offset="0.5" stop-color="#F8FBF7"/>
+      <stop offset="1" stop-color="#FFF9F1"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="90" y1="0" x2="1110" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3578E5"/>
+      <stop offset="0.36" stop-color="#25A776"/>
+      <stop offset="0.68" stop-color="#F19A38"/>
+      <stop offset="1" stop-color="#8257D9"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#22334A" flood-opacity="0.09"/>
+    </filter>
+    <style>
+      text { font-family: Inter, Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+      .eyebrow { font-size: 18px; font-weight: 700; letter-spacing: 2.4px; fill: #54708D; }
+      .heading { font-size: 40px; font-weight: 760; letter-spacing: -1.4px; fill: #182B40; }
+      .value { font-size: 48px; font-weight: 800; letter-spacing: -1.2px; }
+      .label { font-size: 21px; font-weight: 700; fill: #21364B; }
+      .detail { font-size: 16px; font-weight: 520; fill: #687A8C; }
+      .stage { font-size: 16px; font-weight: 650; fill: #53687B; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" rx="32" fill="url(#background)"/>
+  <circle cx="1118" cy="62" r="145" fill="#DDEAFF" opacity="0.58"/>
+  <circle cx="68" cy="600" r="128" fill="#E4F5EB" opacity="0.68"/>
+  <rect x="68" y="56" width="1064" height="518" rx="28" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="68" y="56" width="1064" height="7" rx="3.5" fill="url(#accent)"/>
+
+  <text x="108" y="112" class="eyebrow">MAPLESTORY WORLDS · 2021–2024</text>
+  <text x="108" y="164" class="heading">제품성 검증에서 글로벌 운영까지</text>
+
+  <g transform="translate(108 210)">
+    <rect width="226" height="224" rx="22" fill="#F1F6FF" stroke="#D9E7FC"/>
+    <circle cx="30" cy="31" r="10" fill="#3578E5"/>
+    <text x="28" y="100" class="value" fill="#276CD6">700만 명</text>
+    <text x="28" y="139" class="label">누적 이용자</text>
+    <line x1="28" y1="163" x2="198" y2="163" stroke="#D4E2F6"/>
+    <text x="28" y="191" class="detail">컨셉부터 글로벌 성장까지</text>
+  </g>
+
+  <g transform="translate(360 210)">
+    <rect width="226" height="224" rx="22" fill="#EFF9F4" stroke="#D3EDDF"/>
+    <circle cx="30" cy="31" r="10" fill="#25A776"/>
+    <text x="28" y="100" class="value" fill="#198A60">+60%p</text>
+    <text x="28" y="139" class="label">검색 정확도</text>
+    <line x1="28" y1="163" x2="198" y2="163" stroke="#CCE8D9"/>
+    <text x="28" y="191" class="detail">28만 건 로그 기반 개선</text>
+  </g>
+
+  <g transform="translate(612 210)">
+    <rect width="226" height="224" rx="22" fill="#FFF7EC" stroke="#F8E2C4"/>
+    <circle cx="30" cy="31" r="10" fill="#F19A38"/>
+    <text x="28" y="100" class="value" fill="#D77E1D">100%</text>
+    <text x="28" y="139" class="label">영문 동시 배포율</text>
+    <line x1="28" y1="163" x2="198" y2="163" stroke="#F1DDBF"/>
+    <text x="28" y="191" class="detail">월별 운영 프로세스 정착</text>
+  </g>
+
+  <g transform="translate(864 210)">
+    <rect width="226" height="224" rx="22" fill="#F7F3FD" stroke="#E7DDF7"/>
+    <circle cx="30" cy="31" r="10" fill="#8257D9"/>
+    <text x="28" y="100" class="value" fill="#7046C5">5회 연속</text>
+    <text x="28" y="139" class="label">온타임 배포</text>
+    <line x1="28" y1="163" x2="198" y2="163" stroke="#E2D6F4"/>
+    <text x="28" y="191" class="detail">주요 플랫폼 마일스톤</text>
+  </g>
+
+  <g transform="translate(108 481)">
+    <rect width="982" height="54" rx="27" fill="#F7F9FC" stroke="#E8EDF3"/>
+    <circle cx="32" cy="27" r="6" fill="#3578E5"/>
+    <text x="51" y="33" class="stage">창작 경험</text>
+    <path d="M167 27H257" stroke="#B8C5D2" stroke-width="2" stroke-linecap="round"/>
+    <path d="m250 21 7 6-7 6" fill="none" stroke="#B8C5D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="290" cy="27" r="6" fill="#25A776"/>
+    <text x="309" y="33" class="stage">글로벌 확장</text>
+    <path d="M434 27H524" stroke="#B8C5D2" stroke-width="2" stroke-linecap="round"/>
+    <path d="m517 21 7 6-7 6" fill="none" stroke="#B8C5D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="557" cy="27" r="6" fill="#F19A38"/>
+    <text x="576" y="33" class="stage">운영 체계</text>
+    <path d="M682 27H772" stroke="#B8C5D2" stroke-width="2" stroke-linecap="round"/>
+    <path d="m765 21 7 6-7 6" fill="none" stroke="#B8C5D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="805" cy="27" r="6" fill="#8257D9"/>
+    <text x="824" y="33" class="stage">플랫폼 안정성</text>
+  </g>
+</svg>
