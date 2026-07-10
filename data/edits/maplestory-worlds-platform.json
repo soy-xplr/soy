@@ -623,27 +623,27 @@
         "운영툴"
       ],
       "period": "2023~2024",
-      "body": "메이플스토리 월드는 글로벌 서비스를 준비하면서 국가별로 서로 다른 콘텐츠를 노출할 수 있는 운영 구조가 필요했습니다.\n\n기존에는 콘텐츠 노출 영역이 국가 단위로 관리되는 구조였지만, 실제 운영에서는 국가 하나하나를 개별로 관리하기보다 비슷한 운영 정책을 가진 국가를 그룹으로 묶어 관리해야 하는 경우가 많았습니다.\n예를 들어 특정 지역권에 동일한 월드 카테고리나 배너를 노출하거나, 국가별 정책과 서비스 상황에 따라 콘텐츠 노출 범위를 조정해야 하는 상황이 발생할 수 있었습니다.\n\n이에 따라 백오피스에 국가 그룹 관리 기능을 추가하고, 카테고리와 콘텐츠 노출 영역에서 국가 그룹 기준으로 콘텐츠를 관리할 수 있도록 구조를 개선했습니다.",
+      "body": "메이플스토리 월드는 글로벌 서비스를 준비하면서 국가별로 서로 다른 콘텐츠를 노출할 수 있는 운영 구조가 필요했습니다.\n\n기존에는 콘텐츠 노출 영역이 국가 단위로 관리되는 구조였지만, 실제 운영에서는 국가 하나하나를 개별로 관리하기보다 **비슷한 운영 정책을 가진 국가를 그룹으로 묶어 관리**해야 하는 경우가 많았습니다.\n예를 들어 특정 지역권에 동일한 월드 카테고리나 배너를 노출하거나, 국가별 정책과 서비스 상황에 따라 콘텐츠 노출 범위를 조정해야 하는 상황이 발생할 수 있었습니다.\n\n이에 따라 백오피스에 국가 그룹 관리 기능을 추가하고, 카테고리와 콘텐츠 노출 영역에서 국가 그룹 기준으로 콘텐츠를 관리할 수 있도록 구조를 개선했습니다.\n\n",
       "thumbnailUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1777648125445--2026-05-02--12.08.10.png",
       "thumbnailAlt": "스크린샷 2026-05-02 오전 12.08.10.png",
-      "imageUrl": "https://raw.githubusercontent.com/soy-xplr/soy/main/public/images/projects/maplestory-worlds-platform/1778681542554-----.png",
-      "imageAlt": "백오피스 국가그룹 관리 기능 개요.png",
-      "imageCaption": "",
+      "imageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTIwIDYwMCIgd2lkdGg9IjExMjAiIGhlaWdodD0iNjAwIj48cmVjdCB3aWR0aD0iMTEyMCIgaGVpZ2h0PSI2MDAiIGZpbGw9IiNmZmZkZjgiLz48ZGVmcz48bWFya2VyIGlkPSJhIiBtYXJrZXJXaWR0aD0iMTEiIG1hcmtlckhlaWdodD0iMTEiIHJlZlg9IjguNSIgcmVmWT0iNSIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiNiM2E4OTIiLz48L21hcmtlcj48L2RlZnM+PHRleHQgeD0iNTYwIiB5PSI0OCIgZm9udC1zaXplPSIyOSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzJmMmYyZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidBcHBsZSBTRCBHb3RoaWMgTmVvJywnTWFsZ3VuIEdvdGhpYycsc3lzdGVtLXVpLHNhbnMtc2VyaWYiPuq1reqwgMK37Ja47Ja0IOq4sOykgCDrtoTrpqwgKyDqta3qsIAg6re466O5IOq0gOumrDwvdGV4dD48cmVjdCB4PSIxMjAiIHk9Ijg0IiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjEwNCIgcng9IjE2IiBmaWxsPSIjZGNlOGY1IiBzdHJva2U9IiNiM2NkZWEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PHRleHQgeD0iMzIwIiB5PSIxMzQiIGZvbnQtc2l6ZT0iMjMiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMyZjJmMmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQXBwbGUgU0QgR290aGljIE5lbycsJ01hbGd1biBHb3RoaWMnLHN5c3RlbS11aSxzYW5zLXNlcmlmIj7qta3qsIAgKENvdW50cnkpPC90ZXh0Pjx0ZXh0IHg9IjMyMCIgeT0iMTYyIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmY2YTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0FwcGxlIFNEIEdvdGhpYyBOZW8nLCdNYWxndW4gR290aGljJyxzeXN0ZW0tdWksc2Fucy1zZXJpZiI+7Ja065akIOy9mO2FkOy4oOulvCDrhbjstpztlaDsp4Ag6rKw7KCVPC90ZXh0PjxyZWN0IHg9IjYwMCIgeT0iODQiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTA0IiByeD0iMTYiIGZpbGw9IiNmYmU4YTYiIHN0cm9rZT0iI2U2Yzk2NCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48dGV4dCB4PSI4MDAiIHk9IjEzNCIgZm9udC1zaXplPSIyMyIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzJmMmYyZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidBcHBsZSBTRCBHb3RoaWMgTmVvJywnTWFsZ3VuIEdvdGhpYycsc3lzdGVtLXVpLHNhbnMtc2VyaWYiPuyWuOyWtCAoTGFuZ3VhZ2UpPC90ZXh0Pjx0ZXh0IHg9IjgwMCIgeT0iMTYyIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmY2YTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0FwcGxlIFNEIEdvdGhpYyBOZW8nLCdNYWxndW4gR290aGljJyxzeXN0ZW0tdWksc2Fucy1zZXJpZiI+7Ja065akIOyWuOyWtOuhnCDthY3siqTtirjrpbwg67O07Jes7KSE7KeAPC90ZXh0Pjx0ZXh0IHg9IjU2MCIgeT0iMjI0IiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNmY2YTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0FwcGxlIFNEIEdvdGhpYyBOZW8nLCdNYWxndW4gR290aGljJyxzeXN0ZW0tdWksc2Fucy1zZXJpZiI+4oCUIOuRkCDquLDspIDsnYQg67aE66as7ZW0IOq0gOumrCDigJQ8L3RleHQ+PHRleHQgeD0iNTYwIiB5PSIyODYiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyZjJmMmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQXBwbGUgU0QgR290aGljIE5lbycsJ01hbGd1biBHb3RoaWMnLHN5c3RlbS11aSxzYW5zLXNlcmlmIj7ruYTsirftlZwg7KCV7LGF7J2YIOq1reqwgOulvCDqt7jro7nsnLzroZwg66y27Ja0IOy9mO2FkOy4oCDrhbjstpwg6rSA66asPC90ZXh0PjxyZWN0IHg9IjcwIiB5PSIzMjYiIHdpZHRoPSIxNTAiIGhlaWdodD0iNTIiIHJ4PSIxNiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZTNkZGQyIiBzdHJva2Utd2lkdGg9IjEuNiIvPjx0ZXh0IHg9IjE0NSIgeT0iMzYwIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMmYyZjJmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0FwcGxlIFNEIEdvdGhpYyBOZW8nLCdNYWxndW4gR290aGljJyxzeXN0ZW0tdWksc2Fucy1zZXJpZiI+6rWt6rCAIEE8L3RleHQ+PHJlY3QgeD0iNzAiIHk9IjM4OCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI1MiIgcng9IjE2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNlM2RkZDIiIHN0cm9rZS13aWR0aD0iMS42Ii8+PHRleHQgeD0iMTQ1IiB5PSI0MjIiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyZjJmMmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQXBwbGUgU0QgR290aGljIE5lbycsJ01hbGd1biBHb3RoaWMnLHN5c3RlbS11aSxzYW5zLXNlcmlmIj7qta3qsIAgQjwvdGV4dD48cmVjdCB4PSI3MCIgeT0iNDUwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUyIiByeD0iMTYiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iI2UzZGRkMiIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48dGV4dCB4PSIxNDUiIHk9IjQ4NCIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzJmMmYyZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidBcHBsZSBTRCBHb3RoaWMgTmVvJywnTWFsZ3VuIEdvdGhpYycsc3lzdGVtLXVpLHNhbnMtc2VyaWYiPuq1reqwgCBDPC90ZXh0PjxwYXRoIGQ9Ik0yMjIsMzUyIEwzNjAsNDEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNiM2E4OTIiIHN0cm9rZS13aWR0aD0iMi40IiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+PHBhdGggZD0iTTIyMiw0MTQgTDM2MCw0MjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2IzYTg5MiIgc3Ryb2tlLXdpZHRoPSIyLjQiIG1hcmtlci1lbmQ9InVybCgjYSkiLz48cGF0aCBkPSJNMjIyLDQ3NiBMMzYwLDQzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYjNhODkyIiBzdHJva2Utd2lkdGg9IjIuNCIgbWFya2VyLWVuZD0idXJsKCNhKSIvPjxyZWN0IHg9IjM2NiIgeT0iMzg4IiB3aWR0aD0iMjQ0IiBoZWlnaHQ9Ijc2IiByeD0iMTYiIGZpbGw9IiNmYmU4YTYiIHN0cm9rZT0iI2U2Yzk2NCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48dGV4dCB4PSI0ODgiIHk9IjQzNCIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzJmMmYyZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidBcHBsZSBTRCBHb3RoaWMgTmVvJywnTWFsZ3VuIEdvdGhpYycsc3lzdGVtLXVpLHNhbnMtc2VyaWYiPuq1reqwgCDqt7jro7k8L3RleHQ+PGxpbmUgeDE9IjYxMiIgeTE9IjQyNiIgeDI9IjcxMiIgeTI9IjQyNiIgc3Ryb2tlPSIjYjNhODkyIiBzdHJva2Utd2lkdGg9IjIuNCIgbWFya2VyLWVuZD0idXJsKCNhKSIvPjxyZWN0IHg9IjcyMCIgeT0iMzYwIiB3aWR0aD0iMzMwIiBoZWlnaHQ9IjEzMiIgcng9IjE2IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNlM2RkZDIiIHN0cm9rZS13aWR0aD0iMS42Ii8+PHRleHQgeD0iODg1IiB5PSI0MjQiIGZvbnQtc2l6ZT0iMjMiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMyZjJmMmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQXBwbGUgU0QgR290aGljIE5lbycsJ01hbGd1biBHb3RoaWMnLHN5c3RlbS11aSxzYW5zLXNlcmlmIj7svZjthZDsuKAg7Lm07YWM6rOg66asIOyEuO2KuDwvdGV4dD48dGV4dCB4PSI4ODUiIHk9IjQ1MiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iIzZmNmE2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidBcHBsZSBTRCBHb3RoaWMgTmVvJywnTWFsZ3VuIEdvdGhpYycsc3lzdGVtLXVpLHNhbnMtc2VyaWYiPuq3uOujueuzhCDrhbjstpwg7Lm07YWM6rOg66aswrfsiJzshJwg7ISk7KCVPC90ZXh0Pjwvc3ZnPg==",
+      "imageAlt": "국가는 ‘어떤 콘텐츠를 노출할지’, 언어는 ‘어떤 언어로 보여줄지’ 기준",
+      "imageCaption": "국가는 ‘어떤 콘텐츠를 노출할지’, 언어는 ‘어떤 언어로 보여줄지’ 기준으로 분리하고, 비슷한 정책의 국가들을 그룹으로 묶어 콘텐츠 노출을 관리합니다.",
       "contentBlocks": [
         {
           "type": "text",
           "title": "배경",
-          "text": "메이플스토리 월드는 글로벌 서비스를 준비하면서 국가별로 서로 다른 콘텐츠를 노출할 수 있는 운영 구조가 필요했습니다.\n\n기존에는 콘텐츠 노출 영역이 국가 단위로 관리되는 구조였지만, 실제 운영에서는 국가 하나하나를 개별로 관리하기보다 **비슷한 운영 정책을 가진 국가를 그룹으로 묶어 관리**해야 하는 경우가 많았습니다.\n예를 들어 특정 지역권에 동일한 월드 카테고리나 배너를 노출하거나, 국가별 정책과 서비스 상황에 따라 콘텐츠 노출 범위를 조정해야 하는 상황이 발생할 수 있었습니다.\n\n이에 따라 백오피스에 국가 그룹 관리 기능을 추가하고, 카테고리와 콘텐츠 노출 영역에서 국가 그룹 기준으로 콘텐츠를 관리할 수 있도록 구조를 개선했습니다."
+          "text": "메이플스토리 월드는 글로벌 서비스를 준비하면서 국가별로 서로 다른 콘텐츠를 노출할 수 있는 운영 구조가 필요했습니다.\n\n기존에는 콘텐츠 노출 영역이 국가 단위로 관리되는 구조였지만, 실제 운영에서는 국가 하나하나를 개별로 관리하기보다 **비슷한 운영 정책을 가진 국가를 그룹으로 묶어 관리**해야 하는 경우가 많았습니다.\n예를 들어 특정 지역권에 동일한 월드 카테고리나 배너를 노출하거나, 국가별 정책과 서비스 상황에 따라 콘텐츠 노출 범위를 조정해야 하는 상황이 발생할 수 있었습니다.\n\n이에 따라 백오피스에 국가 그룹 관리 기능을 추가하고, 카테고리와 콘텐츠 노출 영역에서 국가 그룹 기준으로 콘텐츠를 관리할 수 있도록 구조를 개선했습니다.\n\n"
         },
         {
           "type": "text",
           "title": "문제 정의",
-          "text": "글로벌 운영에서는 국가별로 콘텐츠 노출 정책이 달라질 수 있습니다.\n하지만 모든 국가를 개별 단위로 관리하면 운영 복잡도가 높아지고, 동일한 정책을 적용해야 하는 국가들에도 반복적으로 설정을 적용해야 하는 문제가 생깁니다.\n\n또한 국가와 언어는 서로 다른 기준으로 관리되어야 했습니다.\n국가는 사용자의 IP 등을 기준으로 어떤 콘텐츠를 보여줄지 결정하는 기준이고, 언어는 사용자가 선택한 언어에 따라 화면의 텍스트를 어떤 언어로 보여줄지 결정하는 기준이었습니다.\n\n즉, **국가별 콘텐츠 노출과 언어별 텍스트 노출을 분리해 관리**해야 했고, 운영자가 백오피스에서 국가 그룹을 만들고 해당 그룹별 콘텐츠를 설정할 수 있는 구조가 필요했습니다."
+          "text": "글로벌 운영에서는 국가별로 콘텐츠 노출 정책이 달라질 수 있습니다.\n하지만 모든 국가를 개별 단위로 관리하면 운영 복잡도가 높아지고, 동일한 정책을 적용해야 하는 국가들에도 반복적으로 설정을 적용해야 하는 문제가 생깁니다.\n\n또한 국가와 언어는 서로 다른 기준으로 관리되어야 했습니다.\n국가는 사용자의 IP 등을 기준으로 어떤 콘텐츠를 보여줄지 결정하는 기준이고, 언어는 사용자가 선택한 언어에 따라 화면의 텍스트를 어떤 언어로 보여줄지 결정하는 기준이었습니다.\n\n즉, **국가별 콘텐츠 노출과 언어별 텍스트 노출을 분리해 관리**해야 했고, 운영자가 백오피스에서 국가 그룹을 만들고 해당 그룹별 콘텐츠를 설정할 수 있는 구조가 필요했습니다.\n\n"
         },
         {
           "type": "text",
           "title": "해결 방향",
-          "text": "국가를 개별 단위로 관리하는 대신, **여러 국가를 하나의 그룹으로 묶어 콘텐츠 노출 기준으로 사용할 수 있도록 Country Group Management 기능을 설계**했습니다.\n\n운영자는 백오피스에서 국가 그룹을 생성하고, 각 그룹에 국가를 추가하거나 제거할 수 있습니다.\n이후 Category Management와 같은 콘텐츠 관리 메뉴에서는 기존의 국가 단위가 아니라 국가 그룹 단위로 콘텐츠 노출 여부와 순서를 관리할 수 있도록 변경했습니다.\n\n이 구조를 통해 운영자는 동일한 운영 정책을 적용할 국가들을 하나의 그룹으로 관리할 수 있고, 특정 국가 그룹에만 콘텐츠를 노출하거나 별도의 카테고리 구성을 제공할 수 있게 했습니다."
+          "text": "국가를 개별 단위로 관리하는 대신, **여러 국가를 하나의 그룹으로 묶어 콘텐츠 노출 기준으로 사용할 수 있도록 Country Group Management 기능을 설계**했습니다.\n\n운영자는 백오피스에서 국가 그룹을 생성하고, 각 그룹에 국가를 추가하거나 제거할 수 있습니다.\n이후 Category Management와 같은 콘텐츠 관리 메뉴에서는 기존의 국가 단위가 아니라 국가 그룹 단위로 콘텐츠 노출 여부와 순서를 관리할 수 있도록 변경했습니다.\n\n이 구조를 통해 운영자는 동일한 운영 정책을 적용할 국가들을 하나의 그룹으로 관리할 수 있고, 특정 국가 그룹에만 콘텐츠를 노출하거나 별도의 카테고리 구성을 제공할 수 있게 했습니다.\n\n"
         },
         {
           "type": "image",
@@ -654,7 +654,7 @@
         {
           "type": "text",
           "title": "1. 국가와 언어 기준 분리",
-          "text": "글로벌 운영에서 가장 먼저 정리해야 했던 것은 **국가와 언어의 역할을 분리하는 것**이었습니다.\n\n**국가는 어떤 콘텐츠를 노출할지 결정하는 기준**입니다. 사용자의 접속 국가가 어떤 그룹에 속하는지에 따라, 그 그룹에 설정된 월드 카테고리나 콘텐츠 목록을 노출합니다. 반면 **언어는 콘텐츠의 텍스트를 어떤 언어로 보여줄지 결정하는 기준**입니다. 사용자가 언어를 바꿔도 국가 기준의 노출 범위는 그대로 유지되고 텍스트만 선택한 언어로 표시됩니다.\n\n이렇게 **국가별 콘텐츠 노출 정책과 언어별 번역 노출을 분리**해 관리할 수 있도록 했습니다."
+          "text": "글로벌 운영에서 가장 먼저 정리해야 했던 것은 **국가와 언어의 역할을 분리하는 것**이었습니다.\n\n**국가는 어떤 콘텐츠를 노출할지 결정하는 기준**입니다. 사용자의 접속 국가가 어떤 그룹에 속하는지에 따라, 그 그룹에 설정된 월드 카테고리나 콘텐츠 목록을 노출합니다. 반면 **언어는 콘텐츠의 텍스트를 어떤 언어로 보여줄지 결정하는 기준**입니다. 사용자가 언어를 바꿔도 국가 기준의 노출 범위는 그대로 유지되고 텍스트만 선택한 언어로 표시됩니다.\n\n이렇게 **국가별 콘텐츠 노출 정책과 언어별 번역 노출을 분리**해 관리할 수 있도록 했습니다.\n\n"
         },
         {
           "type": "image",
@@ -665,7 +665,7 @@
         {
           "type": "text",
           "title": "2. Country Group Management 페이지 설계",
-          "text": "백오피스에 **Country Group Management 페이지**를 추가해 운영자가 국가 그룹을 직접 관리할 수 있도록 했습니다. 이 페이지에서는 국가 그룹을 생성·수정·삭제하고, 각 그룹에 속한 국가를 추가하거나 제거할 수 있습니다. 그룹명에는 **중복 등록을 막는 유효성 검사**를 적용했습니다.\n\n또한 별도 그룹에 속하지 않은 국가는 기본 그룹인 **Default Setting**을 따르도록 설계해, **모든 국가가 반드시 하나의 콘텐츠 노출 기준을 갖고** 예외 상태로 남지 않도록 했습니다."
+          "text": "백오피스에 **Country Group Management 페이지**를 추가해 운영자가 국가 그룹을 직접 관리할 수 있도록 했습니다. 이 페이지에서는 국가 그룹을 생성·수정·삭제하고, 각 그룹에 속한 국가를 추가하거나 제거할 수 있습니다. 그룹명에는 **중복 등록을 막는 유효성 검사**를 적용했습니다.\n\n또한 별도 그룹에 속하지 않은 국가는 기본 그룹인 **Default Setting**을 따르도록 설계해, **모든 국가가 반드시 하나의 콘텐츠 노출 기준을 갖고** 예외 상태로 남지 않도록 했습니다.\n\n"
         },
         {
           "type": "image",
@@ -676,12 +676,12 @@
         {
           "type": "text",
           "title": "3. 기본 그룹과 국가 그룹 정책 정의",
-          "text": "국가 그룹 관리에서는 기본 그룹과 일반 국가 그룹의 역할을 구분했습니다.\n\n**Default Setting**은 별도 그룹에 속하지 않은 국가들이 따르는 기본 노출 기준으로, 시스템의 기준값이기 때문에 **삭제하거나 임의로 국가를 추가·제거할 수 없도록** 정리했습니다. 반면 **일반 국가 그룹**은 운영자가 직접 생성·관리하며 그룹명 수정, 국가 추가·제거가 가능합니다.\n\n다만 **하나의 국가는 동시에 여러 그룹에 속할 수 없도록** 하여, 국가별 노출 기준이 중복되거나 충돌하지 않게 했습니다."
+          "text": "국가 그룹 관리에서는 기본 그룹과 일반 국가 그룹의 역할을 구분했습니다.\n\n**Default Setting**은 별도 그룹에 속하지 않은 국가들이 따르는 기본 노출 기준으로, 시스템의 기준값이기 때문에 **삭제하거나 임의로 국가를 추가·제거할 수 없도록** 정리했습니다. 반면 **일반 국가 그룹**은 운영자가 직접 생성·관리하며 그룹명 수정, 국가 추가·제거가 가능합니다.\n\n다만 **하나의 국가는 동시에 여러 그룹에 속할 수 없도록** 하여, 국가별 노출 기준이 중복되거나 충돌하지 않게 했습니다.\n\n"
         },
         {
           "type": "text",
           "title": "4. 국가 추가 및 제거 Flow 설계",
-          "text": "국가 그룹에 국가를 추가할 때는 제공된 국가 목록에서 선택하도록 했고, **한 번에 여러 국가를 추가**할 수 있으며 이미 다른 그룹에 포함된 국가는 중복 선택되지 않도록 처리했습니다.\n\n국가를 그룹에서 제거하면 해당 국가는 다시 **Default Setting의 영향을 받도록** 설계했습니다. 즉 그룹에서 빠진 국가도 노출 기준이 사라지는 것이 아니라 기본 그룹 설정을 따르게 됩니다. 이를 통해 운영자는 그룹을 유연하게 조정하면서도 **모든 국가에 항상 하나의 노출 기준이 적용**되도록 관리할 수 있습니다."
+          "text": "국가 그룹에 국가를 추가할 때는 제공된 국가 목록에서 선택하도록 했고, **한 번에 여러 국가를 추가**할 수 있으며 이미 다른 그룹에 포함된 국가는 중복 선택되지 않도록 처리했습니다.\n\n국가를 그룹에서 제거하면 해당 국가는 다시 **Default Setting의 영향을 받도록** 설계했습니다. 즉 그룹에서 빠진 국가도 노출 기준이 사라지는 것이 아니라 기본 그룹 설정을 따르게 됩니다. 이를 통해 운영자는 그룹을 유연하게 조정하면서도 **모든 국가에 항상 하나의 노출 기준이 적용**되도록 관리할 수 있습니다.\n\n"
         },
         {
           "type": "image",
@@ -698,7 +698,7 @@
         {
           "type": "text",
           "title": "5. Category Management의 국가 그룹 단위 변경",
-          "text": "기존 Category Management는 콘텐츠 노출 영역을 국가 단위에 가깝게 관리하고 있었는데, 이를 **국가 그룹 단위로 변경**해 그룹별로 콘텐츠 카테고리를 설정할 수 있도록 개선했습니다.\n\nCountry Group Management에서 만든 국가 그룹은 Category Management의 노출 영역 선택값으로 제공되고, 운영자는 특정 그룹을 선택해 **노출할 카테고리와 순서를 설정**할 수 있습니다. 프론트에서는 사용자의 국가가 속한 그룹을 확인해 그 그룹에 설정된 콘텐츠 목록을 노출하는 구조로 정리했습니다."
+          "text": "기존 Category Management는 콘텐츠 노출 영역을 국가 단위에 가깝게 관리하고 있었는데, 이를 **국가 그룹 단위로 변경**해 그룹별로 콘텐츠 카테고리를 설정할 수 있도록 개선했습니다.\n\nCountry Group Management에서 만든 국가 그룹은 Category Management의 노출 영역 선택값으로 제공되고, 운영자는 특정 그룹을 선택해 **노출할 카테고리와 순서를 설정**할 수 있습니다. 프론트에서는 사용자의 국가가 속한 그룹을 확인해 그 그룹에 설정된 콘텐츠 목록을 노출하는 구조로 정리했습니다.\n\n"
         },
         {
           "type": "image",
@@ -709,12 +709,12 @@
         {
           "type": "text",
           "title": "6. 리스트 세팅 여부와 예외 처리",
-          "text": "국가 그룹을 만들었더라도 노출할 카테고리 리스트가 설정되지 않았을 수 있습니다. 이 경우 **프론트에 빈 콘텐츠가 노출되지 않도록**, 백오피스에서 리스트 세팅 여부를 확인할 수 있는 안내를 제공했습니다.\n\nCategory Management에서 해당 그룹의 Portal Play·Portal Home·Client Play·Client Home 등 주요 영역에 리스트가 설정돼 있는지 확인하고, 없을 때는 설정이 필요하다는 안내를 노출했습니다. 이를 통해 **국가 그룹만 만들고 실제 콘텐츠를 설정하지 않아 생기는 운영 누락**을 줄였습니다."
+          "text": "국가 그룹을 만들었더라도 노출할 카테고리 리스트가 설정되지 않았을 수 있습니다. 이 경우 **프론트에 빈 콘텐츠가 노출되지 않도록**, 백오피스에서 리스트 세팅 여부를 확인할 수 있는 안내를 제공했습니다.\n\nCategory Management에서 해당 그룹의 Portal Play·Portal Home·Client Play·Client Home 등 주요 영역에 리스트가 설정돼 있는지 확인하고, 없을 때는 설정이 필요하다는 안내를 노출했습니다. 이를 통해 **국가 그룹만 만들고 실제 콘텐츠를 설정하지 않아 생기는 운영 누락**을 줄였습니다.\n\n"
         },
         {
           "type": "text",
           "title": "7. 저장 및 라이브 반영 기준",
-          "text": "국가 그룹 생성·수정·삭제와 국가 추가·제거는 **저장 시점에 라이브에 반영**되는 구조로 설계했습니다. 변경 내용은 상단 Save 버튼으로 최종 저장하고, 저장 전까지 변경 사항을 확인할 수 있게 했습니다.\n\n그룹을 삭제하면 연결된 콘텐츠 리스트가 함께 삭제될 수 있어 **삭제 전 확인 메시지**를 제공했고, 라이브 서비스에 직접 영향을 주는 설정인 만큼 저장·삭제 과정의 확인·실패 메시지를 함께 정의했습니다."
+          "text": "국가 그룹 생성·수정·삭제와 국가 추가·제거는 **저장 시점에 라이브에 반영**되는 구조로 설계했습니다. 변경 내용은 상단 Save 버튼으로 최종 저장하고, 저장 전까지 변경 사항을 확인할 수 있게 했습니다.\n\n그룹을 삭제하면 연결된 콘텐츠 리스트가 함께 삭제될 수 있어 **삭제 전 확인 메시지**를 제공했고, 라이브 서비스에 직접 영향을 주는 설정인 만큼 저장·삭제 과정의 확인·실패 메시지를 함께 정의했습니다.\n\n"
         },
         {
           "type": "text",
