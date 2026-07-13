@@ -818,7 +818,7 @@
     {
       "slug": "world-maintenance",
       "title": "서비스 부분 점검 기능",
-      "summary": "운영자가 월드를 점검하고 사용자에게 안내할 수 있도록 한 기능",
+      "summary": "",
       "tags": [
         "운영",
         "점검",
