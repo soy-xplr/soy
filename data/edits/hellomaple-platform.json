@@ -663,7 +663,7 @@
     {
       "slug": "backoffice-renewal-ops",
       "title": "리뉴얼 홈 운영 기능",
-      "summary": "띠배너·전면·롤링·LNB 배너 등 리뉴얼 공식홈의 운영 배너·공지를 관리하는 기능",
+      "summary": "리뉴얼 공식홈의 운영 배너·공지를 관리하는 기능",
       "phaseId": "p3",
       "tags": [
         "백오피스",
