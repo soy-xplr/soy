@@ -818,7 +818,7 @@
     {
       "slug": "world-maintenance",
       "title": "서비스 부분 점검 기능",
-      "summary": "서비스의 기능 단위로 점검을 걸고",
+      "summary": "서비스의 기능 단위로 점검을 걸고 ",
       "tags": [
         "운영",
         "점검",
