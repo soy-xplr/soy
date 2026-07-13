@@ -229,7 +229,7 @@
     {
       "slug": "favorites-folder",
       "title": "리소스 즐겨찾기 기능 기획",
-      "summary": "찾은 리소스를 저장할 수 있는 기능",
+      "summary": "찾은 리소스를 폴더 저장할 수 있는 기능",
       "tags": [
         "즐겨찾기",
         "UX"
