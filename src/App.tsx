@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { bookmarks } from "./data/bookmarks";
 import { BookmarkDetailPage } from "./pages/BookmarkDetailPage";
 import { HomePage } from "./pages/HomePage";
+import { ResumePage } from "./pages/ResumePage";
 
 const getCurrentRoute = () => {
   const match = window.location.pathname.match(/^\/bookmarks\/([^/]+)(?:\/([^/]+))?$/);
@@ -18,20 +19,29 @@ const getIsOwnerMode = () => {
   return searchParams.get("owner") === "1";
 };
 
+const getIsResumeRoute = () => window.location.pathname.replace(/\/$/, "") === "/resume";
+
 function App() {
   const [currentRoute, setCurrentRoute] = useState(getCurrentRoute);
   const [isOwnerMode, setIsOwnerMode] = useState(getIsOwnerMode);
+  const [isResumeRoute, setIsResumeRoute] = useState(getIsResumeRoute);
   const currentSlug = currentRoute.slug;
 
   useEffect(() => {
     const handlePopState = () => {
       setCurrentRoute(getCurrentRoute());
       setIsOwnerMode(getIsOwnerMode());
+      setIsResumeRoute(getIsResumeRoute());
     };
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  // 이력서는 인쇄용 독립 페이지로, 포트폴리오의 상단바/푸터 없이 렌더링합니다.
+  if (isResumeRoute) {
+    return <ResumePage />;
+  }
 
   const selectedBookmark = useMemo(
     () => bookmarks.find((bookmark) => bookmark.slug === currentSlug),
