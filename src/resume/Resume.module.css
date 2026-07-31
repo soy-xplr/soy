@@ -4,6 +4,32 @@
    - 인쇄: 배경/그림자 제거, 확대·축소 없이 정확한 A4 출력
    ───────────────────────────────────────────────────────────── */
 
+/* Pretendard 웹폰트 self-host --------------------------------
+   폰트를 프로젝트에 동봉해, 뷰어의 로컬 설치 여부와 무관하게 항상
+   동일한 폰트로 렌더링되고 PDF에도 그대로 임베드되도록 합니다.
+   (파일: public/fonts/pretendard/*.woff2 — SIL Open Font License) */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
+}
+
 /* 화면 미리보기 배경/레이아웃 --------------------------------- */
 .viewport {
   --ink: #1a1a1a;

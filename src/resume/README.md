@@ -73,3 +73,15 @@ export const resumeData = {
 
 스타일은 외부 UI 라이브러리 없이 [`Resume.module.css`](./Resume.module.css) (CSS Module)로만
 구현되어 있습니다.
+
+## 폰트 (Pretendard self-host)
+
+뷰어의 로컬 폰트 설치 여부와 무관하게 **항상 동일한 폰트로 렌더링되고 PDF에도 임베드**되도록,
+Pretendard 웹폰트(Regular 400 / Medium 500 / Bold 700)를 프로젝트에 동봉했습니다.
+
+- 폰트 파일: `public/fonts/pretendard/*.woff2`
+- `@font-face` 선언: `Resume.module.css` 상단
+- 라이선스: SIL Open Font License 1.1 (`public/fonts/pretendard/OFL.txt`)
+
+이 때문에 CDN 등 외부 네트워크 없이도 오프라인에서 정확한 폰트로 인쇄/저장됩니다.
+Chrome에서 PDF로 저장하면 Pretendard 서브셋이 파일에 임베드됩니다.
