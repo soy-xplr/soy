@@ -74,7 +74,6 @@ function App() {
 
   return (
     <>
-      <div className="top-ribbon" aria-hidden="true" />
       <main className="app-shell">
         {currentSlug ? (
           <BookmarkDetailPage
