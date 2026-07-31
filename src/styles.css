@@ -1558,7 +1558,7 @@ body:has(.home-page) .site-footer {
   color: var(--ink);
   /* 본문 문단 폰트를 base+3px로 키움 (가독성) */
   font-size: calc(1.08rem + 3px);
-  line-height: 1.9;
+  line-height: 1.75;
 }
 
 .detail-section-image {
@@ -1854,7 +1854,7 @@ body:has(.home-page) .site-footer {
   color: var(--ink);
   /* 본문 문단 폰트를 base+3px로 키움 (가독성) */
   font-size: calc(1.08rem + 3px);
-  line-height: 1.95;
+  line-height: 1.8;
 }
 
 .subproject-prose p + p {
