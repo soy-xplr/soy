@@ -301,6 +301,11 @@ body:has(.home-page) .site-footer {
   letter-spacing: -0.025em;
 }
 
+/* 홈 히어로의 이름(박서영)만 5px 축소 */
+.hero h1 {
+  font-size: calc(clamp(2.6rem, 6.8vw, 5.2rem) - 5px);
+}
+
 .hero h1 span,
 .detail-header h1 {
   position: relative;
@@ -386,7 +391,7 @@ body:has(.home-page) .site-footer {
   margin: 40px 0 0;
   /* 데스크톱에선 풀 폭 활용해서 한 문장이 한 줄에 들어가도록 */
   max-width: 100%;
-  color: var(--ink);
+  color: #000000;
   font-family: var(--display-font);
   font-size: 0.98rem;
   font-weight: 400;
@@ -994,7 +999,7 @@ body:has(.home-page) .site-footer {
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 26px;
+  border-radius: 10px;
   color: inherit;
   text-align: left;
   background: var(--card);
