@@ -132,9 +132,6 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
 
       {/* ① 히어로: 신원 + 소개 + 핵심 역량 */}
       <header className="hero">
-        <div className="hero-top">
-          <p className="eyebrow">Portfolio</p>
-        </div>
         <div className="hero-identity">
           <h1>박서영</h1>
         </div>
@@ -150,10 +147,10 @@ export function HomePage({ onOpenBookmark, isOwnerMode }: HomePageProps) {
               span에 display:block을 줘서 줄바꿈이 항상 문장 끝에서만 일어남. */}
           <p>
             <span>
-              모바일 앱부터 웹/플랫폼까지, 신규 서비스 기획과 운영을 End-to-End로 주도해 온 서비스 기획자이자 PM입니다.
+              앱·웹·플랫폼 서비스의 컨셉 설계부터 출시, 글로벌 확장, 운영 고도화까지 전 과정을 주도해 온 서비스 기획자입니다.
             </span>
             <span>
-              또한 Cursor, Claude 등 AI툴을 활용해 직접 개발도 하는 바이브 코더이기도 합니다.
+              최근에는 AI 기반 업무 도구를 직접 설계·개발하고 실제 워크플로에 적용하며, 문제 해결의 범위를 넓혀가고 있습니다.
             </span>
           </p>
         </div>
