@@ -953,6 +953,8 @@ body:has(.home-page) .site-footer {
 .bookmark-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* 모든 행 높이를 동일하게 → 카드 세로 길이 통일 */
+  grid-auto-rows: 1fr;
   gap: 22px;
 }
 
@@ -979,10 +981,14 @@ body:has(.home-page) .site-footer {
 
 .bookmark-card {
   position: relative;
+  /* 그리드 셀(행) 높이를 카드가 꽉 채우도록 */
+  flex: 1;
 }
 
 .bookmark-card-link {
   display: grid;
+  /* 썸네일(auto) + 본문(1fr): 본문이 남는 높이를 채워 카드 높이 통일 */
+  grid-template-rows: auto 1fr;
   width: 100%;
   min-height: 100%;
   padding: 0;
@@ -1022,7 +1028,8 @@ body:has(.home-page) .site-footer {
 }
 
 .card-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   padding: 18px 20px 20px;
 }
@@ -1050,7 +1057,8 @@ body:has(.home-page) .site-footer {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  margin: 0;
+  /* 상단 auto로 항상 카드 하단에 정렬 → 본문 길이가 달라도 카드 높이 통일 */
+  margin: auto 0 0;
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.5;
