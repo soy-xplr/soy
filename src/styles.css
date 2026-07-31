@@ -209,7 +209,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--paper);
+  background: #ffffff;
+}
+
+/* 홈: 프로젝트 영역부터 은은한 오프화이트(#fafafa)로 톤 분리 */
+body:has(.home-page) {
+  background: #fafafa;
 }
 
 button,
@@ -234,16 +239,26 @@ input:focus-visible {
 .app-shell {
   min-height: 100vh;
   padding: 44px 20px 72px;
-  background: var(--paper);
+  /* 기본(상세 2·3depth 페이지)은 전체 흰색 */
+  background: #ffffff;
+}
+
+/* 홈에서는 프로젝트 영역 배경을 오프화이트로. 히어로는 아래에서 흰색으로 덮음 */
+.app-shell:has(.home-page) {
+  background: #fafafa;
 }
 
 .site-footer {
   padding: 28px 20px 36px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  background: var(--paper);
+  background: #ffffff;
   font-size: 0.95rem;
   text-align: center;
+}
+
+body:has(.home-page) .site-footer {
+  background: #fafafa;
 }
 
 .page {
@@ -253,7 +268,10 @@ input:focus-visible {
 
 .hero {
   position: relative;
+  /* 이름·소개 영역은 흰색 밴드로. 상단 44px(app-shell 패딩)까지 흰색이 닿도록 끌어올림 */
+  margin-top: -44px;
   padding: 44px 0 32px;
+  background: #ffffff;
   border-bottom: 1px solid var(--line);
 }
 
