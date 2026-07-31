@@ -1,8 +1,8 @@
-@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT.css");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 :root {
-  --paper: #fffdf8;
-  --card: #fffdf8;
+  --paper: #ffffff;
+  --card: #ffffff;
   --ink: #2f2f2f;
   --muted: #6f6a60;
   --line: #e3ddd2;
@@ -11,8 +11,8 @@
   --pink: #f4b6c2;
   --shadow: 0 18px 45px rgba(68, 55, 38, 0.11);
   --body-font:
-    "SUIT Variable", "SUIT", ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
+    "Pretendard", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   --display-font: var(--body-font);
   font-family: var(--body-font);
   color: var(--ink);
@@ -26,7 +26,7 @@
   padding: 32px 28px;
   border: 1px solid var(--line);
   border-radius: 28px;
-  background: rgba(255, 253, 248, 0.78);
+  background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 12px 32px rgba(68, 55, 38, 0.07);
 }
 
@@ -241,6 +241,8 @@ input:focus-visible {
   padding: 44px 20px 72px;
   /* 기본(상세 2·3depth 페이지)은 전체 흰색 */
   background: #ffffff;
+  /* 히어로 흰색 밴드가 양옆 끝까지(full-bleed) 뻗을 때 가로 스크롤 방지 */
+  overflow-x: clip;
 }
 
 /* 홈에서는 프로젝트 영역 배경을 오프화이트로. 히어로는 아래에서 흰색으로 덮음 */
@@ -268,9 +270,13 @@ body:has(.home-page) .site-footer {
 
 .hero {
   position: relative;
-  /* 이름·소개 영역은 흰색 밴드로. 상단 44px(app-shell 패딩)까지 흰색이 닿도록 끌어올림 */
+  /* 이름·소개 영역은 좌우 끝까지 뻗는 흰색 밴드.
+     - margin-top: -44px 로 상단 app-shell 패딩까지 흰색이 닿게 끌어올림
+     - margin-inline: calc(50% - 50vw) 로 뷰포트 양 끝까지 확장(full-bleed)
+     - padding-inline: calc(50vw - 50%) 로 본문은 다시 중앙 컬럼에 정렬 */
   margin-top: -44px;
-  padding: 44px 0 32px;
+  margin-inline: calc(50% - 50vw);
+  padding: 44px calc(50vw - 50%) 32px;
   background: #ffffff;
   border-bottom: 1px solid var(--line);
 }
@@ -463,7 +469,7 @@ body:has(.home-page) .site-footer {
   padding: 22px 24px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .hero-skills > .eyebrow {
@@ -628,7 +634,7 @@ body:has(.home-page) .site-footer {
 .about-soy-card {
   border: 1px solid var(--line);
   border-radius: 28px;
-  background: rgba(255, 253, 248, 0.78);
+  background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 12px 32px rgba(68, 55, 38, 0.07);
 }
 
@@ -704,7 +710,7 @@ body:has(.home-page) .site-footer {
   padding: 30px;
   background:
     linear-gradient(135deg, rgba(248, 207, 216, 0.3), rgba(183, 214, 242, 0.2)),
-    rgba(255, 253, 248, 0.88);
+    rgba(255, 255, 255, 0.88);
 }
 
 .about-soy-intro h2 {
@@ -760,7 +766,7 @@ body:has(.home-page) .site-footer {
 }
 
 .about-link-list a {
-  background: rgba(255, 253, 248, 0.82);
+  background: rgba(255, 255, 255, 0.82);
   text-decoration: none;
 }
 
@@ -772,7 +778,7 @@ body:has(.home-page) .site-footer {
   padding: 18px 20px;
   border: 1px dashed rgba(47, 47, 47, 0.2);
   border-radius: 24px;
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .featured-strip p {
@@ -1117,7 +1123,7 @@ body:has(.home-page) .site-footer {
   padding: 56px 20px;
   border: 1px dashed var(--line);
   border-radius: 28px;
-  background: rgba(255, 253, 248, 0.72);
+  background: rgba(255, 255, 255, 0.72);
   text-align: center;
 }
 
@@ -1194,7 +1200,7 @@ body:has(.home-page) .site-footer {
 .detail-cover span {
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 253, 248, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: var(--muted);
 }
 
@@ -1496,7 +1502,7 @@ body:has(.home-page) .site-footer {
   padding: 14px;
   border: 1px solid rgba(47, 47, 47, 0.08);
   border-radius: 18px;
-  background: rgba(255, 253, 248, 0.62);
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .editor-section {
@@ -1729,7 +1735,7 @@ body:has(.home-page) .site-footer {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 24px;
-  background: rgba(255, 253, 248, 0.82);
+  background: rgba(255, 255, 255, 0.82);
   box-shadow: 0 12px 30px rgba(68, 55, 38, 0.08);
 }
 
@@ -1953,7 +1959,7 @@ body:has(.home-page) .site-footer {
   padding: 20px;
   text-align: center;
   color: var(--muted);
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   border: 1px dashed var(--line);
   border-radius: 16px;
   font-size: 0.95rem;
