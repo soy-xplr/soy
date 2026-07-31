@@ -1,7 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { resumeData as defaultResumeData, type ResumeData } from "../data/resumeData";
+import {
+  resumeData as defaultResumeData,
+  defaultSectionTitles,
+  type ResumeData,
+} from "../data/resumeData";
 
 const STORAGE_KEY = "beautifulweb-resume:v1";
+
+// 예전에 저장된 데이터에 없는 필드(예: sections)를 기본값으로 채워 넣습니다.
+function normalize(data: ResumeData): ResumeData {
+  return {
+    ...data,
+    sections: { ...defaultSectionTitles, ...(data.sections ?? {}) },
+  };
+}
 
 // 저장된 값이 최소한의 형태를 갖췄는지 가볍게 검증.
 function isResumeData(value: unknown): value is ResumeData {
@@ -23,7 +35,7 @@ function loadInitial(): ResumeData {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultResumeData;
     const parsed = JSON.parse(raw);
-    return isResumeData(parsed) ? parsed : defaultResumeData;
+    return isResumeData(parsed) ? normalize(parsed) : defaultResumeData;
   } catch {
     return defaultResumeData;
   }
@@ -72,7 +84,7 @@ export function useResumeState() {
     if (!isResumeData(parsed)) {
       throw new Error("이력서 JSON 형식이 아닙니다.");
     }
-    setData(parsed);
+    setData(normalize(parsed));
   }, []);
 
   const reset = useCallback(() => {

@@ -47,6 +47,13 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type SectionTitles = {
+  projects: string;
+  experience: string;
+  education: string;
+  skills: string;
+};
+
 export type ResumeData = {
   profile: {
     name: string;
@@ -54,10 +61,19 @@ export type ResumeData = {
     contacts: Contact[];
     introduction: string[];
   };
+  sections: SectionTitles; // 각 섹션 제목(편집 가능)
   projects: ProjectItemData[];
   experiences: ExperienceData[];
   education: EducationData[];
   skills: SkillGroup[];
+};
+
+// 섹션 제목 기본값 (저장된 데이터에 없을 때 채워 넣는 fallback)
+export const defaultSectionTitles: SectionTitles = {
+  projects: "AI Projects",
+  experience: "Experience",
+  education: "Education",
+  skills: "Skills",
 };
 
 export const resumeData: ResumeData = {
@@ -73,6 +89,8 @@ export const resumeData: ResumeData = {
       "시각디자인을 전공하고 프론트엔드 엔지니어로 6년간 근무하며, 사용자 관점의 요구사항을 정의하고 이를 제품 화면으로 구현하는 역량을 키웠습니다. 최근 실무에서 LLM 기반 제품 개발에 참여하며 AI 기술을 서비스화하는 과정을 경험했습니다. 이 과정에서 AI 제품의 유지 경험과 가치는 화면 구현뿐만 아니라, 백엔드의 데이터 파이프라인 설계가 연계되어야 완성된다는 점을 체감했습니다. 이러한 경험을 바탕으로, 사용자 관점에서 AI 기능을 직접 설계하고 이를 실제 서비스 가치로 연결하는 엔지니어로 성장하고자 합니다.",
     ],
   },
+
+  sections: { ...defaultSectionTitles },
 
   projects: [
     {

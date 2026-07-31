@@ -44,7 +44,7 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
   // initialData는 기본값 fallback 용도로만 사용(저장된 값이 있으면 그것을 우선).
   void initialData;
 
-  const { profile, projects, experiences, education, skills } = data;
+  const { profile, sections, projects, experiences, education, skills } = data;
   const projectPages = chunkProjects(projects);
   const totalPages = projectPages.length + 1;
 
@@ -136,7 +136,10 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
             paragraphs={profile.introduction}
             onChange={(next) => update((d) => void (d.profile.introduction = next))}
           />
-          <Section title="AI Projects">
+          <Section
+            title={sections.projects}
+            onChange={(t) => update((d) => void (d.sections.projects = t))}
+          >
             {projectPages[0].map((project, i) => (
               <ProjectItem
                 key={pageStartIndex(0) + i}
@@ -163,7 +166,7 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
           const isLastProjectPage = pageIndex === projectPages.length - 1;
           return (
             <Page key={`projects-${pageIndex}`} footer={footer(pageIndex)}>
-              <Section title="AI Projects (이어서)">
+              <Section>
                 {pageProjects.map((project, i) => (
                   <ProjectItem
                     key={start + i}
@@ -185,7 +188,10 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
 
         {/* ── 마지막 페이지: 경력 + 학력 + 기술 ── */}
         <Page footer={footer(totalPages - 1)}>
-          <Section title="Experience">
+          <Section
+            title={sections.experience}
+            onChange={(t) => update((d) => void (d.sections.experience = t))}
+          >
             {experiences.map((experience, i) => (
               <ExperienceItem
                 key={i}
@@ -210,7 +216,10 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
             />
           </Section>
 
-          <Section title="Education">
+          <Section
+            title={sections.education}
+            onChange={(t) => update((d) => void (d.sections.education = t))}
+          >
             {education.map((item, i) => (
               <EducationItem
                 key={i}
@@ -233,7 +242,10 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
             />
           </Section>
 
-          <Section title="Skills">
+          <Section
+            title={sections.skills}
+            onChange={(t) => update((d) => void (d.sections.skills = t))}
+          >
             <Skills
               groups={skills}
               onChange={(next) => update((d) => void (d.skills = next))}
