@@ -22,6 +22,7 @@ export type ProjectItemData = {
   period: string;
   icon?: string; // 아이콘 영역에 표시할 짧은 텍스트(예: "AI")
   iconColors?: [string, string]; // 아이콘 배경 그라디언트 색
+  iconImage?: string; // 아이콘 자리에 넣을 업로드 이미지(data URL). 있으면 이미지 우선
   highlights?: string[]; // 핵심 성과 (연한 회색 박스)
   bullets?: BulletNode[]; // 상세 업무
 };

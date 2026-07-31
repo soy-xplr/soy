@@ -471,12 +471,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
   margin: -40px -16px 4px;
   padding: 12px 16px;
   background: rgba(26, 26, 26, 0.92);
   color: #fff;
   font-size: 12px;
+}
+
+.toolbarActive {
+  background: #16a34a;
+  color: #fff;
+}
+
+.ghostButton {
+  font: inherit;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.ghostButton:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .printButton {
@@ -499,6 +519,168 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
+   편집 모드 UI (화면 전용 · 인쇄 시 모두 숨김)
+   ───────────────────────────────────────────────────────────── */
+
+/* 편집 중에는 페이지가 콘텐츠에 맞춰 늘어나 잘리지 않도록 함
+   (인쇄/보기 모드에서는 정확한 A4 높이를 유지) */
+.viewportEditing .page {
+  height: auto;
+  min-height: 297mm;
+  overflow: visible;
+}
+
+/* 인라인 편집 가능한 텍스트 */
+.editable {
+  outline: none;
+  cursor: text;
+  border-radius: 3px;
+  transition: background 0.12s, box-shadow 0.12s;
+  min-width: 8px;
+}
+
+.viewportEditing .editable:hover {
+  background: rgba(91, 141, 239, 0.08);
+  box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.12);
+}
+
+.viewportEditing .editable:focus {
+  background: rgba(91, 141, 239, 0.1);
+  box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.45);
+}
+
+/* 빈 값일 때 placeholder 표시 */
+.editable:empty::before {
+  content: attr(data-placeholder);
+  color: #b8b8b8;
+}
+
+/* 삭제 버튼 (작은 원형 ×) */
+.deleteButton {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  line-height: 1;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #e5484d;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+}
+
+/* 추가 버튼 */
+.addButton {
+  align-self: flex-start;
+  margin-top: 8px;
+  font: inherit;
+  font-size: 10.5px;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px dashed rgba(37, 99, 235, 0.5);
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+/* 소형 버튼 (하위 추가, 이미지 업로드 등) */
+.smallButton {
+  font: inherit;
+  font-size: 10px;
+  color: #444;
+  background: #ededed;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 2px 7px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.smallButton:hover {
+  background: #e0e0e0;
+}
+
+/* 연락처 아이콘(종류 순환) 버튼 */
+.iconButton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  color: inherit;
+}
+
+/* 아이콘 영역(이미지 업로드 포함) */
+.iconWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.projectIconImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+.iconTools {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 인라인 편집용 행 래퍼: 텍스트 + 삭제/추가 컨트롤 */
+.introRow,
+.highlightRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bulletRow {
+  display: inline;
+}
+
+.bulletControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.experienceMeta,
+.educationMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.skillCategoryCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─────────────────────────────────────────────────────────────
    인쇄 CSS
    ───────────────────────────────────────────────────────────── */
 @page {
@@ -514,11 +696,21 @@
     background: white;
   }
 
-  .toolbar {
+  .toolbar,
+  .deleteButton,
+  .addButton,
+  .smallButton,
+  .iconTools {
     display: none !important;
   }
 
-  .viewport {
+  /* 편집 컨트롤/placeholder는 인쇄물에 나오지 않게 */
+  .editable:empty::before {
+    content: "";
+  }
+
+  .viewport,
+  .viewportEditing {
     min-height: 0;
     background: white;
     padding: 0;
@@ -531,6 +723,7 @@
     height: 297mm;
     margin: 0;
     box-shadow: none;
+    overflow: hidden;
     page-break-after: always;
   }
 
