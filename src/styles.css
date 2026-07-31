@@ -1,32 +1,8 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
-@font-face {
-  font-family: "A2Z";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/a2z/A2Z-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "A2Z";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/fonts/a2z/A2Z-Bold.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "A2Z";
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url("/fonts/a2z/A2Z-Black.woff2") format("woff2");
-}
-
 :root {
-  --paper: #fffdf8;
-  --card: #fffdf8;
+  --paper: #ffffff;
+  --card: #ffffff;
   --ink: #2f2f2f;
   --muted: #6f6a60;
   --line: #e3ddd2;
@@ -37,7 +13,7 @@
   --body-font:
     "Pretendard", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  --display-font: "A2Z", var(--body-font);
+  --display-font: var(--body-font);
   font-family: var(--body-font);
   color: var(--ink);
   background: var(--paper);
@@ -50,7 +26,7 @@
   padding: 32px 28px;
   border: 1px solid var(--line);
   border-radius: 28px;
-  background: rgba(255, 253, 248, 0.78);
+  background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 12px 32px rgba(68, 55, 38, 0.07);
 }
 
@@ -233,7 +209,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--paper);
+  background: #ffffff;
+}
+
+/* 홈: 프로젝트 영역부터 은은한 오프화이트(#fafafa)로 톤 분리 */
+body:has(.home-page) {
+  background: #fafafa;
 }
 
 button,
@@ -255,107 +236,31 @@ input:focus-visible {
   outline-offset: 4px;
 }
 
-.top-ribbon {
-  height: 28px;
-  border-bottom: 1px solid rgba(47, 47, 47, 0.08);
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 21px,
-      rgba(139, 193, 226, 0.34) 21px,
-      rgba(139, 193, 226, 0.34) 22px,
-      transparent 22px,
-      transparent 28px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 33px,
-      rgba(139, 193, 226, 0.34) 33px,
-      rgba(139, 193, 226, 0.34) 34px,
-      transparent 34px,
-      transparent 42px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 13px,
-      rgba(226, 139, 162, 0.36) 13px,
-      rgba(226, 139, 162, 0.36) 14px,
-      transparent 14px,
-      transparent 28px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 20px,
-      rgba(226, 139, 162, 0.36) 20px,
-      rgba(226, 139, 162, 0.36) 21px,
-      transparent 21px,
-      transparent 42px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 5px,
-      rgba(255, 255, 255, 0.78) 5px,
-      rgba(255, 255, 255, 0.78) 6px,
-      transparent 6px,
-      transparent 17px,
-      rgba(255, 255, 255, 0.52) 17px,
-      rgba(255, 255, 255, 0.52) 17.5px,
-      transparent 17.5px,
-      transparent 28px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 8px,
-      rgba(255, 255, 255, 0.82) 8px,
-      rgba(255, 255, 255, 0.82) 9px,
-      transparent 9px,
-      transparent 24px,
-      rgba(255, 255, 255, 0.5) 24px,
-      rgba(255, 255, 255, 0.5) 24.5px,
-      transparent 24.5px,
-      transparent 36px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(244, 144, 170, 0.54) 0,
-      rgba(244, 144, 170, 0.54) 14px,
-      rgba(181, 218, 243, 0.62) 14px,
-      rgba(181, 218, 243, 0.62) 28px,
-      rgba(246, 168, 188, 0.46) 28px,
-      rgba(246, 168, 188, 0.46) 42px,
-      rgba(190, 224, 246, 0.58) 42px,
-      rgba(190, 224, 246, 0.58) 56px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(245, 146, 170, 0.36) 0,
-      rgba(245, 146, 170, 0.36) 11px,
-      rgba(180, 217, 244, 0.42) 11px,
-      rgba(180, 217, 244, 0.42) 22px,
-      rgba(245, 146, 170, 0.3) 22px,
-      rgba(245, 146, 170, 0.3) 33px
-    );
-}
-
 .app-shell {
   min-height: 100vh;
   padding: 44px 20px 72px;
-  background: var(--paper);
+  /* 기본(상세 2·3depth 페이지)은 전체 흰색 */
+  background: #ffffff;
+  /* 히어로 흰색 밴드가 양옆 끝까지(full-bleed) 뻗을 때 가로 스크롤 방지 */
+  overflow-x: clip;
+}
+
+/* 홈에서는 프로젝트 영역 배경을 오프화이트로. 히어로는 아래에서 흰색으로 덮음 */
+.app-shell:has(.home-page) {
+  background: #fafafa;
 }
 
 .site-footer {
   padding: 28px 20px 36px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  background: var(--paper);
+  background: #ffffff;
   font-size: 0.95rem;
   text-align: center;
+}
+
+body:has(.home-page) .site-footer {
+  background: #fafafa;
 }
 
 .page {
@@ -365,7 +270,14 @@ input:focus-visible {
 
 .hero {
   position: relative;
-  padding: 44px 0 32px;
+  /* 이름·소개 영역은 좌우 끝까지 뻗는 흰색 밴드.
+     - margin-top: -44px 로 상단 app-shell 패딩까지 흰색이 닿게 끌어올림
+     - margin-inline: calc(50% - 50vw) 로 뷰포트 양 끝까지 확장(full-bleed)
+     - padding-inline: calc(50vw - 50%) 로 본문은 다시 중앙 컬럼에 정렬 */
+  margin-top: -44px;
+  margin-inline: calc(50% - 50vw);
+  padding: 44px calc(50vw - 50%) 32px;
+  background: #ffffff;
   border-bottom: 1px solid var(--line);
 }
 
@@ -387,6 +299,11 @@ input:focus-visible {
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.025em;
+}
+
+/* 홈 히어로의 이름(박서영)만 5px 축소 */
+.hero h1 {
+  font-size: calc(clamp(2.6rem, 6.8vw, 5.2rem) - 5px);
 }
 
 .hero h1 span,
@@ -474,7 +391,7 @@ input:focus-visible {
   margin: 40px 0 0;
   /* 데스크톱에선 풀 폭 활용해서 한 문장이 한 줄에 들어가도록 */
   max-width: 100%;
-  color: var(--ink);
+  color: #000000;
   font-family: var(--display-font);
   font-size: 0.98rem;
   font-weight: 400;
@@ -557,7 +474,7 @@ input:focus-visible {
   padding: 22px 24px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .hero-skills > .eyebrow {
@@ -722,7 +639,7 @@ input:focus-visible {
 .about-soy-card {
   border: 1px solid var(--line);
   border-radius: 28px;
-  background: rgba(255, 253, 248, 0.78);
+  background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 12px 32px rgba(68, 55, 38, 0.07);
 }
 
@@ -798,7 +715,7 @@ input:focus-visible {
   padding: 30px;
   background:
     linear-gradient(135deg, rgba(248, 207, 216, 0.3), rgba(183, 214, 242, 0.2)),
-    rgba(255, 253, 248, 0.88);
+    rgba(255, 255, 255, 0.88);
 }
 
 .about-soy-intro h2 {
@@ -854,7 +771,7 @@ input:focus-visible {
 }
 
 .about-link-list a {
-  background: rgba(255, 253, 248, 0.82);
+  background: rgba(255, 255, 255, 0.82);
   text-decoration: none;
 }
 
@@ -866,7 +783,7 @@ input:focus-visible {
   padding: 18px 20px;
   border: 1px dashed rgba(47, 47, 47, 0.2);
   border-radius: 24px;
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .featured-strip p {
@@ -1041,6 +958,8 @@ input:focus-visible {
 .bookmark-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* 모든 행 높이를 동일하게 → 카드 세로 길이 통일 */
+  grid-auto-rows: 1fr;
   gap: 22px;
 }
 
@@ -1067,16 +986,20 @@ input:focus-visible {
 
 .bookmark-card {
   position: relative;
+  /* 그리드 셀(행) 높이를 카드가 꽉 채우도록 */
+  flex: 1;
 }
 
 .bookmark-card-link {
   display: grid;
+  /* 썸네일(auto) + 본문(1fr): 본문이 남는 높이를 채워 카드 높이 통일 */
+  grid-template-rows: auto 1fr;
   width: 100%;
   min-height: 100%;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 26px;
+  border-radius: 10px;
   color: inherit;
   text-align: left;
   background: var(--card);
@@ -1110,7 +1033,8 @@ input:focus-visible {
 }
 
 .card-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   padding: 18px 20px 20px;
 }
@@ -1138,7 +1062,8 @@ input:focus-visible {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  margin: 0;
+  /* 상단 auto로 항상 카드 하단에 정렬 → 본문 길이가 달라도 카드 높이 통일 */
+  margin: auto 0 0;
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.5;
@@ -1211,7 +1136,7 @@ input:focus-visible {
   padding: 56px 20px;
   border: 1px dashed var(--line);
   border-radius: 28px;
-  background: rgba(255, 253, 248, 0.72);
+  background: rgba(255, 255, 255, 0.72);
   text-align: center;
 }
 
@@ -1288,7 +1213,7 @@ input:focus-visible {
 .detail-cover span {
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 253, 248, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: var(--muted);
 }
 
@@ -1590,7 +1515,7 @@ input:focus-visible {
   padding: 14px;
   border: 1px solid rgba(47, 47, 47, 0.08);
   border-radius: 18px;
-  background: rgba(255, 253, 248, 0.62);
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .editor-section {
@@ -1823,7 +1748,7 @@ input:focus-visible {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 24px;
-  background: rgba(255, 253, 248, 0.82);
+  background: rgba(255, 255, 255, 0.82);
   box-shadow: 0 12px 30px rgba(68, 55, 38, 0.08);
 }
 
@@ -2047,7 +1972,7 @@ input:focus-visible {
   padding: 20px;
   text-align: center;
   color: var(--muted);
-  background: rgba(255, 253, 248, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   border: 1px dashed var(--line);
   border-radius: 16px;
   font-size: 0.95rem;
