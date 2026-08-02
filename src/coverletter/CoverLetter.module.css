@@ -48,9 +48,9 @@
 
 .page {
   position: relative;
-  width: 210mm;
-  height: 297mm;
-  padding: 16mm 22mm; /* 좌우 여백 동일(22mm), 상하 16mm */
+  width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
+  height: 1122.5px; /* A4 297mm @96dpi */
+  padding: 60.5px 83.1px; /* 상하 16mm, 좌우 22mm (동일) */
   box-sizing: border-box;
   background: #ffffff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
@@ -67,8 +67,8 @@
 
 /* ── Header ─────────────────────────────────────────────────── */
 .header {
-  padding-bottom: 2mm;
-  margin-bottom: 10mm;
+  padding-bottom: 0;
+  margin-bottom: 15px;
 }
 
 .docTitle {
@@ -105,7 +105,7 @@
 
 /* ── Section (질문/소제목 + 문단) ──────────────────────────── */
 .section {
-  margin-top: 9mm;
+  margin-top: 34px;
   break-inside: avoid;
   page-break-inside: avoid;
 }
@@ -118,7 +118,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 4mm;
+  margin-bottom: 15px;
   break-after: avoid;
   page-break-after: avoid;
 }
@@ -193,7 +193,7 @@
 
 .pageFooter {
   margin-top: auto;
-  padding-top: 8mm;
+  padding-top: 30px;
   font-size: 9.5px;
   color: #bdbdbd;
   display: flex;
@@ -272,7 +272,7 @@
 /* 편집 모드: 페이지가 콘텐츠에 맞춰 늘어나 잘리지 않게 */
 .viewportEditing .page {
   height: auto;
-  min-height: 297mm;
+  min-height: 1122.5px; /* A4 297mm @96dpi */
   overflow: visible;
 }
 
@@ -324,8 +324,8 @@
   }
 
   .page {
-    width: 210mm;
-    height: 297mm;
+    width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
+    height: 1122.5px; /* A4 297mm @96dpi */
     margin: 0;
     box-shadow: none;
     overflow: hidden;

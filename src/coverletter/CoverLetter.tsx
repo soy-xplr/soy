@@ -29,7 +29,6 @@ export function CoverLetter() {
 
   const { profile, sections } = data;
   const pages = chunk(sections, SECTIONS_PER_PAGE);
-  const totalPages = pages.length;
 
   const onImportFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -41,17 +40,6 @@ export function CoverLetter() {
       alert(error instanceof Error ? error.message : "불러오기에 실패했습니다.");
     }
   };
-
-  const footer = (pageIndex: number) => (
-    <>
-      <span>
-        {profile.name} · {profile.docTitle}
-      </span>
-      <span>
-        {pageIndex + 1} / {totalPages}
-      </span>
-    </>
-  );
 
   return (
     <EditContext.Provider value={{ editing }}>
@@ -115,7 +103,7 @@ export function CoverLetter() {
           const start = pageIndex * SECTIONS_PER_PAGE;
           const isLast = pageIndex === pages.length - 1;
           return (
-            <CoverPage key={pageIndex} footer={footer(pageIndex)}>
+            <CoverPage key={pageIndex}>
               {pageIndex === 0 ? (
                 <CoverHeader
                   profile={profile}
