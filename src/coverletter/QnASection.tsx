@@ -4,14 +4,13 @@ import { useEditing } from "../resume/EditContext";
 import { AddButton, DeleteButton } from "../resume/editControls";
 import styles from "./CoverLetter.module.css";
 
-// 소제목(번호 + 제목) + 문단들. 편집 모드에서 문단 추가/삭제, 섹션 삭제.
+// 문단 그룹. (번호 소제목 없이) 문단만 렌더링합니다.
+// 편집 모드에서 문단 추가/삭제, 섹션(문단 그룹) 삭제.
 export function QnASection({
-  index,
   section,
   onChange,
   onDelete,
 }: {
-  index: number;
   section: CoverSection;
   onChange: (next: CoverSection) => void;
   onDelete?: () => void;
@@ -20,19 +19,6 @@ export function QnASection({
 
   return (
     <section className={styles.section}>
-      <div className={styles.sectionHead}>
-        <span className={styles.sectionIndex}>{index + 1}</span>
-        <EditableText
-          as="h2"
-          className={styles.sectionTitle}
-          value={section.title}
-          onChange={(title) => onChange({ ...section, title })}
-          placeholder="소제목"
-          singleLine
-        />
-        {onDelete ? <DeleteButton label="섹션 삭제" onClick={onDelete} /> : null}
-      </div>
-
       {section.paragraphs.map((paragraph, pi) => (
         <div key={pi} className={styles.paragraphRow}>
           <EditableText
@@ -60,10 +46,17 @@ export function QnASection({
       ))}
 
       {editing ? (
-        <AddButton
-          label="문단"
-          onClick={() => onChange({ ...section, paragraphs: [...section.paragraphs, ""] })}
-        />
+        <div className={styles.sectionTools}>
+          <AddButton
+            label="문단"
+            onClick={() => onChange({ ...section, paragraphs: [...section.paragraphs, ""] })}
+          />
+          {onDelete ? (
+            <button type="button" className={styles.sectionDelete} onClick={onDelete}>
+              문단 그룹 삭제
+            </button>
+          ) : null}
+        </div>
       ) : null}
     </section>
   );

@@ -126,7 +126,6 @@ export function CoverLetter() {
               {pageSections.map((section, i) => (
                 <QnASection
                   key={start + i}
-                  index={start + i}
                   section={section}
                   onChange={(next) => update((d) => void (d.sections[start + i] = next))}
                   onDelete={() => update((d) => d.sections.splice(start + i, 1))}
@@ -139,7 +138,7 @@ export function CoverLetter() {
                   className={styles.addSection}
                   onClick={() => update((d) => d.sections.push(structuredClone(blankSection)))}
                 >
-                  + 섹션 추가
+                  + 문단 그룹 추가
                 </button>
               ) : null}
             </CoverPage>

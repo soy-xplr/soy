@@ -146,10 +146,10 @@
 }
 
 .paragraph {
-  font-size: 11.5px;
-  line-height: 1.85;
+  font-size: 13.5px;
+  line-height: 1.95;
   color: var(--ink-soft);
-  margin: 0 0 9px;
+  margin: 0 0 12px;
   text-align: justify;
 }
 
@@ -165,7 +165,30 @@
 }
 
 .paragraphRow + .paragraphRow {
-  margin-top: 9px;
+  margin-top: 12px;
+}
+
+/* 편집 모드: 섹션(문단 그룹) 하단 도구 */
+.sectionTools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.sectionDelete {
+  font: inherit;
+  font-size: 10.5px;
+  color: #e5484d;
+  background: rgba(229, 72, 77, 0.08);
+  border: 1px solid rgba(229, 72, 77, 0.35);
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.sectionDelete:hover {
+  background: rgba(229, 72, 77, 0.16);
 }
 
 .pageFooter {
@@ -286,7 +309,8 @@
   }
 
   .toolbar,
-  .addSection {
+  .addSection,
+  .sectionTools {
     display: none !important;
   }
 
