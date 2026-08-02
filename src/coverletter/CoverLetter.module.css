@@ -150,6 +150,7 @@
   color: var(--ink-soft);
   margin: 0 0 14px;
   text-align: justify;
+  white-space: pre-line; /* 편집 시 입력한 줄바꿈(개행)을 그대로 반영 */
 }
 
 .paragraph:last-child {
