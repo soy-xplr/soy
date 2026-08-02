@@ -2,7 +2,6 @@ import { useRef, useState, type ChangeEvent } from "react";
 import type { ProjectItemData, ResumeData } from "../data/resumeData";
 import { EditContext } from "./EditContext";
 import { useResumeState } from "./useResumeState";
-import { Page } from "./Page";
 import { Header } from "./Header";
 import { Introduction } from "./Introduction";
 import { Section } from "./Section";
@@ -13,20 +12,9 @@ import { Skills } from "./Skills";
 import { AddButton } from "./editControls";
 import styles from "./Resume.module.css";
 
-// 프로젝트를 페이지별로 나눕니다: 1페이지 1개, 이후 페이지마다 2개.
-// (프로젝트를 추가/삭제하면 페이지가 자동으로 늘거나 줄어듭니다.)
-const FIRST_PAGE_PROJECTS = 1;
-const PROJECTS_PER_PAGE = 2;
-
-function chunkProjects(projects: ProjectItemData[]): ProjectItemData[][] {
-  if (projects.length === 0) return [[]];
-  const chunks: ProjectItemData[][] = [projects.slice(0, FIRST_PAGE_PROJECTS)];
-  for (let i = FIRST_PAGE_PROJECTS; i < projects.length; i += PROJECTS_PER_PAGE) {
-    chunks.push(projects.slice(i, i + PROJECTS_PER_PAGE));
-  }
-  return chunks;
-}
-
+// 콘텐츠를 하나의 연속 문서로 흘려보냅니다. 프로젝트를 페이지 단위로 미리
+// 나누지 않으므로 페이지 하단에 빈 공간이 생기지 않고, 인쇄 시 자연스럽게
+// 여러 A4 장으로 나뉩니다.
 const blankProject: ProjectItemData = {
   title: "새 프로젝트",
   summary: "한 줄 설명",
@@ -45,8 +33,6 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
   void initialData;
 
   const { profile, sections, projects, experiences, education, skills } = data;
-  const projectPages = chunkProjects(projects);
-  const totalPages = projectPages.length + 1;
 
   const onImportFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -58,19 +44,6 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
       alert(error instanceof Error ? error.message : "불러오기에 실패했습니다.");
     }
   };
-
-  // 프로젝트 인덱스는 페이지 묶음을 고려해 계산합니다.
-  const pageStartIndex = (pageIndex: number) =>
-    pageIndex === 0 ? 0 : FIRST_PAGE_PROJECTS + (pageIndex - 1) * PROJECTS_PER_PAGE;
-
-  const footer = (index: number) => (
-    <>
-      <span>{profile.name}</span>
-      <span>
-        {index + 1} / {totalPages}
-      </span>
-    </>
-  );
 
   return (
     <EditContext.Provider value={{ editing }}>
@@ -130,68 +103,31 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
           </span>
         </div>
 
-        {/* ── 1페이지: 헤더 + 자기소개 + 프로젝트(첫 묶음) ── */}
-        <Page footer={footer(0)}>
-          <Header
-            profile={profile}
-            onChange={(next) => update((d) => void (d.profile = next))}
-          />
+        <div className={styles.sheet}>
+          <Header profile={profile} onChange={(next) => update((d) => void (d.profile = next))} />
           <Introduction
             paragraphs={profile.introduction}
             onChange={(next) => update((d) => void (d.profile.introduction = next))}
           />
+
           <Section
             title={sections.projects}
             onChange={(t) => update((d) => void (d.sections.projects = t))}
           >
-            {projectPages[0].map((project, i) => (
+            {projects.map((project, i) => (
               <ProjectItem
-                key={pageStartIndex(0) + i}
+                key={i}
                 project={project}
-                onChange={(next) => update((d) => void (d.projects[pageStartIndex(0) + i] = next))}
-                onDelete={() =>
-                  update((d) => d.projects.splice(pageStartIndex(0) + i, 1))
-                }
+                onChange={(next) => update((d) => void (d.projects[i] = next))}
+                onDelete={() => update((d) => d.projects.splice(i, 1))}
               />
             ))}
-            {projectPages.length === 1 ? (
-              <AddButton
-                label="프로젝트"
-                onClick={() => update((d) => d.projects.push(structuredClone(blankProject)))}
-              />
-            ) : null}
+            <AddButton
+              label="프로젝트"
+              onClick={() => update((d) => d.projects.push(structuredClone(blankProject)))}
+            />
           </Section>
-        </Page>
 
-        {/* ── 이어지는 프로젝트 페이지들 ── */}
-        {projectPages.slice(1).map((pageProjects, sliceIndex) => {
-          const pageIndex = sliceIndex + 1;
-          const start = pageStartIndex(pageIndex);
-          const isLastProjectPage = pageIndex === projectPages.length - 1;
-          return (
-            <Page key={`projects-${pageIndex}`} footer={footer(pageIndex)}>
-              <Section>
-                {pageProjects.map((project, i) => (
-                  <ProjectItem
-                    key={start + i}
-                    project={project}
-                    onChange={(next) => update((d) => void (d.projects[start + i] = next))}
-                    onDelete={() => update((d) => d.projects.splice(start + i, 1))}
-                  />
-                ))}
-                {isLastProjectPage ? (
-                  <AddButton
-                    label="프로젝트"
-                    onClick={() => update((d) => d.projects.push(structuredClone(blankProject)))}
-                  />
-                ) : null}
-              </Section>
-            </Page>
-          );
-        })}
-
-        {/* ── 마지막 페이지: 경력 + 학력 + 기술 ── */}
-        <Page footer={footer(totalPages - 1)}>
           <Section
             title={sections.experience}
             onChange={(t) => update((d) => void (d.sections.experience = t))}
@@ -250,12 +186,9 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
             title={sections.skills}
             onChange={(t) => update((d) => void (d.sections.skills = t))}
           >
-            <Skills
-              groups={skills}
-              onChange={(next) => update((d) => void (d.skills = next))}
-            />
+            <Skills groups={skills} onChange={(next) => update((d) => void (d.skills = next))} />
           </Section>
-        </Page>
+        </div>
       </div>
     </EditContext.Provider>
   );

@@ -1,10 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { bookmarks } from "./data/bookmarks";
 import { BookmarkDetailPage } from "./pages/BookmarkDetailPage";
 import { HomePage } from "./pages/HomePage";
-import { ResumePage } from "./pages/ResumePage";
-import { CoverLetterPage } from "./pages/CoverLetterPage";
+
+// 이력서/자기소개서는 지연 로드하여 각자의 CSS(특히 전역 @page 규칙)가
+// 해당 라우트에서만 적용되도록 격리합니다.
+const ResumePage = lazy(() =>
+  import("./pages/ResumePage").then((m) => ({ default: m.ResumePage })),
+);
+const CoverLetterPage = lazy(() =>
+  import("./pages/CoverLetterPage").then((m) => ({ default: m.CoverLetterPage })),
+);
 
 const getCurrentRoute = () => {
   const match = window.location.pathname.match(/^\/bookmarks\/([^/]+)(?:\/([^/]+))?$/);
@@ -45,10 +52,18 @@ function App() {
 
   // 이력서/자기소개서는 인쇄용 독립 페이지로, 포트폴리오 상단바/푸터 없이 렌더링합니다.
   if (isResumeRoute) {
-    return <ResumePage />;
+    return (
+      <Suspense fallback={null}>
+        <ResumePage />
+      </Suspense>
+    );
   }
   if (isCoverLetterRoute) {
-    return <CoverLetterPage />;
+    return (
+      <Suspense fallback={null}>
+        <CoverLetterPage />
+      </Suspense>
+    );
   }
 
   const selectedBookmark = useMemo(

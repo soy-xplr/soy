@@ -54,24 +54,15 @@
   overflow-wrap: break-word;
 }
 
-/* A4 페이지 --------------------------------------------------- */
-.page {
+/* 연속 문서(A4 폭). 콘텐츠가 빈 공간 없이 이어지고, 인쇄 시 자연스럽게
+   여러 A4 장으로 나뉩니다(중간에서 잘려도 다음 장으로 통째로 밀지 않음). */
+.sheet {
   position: relative;
   width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
-  height: 1122.5px; /* A4 297mm @96dpi */
-  padding: 60.5px 56.7px; /* 상하 16mm, 좌우 15mm */
+  padding: 60.5px 56.7px; /* 화면 미리보기 여백: 상하 16mm, 좌우 15mm */
   box-sizing: border-box;
   background: #ffffff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12); /* 아주 약한 그림자 */
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.pageInner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 
 /* ── Header ─────────────────────────────────────────────────── */
@@ -146,8 +137,6 @@
 /* ── Section ────────────────────────────────────────────────── */
 .section {
   margin-top: 34px;
-  break-inside: avoid;
-  page-break-inside: avoid;
 }
 
 .section:first-child {
@@ -159,8 +148,6 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0 0 18.9px;
-  break-after: avoid;
-  page-break-after: avoid;
 }
 
 .sectionBody {
@@ -173,8 +160,6 @@
   display: grid;
   grid-template-columns: 56px 1fr; /* 아이콘 열 56px + 본문 열 */
   gap: 16px;
-  break-inside: avoid; /* 페이지 중간에서 잘리지 않도록 */
-  page-break-inside: avoid;
 }
 
 .project + .project {
@@ -252,8 +237,6 @@
   border-radius: 11px; /* radius 10~12px */
   padding: 11px 14px;
   margin: 12px 0 0;
-  break-inside: avoid;
-  page-break-inside: avoid;
 }
 
 .highlightItem {
@@ -332,8 +315,6 @@
 
 /* ── ExperienceItem ─────────────────────────────────────────── */
 .experience {
-  break-inside: avoid;
-  page-break-inside: avoid;
 }
 
 .experience + .experience {
@@ -375,8 +356,6 @@
 
 /* ── EducationItem ──────────────────────────────────────────── */
 .education {
-  break-inside: avoid;
-  page-break-inside: avoid;
 }
 
 .education + .education {
@@ -428,8 +407,6 @@
   grid-template-columns: 92px 1fr;
   gap: 12px;
   align-items: baseline;
-  break-inside: avoid;
-  page-break-inside: avoid;
 }
 
 .skillCategory {
@@ -534,14 +511,6 @@
 /* ─────────────────────────────────────────────────────────────
    편집 모드 UI (화면 전용 · 인쇄 시 모두 숨김)
    ───────────────────────────────────────────────────────────── */
-
-/* 편집 중에는 페이지가 콘텐츠에 맞춰 늘어나 잘리지 않도록 함
-   (인쇄/보기 모드에서는 정확한 A4 높이를 유지) */
-.viewportEditing .page {
-  height: auto;
-  min-height: 1122.5px; /* A4 297mm @96dpi */
-  overflow: visible;
-}
 
 /* 인라인 편집 가능한 텍스트 */
 .editable {
@@ -697,10 +666,12 @@
 
 /* ─────────────────────────────────────────────────────────────
    인쇄 CSS
+   콘텐츠를 연속으로 흘리고, 각 A4 장의 여백은 @page가 담당합니다.
+   (콘텐츠가 페이지 경계에서 자연스럽게 나뉘어 빈 공간이 생기지 않음)
    ───────────────────────────────────────────────────────────── */
 @page {
   size: A4;
-  margin: 0;
+  margin: 16mm 15mm; /* 각 인쇄 페이지 상하 16mm, 좌우 15mm */
 }
 
 @media print {
@@ -733,17 +704,13 @@
     display: block;
   }
 
-  .page {
-    width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
-    height: 1122.5px; /* A4 297mm @96dpi */
-    margin: 0;
+  /* 인쇄 시에는 여백을 @page가 담당하므로 시트 자체 여백/폭 제한을 제거하고
+     콘텐츠를 그대로 흘려보냅니다. */
+  .sheet {
+    width: auto;
+    padding: 0;
     box-shadow: none;
-    overflow: hidden;
-    page-break-after: always;
-  }
-
-  .page:last-child {
-    page-break-after: auto;
+    background: white;
   }
 
   * {
