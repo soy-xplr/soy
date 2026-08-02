@@ -664,14 +664,22 @@
   gap: 6px;
 }
 
+/* 라우트 전역 배경을 흰색으로 통일 (포트폴리오의 아이보리 --paper 방지).
+   이 모듈은 /resume에서만 지연 로드되므로 다른 페이지에는 영향 없음. */
+html,
+body {
+  background: #ffffff !important;
+}
+
 /* ─────────────────────────────────────────────────────────────
    인쇄 CSS
-   콘텐츠를 연속으로 흘리고, 각 A4 장의 여백은 @page가 담당합니다.
-   (콘텐츠가 페이지 경계에서 자연스럽게 나뉘어 빈 공간이 생기지 않음)
+   @page 여백을 0으로 두어 브라우저가 머리글/바닥글(날짜·URL·쪽수)을
+   붙일 공간을 없앱니다. 콘텐츠 여백은 .sheet의 padding이 담당합니다.
+   콘텐츠는 연속으로 흘러 페이지 하단에 빈 공간이 생기지 않습니다.
    ───────────────────────────────────────────────────────────── */
 @page {
   size: A4;
-  margin: 16mm 15mm; /* 각 인쇄 페이지 상하 16mm, 좌우 15mm */
+  margin: 0;
 }
 
 @media print {
@@ -679,7 +687,7 @@
   body {
     margin: 0;
     padding: 0;
-    background: white;
+    background: #ffffff !important;
   }
 
   .toolbar,
@@ -704,13 +712,11 @@
     display: block;
   }
 
-  /* 인쇄 시에는 여백을 @page가 담당하므로 시트 자체 여백/폭 제한을 제거하고
-     콘텐츠를 그대로 흘려보냅니다. */
+  /* @page 여백이 0이므로 시트의 padding이 각 페이지의 좌우 여백과
+     첫 페이지 상단·마지막 페이지 하단 여백을 담당합니다. */
   .sheet {
-    width: auto;
-    padding: 0;
     box-shadow: none;
-    background: white;
+    background: #ffffff;
   }
 
   * {

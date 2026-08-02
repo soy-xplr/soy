@@ -24,6 +24,13 @@
   src: url("/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
 }
 
+/* 라우트 전역 배경을 흰색으로 통일 (포트폴리오의 아이보리 --paper 방지).
+   이 모듈은 /cover-letter에서만 지연 로드되므로 다른 페이지에는 영향 없음. */
+html,
+body {
+  background: #ffffff !important;
+}
+
 .viewport {
   --ink: #1a1a1a;
   --ink-soft: #333333;
@@ -305,7 +312,7 @@
   body {
     margin: 0;
     padding: 0;
-    background: white;
+    background: #ffffff !important;
   }
 
   .toolbar,
