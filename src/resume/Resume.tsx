@@ -95,6 +95,9 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
           <a className={styles.navLink} href="/cover-letter">
             자기소개서 →
           </a>
+          <a className={styles.navLink} href="/resume-en">
+            English →
+          </a>
 
           <span className={styles.toolbarHint}>
             {editing

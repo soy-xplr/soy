@@ -9,6 +9,9 @@ import { HomePage } from "./pages/HomePage";
 const ResumePage = lazy(() =>
   import("./pages/ResumePage").then((m) => ({ default: m.ResumePage })),
 );
+const ResumeEnPage = lazy(() =>
+  import("./pages/ResumeEnPage").then((m) => ({ default: m.ResumeEnPage })),
+);
 const CoverLetterPage = lazy(() =>
   import("./pages/CoverLetterPage").then((m) => ({ default: m.CoverLetterPage })),
 );
@@ -29,12 +32,14 @@ const getIsOwnerMode = () => {
 
 const normalizePath = () => window.location.pathname.replace(/\/$/, "");
 const getIsResumeRoute = () => normalizePath() === "/resume";
+const getIsResumeEnRoute = () => normalizePath() === "/resume-en";
 const getIsCoverLetterRoute = () => normalizePath() === "/cover-letter";
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState(getCurrentRoute);
   const [isOwnerMode, setIsOwnerMode] = useState(getIsOwnerMode);
   const [isResumeRoute, setIsResumeRoute] = useState(getIsResumeRoute);
+  const [isResumeEnRoute, setIsResumeEnRoute] = useState(getIsResumeEnRoute);
   const [isCoverLetterRoute, setIsCoverLetterRoute] = useState(getIsCoverLetterRoute);
   const currentSlug = currentRoute.slug;
 
@@ -43,6 +48,7 @@ function App() {
       setCurrentRoute(getCurrentRoute());
       setIsOwnerMode(getIsOwnerMode());
       setIsResumeRoute(getIsResumeRoute());
+      setIsResumeEnRoute(getIsResumeEnRoute());
       setIsCoverLetterRoute(getIsCoverLetterRoute());
     };
 
@@ -55,6 +61,13 @@ function App() {
     return (
       <Suspense fallback={null}>
         <ResumePage />
+      </Suspense>
+    );
+  }
+  if (isResumeEnRoute) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeEnPage />
       </Suspense>
     );
   }
