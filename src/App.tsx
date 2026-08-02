@@ -4,6 +4,7 @@ import { bookmarks } from "./data/bookmarks";
 import { BookmarkDetailPage } from "./pages/BookmarkDetailPage";
 import { HomePage } from "./pages/HomePage";
 import { ResumePage } from "./pages/ResumePage";
+import { CoverLetterPage } from "./pages/CoverLetterPage";
 
 const getCurrentRoute = () => {
   const match = window.location.pathname.match(/^\/bookmarks\/([^/]+)(?:\/([^/]+))?$/);
@@ -19,12 +20,15 @@ const getIsOwnerMode = () => {
   return searchParams.get("owner") === "1";
 };
 
-const getIsResumeRoute = () => window.location.pathname.replace(/\/$/, "") === "/resume";
+const normalizePath = () => window.location.pathname.replace(/\/$/, "");
+const getIsResumeRoute = () => normalizePath() === "/resume";
+const getIsCoverLetterRoute = () => normalizePath() === "/cover-letter";
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState(getCurrentRoute);
   const [isOwnerMode, setIsOwnerMode] = useState(getIsOwnerMode);
   const [isResumeRoute, setIsResumeRoute] = useState(getIsResumeRoute);
+  const [isCoverLetterRoute, setIsCoverLetterRoute] = useState(getIsCoverLetterRoute);
   const currentSlug = currentRoute.slug;
 
   useEffect(() => {
@@ -32,15 +36,19 @@ function App() {
       setCurrentRoute(getCurrentRoute());
       setIsOwnerMode(getIsOwnerMode());
       setIsResumeRoute(getIsResumeRoute());
+      setIsCoverLetterRoute(getIsCoverLetterRoute());
     };
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  // 이력서는 인쇄용 독립 페이지로, 포트폴리오의 상단바/푸터 없이 렌더링합니다.
+  // 이력서/자기소개서는 인쇄용 독립 페이지로, 포트폴리오 상단바/푸터 없이 렌더링합니다.
   if (isResumeRoute) {
     return <ResumePage />;
+  }
+  if (isCoverLetterRoute) {
+    return <CoverLetterPage />;
   }
 
   const selectedBookmark = useMemo(

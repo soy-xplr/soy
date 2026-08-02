@@ -11,7 +11,11 @@ type UrlEntry = {
   priority: string;
 };
 
-const urls: UrlEntry[] = [{ path: "/", changefreq: "weekly", priority: "1.0" }];
+const urls: UrlEntry[] = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/resume", changefreq: "monthly", priority: "0.7" },
+  { path: "/cover-letter", changefreq: "monthly", priority: "0.7" },
+];
 
 for (const bookmark of bookmarks) {
   urls.push({

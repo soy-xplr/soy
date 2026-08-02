@@ -514,6 +514,19 @@
   background: #f0f0f0;
 }
 
+.navLink {
+  color: #d6d6d6;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .toolbarHint {
   color: #d6d6d6;
 }
@@ -539,12 +552,14 @@
   min-width: 8px;
 }
 
-.viewportEditing .editable:hover {
+/* contentEditable 클래스는 편집 모드에서만 붙으므로 ancestor 없이 바로 스타일
+   (이력서/자기소개서 등 여러 모듈에서 공용으로 재사용) */
+.editable:hover {
   background: rgba(91, 141, 239, 0.08);
   box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.12);
 }
 
-.viewportEditing .editable:focus {
+.editable:focus {
   background: rgba(91, 141, 239, 0.1);
   box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.45);
 }

@@ -119,6 +119,10 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
             </button>
           )}
 
+          <a className={styles.navLink} href="/cover-letter">
+            자기소개서 →
+          </a>
+
           <span className={styles.toolbarHint}>
             {editing
               ? "텍스트를 클릭해 바로 수정 · 변경은 이 브라우저에 자동 저장됩니다"
