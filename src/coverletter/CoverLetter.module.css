@@ -50,7 +50,7 @@
   position: relative;
   width: 210mm;
   height: 297mm;
-  padding: 16mm 15mm;
+  padding: 16mm 22mm; /* 좌우 여백 동일(22mm), 상하 16mm */
   box-sizing: border-box;
   background: #ffffff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
@@ -67,8 +67,7 @@
 
 /* ── Header ─────────────────────────────────────────────────── */
 .header {
-  border-bottom: 1.5px solid var(--ink);
-  padding-bottom: 7mm;
+  padding-bottom: 2mm;
   margin-bottom: 10mm;
 }
 
@@ -146,10 +145,10 @@
 }
 
 .paragraph {
-  font-size: 13.5px;
-  line-height: 1.95;
+  font-size: 16px;
+  line-height: 2;
   color: var(--ink-soft);
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   text-align: justify;
 }
 
