@@ -59,10 +59,26 @@
 .sheet {
   position: relative;
   width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
-  padding: 60.5px 56.7px; /* 화면 미리보기 여백: 상하 16mm, 좌우 15mm */
+  padding: 0 56.7px; /* 좌우 여백 15mm (상하 여백은 아래 frame이 담당) */
   box-sizing: border-box;
   background: #ffffff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12); /* 아주 약한 그림자 */
+}
+
+/* 반복 여백 프레임: thead/tfoot의 스페이서가 인쇄 시 각 페이지 상·하단에
+   반복되어 모든 페이지에 일정한 상하 여백을 만듭니다. */
+.frame {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.frame td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.frameSpacer {
+  height: 60.5px; /* 상하 여백 16mm (각 인쇄 페이지에 반복) */
 }
 
 /* ── Header ─────────────────────────────────────────────────── */

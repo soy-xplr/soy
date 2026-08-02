@@ -104,90 +104,121 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
         </div>
 
         <div className={styles.sheet}>
-          <Header profile={profile} onChange={(next) => update((d) => void (d.profile = next))} />
-          <Introduction
-            paragraphs={profile.introduction}
-            onChange={(next) => update((d) => void (d.profile.introduction = next))}
-          />
+          {/* 표의 thead/tfoot는 인쇄 시 각 페이지 상·하단에 반복되므로,
+              빈 스페이서 행으로 모든 페이지에 일정한 상하 여백을 만듭니다.
+              (@page margin: 0 이라 브라우저 머리글/바닥글은 붙지 않음) */}
+          <table className={styles.frame}>
+            <thead>
+              <tr>
+                <td>
+                  <div className={styles.frameSpacer} aria-hidden="true" />
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <Header
+                    profile={profile}
+                    onChange={(next) => update((d) => void (d.profile = next))}
+                  />
+                  <Introduction
+                    paragraphs={profile.introduction}
+                    onChange={(next) => update((d) => void (d.profile.introduction = next))}
+                  />
 
-          <Section
-            title={sections.projects}
-            onChange={(t) => update((d) => void (d.sections.projects = t))}
-          >
-            {projects.map((project, i) => (
-              <ProjectItem
-                key={i}
-                project={project}
-                onChange={(next) => update((d) => void (d.projects[i] = next))}
-                onDelete={() => update((d) => d.projects.splice(i, 1))}
-              />
-            ))}
-            <AddButton
-              label="프로젝트"
-              onClick={() => update((d) => d.projects.push(structuredClone(blankProject)))}
-            />
-          </Section>
+                  <Section
+                    title={sections.projects}
+                    onChange={(t) => update((d) => void (d.sections.projects = t))}
+                  >
+                    {projects.map((project, i) => (
+                      <ProjectItem
+                        key={i}
+                        project={project}
+                        onChange={(next) => update((d) => void (d.projects[i] = next))}
+                        onDelete={() => update((d) => d.projects.splice(i, 1))}
+                      />
+                    ))}
+                    <AddButton
+                      label="프로젝트"
+                      onClick={() => update((d) => d.projects.push(structuredClone(blankProject)))}
+                    />
+                  </Section>
 
-          <Section
-            title={sections.experience}
-            onChange={(t) => update((d) => void (d.sections.experience = t))}
-          >
-            {experiences.map((experience, i) => (
-              <ExperienceItem
-                key={i}
-                experience={experience}
-                onChange={(next) => update((d) => void (d.experiences[i] = next))}
-                onDelete={() => update((d) => d.experiences.splice(i, 1))}
-              />
-            ))}
-            <AddButton
-              label="경력"
-              onClick={() =>
-                update((d) =>
-                  d.experiences.push({
-                    company: "회사명",
-                    role: "직무",
-                    period: "2024.01 - 재직 중",
-                    summary: "",
-                    bullets: [],
-                  }),
-                )
-              }
-            />
-          </Section>
+                  <Section
+                    title={sections.experience}
+                    onChange={(t) => update((d) => void (d.sections.experience = t))}
+                  >
+                    {experiences.map((experience, i) => (
+                      <ExperienceItem
+                        key={i}
+                        experience={experience}
+                        onChange={(next) => update((d) => void (d.experiences[i] = next))}
+                        onDelete={() => update((d) => d.experiences.splice(i, 1))}
+                      />
+                    ))}
+                    <AddButton
+                      label="경력"
+                      onClick={() =>
+                        update((d) =>
+                          d.experiences.push({
+                            company: "회사명",
+                            role: "직무",
+                            period: "2024.01 - 재직 중",
+                            summary: "",
+                            bullets: [],
+                          }),
+                        )
+                      }
+                    />
+                  </Section>
 
-          <Section
-            title={sections.education}
-            onChange={(t) => update((d) => void (d.sections.education = t))}
-          >
-            {education.map((item, i) => (
-              <EducationItem
-                key={i}
-                education={item}
-                onChange={(next) => update((d) => void (d.education[i] = next))}
-                onDelete={() => update((d) => d.education.splice(i, 1))}
-              />
-            ))}
-            <AddButton
-              label="학력"
-              onClick={() =>
-                update((d) =>
-                  d.education.push({
-                    school: "학교명",
-                    degree: "학위/전공",
-                    period: "2013.03 - 2019.02",
-                  }),
-                )
-              }
-            />
-          </Section>
+                  <Section
+                    title={sections.education}
+                    onChange={(t) => update((d) => void (d.sections.education = t))}
+                  >
+                    {education.map((item, i) => (
+                      <EducationItem
+                        key={i}
+                        education={item}
+                        onChange={(next) => update((d) => void (d.education[i] = next))}
+                        onDelete={() => update((d) => d.education.splice(i, 1))}
+                      />
+                    ))}
+                    <AddButton
+                      label="학력"
+                      onClick={() =>
+                        update((d) =>
+                          d.education.push({
+                            school: "학교명",
+                            degree: "학위/전공",
+                            period: "2013.03 - 2019.02",
+                          }),
+                        )
+                      }
+                    />
+                  </Section>
 
-          <Section
-            title={sections.skills}
-            onChange={(t) => update((d) => void (d.sections.skills = t))}
-          >
-            <Skills groups={skills} onChange={(next) => update((d) => void (d.skills = next))} />
-          </Section>
+                  <Section
+                    title={sections.skills}
+                    onChange={(t) => update((d) => void (d.sections.skills = t))}
+                  >
+                    <Skills
+                      groups={skills}
+                      onChange={(next) => update((d) => void (d.skills = next))}
+                    />
+                  </Section>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>
+                  <div className={styles.frameSpacer} aria-hidden="true" />
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </EditContext.Provider>
