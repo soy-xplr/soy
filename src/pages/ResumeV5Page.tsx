@@ -1,5 +1,5 @@
 import type { WesternResumeUi } from "../data/westernResume";
-import { defaultV4Sections, resumeV4Data } from "../data/resumeV4Data";
+import { defaultV5Sections, resumeV5Data } from "../data/resumeV5Data";
 import { WesternResume } from "../westernResume/WesternResume";
 import { useWesternResumeState } from "../westernResume/useWesternResumeState";
 
@@ -28,22 +28,21 @@ const ui: WesternResumeUi = {
   },
   sectionOrder: ["summary", "capabilities", "experience", "education", "tools", "languages"],
   navLinks: [
-    { href: "/resume-v5", label: "국문 v5 →" },
+    { href: "/resume-v4", label: "국문 v4 →" },
     { href: "/resume-v3", label: "국문 v3 →" },
-    { href: "/resume-v2", label: "국문 v2 →" },
     { href: "/resume-en", label: "English →" },
   ],
-  // 프로젝트 제목을 키우고 프로젝트 사이 여백을 넓힌 레이아웃
-  variant: "spacious",
+  // 프로젝트 구분은 v4와 동일하게 유지하되 행간은 좁게
+  variant: "tight",
 };
 
-// /resume-v4 route: 국문 이력서 v4 (볼드 강조 + 프로젝트 구분 강화).
-export function ResumeV4Page() {
+// /resume-v5 route: 국문 이력서 v5 (핵심만 압축한 버전).
+export function ResumeV5Page() {
   const state = useWesternResumeState({
-    storageKey: "beautifulweb-resume-v4:v1",
-    defaultData: resumeV4Data,
-    defaultSections: defaultV4Sections,
-    fileName: "resume-v4",
+    storageKey: "beautifulweb-resume-v5:v1",
+    defaultData: resumeV5Data,
+    defaultSections: defaultV5Sections,
+    fileName: "resume-v5",
     importErrorMessage: "이력서 JSON 형식이 아닙니다.",
   });
 

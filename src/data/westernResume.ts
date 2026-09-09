@@ -110,6 +110,9 @@ export type WesternResumeUi = {
   };
   sectionOrder: WSectionKey[];
   navLinks: { href: string; label: string }[];
-  /** "spacious" enlarges headings and opens up spacing between projects. */
-  variant?: "spacious";
+  /**
+   * "spacious" enlarges headings and opens up spacing between projects.
+   * "tight" keeps that project separation but narrows the line spacing.
+   */
+  variant?: "spacious" | "tight";
 };

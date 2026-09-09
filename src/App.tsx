@@ -21,6 +21,9 @@ const ResumeV3Page = lazy(() =>
 const ResumeV4Page = lazy(() =>
   import("./pages/ResumeV4Page").then((m) => ({ default: m.ResumeV4Page })),
 );
+const ResumeV5Page = lazy(() =>
+  import("./pages/ResumeV5Page").then((m) => ({ default: m.ResumeV5Page })),
+);
 const CoverLetterPage = lazy(() =>
   import("./pages/CoverLetterPage").then((m) => ({ default: m.CoverLetterPage })),
 );
@@ -45,6 +48,7 @@ const getIsResumeEnRoute = () => normalizePath() === "/resume-en";
 const getIsResumeV2Route = () => normalizePath() === "/resume-v2";
 const getIsResumeV3Route = () => normalizePath() === "/resume-v3";
 const getIsResumeV4Route = () => normalizePath() === "/resume-v4";
+const getIsResumeV5Route = () => normalizePath() === "/resume-v5";
 const getIsCoverLetterRoute = () => normalizePath() === "/cover-letter";
 
 function App() {
@@ -55,6 +59,7 @@ function App() {
   const [isResumeV2Route, setIsResumeV2Route] = useState(getIsResumeV2Route);
   const [isResumeV3Route, setIsResumeV3Route] = useState(getIsResumeV3Route);
   const [isResumeV4Route, setIsResumeV4Route] = useState(getIsResumeV4Route);
+  const [isResumeV5Route, setIsResumeV5Route] = useState(getIsResumeV5Route);
   const [isCoverLetterRoute, setIsCoverLetterRoute] = useState(getIsCoverLetterRoute);
   const currentSlug = currentRoute.slug;
 
@@ -67,6 +72,7 @@ function App() {
       setIsResumeV2Route(getIsResumeV2Route());
       setIsResumeV3Route(getIsResumeV3Route());
       setIsResumeV4Route(getIsResumeV4Route());
+      setIsResumeV5Route(getIsResumeV5Route());
       setIsCoverLetterRoute(getIsCoverLetterRoute());
     };
 
@@ -107,6 +113,13 @@ function App() {
     return (
       <Suspense fallback={null}>
         <ResumeV4Page />
+      </Suspense>
+    );
+  }
+  if (isResumeV5Route) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeV5Page />
       </Suspense>
     );
   }

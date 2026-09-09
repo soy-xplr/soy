@@ -653,3 +653,40 @@ body {
   margin-top: 16px;
   padding: 10px 13px;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   tight 변형: spacious의 제목 크기·프로젝트 구분은 유지하고 행간만 좁힘
+   (불릿은 다른 CSS 모듈에서 오므로 요소 선택자로 지정)
+   ───────────────────────────────────────────────────────────── */
+.tight .paragraph {
+  line-height: 1.5;
+}
+
+.tight .companySummary {
+  line-height: 1.5;
+}
+
+.tight .projectDesc {
+  line-height: 1.5;
+}
+
+.tight .capabilityRow {
+  line-height: 1.5;
+}
+
+.tight .impactLine {
+  line-height: 1.5;
+}
+
+.tight .toolItems {
+  line-height: 1.4;
+}
+
+.tight li {
+  line-height: 1.5;
+}
+
+/* 좁아진 행간에 맞춰 불릿 점 위치 보정 */
+.tight li::before {
+  top: 7px;
+}

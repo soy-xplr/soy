@@ -17,6 +17,13 @@ const blankExperience: WExperience = {
   projects: [],
 };
 
+// "tight" builds on the spacious layout and only narrows the line spacing.
+const variantClass = (variant: WesternResumeUi["variant"]) => {
+  if (variant === "spacious") return styles.spacious;
+  if (variant === "tight") return `${styles.spacious} ${styles.tight}`;
+  return "";
+};
+
 /**
  * One renderer for every Western-format résumé page. Content, UI strings and
  * section order come from props, so /resume-en and /resume-v2 share this code.
@@ -304,7 +311,7 @@ export function WesternResume({
 
   return (
     <EditContext.Provider value={{ editing }}>
-      <div className={`${styles.viewport} ${ui.variant === "spacious" ? styles.spacious : ""}`}>
+      <div className={`${styles.viewport} ${variantClass(ui.variant)}`}>
         <div className={styles.toolbar}>
           <button
             type="button"
