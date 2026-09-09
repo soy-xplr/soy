@@ -1,0 +1,742 @@
+/* ─────────────────────────────────────────────────────────────
+   A4 인쇄용 이력서 스타일
+   - 화면 미리보기: 연한 회색 배경, A4 중앙 정렬, 약한 그림자
+   - 인쇄: 배경/그림자 제거, 확대·축소 없이 정확한 A4 출력
+   ───────────────────────────────────────────────────────────── */
+
+/* Pretendard 웹폰트 self-host --------------------------------
+   폰트를 프로젝트에 동봉해, 뷰어의 로컬 설치 여부와 무관하게 항상
+   동일한 폰트로 렌더링되고 PDF에도 그대로 임베드되도록 합니다.
+   (파일: public/fonts/pretendard/*.woff2 — SIL Open Font License) */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
+}
+
+/* 화면 미리보기 배경/레이아웃 --------------------------------- */
+.viewport {
+  --ink: #1a1a1a;
+  --ink-soft: #333333;
+  --muted: #8a8a8a;
+  --muted-strong: #6b6b6b;
+  --line: #e6e6e6;
+  --highlight-bg: #f3f3f3;
+
+  min-height: 100vh;
+  background: #eaeaea;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px; /* 페이지 사이 간격 24px */
+
+  font-family: Pretendard, "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: var(--ink);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 연속 문서(A4 폭). 콘텐츠가 빈 공간 없이 이어지고, 인쇄 시 자연스럽게
+   여러 A4 장으로 나뉩니다(중간에서 잘려도 다음 장으로 통째로 밀지 않음). */
+.sheet {
+  position: relative;
+  width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
+  padding: 0 56.7px; /* 좌우 여백 15mm (상하 여백은 아래 frame이 담당) */
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12); /* 아주 약한 그림자 */
+}
+
+/* 반복 여백 프레임: thead/tfoot의 스페이서가 인쇄 시 각 페이지 상·하단에
+   반복되어 모든 페이지에 일정한 상하 여백을 만듭니다. */
+.frame {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.frame td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.frameSpacer {
+  height: 60.5px; /* 상하 여백 16mm (각 인쇄 페이지에 반복) */
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  margin-bottom: 37.8px;
+}
+
+.name {
+  font-size: 30px; /* 이름 28~32px */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 4px;
+}
+
+.tagline {
+  font-size: 12px;
+  color: var(--muted-strong);
+  margin: 0 0 14px;
+}
+
+/* ── ContactGrid ────────────────────────────────────────────── */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 연락처 2열 */
+  gap: 6px 28px;
+  margin-top: 12px;
+  max-width: 78%;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px; /* 보조 정보 10~11px */
+  color: var(--muted); /* 연한 회색 */
+  line-height: 1.4;
+}
+
+.contactItem a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contactItem a:hover {
+  text-decoration: underline;
+}
+
+.contactIcon {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  color: var(--muted); /* 작은 단색 아이콘 */
+}
+
+/* ── Introduction ───────────────────────────────────────────── */
+.introduction {
+  margin-bottom: 15px;
+}
+
+.introParagraph {
+  font-size: 11.5px; /* 자기소개 작은 글씨 */
+  line-height: 1.75; /* 넉넉한 줄간격 */
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+
+.introParagraph:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Section ────────────────────────────────────────────────── */
+.section {
+  margin-top: 34px;
+}
+
+.section:first-child {
+  margin-top: 0;
+}
+
+.sectionTitle {
+  font-size: 21px; /* 섹션 제목 20~22px */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 18.9px;
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── ProjectItem ────────────────────────────────────────────── */
+.project {
+  display: grid;
+  grid-template-columns: 56px 1fr; /* 아이콘 열 56px + 본문 열 */
+  gap: 16px;
+}
+
+.project + .project {
+  margin-top: 32px; /* 프로젝트 간 간격 28~36px */
+}
+
+.projectIconCol {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+
+.projectIcon {
+  width: 48px; /* 아이콘 46~52px */
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #5b8def, #a879f0);
+}
+
+.projectContent {
+  min-width: 0;
+}
+
+.projectHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projectTitle {
+  font-size: 15.5px; /* 프로젝트 제목 15~16px */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* ── ProjectBadge ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted-strong);
+  background: #efefef; /* 작은 회색 배지 */
+  border-radius: 4px;
+  padding: 2px 7px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.projectSummary {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 6px 0 2px;
+  line-height: 1.6;
+}
+
+.projectPeriod {
+  font-size: 10.5px; /* 보조 정보 */
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── HighlightBox ───────────────────────────────────────────── */
+/* 성과 박스: 콘텐츠 전체 너비가 아니라 텍스트 영역 안에 배치 */
+.highlightBox {
+  background: var(--highlight-bg); /* #f3f3f3 */
+  border-radius: 11px; /* radius 10~12px */
+  padding: 11px 14px;
+  margin: 12px 0 0;
+}
+
+.highlightItem {
+  position: relative;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  padding-left: 13px;
+}
+
+.highlightItem + .highlightItem {
+  margin-top: 4px;
+}
+
+.highlightItem::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--muted-strong);
+}
+
+/* ── BulletList ─────────────────────────────────────────────── */
+.bulletList {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.bulletList .bulletList {
+  margin: 5px 0 0;
+}
+
+.bulletItem {
+  position: relative;
+  font-size: 11.5px; /* 본문 11~12px */
+  line-height: 1.7; /* 본문 line-height 1.6~1.75 */
+  color: var(--ink-soft);
+  padding-left: 14px; /* 1단계 들여쓰기 */
+}
+
+.bulletItem + .bulletItem {
+  margin-top: 5px;
+}
+
+/* 1단계 불릿: 채워진 점 */
+.bulletItem::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+}
+
+/* 2단계 이하 불릿: 들여쓰기 + 빈 점(테두리)으로 단계 구분 */
+.bulletChildren {
+  margin-left: 14px; /* 중첩 단계 들여쓰기 */
+}
+
+.bulletChildren > .bulletItem {
+  color: var(--muted-strong);
+  font-size: 11px;
+}
+
+.bulletChildren > .bulletItem::before {
+  background: transparent;
+  border: 1px solid var(--muted);
+  top: 7px;
+}
+
+/* ── ExperienceItem ─────────────────────────────────────────── */
+.experience {
+}
+
+.experience + .experience {
+  margin-top: 20px;
+}
+
+.experienceHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.experienceTitle {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.experienceRole {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--muted-strong);
+  margin-left: 8px;
+}
+
+.experiencePeriod {
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.experienceSummary {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 4px 0 0;
+}
+
+/* ── EducationItem ──────────────────────────────────────────── */
+.education {
+}
+
+.education + .education {
+  margin-top: 14px;
+}
+
+.educationHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.educationSchool {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.educationDegree {
+  font-size: 11.5px;
+  color: var(--muted-strong);
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+.educationPeriod {
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.educationNote {
+  font-size: 11px;
+  color: var(--muted-strong);
+  margin: 3px 0 0;
+  line-height: 1.6;
+}
+
+/* ── Skills ─────────────────────────────────────────────────── */
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skillRow {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.skillCategory {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.skillItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+
+.skillItem {
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: var(--highlight-bg);
+  border-radius: 6px;
+  padding: 3px 9px;
+  line-height: 1.4;
+}
+
+.pageFooter {
+  margin-top: auto;
+  padding-top: 30px;
+  font-size: 9.5px;
+  color: #bdbdbd;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 화면 전용 안내 바 (인쇄 시 숨김) --------------------------- */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -40px -16px 4px;
+  padding: 12px 16px;
+  background: rgba(26, 26, 26, 0.92);
+  color: #fff;
+  font-size: 12px;
+}
+
+.toolbarActive {
+  background: #16a34a;
+  color: #fff;
+}
+
+.ghostButton {
+  font: inherit;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.ghostButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.printButton {
+  font: inherit;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.printButton:hover {
+  background: #f0f0f0;
+}
+
+.navLink {
+  color: #d6d6d6;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toolbarHint {
+  color: #d6d6d6;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   편집 모드 UI (화면 전용 · 인쇄 시 모두 숨김)
+   ───────────────────────────────────────────────────────────── */
+
+/* 인라인 편집 가능한 텍스트 */
+.editable {
+  outline: none;
+  cursor: text;
+  border-radius: 3px;
+  transition: background 0.12s, box-shadow 0.12s;
+  min-width: 8px;
+}
+
+/* contentEditable 클래스는 편집 모드에서만 붙으므로 ancestor 없이 바로 스타일
+   (이력서/자기소개서 등 여러 모듈에서 공용으로 재사용) */
+.editable:hover {
+  background: rgba(91, 141, 239, 0.08);
+  box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.12);
+}
+
+.editable:focus {
+  background: rgba(91, 141, 239, 0.1);
+  box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.45);
+}
+
+/* 빈 값일 때 placeholder 표시 */
+.editable:empty::before {
+  content: attr(data-placeholder);
+  color: #b8b8b8;
+}
+
+/* 삭제 버튼 (작은 원형 ×) */
+.deleteButton {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  line-height: 1;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #e5484d;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+}
+
+/* 추가 버튼 */
+.addButton {
+  align-self: flex-start;
+  margin-top: 8px;
+  font: inherit;
+  font-size: 10.5px;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px dashed rgba(37, 99, 235, 0.5);
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+/* 소형 버튼 (하위 추가, 이미지 업로드 등) */
+.smallButton {
+  font: inherit;
+  font-size: 10px;
+  color: #444;
+  background: #ededed;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 2px 7px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.smallButton:hover {
+  background: #e0e0e0;
+}
+
+/* 연락처 아이콘(종류 순환) 버튼 */
+.iconButton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  color: inherit;
+}
+
+/* 아이콘 영역(이미지 업로드 포함) */
+.iconWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.projectIconImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+.iconTools {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 인라인 편집용 행 래퍼: 텍스트 + 삭제/추가 컨트롤 */
+.introRow,
+.highlightRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bulletRow {
+  display: inline;
+}
+
+.bulletControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.experienceMeta,
+.educationMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.skillCategoryCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 라우트 전역 배경을 흰색으로 통일 (포트폴리오의 아이보리 --paper 방지).
+   이 모듈은 /resume에서만 지연 로드되므로 다른 페이지에는 영향 없음. */
+html,
+body {
+  background: #ffffff !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   인쇄 CSS
+   @page 여백을 0으로 두어 브라우저가 머리글/바닥글(날짜·URL·쪽수)을
+   붙일 공간을 없앱니다. 콘텐츠 여백은 .sheet의 padding이 담당합니다.
+   콘텐츠는 연속으로 흘러 페이지 하단에 빈 공간이 생기지 않습니다.
+   ───────────────────────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .toolbar,
+  .deleteButton,
+  .addButton,
+  .smallButton,
+  .iconTools {
+    display: none !important;
+  }
+
+  /* 편집 컨트롤/placeholder는 인쇄물에 나오지 않게 */
+  .editable:empty::before {
+    content: "";
+  }
+
+  .viewport,
+  .viewportEditing {
+    min-height: 0;
+    background: white;
+    padding: 0;
+    gap: 0;
+    display: block;
+  }
+
+  /* @page 여백이 0이므로 시트의 padding이 각 페이지의 좌우 여백과
+     첫 페이지 상단·마지막 페이지 하단 여백을 담당합니다. */
+  .sheet {
+    box-shadow: none;
+    background: #ffffff;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

@@ -1,8 +1,32 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { bookmarks } from "./data/bookmarks";
 import { BookmarkDetailPage } from "./pages/BookmarkDetailPage";
 import { HomePage } from "./pages/HomePage";
+
+// 이력서/자기소개서는 지연 로드하여 각자의 CSS(특히 전역 @page 규칙)가
+// 해당 라우트에서만 적용되도록 격리합니다.
+const ResumePage = lazy(() =>
+  import("./pages/ResumePage").then((m) => ({ default: m.ResumePage })),
+);
+const ResumeEnPage = lazy(() =>
+  import("./pages/ResumeEnPage").then((m) => ({ default: m.ResumeEnPage })),
+);
+const ResumeV2Page = lazy(() =>
+  import("./pages/ResumeV2Page").then((m) => ({ default: m.ResumeV2Page })),
+);
+const ResumeV3Page = lazy(() =>
+  import("./pages/ResumeV3Page").then((m) => ({ default: m.ResumeV3Page })),
+);
+const ResumeV4Page = lazy(() =>
+  import("./pages/ResumeV4Page").then((m) => ({ default: m.ResumeV4Page })),
+);
+const ResumeV5Page = lazy(() =>
+  import("./pages/ResumeV5Page").then((m) => ({ default: m.ResumeV5Page })),
+);
+const CoverLetterPage = lazy(() =>
+  import("./pages/CoverLetterPage").then((m) => ({ default: m.CoverLetterPage })),
+);
 
 const getCurrentRoute = () => {
   const match = window.location.pathname.match(/^\/bookmarks\/([^/]+)(?:\/([^/]+))?$/);
@@ -18,20 +42,94 @@ const getIsOwnerMode = () => {
   return searchParams.get("owner") === "1";
 };
 
+const normalizePath = () => window.location.pathname.replace(/\/$/, "");
+const getIsResumeRoute = () => normalizePath() === "/resume";
+const getIsResumeEnRoute = () => normalizePath() === "/resume-en";
+const getIsResumeV2Route = () => normalizePath() === "/resume-v2";
+const getIsResumeV3Route = () => normalizePath() === "/resume-v3";
+const getIsResumeV4Route = () => normalizePath() === "/resume-v4";
+const getIsResumeV5Route = () => normalizePath() === "/resume-v5";
+const getIsCoverLetterRoute = () => normalizePath() === "/cover-letter";
+
 function App() {
   const [currentRoute, setCurrentRoute] = useState(getCurrentRoute);
   const [isOwnerMode, setIsOwnerMode] = useState(getIsOwnerMode);
+  const [isResumeRoute, setIsResumeRoute] = useState(getIsResumeRoute);
+  const [isResumeEnRoute, setIsResumeEnRoute] = useState(getIsResumeEnRoute);
+  const [isResumeV2Route, setIsResumeV2Route] = useState(getIsResumeV2Route);
+  const [isResumeV3Route, setIsResumeV3Route] = useState(getIsResumeV3Route);
+  const [isResumeV4Route, setIsResumeV4Route] = useState(getIsResumeV4Route);
+  const [isResumeV5Route, setIsResumeV5Route] = useState(getIsResumeV5Route);
+  const [isCoverLetterRoute, setIsCoverLetterRoute] = useState(getIsCoverLetterRoute);
   const currentSlug = currentRoute.slug;
 
   useEffect(() => {
     const handlePopState = () => {
       setCurrentRoute(getCurrentRoute());
       setIsOwnerMode(getIsOwnerMode());
+      setIsResumeRoute(getIsResumeRoute());
+      setIsResumeEnRoute(getIsResumeEnRoute());
+      setIsResumeV2Route(getIsResumeV2Route());
+      setIsResumeV3Route(getIsResumeV3Route());
+      setIsResumeV4Route(getIsResumeV4Route());
+      setIsResumeV5Route(getIsResumeV5Route());
+      setIsCoverLetterRoute(getIsCoverLetterRoute());
     };
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
+
+  // 이력서/자기소개서는 인쇄용 독립 페이지로, 포트폴리오 상단바/푸터 없이 렌더링합니다.
+  if (isResumeRoute) {
+    return (
+      <Suspense fallback={null}>
+        <ResumePage />
+      </Suspense>
+    );
+  }
+  if (isResumeEnRoute) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeEnPage />
+      </Suspense>
+    );
+  }
+  if (isResumeV2Route) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeV2Page />
+      </Suspense>
+    );
+  }
+  if (isResumeV3Route) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeV3Page />
+      </Suspense>
+    );
+  }
+  if (isResumeV4Route) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeV4Page />
+      </Suspense>
+    );
+  }
+  if (isResumeV5Route) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeV5Page />
+      </Suspense>
+    );
+  }
+  if (isCoverLetterRoute) {
+    return (
+      <Suspense fallback={null}>
+        <CoverLetterPage />
+      </Suspense>
+    );
+  }
 
   const selectedBookmark = useMemo(
     () => bookmarks.find((bookmark) => bookmark.slug === currentSlug),
