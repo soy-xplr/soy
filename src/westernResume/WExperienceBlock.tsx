@@ -1,29 +1,33 @@
-import type { EnExperience, EnProject } from "../data/resumeEnData";
+import type { WExperience, WProject } from "../data/westernResume";
 import { EditableText } from "../resume/EditableText";
 import { useEditing } from "../resume/EditContext";
 import { BulletList } from "../resume/BulletList";
 import { AddButton, DeleteButton } from "../resume/editControls";
-import { ProjectEntry } from "./ProjectEntry";
-import styles from "./ResumeEn.module.css";
+import { WProjectEntry } from "./WProjectEntry";
+import styles from "./WesternResume.module.css";
 
-const blankProject: EnProject = {
+const blankProject: WProject = {
   name: "New project",
   role: "Role",
   period: "2024 – 2025",
   description: "",
-  bullets: [],
+  groups: [],
 };
 
 // A company entry: optional group label, company head, role, summary,
 // optional direct bullets, and nested projects.
-export function ExperienceBlock({
+export function WExperienceBlock({
   experience,
   onChange,
   onDelete,
+  addProjectLabel,
+  addBulletGroupLabel,
 }: {
-  experience: EnExperience;
-  onChange: (next: EnExperience) => void;
+  experience: WExperience;
+  onChange: (next: WExperience) => void;
   onDelete?: () => void;
+  addProjectLabel: string;
+  addBulletGroupLabel: string;
 }) {
   const editing = useEditing();
   const projects = experience.projects ?? [];
@@ -81,8 +85,9 @@ export function ExperienceBlock({
           />
         ) : null}
 
-        {/* Companies without sub-projects can carry bullets directly. */}
-        {(experience.bullets && experience.bullets.length > 0) || (editing && projects.length === 0) ? (
+        {/* Companies without sub-projects carry bullets directly. */}
+        {(experience.bullets && experience.bullets.length > 0) ||
+        (editing && projects.length === 0) ? (
           <BulletList
             items={experience.bullets ?? []}
             onChange={(bullets) => onChange({ ...experience, bullets })}
@@ -92,9 +97,10 @@ export function ExperienceBlock({
         {projects.length > 0 || editing ? (
           <div className={styles.projectList}>
             {projects.map((project, i) => (
-              <ProjectEntry
+              <WProjectEntry
                 key={i}
                 project={project}
+                addBulletGroupLabel={addBulletGroupLabel}
                 onChange={(next) =>
                   onChange({
                     ...experience,
@@ -108,7 +114,7 @@ export function ExperienceBlock({
             ))}
             {editing ? (
               <AddButton
-                label="project"
+                label={addProjectLabel}
                 onClick={() =>
                   onChange({ ...experience, projects: [...projects, structuredClone(blankProject)] })
                 }

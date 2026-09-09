@@ -1,19 +1,21 @@
 import { Fragment } from "react";
-import type { ResumeEnData } from "../data/resumeEnData";
+import type { WesternResumeData } from "../data/westernResume";
 import { EditableText } from "../resume/EditableText";
 import { useEditing } from "../resume/EditContext";
 import { AddButton, DeleteButton } from "../resume/editControls";
-import styles from "./ResumeEn.module.css";
+import styles from "./WesternResume.module.css";
 
-type Profile = ResumeEnData["profile"];
+type Profile = WesternResumeData["profile"];
 
-// Name, location, title, and an inline contact line (no icons).
-export function EnHeader({
+// Name, optional location, title, and an inline contact line (no icons).
+export function WHeader({
   profile,
   onChange,
+  addContactLabel,
 }: {
   profile: Profile;
   onChange: (next: Profile) => void;
+  addContactLabel: string;
 }) {
   const editing = useEditing();
 
@@ -27,20 +29,24 @@ export function EnHeader({
         placeholder="Name"
         singleLine
       />
-      <EditableText
-        as="p"
-        className={styles.location}
-        value={profile.location}
-        onChange={(location) => onChange({ ...profile, location })}
-        placeholder="City, Country"
-        singleLine
-      />
+
+      {editing || profile.location ? (
+        <EditableText
+          as="p"
+          className={styles.location}
+          value={profile.location}
+          onChange={(location) => onChange({ ...profile, location })}
+          placeholder="City, Country"
+          singleLine
+        />
+      ) : null}
+
       <EditableText
         as="p"
         className={styles.title}
         value={profile.title}
         onChange={(title) => onChange({ ...profile, title })}
-        placeholder="Product Manager | ..."
+        placeholder="Title / positioning line"
       />
 
       <div className={styles.contacts}>
@@ -83,7 +89,7 @@ export function EnHeader({
         ))}
         {editing ? (
           <AddButton
-            label="contact"
+            label={addContactLabel}
             onClick={() =>
               onChange({ ...profile, contacts: [...profile.contacts, { label: "New contact" }] })
             }

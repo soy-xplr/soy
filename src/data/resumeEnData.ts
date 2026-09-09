@@ -3,67 +3,9 @@
 // Work Experience lists companies; each company briefly introduces its
 // projects. No per-project icons. Edit the text here to change the defaults.
 // ─────────────────────────────────────────────────────────────
-import type { BulletNode } from "./resumeData";
+import type { WSections, WesternResumeData } from "./westernResume";
 
-export type EnContact = { label: string; href?: string };
-
-export type EnProject = {
-  groupLabel?: string; // subheading shown above this project (e.g. "Selected Concurrent Project Assignments")
-  name: string;
-  role?: string;
-  period?: string;
-  description?: string;
-  bullets?: BulletNode[];
-};
-
-export type EnExperience = {
-  groupLabel?: string; // subheading shown above this company (e.g. "Earlier Experience")
-  company: string;
-  role: string;
-  period: string;
-  summary?: string;
-  bullets?: BulletNode[]; // direct bullets for companies without sub-projects
-  projects?: EnProject[];
-};
-
-export type EnEducation = {
-  school: string;
-  degree: string;
-  period: string;
-  note?: string;
-};
-
-export type EnSkillGroup = {
-  category: string;
-  items: string[];
-};
-
-export type ResumeEnSections = {
-  summary: string;
-  capabilities: string;
-  experience: string;
-  education: string;
-  languages: string;
-  tools: string;
-};
-
-export type ResumeEnData = {
-  profile: {
-    name: string;
-    location: string;
-    title: string;
-    contacts: EnContact[];
-    summary: string[];
-    capabilities: string[];
-  };
-  sections: ResumeEnSections;
-  experiences: EnExperience[];
-  education: EnEducation[];
-  languages: string[];
-  tools: EnSkillGroup[];
-};
-
-export const defaultEnSections: ResumeEnSections = {
+export const defaultEnSections: WSections = {
   summary: "Professional Summary",
   capabilities: "Core Capabilities",
   experience: "Professional Experience",
@@ -72,7 +14,7 @@ export const defaultEnSections: ResumeEnSections = {
   tools: "Tools",
 };
 
-export const resumeEnData: ResumeEnData = {
+export const resumeEnData: WesternResumeData = {
   profile: {
     name: "Seoyoung Park",
     location: "Seoul, South Korea",
@@ -89,14 +31,14 @@ export const resumeEnData: ResumeEnData = {
       "Key experience includes managing a mobile app with 1.5 million monthly active users, launching and localizing a global creator platform, and building the web and platform foundation of an education service serving 400,000 registered users. More recently, led AI initiatives that transformed recurring operational challenges into reusable tools and shared team processes.",
     ],
     capabilities: [
-      "App and Platform Strategy",
-      "Strategic Stakeholder Management",
-      "Growth and Go-to-Market Planning",
-      "Cross-functional Program Management",
-      "Globalization and Localization",
-      "Data-informed Product Insights",
-      "AI-enabled Solution Design",
-      "Product Policy and Operations",
+      { label: "App and Platform Strategy" },
+      { label: "Strategic Stakeholder Management" },
+      { label: "Growth and Go-to-Market Planning" },
+      { label: "Cross-functional Program Management" },
+      { label: "Globalization and Localization" },
+      { label: "Data-informed Product Insights" },
+      { label: "AI-enabled Solution Design" },
+      { label: "Product Policy and Operations" },
     ],
   },
   sections: { ...defaultEnSections },

@@ -98,6 +98,9 @@ export function Resume({ data: initialData }: { data: ResumeData }) {
           <a className={styles.navLink} href="/resume-en">
             English →
           </a>
+          <a className={styles.navLink} href="/resume-v2">
+            신규 포맷 →
+          </a>
 
           <span className={styles.toolbarHint}>
             {editing
