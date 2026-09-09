@@ -29,6 +29,7 @@ const ui: WesternResumeUi = {
   // SKILLS를 LANGUAGE보다 먼저 노출
   sectionOrder: ["summary", "capabilities", "experience", "education", "tools", "languages"],
   navLinks: [
+    { href: "/resume-v4", label: "국문 v4 →" },
     { href: "/resume-v2", label: "국문 v2 →" },
     { href: "/resume-en", label: "English →" },
   ],

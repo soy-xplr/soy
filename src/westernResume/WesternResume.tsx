@@ -304,7 +304,7 @@ export function WesternResume({
 
   return (
     <EditContext.Provider value={{ editing }}>
-      <div className={styles.viewport}>
+      <div className={`${styles.viewport} ${ui.variant === "spacious" ? styles.spacious : ""}`}>
         <div className={styles.toolbar}>
           <button
             type="button"

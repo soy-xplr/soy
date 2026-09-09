@@ -168,6 +168,16 @@ export function WProjectEntry({
             onClick={() => onChange({ ...project, groups: [...groups, { label: "", bullets: [] }] })}
           />
         ) : null}
+
+        {editing || project.impact ? (
+          <EditableText
+            as="p"
+            className={styles.impactLine}
+            value={project.impact ?? ""}
+            onChange={(impact) => onChange({ ...project, impact: impact || undefined })}
+            placeholder="주요 성과 한 줄 (선택)"
+          />
+        ) : null}
       </article>
     </>
   );

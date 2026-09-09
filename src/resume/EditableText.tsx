@@ -6,6 +6,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import { useEditing } from "./EditContext";
+import { renderInlineBold } from "./richText";
 import styles from "./Resume.module.css";
 
 type EditableTextProps = {
@@ -44,7 +45,8 @@ export function EditableText({
   }, [editing, value]);
 
   if (!editing) {
-    return <Tag className={className}>{value}</Tag>;
+    // View/print shows `**bold**` rendered; edit mode keeps the raw markers.
+    return <Tag className={className}>{renderInlineBold(value)}</Tag>;
   }
 
   return (

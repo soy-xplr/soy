@@ -1,5 +1,5 @@
 import type { WesternResumeUi } from "../data/westernResume";
-import { defaultV2Sections, resumeV2Data } from "../data/resumeV2Data";
+import { defaultV4Sections, resumeV4Data } from "../data/resumeV4Data";
 import { WesternResume } from "../westernResume/WesternResume";
 import { useWesternResumeState } from "../westernResume/useWesternResumeState";
 
@@ -12,7 +12,7 @@ const ui: WesternResumeUi = {
   reset: "초기화",
   confirmReset: "모든 편집 내용을 지우고 기본값으로 되돌릴까요?",
   importError: "불러오기에 실패했습니다.",
-  hintEdit: "텍스트를 클릭해 바로 수정 · 변경은 이 브라우저에 자동 저장됩니다",
+  hintEdit: "텍스트를 클릭해 바로 수정 · **굵게** 표기 그대로 입력하면 강조됩니다",
   hintPrint: "Chrome · Ctrl/⌘ + P → “PDF로 저장” → 여백 “없음”, 배율 100%",
   add: {
     paragraph: "문단",
@@ -26,22 +26,23 @@ const ui: WesternResumeUi = {
     contact: "연락처",
     bulletGroup: "소제목 그룹",
   },
-  // SKILLS를 LANGUAGE보다 먼저 노출
   sectionOrder: ["summary", "capabilities", "experience", "education", "tools", "languages"],
   navLinks: [
-    { href: "/resume-v4", label: "국문 v4 →" },
     { href: "/resume-v3", label: "국문 v3 →" },
+    { href: "/resume-v2", label: "국문 v2 →" },
     { href: "/resume-en", label: "English →" },
   ],
+  // 프로젝트 제목을 키우고 프로젝트 사이 여백을 넓힌 레이아웃
+  variant: "spacious",
 };
 
-// /resume-v2 route: 국문 이력서 (서구식 회사→프로젝트 포맷).
-export function ResumeV2Page() {
+// /resume-v4 route: 국문 이력서 v4 (볼드 강조 + 프로젝트 구분 강화).
+export function ResumeV4Page() {
   const state = useWesternResumeState({
-    storageKey: "beautifulweb-resume-v2:v1",
-    defaultData: resumeV2Data,
-    defaultSections: defaultV2Sections,
-    fileName: "resume-v2",
+    storageKey: "beautifulweb-resume-v4:v1",
+    defaultData: resumeV4Data,
+    defaultSections: defaultV4Sections,
+    fileName: "resume-v4",
     importErrorMessage: "이력서 JSON 형식이 아닙니다.",
   });
 

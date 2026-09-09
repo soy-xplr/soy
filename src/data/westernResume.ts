@@ -35,6 +35,8 @@ export type WProject = {
   description?: string;
   bullets?: BulletNode[]; // flat bullets (simple projects)
   groups?: WBulletGroup[]; // labelled bullet groups (richer projects)
+  /** Single highlighted summary line closing the project, e.g. "주요 성과 | …". */
+  impact?: string;
 };
 
 export type WExperience = {
@@ -108,4 +110,6 @@ export type WesternResumeUi = {
   };
   sectionOrder: WSectionKey[];
   navLinks: { href: string; label: string }[];
+  /** "spacious" enlarges headings and opens up spacing between projects. */
+  variant?: "spacious";
 };
