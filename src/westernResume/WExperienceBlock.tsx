@@ -22,12 +22,14 @@ export function WExperienceBlock({
   onDelete,
   addProjectLabel,
   addBulletGroupLabel,
+  stackedHead = false,
 }: {
   experience: WExperience;
   onChange: (next: WExperience) => void;
   onDelete?: () => void;
   addProjectLabel: string;
   addBulletGroupLabel: string;
+  stackedHead?: boolean;
 }) {
   const editing = useEditing();
   const projects = experience.projects ?? [];
@@ -101,6 +103,7 @@ export function WExperienceBlock({
                 key={i}
                 project={project}
                 addBulletGroupLabel={addBulletGroupLabel}
+                stackedHead={stackedHead}
                 onChange={(next) =>
                   onChange({
                     ...experience,

@@ -173,6 +173,7 @@ export function WesternResume({
               experience={experience}
               addProjectLabel={ui.add.project}
               addBulletGroupLabel={ui.add.bulletGroup}
+              stackedHead={ui.variant === "corporate"}
               onChange={(next) => update((d) => void (d.experiences[i] = next))}
               onDelete={() => update((d) => d.experiences.splice(i, 1))}
             />

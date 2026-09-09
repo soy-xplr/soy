@@ -62,11 +62,17 @@ export function WProjectEntry({
   onChange,
   onDelete,
   addBulletGroupLabel,
+  stackedHead = false,
 }: {
   project: WProject;
   onChange: (next: WProject) => void;
   onDelete?: () => void;
   addBulletGroupLabel: string;
+  /**
+   * Put the role and the scale line on their own row under the title, so the
+   * title row carries only the project name and its period.
+   */
+  stackedHead?: boolean;
 }) {
   const editing = useEditing();
   const groups = project.groups ?? [];
@@ -86,78 +92,121 @@ export function WProjectEntry({
       ) : null}
 
       <article className={styles.project}>
-        <div className={styles.projectHead}>
-          <h4 className={styles.projectName}>
-            <EditableText
-              value={project.name}
-              onChange={(name) => onChange({ ...project, name })}
-              placeholder="Project name"
-              singleLine
-            />
-            {editing || project.role ? (
-              <>
-                <span className={styles.projectSep}> | </span>
+        {/* The opening block stays together across page breaks, so a title
+            never ends a page without its role, scale and first bullets. */}
+        <div className={styles.projectOpen}>
+          <div className={styles.projectHead}>
+            <h4 className={styles.projectName}>
+              <EditableText
+                value={project.name}
+                onChange={(name) => onChange({ ...project, name })}
+                placeholder="Project name"
+                singleLine
+              />
+              {!stackedHead && (editing || project.role) ? (
+                <>
+                  <span className={styles.projectSep}> | </span>
+                  <EditableText
+                    className={styles.projectRole}
+                    value={project.role ?? ""}
+                    onChange={(role) => onChange({ ...project, role: role || undefined })}
+                    placeholder="Role"
+                    singleLine
+                  />
+                </>
+              ) : null}
+            </h4>
+            <span className={styles.projectPeriod}>
+              <EditableText
+                value={project.period ?? ""}
+                onChange={(period) => onChange({ ...project, period: period || undefined })}
+                placeholder="Period"
+                singleLine
+              />
+              {onDelete ? <DeleteButton label="Remove project" onClick={onDelete} /> : null}
+            </span>
+          </div>
+
+          {/* Stacked head: role and scale share one line at one size. */}
+          {stackedHead && (editing || project.role || project.meta) ? (
+            <p className={styles.projectSubline}>
+              {editing || project.role ? (
                 <EditableText
-                  className={styles.projectRole}
                   value={project.role ?? ""}
                   onChange={(role) => onChange({ ...project, role: role || undefined })}
                   placeholder="Role"
                   singleLine
                 />
-              </>
-            ) : null}
-          </h4>
-          <span className={styles.projectPeriod}>
+              ) : null}
+              {(editing || project.role) && (editing || project.meta) ? (
+                <span className={styles.sublineSep}> · </span>
+              ) : null}
+              {editing || project.meta ? (
+                <EditableText
+                  value={project.meta ?? ""}
+                  onChange={(meta) => onChange({ ...project, meta: meta || undefined })}
+                  placeholder="Scale / scope (optional)"
+                  singleLine
+                />
+              ) : null}
+            </p>
+          ) : null}
+
+          {!stackedHead && (editing || project.meta) ? (
             <EditableText
-              value={project.period ?? ""}
-              onChange={(period) => onChange({ ...project, period: period || undefined })}
-              placeholder="Period"
+              as="p"
+              className={styles.projectMeta}
+              value={project.meta ?? ""}
+              onChange={(meta) => onChange({ ...project, meta: meta || undefined })}
+              placeholder="Scale / scope (optional)"
               singleLine
             />
-            {onDelete ? <DeleteButton label="Remove project" onClick={onDelete} /> : null}
-          </span>
+          ) : null}
+
+          {editing || project.description ? (
+            <EditableText
+              as="p"
+              className={styles.projectDesc}
+              value={project.description ?? ""}
+              onChange={(description) =>
+                onChange({ ...project, description: description || undefined })
+              }
+              placeholder="One-line description"
+            />
+          ) : null}
+
+          {/* Flat bullets for simple projects; hidden once groups are used. */}
+          {!hasGroups ? (
+            <BulletList
+              items={project.bullets ?? []}
+              onChange={(bullets) => onChange({ ...project, bullets })}
+            />
+          ) : null}
+
+          {/* First group travels with the head; the rest may flow onward. */}
+          {hasGroups ? (
+            <BulletGroup
+              group={groups[0]}
+              onChange={(next) =>
+                onChange({ ...project, groups: groups.map((g, idx) => (idx === 0 ? next : g)) })
+              }
+              onDelete={() => onChange({ ...project, groups: groups.filter((_, idx) => idx !== 0) })}
+            />
+          ) : null}
         </div>
 
-        {editing || project.meta ? (
-          <EditableText
-            as="p"
-            className={styles.projectMeta}
-            value={project.meta ?? ""}
-            onChange={(meta) => onChange({ ...project, meta: meta || undefined })}
-            placeholder="Scale / scope (optional)"
-            singleLine
-          />
-        ) : null}
-
-        {editing || project.description ? (
-          <EditableText
-            as="p"
-            className={styles.projectDesc}
-            value={project.description ?? ""}
-            onChange={(description) =>
-              onChange({ ...project, description: description || undefined })
-            }
-            placeholder="One-line description"
-          />
-        ) : null}
-
-        {/* Flat bullets for simple projects; hidden once groups are used. */}
-        {!hasGroups ? (
-          <BulletList
-            items={project.bullets ?? []}
-            onChange={(bullets) => onChange({ ...project, bullets })}
-          />
-        ) : null}
-
-        {groups.map((group, i) => (
+        {groups.slice(1).map((group, i) => (
           <BulletGroup
-            key={i}
+            key={i + 1}
             group={group}
             onChange={(next) =>
-              onChange({ ...project, groups: groups.map((g, idx) => (idx === i ? next : g)) })
+              onChange({
+                ...project,
+                groups: groups.map((g, idx) => (idx === i + 1 ? next : g)),
+              })
             }
             onDelete={() =>
-              onChange({ ...project, groups: groups.filter((_, idx) => idx !== i) })
+              onChange({ ...project, groups: groups.filter((_, idx) => idx !== i + 1) })
             }
           />
         ))}
