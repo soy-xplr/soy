@@ -655,38 +655,137 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   tight 변형: spacious의 제목 크기·프로젝트 구분은 유지하고 행간만 좁힘
+   tight 변형
+   - 본문 폰트는 한 단계 크게
+   - 행간(line-height)은 좁게
+   - 대신 "줄 사이 < 불릿 사이 < 그룹 사이 < 프로젝트 사이" 순서로
+     여백 차이를 크게 벌려 문단·프로젝트 구분을 분명하게
    (불릿은 다른 CSS 모듈에서 오므로 요소 선택자로 지정)
    ───────────────────────────────────────────────────────────── */
-.tight .paragraph {
-  line-height: 1.5;
+
+/* ── 폰트 크기 ─────────────────────────────────────────────── */
+.tight .name {
+  font-size: 32px;
 }
 
-.tight .companySummary {
-  line-height: 1.5;
+.tight .title {
+  font-size: 13px;
 }
 
-.tight .projectDesc {
-  line-height: 1.5;
+.tight .contacts,
+.tight .contactHighlight {
+  font-size: 12px;
 }
 
-.tight .capabilityRow {
-  line-height: 1.5;
+.tight .sectionTitle {
+  font-size: 16px;
 }
 
-.tight .impactLine {
-  line-height: 1.5;
+.tight .company {
+  font-size: 18px;
+}
+
+.tight .companyRole {
+  font-size: 13px;
+}
+
+.tight .companyPeriod,
+.tight .projectPeriod {
+  font-size: 11.5px;
+}
+
+.tight .projectName {
+  font-size: 17px;
+}
+
+.tight .projectRole {
+  font-size: 12.5px;
+}
+
+.tight .projectMeta {
+  font-size: 11.5px;
+}
+
+.tight .bulletGroupLabel {
+  font-size: 12.5px;
+}
+
+.tight .eduSchool {
+  font-size: 14px;
+}
+
+.tight .paragraph,
+.tight .companySummary,
+.tight .projectDesc,
+.tight .capabilityRow,
+.tight .impactLine,
+.tight .eduDegree,
+.tight .langItem,
+.tight .toolCategory,
+.tight .toolItems,
+.tight li {
+  font-size: 12.5px;
+}
+
+/* ── 행간은 좁게 ───────────────────────────────────────────── */
+.tight .paragraph,
+.tight .companySummary,
+.tight .projectDesc,
+.tight .capabilityRow,
+.tight .impactLine,
+.tight li {
+  line-height: 1.45;
 }
 
 .tight .toolItems {
   line-height: 1.4;
 }
 
-.tight li {
-  line-height: 1.5;
-}
-
-/* 좁아진 행간에 맞춰 불릿 점 위치 보정 */
+/* 좁아진 행간·커진 글자에 맞춰 불릿 점 위치 보정 */
 .tight li::before {
   top: 7px;
+}
+
+/* ── 여백 위계: 줄 < 불릿 < 그룹 < 프로젝트 ────────────────── */
+/* 같은 그룹 안의 불릿끼리는 바짝 */
+.tight li + li {
+  margin-top: 5px;
+}
+
+.tight ul {
+  margin-top: 8px;
+}
+
+/* 소제목 그룹 사이는 한 단계 넓게 */
+.tight .bulletGroup {
+  margin-top: 20px;
+}
+
+.tight .bulletGroupLabel {
+  margin-bottom: 2px;
+}
+
+.tight .projectDesc {
+  margin-top: 9px;
+}
+
+/* 프로젝트 사이는 확실히 크게 (+ 옅은 구분선) */
+.tight .project {
+  margin-top: 34px;
+}
+
+.tight .project:not(:first-child) {
+  padding-top: 32px;
+}
+
+.tight .projectList {
+  margin-top: 22px;
+}
+
+.tight .experience {
+  margin-top: 38px;
+}
+
+.tight .section {
+  margin-top: 36px;
 }
