@@ -248,15 +248,15 @@ body {
   gap: 12px;
 }
 .projectName {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   margin: 0;
 }
 .projectRole {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 400;
   color: var(--muted-strong);
-  margin-left: 8px;
+  margin-left: 0;
 }
 .projectPeriod {
   font-size: 10.5px;
@@ -569,4 +569,11 @@ body {
 
 .contactHighlight a:hover {
   border-bottom-color: var(--ink);
+}
+
+/* 프로젝트명과 역할 사이 구분자 (복사·PDF 추출 시에도 구분됨) */
+.projectSep {
+  margin: 0 2px;
+  color: var(--line);
+  font-weight: 400;
 }

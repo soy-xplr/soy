@@ -95,13 +95,16 @@ export function WProjectEntry({
               singleLine
             />
             {editing || project.role ? (
-              <EditableText
-                className={styles.projectRole}
-                value={project.role ?? ""}
-                onChange={(role) => onChange({ ...project, role: role || undefined })}
-                placeholder="Role"
-                singleLine
-              />
+              <>
+                <span className={styles.projectSep}> | </span>
+                <EditableText
+                  className={styles.projectRole}
+                  value={project.role ?? ""}
+                  onChange={(role) => onChange({ ...project, role: role || undefined })}
+                  placeholder="Role"
+                  singleLine
+                />
+              </>
             ) : null}
           </h4>
           <span className={styles.projectPeriod}>
