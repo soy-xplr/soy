@@ -112,7 +112,8 @@ export type WesternResumeUi = {
   navLinks: { href: string; label: string }[];
   /**
    * "spacious" enlarges headings and opens up spacing between projects.
-   * "tight" keeps that project separation but narrows the line spacing.
+   * "corporate" applies the single spacing scale, unified project hierarchy
+   * and project-level page-break rules used by the submission résumé.
    */
-  variant?: "spacious" | "tight";
+  variant?: "spacious" | "corporate";
 };

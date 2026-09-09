@@ -655,137 +655,239 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   tight 변형
-   - 본문 폰트는 한 단계 크게
-   - 행간(line-height)은 좁게
-   - 대신 "줄 사이 < 불릿 사이 < 그룹 사이 < 프로젝트 사이" 순서로
-     여백 차이를 크게 벌려 문단·프로젝트 구분을 분명하게
-   (불릿은 다른 CSS 모듈에서 오므로 요소 선택자로 지정)
+   corporate 변형 (/resume-v5)
+   채용 제출용 이력서. 장식 없이 typography · spacing · alignment로
+   위계를 만든다. 모든 간격은 아래 spacing scale에서만 가져온다.
    ───────────────────────────────────────────────────────────── */
+.corporate {
+  /* 본문 타이포 (본문 12.7px ≈ 9.5pt) */
+  --fs-body: 12.7px;
+  --lh-body: 1.5;
 
-/* ── 폰트 크기 ─────────────────────────────────────────────── */
-.tight .name {
-  font-size: 32px;
+  /* spacing scale — 같은 레벨은 항상 같은 값을 쓴다 */
+  --sp-bullet: 6px; /* 불릿 ↔ 불릿 */
+  --sp-sub-to-bullet: 8px; /* 소제목 → 첫 불릿 */
+  --sp-sub-gap: 17px; /* 마지막 불릿 → 다음 소제목 */
+  --sp-title-meta: 5px; /* 프로젝트 제목 → 메타 */
+  --sp-meta-desc: 9px; /* 메타 → 설명 */
+  --sp-desc-sub: 14px; /* 설명 → 첫 소제목(또는 첫 불릿) */
+  --sp-project-half: 15px; /* 프로젝트 구분선 위·아래 (합 30px) */
+  --sp-company-project: 22px; /* 회사 정보 → 첫 프로젝트 */
+  --sp-section: 40px; /* 대분류 사이 */
+  --sp-section-title: 20px; /* 대분류 제목 → 콘텐츠 */
+
+  /* 한국어 단어가 글자 단위로 잘리지 않도록 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-.tight .title {
+/* ── 본문: 크기·행간을 한 값으로 통일 ─────────────────────── */
+.corporate .paragraph,
+.corporate .companySummary,
+.corporate .projectDesc,
+.corporate .eduDegree,
+.corporate .langItem,
+.corporate .toolCategory,
+.corporate .toolItems,
+.corporate li {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.corporate .paragraph {
+  text-align: left; /* keep-all과 양끝맞춤이 겹치면 자간이 벌어짐 */
+}
+
+/* ── Header: 이름 → 직무 → 연락처 → 포트폴리오 → 본문 ────── */
+.corporate .header {
+  margin-bottom: var(--sp-section);
+}
+.corporate .name {
+  font-size: 29px;
+}
+.corporate .title {
   font-size: 13px;
-}
-
-.tight .contacts,
-.tight .contactHighlight {
-  font-size: 12px;
-}
-
-.tight .sectionTitle {
-  font-size: 16px;
-}
-
-.tight .company {
-  font-size: 18px;
-}
-
-.tight .companyRole {
-  font-size: 13px;
-}
-
-.tight .companyPeriod,
-.tight .projectPeriod {
-  font-size: 11.5px;
-}
-
-.tight .projectName {
-  font-size: 17px;
-}
-
-.tight .projectRole {
-  font-size: 12.5px;
-}
-
-.tight .projectMeta {
-  font-size: 11.5px;
-}
-
-.tight .bulletGroupLabel {
-  font-size: 12.5px;
-}
-
-.tight .eduSchool {
-  font-size: 14px;
-}
-
-.tight .paragraph,
-.tight .companySummary,
-.tight .projectDesc,
-.tight .capabilityRow,
-.tight .impactLine,
-.tight .eduDegree,
-.tight .langItem,
-.tight .toolCategory,
-.tight .toolItems,
-.tight li {
-  font-size: 12.5px;
-}
-
-/* ── 행간은 좁게 ───────────────────────────────────────────── */
-.tight .paragraph,
-.tight .companySummary,
-.tight .projectDesc,
-.tight .capabilityRow,
-.tight .impactLine,
-.tight li {
-  line-height: 1.45;
-}
-
-.tight .toolItems {
-  line-height: 1.4;
-}
-
-/* 좁아진 행간·커진 글자에 맞춰 불릿 점 위치 보정 */
-.tight li::before {
-  top: 7px;
-}
-
-/* ── 여백 위계: 줄 < 불릿 < 그룹 < 프로젝트 ────────────────── */
-/* 같은 그룹 안의 불릿끼리는 바짝 */
-.tight li + li {
-  margin-top: 5px;
-}
-
-.tight ul {
   margin-top: 8px;
 }
-
-/* 소제목 그룹 사이는 한 단계 넓게 */
-.tight .bulletGroup {
-  margin-top: 20px;
+.corporate .contacts {
+  font-size: 12px;
+  margin-top: 12px;
+}
+.corporate .contactHighlight {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+.corporate .contactHighlight a {
+  border-bottom: none;
+  padding-bottom: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 0.6px;
+  text-underline-offset: 2.5px;
+  text-decoration-color: var(--muted);
 }
 
-.tight .bulletGroupLabel {
-  margin-bottom: 2px;
+/* ── Section heading: 문서 전체에서 하나의 컴포넌트 ───────── */
+.corporate .section {
+  margin-top: var(--sp-section);
+}
+.corporate .sectionTitle {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  border-bottom: 1.2px solid var(--ink);
+  padding-bottom: 6px;
+  margin-bottom: var(--sp-section-title);
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
-.tight .projectDesc {
-  margin-top: 9px;
+/* EARLIER EXPERIENCE도 같은 section heading으로 (중간 형태 제거) */
+.corporate .groupLabel {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.2px solid var(--ink);
+  padding-bottom: 6px;
+  margin: var(--sp-section) 0 var(--sp-section-title);
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
-/* 프로젝트 사이는 확실히 크게 (+ 옅은 구분선) */
-.tight .project {
-  margin-top: 34px;
+/* ── Company ───────────────────────────────────────────────── */
+.corporate .experience {
+  margin-top: var(--sp-section);
+}
+.corporate .experience:first-child {
+  margin-top: 0;
+}
+/* groupLabel이 이미 대분류 여백을 주므로 바로 뒤 회사는 붙인다 */
+.corporate .groupLabel + .experience {
+  margin-top: 0;
+}
+.corporate .company {
+  font-size: 16px;
+}
+.corporate .companyRole {
+  font-size: 12.5px;
+  margin-top: 3px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.corporate .companySummary {
+  margin-top: var(--sp-meta-desc);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.corporate .companyHead {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.corporate .projectList {
+  margin-top: var(--sp-company-project);
 }
 
-.tight .project:not(:first-child) {
-  padding-top: 32px;
+/* ── Project: 모든 프로젝트가 같은 위계를 쓴다 ─────────────── */
+.corporate .project {
+  margin-top: 0;
+  /* 제목·메타만 페이지 하단에 고립되지 않도록 프로젝트 단위로 유지 */
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+/* 구분선은 "다음 프로젝트 위"가 아니라 "이전 프로젝트 아래"에 둔다.
+   그래야 프로젝트가 새 페이지에서 시작해도 위 여백이 다른 페이지와 같다. */
+.corporate .project:not(:last-child) {
+  padding-bottom: var(--sp-project-half);
+  border-bottom: 1px solid var(--line); /* 프로젝트 사이: 아주 옅은 실선 */
+  margin-bottom: var(--sp-project-half);
 }
 
-.tight .projectList {
-  margin-top: 22px;
+.corporate .projectName {
+  font-size: 15px; /* L1 */
+}
+.corporate .projectRole {
+  font-size: 12.5px; /* L2 */
+  color: var(--muted-strong);
+}
+.corporate .projectPeriod,
+.corporate .companyPeriod,
+.corporate .eduPeriod {
+  /* L3 — 같은 크기·색·오른쪽 정렬 */
+  font-size: 11.5px;
+  color: var(--muted-strong);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.corporate .projectMeta {
+  /* L4 — 본문보다 작고 semibold */
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--muted-strong);
+  margin-top: var(--sp-title-meta);
+}
+.corporate .projectDesc {
+  /* L5 */
+  margin-top: var(--sp-meta-desc);
 }
 
-.tight .experience {
-  margin-top: 38px;
+/* L6 — 소제목: 모든 프로젝트에서 동일 */
+.corporate .bulletGroup {
+  margin-top: var(--sp-sub-gap);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.corporate .bulletGroupLabel {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+/* 설명 → 첫 소제목 / 설명 → 첫 불릿(소제목 없는 프로젝트) */
+.corporate .projectDesc + .bulletGroup,
+.corporate .projectDesc + ul {
+  margin-top: var(--sp-desc-sub);
 }
 
-.tight .section {
-  margin-top: 36px;
+/* L7 — 불릿 */
+.corporate ul {
+  margin-top: var(--sp-desc-sub);
+}
+.corporate .bulletGroup ul {
+  margin-top: var(--sp-sub-to-bullet);
+}
+.corporate li + li {
+  margin-top: var(--sp-bullet);
+}
+.corporate li::before {
+  top: 8px; /* 본문 행간에 맞춘 불릿 점 위치 */
+}
+
+/* ── Education / Skills / Language ─────────────────────────── */
+.corporate .education {
+  margin-top: 14px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.corporate .education:first-child {
+  margin-top: 0;
+}
+.corporate .eduSchool {
+  font-size: 13.5px;
+}
+.corporate .eduDegree {
+  margin-top: 3px;
+}
+.corporate .tools {
+  gap: 10px;
+}
+.corporate .toolRow {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.corporate .langList {
+  gap: 6px;
 }

@@ -17,10 +17,10 @@ const blankExperience: WExperience = {
   projects: [],
 };
 
-// "tight" builds on the spacious layout and only narrows the line spacing.
+// "corporate" replaces the default rhythm wholesale rather than layering on it.
 const variantClass = (variant: WesternResumeUi["variant"]) => {
   if (variant === "spacious") return styles.spacious;
-  if (variant === "tight") return `${styles.spacious} ${styles.tight}`;
+  if (variant === "corporate") return styles.corporate;
   return "";
 };
 

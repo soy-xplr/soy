@@ -32,8 +32,8 @@ const ui: WesternResumeUi = {
     { href: "/resume-v3", label: "국문 v3 →" },
     { href: "/resume-en", label: "English →" },
   ],
-  // 프로젝트 구분은 v4와 동일하게 유지하되 행간은 좁게
-  variant: "tight",
+  // 제출용 이력서 레이아웃 (통일된 spacing scale + 프로젝트 단위 페이지 브레이크)
+  variant: "corporate",
 };
 
 // /resume-v5 route: 국문 이력서 v5 (핵심만 압축한 버전).

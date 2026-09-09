@@ -46,7 +46,7 @@ export const resumeV5Data: WesternResumeData = {
           period: "2021.05 – 2024.04",
           meta: "MAU 170만 · 누적 가입자 700만 글로벌 UGC 플랫폼",
           description:
-            "사용자가 직접 게임을 제작하고 다른 사용자의 콘텐츠를 이용·거래하는 글로벌 UGC 플랫폼입니다. 프로젝트 초기부터 **국내 런칭 → 사용성 고도화 → 글로벌 확장 → 운영 안정화**까지 웹/플랫폼 영역의 제품 성장 과정에 참여했습니다.",
+            "사용자가 직접 게임을 제작하고 다른 사용자의 콘텐츠를 이용·거래하는 글로벌 UGC 플랫폼입니다. 프로젝트 초기부터 국내 런칭 → 사용성 고도화 → 글로벌 확장 → 운영 안정화까지 웹/플랫폼 영역의 제품 성장 과정에 참여했습니다.",
           groups: [
             {
               label: "서비스 구축·사용자 경험",
@@ -76,7 +76,7 @@ export const resumeV5Data: WesternResumeData = {
           period: "2023.12 – 2026.02",
           meta: "웹/플랫폼 단독 PM · 누적 회원 40만",
           description:
-            "초등학교 수업에서 학생들이 블록코딩으로 게임을 만드는 교육 서비스입니다. 웹/플랫폼 단독 PM으로 **0→1 구축 → 정식 출시 → 글로벌 확장 → 데이터 기반 전면 리뉴얼**까지 전체 로드맵을 담당했습니다.",
+            "초등학교 수업에서 학생들이 블록코딩으로 게임을 만드는 교육 서비스입니다. 웹/플랫폼 단독 PM으로 0→1 구축 → 정식 출시 → 글로벌 확장 → 데이터 기반 전면 리뉴얼까지 전체 로드맵을 담당했습니다.",
           groups: [
             {
               label: "0→1 구축·런칭",
@@ -109,7 +109,7 @@ export const resumeV5Data: WesternResumeData = {
           bullets: [
             "알림·휴대폰/이메일 인증·게시/댓글 등 공통 플랫폼의 운영·유지보수 및 기능 개선",
             "저장·API·배포 이슈 발생 시 로그와 개발 구조를 확인해 원인을 정의하고 재배포·API 가이드·운영 시스템 개선까지 진행",
-            "반복적인 다국어 업무를 개선하기 위해 번역 정책·Diff·LQA·히스토리 구조를 설계하고 **Claude·Cursor·Vertex AI 기반 번역 Workflow 구축**",
+            "반복적인 다국어 업무를 개선하기 위해 번역 정책·Diff·LQA·히스토리 구조를 설계하고 Claude·Cursor·Vertex AI 기반 번역 Workflow 구축",
           ],
         },
         {
@@ -160,7 +160,7 @@ export const resumeV5Data: WesternResumeData = {
       role: "AI Service Planning Intern",
       period: "2020.02 – 2020.08",
       summary:
-        "대화형 AI 서비스 **카카오 i**의 사용자 발화 데이터를 분석하고 서비스 품질을 개선했습니다.",
+        "대화형 AI 서비스 카카오 i의 사용자 발화 데이터를 분석하고 서비스 품질을 개선했습니다.",
       bullets: [
         "Kibana·Excel 기반 사용자 발화 검수 및 질문·오류 패턴 분석",
         "도메인별 ML 학습용 질의 데이터 생성 및 챗봇 스몰톡 시나리오 기획·배포",
@@ -170,7 +170,7 @@ export const resumeV5Data: WesternResumeData = {
       company: "SK텔레콤",
       role: "AI Service Planning",
       period: "2019.07 – 2020.01",
-      summary: "대화형 AI 서비스 **NUGU**의 백과사전형 지식 서비스를 구축·운영했습니다.",
+      summary: "대화형 AI 서비스 NUGU의 백과사전형 지식 서비스를 구축·운영했습니다.",
       bullets: [
         "음악·영화·지리 등 RDBMS 기반 지식 데이터 및 AI 학습용 질의 데이터 구축",
         "CBT·QA·런칭·운영에 참여하고 실제 사용자 질의를 기반으로 답변 품질 고도화",
