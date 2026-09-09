@@ -115,6 +115,17 @@ export function WProjectEntry({
           </span>
         </div>
 
+        {editing || project.meta ? (
+          <EditableText
+            as="p"
+            className={styles.projectMeta}
+            value={project.meta ?? ""}
+            onChange={(meta) => onChange({ ...project, meta: meta || undefined })}
+            placeholder="Scale / scope (optional)"
+            singleLine
+          />
+        ) : null}
+
         {editing || project.description ? (
           <EditableText
             as="p"

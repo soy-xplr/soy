@@ -1,5 +1,5 @@
 import type { WesternResumeUi } from "../data/westernResume";
-import { defaultV2Sections, resumeV2Data } from "../data/resumeV2Data";
+import { defaultV3Sections, resumeV3Data } from "../data/resumeV3Data";
 import { WesternResume } from "../westernResume/WesternResume";
 import { useWesternResumeState } from "../westernResume/useWesternResumeState";
 
@@ -29,18 +29,18 @@ const ui: WesternResumeUi = {
   // SKILLS를 LANGUAGE보다 먼저 노출
   sectionOrder: ["summary", "capabilities", "experience", "education", "tools", "languages"],
   navLinks: [
-    { href: "/resume-v3", label: "국문 v3 →" },
+    { href: "/resume-v2", label: "국문 v2 →" },
     { href: "/resume-en", label: "English →" },
   ],
 };
 
-// /resume-v2 route: 국문 이력서 (서구식 회사→프로젝트 포맷).
-export function ResumeV2Page() {
+// /resume-v3 route: 국문 이력서 v3 (서구식 회사→프로젝트 포맷).
+export function ResumeV3Page() {
   const state = useWesternResumeState({
-    storageKey: "beautifulweb-resume-v2:v1",
-    defaultData: resumeV2Data,
-    defaultSections: defaultV2Sections,
-    fileName: "resume-v2",
+    storageKey: "beautifulweb-resume-v3:v1",
+    defaultData: resumeV3Data,
+    defaultSections: defaultV3Sections,
+    fileName: "resume-v3",
     importErrorMessage: "이력서 JSON 형식이 아닙니다.",
   });
 

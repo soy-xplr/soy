@@ -16,6 +16,7 @@ const urls: UrlEntry[] = [
   { path: "/resume", changefreq: "monthly", priority: "0.7" },
   { path: "/resume-en", changefreq: "monthly", priority: "0.7" },
   { path: "/resume-v2", changefreq: "monthly", priority: "0.7" },
+  { path: "/resume-v3", changefreq: "monthly", priority: "0.7" },
   { path: "/cover-letter", changefreq: "monthly", priority: "0.7" },
 ];
 

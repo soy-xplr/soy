@@ -15,6 +15,9 @@ const ResumeEnPage = lazy(() =>
 const ResumeV2Page = lazy(() =>
   import("./pages/ResumeV2Page").then((m) => ({ default: m.ResumeV2Page })),
 );
+const ResumeV3Page = lazy(() =>
+  import("./pages/ResumeV3Page").then((m) => ({ default: m.ResumeV3Page })),
+);
 const CoverLetterPage = lazy(() =>
   import("./pages/CoverLetterPage").then((m) => ({ default: m.CoverLetterPage })),
 );
@@ -37,6 +40,7 @@ const normalizePath = () => window.location.pathname.replace(/\/$/, "");
 const getIsResumeRoute = () => normalizePath() === "/resume";
 const getIsResumeEnRoute = () => normalizePath() === "/resume-en";
 const getIsResumeV2Route = () => normalizePath() === "/resume-v2";
+const getIsResumeV3Route = () => normalizePath() === "/resume-v3";
 const getIsCoverLetterRoute = () => normalizePath() === "/cover-letter";
 
 function App() {
@@ -45,6 +49,7 @@ function App() {
   const [isResumeRoute, setIsResumeRoute] = useState(getIsResumeRoute);
   const [isResumeEnRoute, setIsResumeEnRoute] = useState(getIsResumeEnRoute);
   const [isResumeV2Route, setIsResumeV2Route] = useState(getIsResumeV2Route);
+  const [isResumeV3Route, setIsResumeV3Route] = useState(getIsResumeV3Route);
   const [isCoverLetterRoute, setIsCoverLetterRoute] = useState(getIsCoverLetterRoute);
   const currentSlug = currentRoute.slug;
 
@@ -55,6 +60,7 @@ function App() {
       setIsResumeRoute(getIsResumeRoute());
       setIsResumeEnRoute(getIsResumeEnRoute());
       setIsResumeV2Route(getIsResumeV2Route());
+      setIsResumeV3Route(getIsResumeV3Route());
       setIsCoverLetterRoute(getIsCoverLetterRoute());
     };
 
@@ -81,6 +87,13 @@ function App() {
     return (
       <Suspense fallback={null}>
         <ResumeV2Page />
+      </Suspense>
+    );
+  }
+  if (isResumeV3Route) {
+    return (
+      <Suspense fallback={null}>
+        <ResumeV3Page />
       </Suspense>
     );
   }

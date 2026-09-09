@@ -28,8 +28,8 @@ const ui: WesternResumeUi = {
   },
   sectionOrder: ["summary", "capabilities", "experience", "education", "languages", "tools"],
   navLinks: [
-    { href: "/resume", label: "국문 이력서 →" },
-    { href: "/resume-v2", label: "국문(신규 포맷) →" },
+    { href: "/resume-v3", label: "국문 v3 →" },
+    { href: "/resume-v2", label: "국문 v2 →" },
   ],
 };
 

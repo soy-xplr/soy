@@ -25,6 +25,8 @@ export type WProject = {
   name: string;
   role?: string;
   period?: string;
+  /** Scale/scope line under the head, e.g. "MAU 170만 · 누적 가입자 700만". */
+  meta?: string;
   description?: string;
   bullets?: BulletNode[]; // flat bullets (simple projects)
   groups?: WBulletGroup[]; // labelled bullet groups (richer projects)

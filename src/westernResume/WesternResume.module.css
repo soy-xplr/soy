@@ -541,3 +541,10 @@ body {
   color: var(--muted);
   margin: 0 5px;
 }
+
+/* 프로젝트 규모/역할 메타 라인 */
+.projectMeta {
+  font-size: 10.5px;
+  color: var(--muted);
+  margin: 3px 0 0;
+}
