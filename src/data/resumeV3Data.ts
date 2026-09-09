@@ -20,7 +20,7 @@ export const resumeV3Data: WesternResumeData = {
     title: "Product Manager  |  B2C · Platform · 0→1 Launch · Data-driven Product",
     contacts: [
       { label: "soy.xplr@gmail.com", href: "mailto:soy.xplr@gmail.com" },
-      { label: "Portfolio: soy-xplr.vercel.app", href: "https://soy-xplr.vercel.app" },
+      { label: "Portfolio: soy-xplr.vercel.app", href: "https://soy-xplr.vercel.app", highlight: true },
     ],
     summary: [
       "웹·앱·플랫폼에서 신규 서비스 구축부터 출시, 운영, 고도화까지 End-to-End로 경험한 프로덕트 매니저입니다.",

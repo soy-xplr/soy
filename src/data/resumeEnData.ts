@@ -22,7 +22,7 @@ export const resumeEnData: WesternResumeData = {
       "Product Manager  |  App Ecosystem · Cross-functional Partnerships · AI & Global Growth",
     contacts: [
       { label: "soy.xplr@gmail.com", href: "mailto:soy.xplr@gmail.com" },
-      { label: "Portfolio: soy-xplr.vercel.app", href: "https://soy-xplr.vercel.app" },
+      { label: "Portfolio: soy-xplr.vercel.app", href: "https://soy-xplr.vercel.app", highlight: true },
       { label: "LinkedIn: [LinkedIn URL]" },
     ],
     summary: [

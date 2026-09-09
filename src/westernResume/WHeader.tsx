@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import type { WesternResumeData } from "../data/westernResume";
+import type { WContact, WesternResumeData } from "../data/westernResume";
 import { EditableText } from "../resume/EditableText";
 import { useEditing } from "../resume/EditContext";
 import { AddButton, DeleteButton } from "../resume/editControls";
@@ -7,7 +7,8 @@ import styles from "./WesternResume.module.css";
 
 type Profile = WesternResumeData["profile"];
 
-// Name, optional location, title, and an inline contact line (no icons).
+// Name, optional location, title, and contacts. Contacts render as one inline
+// line; any contact marked `highlight` gets its own emphasised line below it.
 export function WHeader({
   profile,
   onChange,
@@ -18,6 +19,47 @@ export function WHeader({
   addContactLabel: string;
 }) {
   const editing = useEditing();
+
+  const indexed = profile.contacts.map((contact, index) => ({ contact, index }));
+  const inlineContacts = indexed.filter(({ contact }) => !contact.highlight);
+  const featuredContacts = indexed.filter(({ contact }) => contact.highlight);
+
+  const patchContact = (index: number, patch: Partial<WContact>) =>
+    onChange({
+      ...profile,
+      contacts: profile.contacts.map((c, i) => (i === index ? { ...c, ...patch } : c)),
+    });
+
+  const removeContact = (index: number) =>
+    onChange({ ...profile, contacts: profile.contacts.filter((_, i) => i !== index) });
+
+  const contactBody = (contact: WContact, index: number) =>
+    editing ? (
+      <EditableText
+        value={contact.label}
+        onChange={(label) => patchContact(index, { label })}
+        placeholder="contact"
+        singleLine
+      />
+    ) : contact.href ? (
+      <a href={contact.href} target="_blank" rel="noreferrer">
+        {contact.label}
+      </a>
+    ) : (
+      <span>{contact.label}</span>
+    );
+
+  const highlightToggle = (contact: WContact, index: number) =>
+    editing ? (
+      <button
+        type="button"
+        className={styles.smallToggle}
+        onClick={() => patchContact(index, { highlight: contact.highlight ? undefined : true })}
+        title="한 줄로 빼서 강조"
+      >
+        {contact.highlight ? "인라인" : "강조"}
+      </button>
+    ) : null;
 
   return (
     <header className={styles.header}>
@@ -50,40 +92,13 @@ export function WHeader({
       />
 
       <div className={styles.contacts}>
-        {profile.contacts.map((contact, index) => (
+        {inlineContacts.map(({ contact, index }, position) => (
           <Fragment key={index}>
-            {index > 0 ? <span className={styles.contactSep}>|</span> : null}
+            {position > 0 ? <span className={styles.contactSep}>|</span> : null}
             <span className={styles.contactItem}>
-              {editing ? (
-                <EditableText
-                  value={contact.label}
-                  onChange={(label) =>
-                    onChange({
-                      ...profile,
-                      contacts: profile.contacts.map((c, i) =>
-                        i === index ? { ...c, label } : c,
-                      ),
-                    })
-                  }
-                  placeholder="contact"
-                  singleLine
-                />
-              ) : contact.href ? (
-                <a href={contact.href} target="_blank" rel="noreferrer">
-                  {contact.label}
-                </a>
-              ) : (
-                <span>{contact.label}</span>
-              )}
-              <DeleteButton
-                label="Remove contact"
-                onClick={() =>
-                  onChange({
-                    ...profile,
-                    contacts: profile.contacts.filter((_, i) => i !== index),
-                  })
-                }
-              />
+              {contactBody(contact, index)}
+              {highlightToggle(contact, index)}
+              <DeleteButton label="Remove contact" onClick={() => removeContact(index)} />
             </span>
           </Fragment>
         ))}
@@ -96,6 +111,14 @@ export function WHeader({
           />
         ) : null}
       </div>
+
+      {featuredContacts.map(({ contact, index }) => (
+        <p key={index} className={styles.contactHighlight}>
+          {contactBody(contact, index)}
+          {highlightToggle(contact, index)}
+          <DeleteButton label="Remove contact" onClick={() => removeContact(index)} />
+        </p>
+      ))}
     </header>
   );
 }

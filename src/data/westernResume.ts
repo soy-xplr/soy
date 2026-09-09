@@ -5,7 +5,12 @@
 // ─────────────────────────────────────────────────────────────
 import type { BulletNode } from "./resumeData";
 
-export type WContact = { label: string; href?: string };
+export type WContact = {
+  label: string;
+  href?: string;
+  /** Render on its own emphasised line below the inline contact row. */
+  highlight?: boolean;
+};
 
 /** Core competency: a bold label with an optional description. */
 export type WCapability = { label: string; description?: string };
