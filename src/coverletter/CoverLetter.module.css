@@ -1,0 +1,350 @@
+/* ─────────────────────────────────────────────────────────────
+   A4 인쇄용 자기소개서 스타일 (이력서와 동일한 톤/규격)
+   ───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
+}
+
+/* 라우트 전역 배경을 흰색으로 통일 (포트폴리오의 아이보리 --paper 방지).
+   이 모듈은 /cover-letter에서만 지연 로드되므로 다른 페이지에는 영향 없음. */
+html,
+body {
+  background: #ffffff !important;
+}
+
+.viewport {
+  --ink: #1a1a1a;
+  --ink-soft: #333333;
+  --muted: #8a8a8a;
+  --muted-strong: #6b6b6b;
+  --line: #e6e6e6;
+
+  min-height: 100vh;
+  background: #eaeaea;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  font-family: Pretendard, "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: var(--ink);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.page {
+  position: relative;
+  width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
+  height: 1122.5px; /* A4 297mm @96dpi */
+  padding: 60.5px 83.1px; /* 상하 16mm, 좌우 22mm (동일) */
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  padding-bottom: 0;
+  margin-bottom: 15px;
+}
+
+.docTitle {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--muted-strong);
+  margin: 0 0 8px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 10px;
+}
+
+.metaItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── Section (질문/소제목 + 문단) ──────────────────────────── */
+.section {
+  margin-top: 34px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.section:first-child {
+  margin-top: 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.sectionIndex {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.paragraph {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+  text-align: justify;
+  white-space: pre-line; /* 편집 시 입력한 줄바꿈(개행)을 그대로 반영 */
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.paragraphRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.paragraphRow + .paragraphRow {
+  margin-top: 12px;
+}
+
+/* 편집 모드: 섹션(문단 그룹) 하단 도구 */
+.sectionTools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.sectionDelete {
+  font: inherit;
+  font-size: 10.5px;
+  color: #e5484d;
+  background: rgba(229, 72, 77, 0.08);
+  border: 1px solid rgba(229, 72, 77, 0.35);
+  border-radius: 6px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.sectionDelete:hover {
+  background: rgba(229, 72, 77, 0.16);
+}
+
+.pageFooter {
+  margin-top: auto;
+  padding-top: 30px;
+  font-size: 9.5px;
+  color: #bdbdbd;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ── 화면 전용 툴바 ─────────────────────────────────────────── */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -40px -16px 4px;
+  padding: 12px 16px;
+  background: rgba(26, 26, 26, 0.92);
+  color: #fff;
+  font-size: 12px;
+}
+
+.primaryButton {
+  font: inherit;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background: #f0f0f0;
+}
+
+.primaryActive {
+  background: #16a34a;
+  color: #fff;
+}
+
+.ghostButton {
+  font: inherit;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.ghostButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.navLink {
+  color: #d6d6d6;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toolbarHint {
+  color: #d6d6d6;
+}
+
+/* 편집 모드: 페이지가 콘텐츠에 맞춰 늘어나 잘리지 않게 */
+.viewportEditing .page {
+  height: auto;
+  min-height: 1122.5px; /* A4 297mm @96dpi */
+  overflow: visible;
+}
+
+/* 추가 버튼 (공용 editControls의 addButton과 별개로 섹션 추가용) */
+.addSection {
+  align-self: flex-start;
+  margin-top: 10px;
+  font: inherit;
+  font-size: 11px;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px dashed rgba(37, 99, 235, 0.5);
+  border-radius: 6px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.addSection:hover {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+/* ── 인쇄 CSS ───────────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .toolbar,
+  .addSection,
+  .sectionTools {
+    display: none !important;
+  }
+
+  .viewport,
+  .viewportEditing {
+    min-height: 0;
+    background: white;
+    padding: 0;
+    gap: 0;
+    display: block;
+  }
+
+  .page {
+    width: 793.7px; /* A4 210mm @96dpi (px = 화면·인쇄 동일) */
+    height: 1122.5px; /* A4 297mm @96dpi */
+    margin: 0;
+    box-shadow: none;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

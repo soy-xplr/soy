@@ -1,0 +1,905 @@
+/* ─────────────────────────────────────────────────────────────
+   A4 print-ready English résumé (same tone/mechanics as the Korean one)
+   ───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
+}
+
+/* 라우트 전역 배경 흰색 통일 (포트폴리오 아이보리 방지). /resume-en에서만 로드됨 */
+html,
+body {
+  background: #ffffff !important;
+}
+
+.viewport {
+  --ink: #1a1a1a;
+  --ink-soft: #333333;
+  --muted: #8a8a8a;
+  --muted-strong: #6b6b6b;
+  --line: #e6e6e6;
+  --highlight-bg: #f3f3f3;
+
+  min-height: 100vh;
+  background: #eaeaea;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  font-family: Pretendard, "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+
+.sheet {
+  position: relative;
+  width: 793.7px; /* A4 210mm @96dpi */
+  padding: 0 56.7px; /* 좌우 15mm (상하 여백은 frame이 담당) */
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* 반복 여백 프레임 (thead/tfoot가 각 인쇄 페이지 상·하단에 반복) */
+.frame {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.frame td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.frameSpacer {
+  height: 60.5px; /* 상하 여백 16mm */
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  margin-bottom: 26px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.location {
+  font-size: 11.5px;
+  color: var(--muted-strong);
+  margin: 5px 0 0;
+}
+
+.title {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin: 8px 0 0;
+}
+
+.contacts {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 6px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+}
+
+.contactItem a {
+  color: inherit;
+  text-decoration: none;
+}
+.contactItem a:hover {
+  text-decoration: underline;
+}
+.contactSep {
+  margin: 0 8px;
+  color: var(--line);
+}
+
+/* ── Section ────────────────────────────────────────────────── */
+.section {
+  margin-top: 28px;
+}
+.section:first-child {
+  margin-top: 0;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 5px;
+  margin: 0 0 12px;
+}
+
+.paragraph {
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  text-align: justify;
+}
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+.paragraphRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.paragraphRow + .paragraphRow {
+  margin-top: 8px;
+}
+
+/* ── Core Capabilities ──────────────────────────────────────── */
+.capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+.capability {
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: var(--highlight-bg);
+  border-radius: 6px;
+  padding: 3px 10px;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Experience ─────────────────────────────────────────────── */
+.groupLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+  margin: 26px 0 10px;
+}
+
+.experience {
+  margin-top: 26px;
+}
+.experience:first-child {
+  margin-top: 0;
+}
+
+.companyHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.company {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+.companyPeriod {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.companyRole {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin: 2px 0 0;
+}
+.companySummary {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 6px 0 0;
+}
+
+.projectList {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project {
+  margin-top: 28px;
+}
+.project:first-child {
+  margin-top: 0;
+}
+
+.projectHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.projectName {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+.projectRole {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--muted-strong);
+  margin-left: 0;
+}
+.projectPeriod {
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.projectDesc {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 5px 0 0;
+}
+
+/* ── Education ──────────────────────────────────────────────── */
+.education {
+  margin-top: 12px;
+}
+.education:first-child {
+  margin-top: 0;
+}
+.eduHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.eduSchool {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+.eduPeriod {
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.eduDegree {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin: 2px 0 0;
+}
+
+/* ── Languages ──────────────────────────────────────────────── */
+.langList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.langItem {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Tools ──────────────────────────────────────────────────── */
+.tools {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toolRow {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+.toolCategoryCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.toolCategory {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.toolItems {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.toolItemChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ── Toolbar (screen only) ──────────────────────────────────── */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -40px -16px 4px;
+  padding: 12px 16px;
+  background: rgba(26, 26, 26, 0.92);
+  color: #fff;
+  font-size: 12px;
+}
+.primaryButton {
+  font: inherit;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.primaryButton:hover {
+  background: #f0f0f0;
+}
+.primaryActive {
+  background: #16a34a;
+  color: #fff;
+}
+.ghostButton {
+  font: inherit;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.ghostButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.navLink {
+  color: #d6d6d6;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+.navLink:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+.toolbarHint {
+  color: #d6d6d6;
+}
+
+/* ── Print ──────────────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .viewport {
+    min-height: 0;
+    background: white;
+    padding: 0;
+    gap: 0;
+    display: block;
+  }
+
+  .sheet {
+    box-shadow: none;
+    background: #ffffff;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ── Core competencies as label + description rows ──────────── */
+.capabilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.capabilityRow {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  padding-left: 12px;
+}
+
+.capabilityRow::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 8px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--muted-strong);
+}
+
+.capabilityLabel {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.capabilityDash {
+  color: var(--muted);
+}
+
+/* ── Labelled bullet groups inside a project ────────────────── */
+.bulletGroup {
+  margin-top: 15px;
+}
+
+.bulletGroupLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  margin: 0 0 5px;
+}
+
+/* 성과 등 지표 강조 그룹 */
+.impactGroup {
+  background: var(--highlight-bg);
+  border-radius: 8px;
+  padding: 9px 12px 10px;
+  margin-top: 15px;
+}
+
+.impactGroup .bulletGroupLabel {
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.bulletGroupLabelRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.smallToggle {
+  font: inherit;
+  font-size: 10px;
+  color: #444;
+  background: #ededed;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  padding: 1px 7px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.smallToggle:hover {
+  background: #e0e0e0;
+}
+
+@media print {
+  .smallToggle {
+    display: none !important;
+  }
+}
+
+.toolSep {
+  color: var(--muted);
+  margin: 0 5px;
+}
+
+/* 프로젝트 규모/역할 메타 라인 */
+.projectMeta {
+  font-size: 10.5px;
+  color: var(--muted);
+  margin: 3px 0 0;
+}
+
+/* 강조 연락처 (포트폴리오 등): 한 줄로 빼서 표시 */
+.contactHighlight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 7px 0 0;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.contactHighlight a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 1px;
+}
+
+.contactHighlight a:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* 프로젝트명과 역할 사이 구분자 (복사·PDF 추출 시에도 구분됨) */
+.projectSep {
+  margin: 0 2px;
+  color: var(--line);
+  font-weight: 400;
+}
+
+/* 프로젝트 마무리 성과 한 줄 */
+.impactLine {
+  background: var(--highlight-bg);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   spacious 변형: 프로젝트 단위 구분을 강하게 (제목 크기 + 여백)
+   ───────────────────────────────────────────────────────────── */
+.spacious .company {
+  font-size: 16.5px;
+}
+
+.spacious .projectName {
+  font-size: 15.5px;
+}
+
+.spacious .projectRole {
+  font-size: 12px;
+}
+
+/* 기간·규모 메타를 굵게 (원문 마크다운의 볼드 라인) */
+.spacious .projectMeta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-strong);
+  margin-top: 4px;
+}
+
+.spacious .projectDesc {
+  font-size: 11.5px;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+/* 프로젝트 사이를 넉넉하게 + 옅은 구분선으로 경계를 분명히 */
+.spacious .project {
+  margin-top: 26px;
+}
+
+.spacious .project:not(:first-child) {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.spacious .experience {
+  margin-top: 32px;
+}
+
+.spacious .section {
+  margin-top: 32px;
+}
+
+.spacious .projectList {
+  margin-top: 18px;
+}
+
+.spacious .bulletGroup {
+  margin-top: 17px;
+}
+
+.spacious .bulletGroupLabel {
+  font-size: 11.5px;
+  margin-bottom: 6px;
+}
+
+.spacious .impactLine {
+  margin-top: 16px;
+  padding: 10px 13px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   corporate 변형 (/resume-v5)
+   채용 제출용 이력서. 장식 없이 typography · spacing · alignment로
+   위계를 만든다. 모든 간격은 아래 spacing scale에서만 가져온다.
+   ───────────────────────────────────────────────────────────── */
+.corporate {
+  /* 본문 타이포 (본문 12.7px ≈ 9.5pt) */
+  --fs-body: 12.7px;
+  --lh-body: 1.5;
+
+  /* spacing scale — 같은 레벨은 항상 같은 값을 쓴다 */
+  --sp-bullet: 6px; /* 불릿 ↔ 불릿 */
+  --sp-sub-to-bullet: 8px; /* 소제목 → 첫 불릿 */
+  --sp-sub-gap: 17px; /* 마지막 불릿 → 다음 소제목 */
+  --sp-title-meta: 5px; /* 프로젝트 제목 → 메타 */
+  --sp-meta-desc: 9px; /* 메타 → 설명 */
+  --sp-desc-sub: 14px; /* 설명 → 첫 소제목(또는 첫 불릿) */
+  --sp-project-half: 15px; /* 프로젝트 구분선 위·아래 (합 30px) */
+  --sp-company-project: 22px; /* 회사 정보 → 첫 프로젝트 */
+  --sp-section: 40px; /* 대분류 사이 */
+  --sp-section-title: 20px; /* 대분류 제목 → 콘텐츠 */
+
+  /* 한국어 단어가 글자 단위로 잘리지 않도록 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ── 본문: 크기·행간을 한 값으로 통일 ─────────────────────── */
+.corporate .paragraph,
+.corporate .companySummary,
+.corporate .projectDesc,
+.corporate .eduDegree,
+.corporate .langItem,
+.corporate .toolCategory,
+.corporate .toolItems,
+.corporate li {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.corporate .paragraph {
+  text-align: left; /* keep-all과 양끝맞춤이 겹치면 자간이 벌어짐 */
+}
+
+/* ── Header: 이름 → 직무 → 연락처 → 포트폴리오 → 본문 ────── */
+.corporate .header {
+  margin-bottom: var(--sp-section);
+}
+.corporate .name {
+  font-size: 29px;
+}
+.corporate .title {
+  font-size: 13px;
+  margin-top: 8px;
+}
+.corporate .contacts {
+  font-size: 12px;
+  margin-top: 12px;
+}
+.corporate .contactHighlight {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+.corporate .contactHighlight a {
+  border-bottom: none;
+  padding-bottom: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 0.6px;
+  text-underline-offset: 2.5px;
+  text-decoration-color: var(--muted);
+}
+
+/* ── Section heading: 문서 전체에서 하나의 컴포넌트 ───────── */
+.corporate .section {
+  margin-top: var(--sp-section);
+}
+.corporate .sectionTitle {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  border-bottom: 1.2px solid var(--ink);
+  padding-bottom: 6px;
+  margin-bottom: var(--sp-section-title);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* EARLIER EXPERIENCE도 같은 section heading으로 (중간 형태 제거) */
+.corporate .groupLabel {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.2px solid var(--ink);
+  padding-bottom: 6px;
+  margin: var(--sp-section) 0 var(--sp-section-title);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* ── Company ───────────────────────────────────────────────── */
+.corporate .experience {
+  margin-top: var(--sp-section);
+}
+.corporate .experience:first-child {
+  margin-top: 0;
+}
+/* groupLabel이 이미 대분류 여백을 주므로 바로 뒤 회사는 붙인다 */
+.corporate .groupLabel + .experience {
+  margin-top: 0;
+}
+.corporate .company {
+  font-size: 16px;
+}
+.corporate .companyRole {
+  font-size: 12.5px;
+  margin-top: 3px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.corporate .companySummary {
+  margin-top: var(--sp-meta-desc);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.corporate .companyHead {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.corporate .projectList {
+  margin-top: var(--sp-company-project);
+}
+
+/* ── Project: 모든 프로젝트가 같은 위계를 쓴다 ─────────────── */
+.corporate .project {
+  margin-top: 0;
+}
+/* 프로젝트는 페이지를 넘어가도 되지만, 제목·역할·설명·첫 소제목 묶음은
+   항상 같은 페이지에 함께 둔다 (제목만 하단에 남는 것을 방지). */
+.corporate .projectOpen {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+/* 구분선은 "다음 프로젝트 위"가 아니라 "이전 프로젝트 아래"에 둔다.
+   그래야 프로젝트가 새 페이지에서 시작해도 위 여백이 다른 페이지와 같다. */
+.corporate .project:not(:last-child) {
+  padding-bottom: var(--sp-project-half);
+  border-bottom: 1px solid var(--line); /* 프로젝트 사이: 아주 옅은 실선 */
+  margin-bottom: var(--sp-project-half);
+}
+
+.corporate .projectName {
+  /* L1 — 가장 먼저 읽히는 요소 */
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+/* L2 — 역할 + 규모를 한 줄에, 하나의 크기로 */
+.corporate .projectSubline {
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--muted-strong);
+  margin: var(--sp-title-meta) 0 0;
+}
+.corporate .sublineSep {
+  color: var(--muted);
+}
+.corporate .projectPeriod,
+.corporate .companyPeriod,
+.corporate .eduPeriod {
+  /* L3 — 같은 크기·색·오른쪽 정렬 */
+  font-size: 11.5px;
+  color: var(--muted-strong);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.corporate .projectDesc {
+  /* L3 — 서비스 설명은 본문보다 한 단계 여리게 */
+  color: var(--muted-strong);
+  margin-top: var(--sp-meta-desc);
+}
+
+/* L6 — 소제목: 모든 프로젝트에서 동일 */
+.corporate .bulletGroup {
+  margin-top: var(--sp-sub-gap);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+/* L4 — 소제목: 굵기 대신 크기·색으로 구분 */
+.corporate .bulletGroupLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  margin: 0;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+/* 설명 → 첫 소제목 / 설명 → 첫 불릿(소제목 없는 프로젝트) */
+.corporate .projectDesc + .bulletGroup,
+.corporate .projectDesc + ul {
+  margin-top: var(--sp-desc-sub);
+}
+.corporate .projectSubline + .projectDesc {
+  margin-top: var(--sp-meta-desc);
+}
+
+/* L7 — 불릿 */
+.corporate ul {
+  margin-top: var(--sp-desc-sub);
+}
+.corporate .bulletGroup ul {
+  margin-top: var(--sp-sub-to-bullet);
+}
+.corporate li + li {
+  margin-top: var(--sp-bullet);
+}
+.corporate li::before {
+  top: 8px; /* 본문 행간에 맞춘 불릿 점 위치 */
+}
+
+/* ── Education / Skills / Language ─────────────────────────── */
+.corporate .education {
+  margin-top: 14px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.corporate .education:first-child {
+  margin-top: 0;
+}
+.corporate .eduSchool {
+  font-size: 13.5px;
+}
+.corporate .eduDegree {
+  margin-top: 3px;
+}
+.corporate .tools {
+  gap: 10px;
+}
+.corporate .toolRow {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.corporate .langList {
+  gap: 6px;
+}
